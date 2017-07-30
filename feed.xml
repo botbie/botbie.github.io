@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Botbie Blog - Articles</title>
+    <description>Lãng du đi vô định cánh trym trời</description>
+    <link>
+    http://botbie.github.io/blog/</link>
+    
+      
+      <item>
+        <title>A Full and Comprehensive Style Test</title>
+        
+          <description>&lt;p&gt;This is just an &lt;em&gt;ipsis verbis&lt;/em&gt; copy of the first example running on the &lt;a href=&quot;http://demo.ghost.io&quot;&gt;Ghost Demo&lt;/a&gt;. This shows how you can use html styling to achieve your hopes.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 27 Sep 2014 10:18:00 +0000</pubDate>
+        <link>
+        http://botbie.github.io/blog//a-full-and-comprehensive-style-test</link>
+        <guid isPermaLink="true">http://botbie.github.io/blog//a-full-and-comprehensive-style-test</guid>
+      </item>
+      
+    
+  </channel>
+</rss>
