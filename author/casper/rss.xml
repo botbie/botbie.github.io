@@ -3,9 +3,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
    
-      <title>botbie.github.io/blog/</title>
+      <title></title>
    
-   <link>http://botbie.github.io/blog/</link>
+   <link></link>
    <description>Lãng du đi vô định cánh trym trời</description>
    <language>en-uk</language>
    <managingEditor> Thien Le</managingEditor>
@@ -13,10 +13,10 @@
    
 	<item>
 	  <title>A Full and Comprehensive Style Test</title>
-	  <link>/blog//a-full-and-comprehensive-style-test</link>
+	  <link>/a-full-and-comprehensive-style-test</link>
 	  <author>Thien Le</author>
 	  <pubDate>2014-09-27T10:18:00+00:00</pubDate>
-	  <guid>/blog//a-full-and-comprehensive-style-test</guid>
+	  <guid>/a-full-and-comprehensive-style-test</guid>
 	  <description><![CDATA[
 	     <p>This is just an <em>ipsis verbis</em> copy of the first example running on the <a href="http://demo.ghost.io">Ghost Demo</a>. This shows how you can use html styling to achieve your hopes.</p>
 
