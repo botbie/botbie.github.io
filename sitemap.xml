@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>/2014/09/27/test</loc>
+<loc>/blog/2014/09/27/test</loc>
 <lastmod>2014-09-27T10:18:00+00:00</lastmod>
 </url>
 <url>
-<loc>/</loc>
+<loc>/blog/</loc>
 </url>
 <url>
-<loc>/about/</loc>
+<loc>/blog/about/</loc>
 </url>
 <url>
-<loc>/author/nguquen/</loc>
+<loc>/blog/author/nguquen/</loc>
 </url>
 <url>
-<loc>/tag/react-native/</loc>
+<loc>/blog/tag/react-native/</loc>
 </url>
 <url>
-<loc>/tag/redux/</loc>
+<loc>/blog/tag/redux/</loc>
 </url>
 </urlset>
