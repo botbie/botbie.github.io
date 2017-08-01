@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>Test</title>
+        
+          <description>&lt;p&gt;This is just an &lt;em&gt;ipsis verbis&lt;/em&gt; copy of the first example running on the &lt;a href=&quot;http://demo.ghost.io&quot;&gt;Ghost Demo&lt;/a&gt;. This shows how you can use html styling to achieve your hopes.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 27 Sep 2014 10:18:00 +0000</pubDate>
+        <link>
+        /2014/09/27/test</link>
+        <guid isPermaLink="true">/2014/09/27/test</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>A Full and Comprehensive Style Test</title>
         
           <description>&lt;p&gt;This is just an &lt;em&gt;ipsis verbis&lt;/em&gt; copy of the first example running on the &lt;a href=&quot;http://demo.ghost.io&quot;&gt;Ghost Demo&lt;/a&gt;. This shows how you can use html styling to achieve your hopes.&lt;/p&gt;
@@ -16,8 +31,8 @@
         
         <pubDate>Sat, 27 Sep 2014 10:18:00 +0000</pubDate>
         <link>
-        /a-full-and-comprehensive-style-test</link>
-        <guid isPermaLink="true">/a-full-and-comprehensive-style-test</guid>
+        /2014/09/27/a-full-and-comprehensive-style-test</link>
+        <guid isPermaLink="true">/2014/09/27/a-full-and-comprehensive-style-test</guid>
       </item>
       
     
