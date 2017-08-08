@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>/2014/09/27/test</loc>
-<lastmod>2014-09-27T10:18:00+00:00</lastmod>
+<loc>/2016/07/31/trai-nghiem-hashcat-voi-gpu-cui-mia</loc>
+<lastmod>2016-07-31T10:18:00+00:00</lastmod>
 </url>
 <url>
 <loc>/</loc>
@@ -14,9 +14,9 @@
 <loc>/author/nguquen/</loc>
 </url>
 <url>
-<loc>/tag/react-native/</loc>
+<loc>/tag/gpu/</loc>
 </url>
 <url>
-<loc>/tag/redux/</loc>
+<loc>/tag/hashcat/</loc>
 </url>
 </urlset>
