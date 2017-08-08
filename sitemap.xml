@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>/2016/07/31/trai-nghiem-hashcat-voi-gpu-cui-mia</loc>
+<loc>http://blog.botbie.io/2016/07/31/trai-nghiem-hashcat-voi-gpu-cui-mia</loc>
 <lastmod>2016-07-31T10:18:00+00:00</lastmod>
 </url>
 <url>
-<loc>/</loc>
+<loc>http://blog.botbie.io/</loc>
 </url>
 <url>
-<loc>/about/</loc>
+<loc>http://blog.botbie.io/about/</loc>
 </url>
 <url>
-<loc>/author/nguquen/</loc>
+<loc>http://blog.botbie.io/author/nguquen/</loc>
 </url>
 <url>
-<loc>/tag/gpu/</loc>
+<loc>http://blog.botbie.io/tag/gpu/</loc>
 </url>
 <url>
-<loc>/tag/hashcat/</loc>
+<loc>http://blog.botbie.io/tag/hashcat/</loc>
 </url>
 </urlset>
