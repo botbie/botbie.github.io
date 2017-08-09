@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- [[! Page Meta ]] -->
-    <title>Author</title>
+    <title>Botbie Blog</title>
     <meta name="description" content="Botbie Blog - Lãng du đi vô định cánh trym trời" />
 
     <meta name="HandheldFriendly" content="True" />
@@ -60,7 +60,7 @@
 
 
 </head>
-<body class="author-template nav-closed">
+<body class="tag-template nav-closed">
 
     <div class="nav">
     <h3 class="nav-title">Menu</h3>
@@ -85,7 +85,7 @@
         
         
         
-        <li class="nav-speeches " role="presentation"><a href="/tag/startup">Startup</a></li>
+        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/startup">Startup</a></li>
         
     </ul>
     <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
@@ -96,52 +96,40 @@
     <div class="site-wrapper">
 
         <!-- [[! Everything else gets inserted here ]] -->
-        <!-- < default}} -->
+        <!-- < dynamically overriding backgrounds for tags as well as descriptions -->
+
+
+<!-- < default}} -->
 <!-- The tag above means - insert everything in this file into the [body] of the default.hbs template -->
 
-<!-- The big featured header -->
-
-<!-- Everything inside the #author tags pulls data from the author -->
-<!-- #author  -->
-    <header class="main-header author-head " style="background-image: url(/assets/images/covers/cover4.jpg) ">
-        <nav class="main-nav overlay clearfix">
-          <a class="blog-logo" href="/"><img src="/assets/images/ghost.png" alt="Blog Logo" /></a>
+<!-- If we have a tag cover, display that - else blog cover - else nothing -->
+<header class="main-header tag-head " style="background-image: url(/assets/images/covers/cover4.jpg) ">
+    <nav class="main-nav overlay clearfix">
+      <a class="blog-logo" href="/"><img src="/assets/images/ghost.png" alt="Blog Logo" /></a>
+        
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+        
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Startup</h1>
+            <h2 class="page-description">
             
-                <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+			    A 1-post collection
             
-        </nav>
-    </header>
-
-    <section class="author-profile inner">
-        
-        
-        <figure class="author-image">
-            <div class="img" style="background-image: url(/assets/images/avatars/thien.png)"><span class="hidden">Thien Le's Picture</span></div>
-        </figure>
-        
-        <h1 class="author-title">Thien Le</h1>
-        
-            <h2 class="author-bio">Ngủ để mà quên...
-</h2>
-        
-        <div class="author-meta">
-            <span class="author-location icon-location">Nowhere</span>
-            
-            <!-- <span class="author-stats"><i class="icon-stats"></i> [[plural ../pagination.total empty='No posts' singular='% post' plural='% posts']]</span> -->
-            <span class="author-stats"><i class="icon-stats"></i>1 post</span>
+            </h2>
         </div>
-    </section>
-<!-- /author -->
+    </div>
+</header>
 
 <!-- The main content area on the homepage -->
 <main id="content" class="content" role="main">
 
-    <!-- The tag below includes the post loop - partials/loop.hbs  -->
+    <!-- The tag below includes the post loop - partials/loop.hbs -->
         <!-- Previous/next page links - only displayed on page 2+ -->
     <div class="extra-pagination inner">
         
-            
-<nav class="pagination" role="pagination">
+            <nav class="pagination" role="pagination">
     
     <span class="page-number"> Page 1 of 1 </span>
     
@@ -155,37 +143,32 @@
     
     <article class="post">
         <header class="post-header">
-            <h2 class="post-title"><a href="/2016/07/31/trai-nghiem-hashcat-voi-gpu-cui-mia">Trải nghiệm hashcat với GPU cùi mía</a></h2>
+            <h2 class="post-title"><a href="/2017/01/19/phan-tich-tai-chinh-cho-startup">Phân tích tài chính cho Startup</a></h2>
         </header>
         <section class="post-excerpt">
-            <p>Số là mình vừa kiếm được một con card đồ họa cũ, GeForce 210: CUDA Cores: 16 Graphics Clock (MHz): 589MHz Processor Clock (MHz): 1402MHz Graphics... <a class="read-more" href="/2016/07/31/trai-nghiem-hashcat-voi-gpu-cui-mia">&raquo;</a></p>
+            <p>Phần I - Câu Hỏi Giả sử bạn mở một công ty thương mại, phân phối mặt hàng ngách - doanh thu, và lợi nhuận ròng... <a class="read-more" href="/2017/01/19/phan-tich-tai-chinh-cho-startup">&raquo;</a></p>
         </section>
         <footer class="post-meta">
-            <img class="author-thumb" src="/assets/images/avatars/thien.png" alt="Author image" nopin="nopin" />
+            <img class="author-thumb" src="/assets/images/avatars/casper.png" alt="Author image" nopin="nopin" />
             <!-- author -->
-            <a href='/author/nguquen'>Thien Le</a>
+            <a href='/author/nkimkha'>Kim Kha</a>
             <!-- [[tags prefix=" on "]] -->
             
                 on
                 
                     
-                       <a href='/tag/gpu'>Gpu</a>,
-                    
-                
-                    
-                       <a href='/tag/hashcat'>Hashcat</a>
+                       <a href='/tag/startup'>Startup</a>
                     
                 
             
-            <time class="post-date" datetime="2016-07-31">31 Jul 2016</time>
+            <time class="post-date" datetime="2017-01-19">19 Jan 2017</time>
         </footer>
     </article>
     
 
     <!-- Previous/next page links - displayed on every page -->
     
-        
-<nav class="pagination" role="pagination">
+        <nav class="pagination" role="pagination">
     
     <span class="page-number"> Page 1 of 1 </span>
     

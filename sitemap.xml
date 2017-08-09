@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://blog.botbie.io/2016/06/26/bitcoin-la-gi</loc>
+<lastmod>2016-06-26T00:00:00+00:00</lastmod>
+</url>
+<url>
 <loc>http://blog.botbie.io/2016/07/31/trai-nghiem-hashcat-voi-gpu-cui-mia</loc>
-<lastmod>2016-07-31T10:18:00+00:00</lastmod>
+<lastmod>2016-07-31T00:00:00+00:00</lastmod>
+</url>
+<url>
+<loc>http://blog.botbie.io/2017/01/19/phan-tich-tai-chinh-cho-startup</loc>
+<lastmod>2017-01-19T00:00:00+00:00</lastmod>
 </url>
 <url>
 <loc>http://blog.botbie.io/</loc>
@@ -14,9 +22,21 @@
 <loc>http://blog.botbie.io/author/nguquen/</loc>
 </url>
 <url>
+<loc>http://blog.botbie.io/author/jaken/</loc>
+</url>
+<url>
+<loc>http://blog.botbie.io/author/nkimkha/</loc>
+</url>
+<url>
+<loc>http://blog.botbie.io/tag/bitcoin/</loc>
+</url>
+<url>
 <loc>http://blog.botbie.io/tag/gpu/</loc>
 </url>
 <url>
 <loc>http://blog.botbie.io/tag/hashcat/</loc>
+</url>
+<url>
+<loc>http://blog.botbie.io/tag/startup/</loc>
 </url>
 </urlset>
