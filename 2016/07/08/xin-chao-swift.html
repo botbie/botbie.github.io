@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- [[! Page Meta ]] -->
-    <title>Báo cáo về tình trạng sử dụng thiết bị wearable</title>
+    <title>Xin chào Swift</title>
     <meta name="description" content="Botbie Blog - Lãng du đi vô định cánh trym trời" />
 
     <meta name="HandheldFriendly" content="True" />
@@ -77,7 +77,7 @@
         
         
         
-        <li class="nav-speeches " role="presentation"><a href="/tag/swift">Swift</a></li>
+        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/swift">Swift</a></li>
         
         
         
@@ -120,7 +120,7 @@
 <!-- Everything inside the #post tags pulls data from the post -->
 <!-- #post -->
 
-<header class="main-header post-head " style="background-image: url(/assets/images/covers/cover2.jpg) ">
+<header class="main-header post-head " style="background-image: url(/assets/images/covers/cover4.jpg) ">
     <nav class="main-nav  overlay  clearfix">
       <a class="blog-logo" href="/"><img src="/assets/images/ghost.png" alt="Blog Logo" /></a>
         
@@ -134,14 +134,14 @@
     <article class="post tag-test tag-content">
 
         <header class="post-header">
-            <h1 class="post-title">Báo cáo về tình trạng sử dụng thiết bị wearable</h1>
+            <h1 class="post-title">Xin chào Swift</h1>
             <section class="post-meta">
-            <time class="post-date" datetime="2016-11-10">10 Nov 2016</time>
+            <time class="post-date" datetime="2016-07-08">08 Jul 2016</time>
                 <!-- [[tags prefix=" on "]] -->
                 
                 on 
                     
-                       <a href='/tag/links'>Links</a>
+                       <a href='/tag/swift'>Swift</a>
                     
                 
                 
@@ -150,16 +150,109 @@
 
         <section class="post-content">
 
-            <p>Thống kê về tình trạng sử dụng thiết bị wearable cho thấy các điểm sau:</p>
+            <p>Swift là ngôn ngữ lập trình được phát triển bởi Apple, release vào năm 2014, phiên bản mới nhất tại thời điểm viết bài này là 3.0 Preview 2. Apple đã tạo ra một điểm nhấn khi quyết định open source Swift vào ngày 3-12-2015, Swift hiện tại có thể develop và thực thi trên cả môi trường Linux lẫn Mac, mở ra cơ hội tiếp cận ngôn ngữ này cho những người dùng Linux. Swift đã không còn là một ngôn ngữ chỉ để thay thế objective-c khi phát triển ứng dụng cho Mac/iOS mà giờ đây chúng ta hoàn toàn có thể viết bất kì chương trình nào với nó, ví dụ như các ứng dụng Server-Side cho Linux. Hiện đã có một vài web framework cho Swift như <a href="https://github.com/IBM-Swift/Kitura">Kitura</a> được phát triển bởi IBM, hay <a href="http://www.perfect.org/">Perfect</a>.</p>
 
-<ul>
-  <li>Lượng người dùng đang có xu hướng giảm, và giảm khá sâu</li>
-  <li>Fitbit vẫn đang chiếm lĩnh thị trường</li>
-  <li>Đa số mua là để tracking nhịp tim</li>
-  <li>Với smart watch, thì Apple vẫn là vô đối, và trên 50% user hài lòng về Apple Watch</li>
-</ul>
+<h3 id="cài-đặt">Cài đặt:</h3>
+<ol>
+  <li>Cài đặt dependencies:
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ sudo apt-get install clang libicu-dev
+</code></pre>
+    </div>
+  </li>
+  <li>Tải về phiên bản release mới nhất (3.0 Preview 2):
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ wget https://swift.org/builds/swift-3.0-preview-2/ubuntu1510/swift-3.0-PREVIEW-2/swift-3.0-PREVIEW-2-ubuntu15.10.tar.gz
+</code></pre>
+    </div>
+  </li>
+  <li>Giải nén file vừa tải về:
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ tar xzf swift-3.0-PREVIEW-2-ubuntu15.10.tar.gz
+</code></pre>
+    </div>
+  </li>
+  <li>Add Swift toolchain vào PATH:
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ export PATH="/&lt;path&gt;/swift-3.0-PREVIEW-2-ubuntu15.10/usr/bin:$PATH"
+</code></pre>
+    </div>
+  </li>
+  <li>Kiểm tra swift đã cài đúng chưa:
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ swift --version
+Swift version 3.0 (swift-3.0-PREVIEW-2)
+Target: x86_64-unknown-linux-gnu
+</code></pre>
+    </div>
+  </li>
+</ol>
 
-<p>Báo cáo đầy đủ ở đây: <a href="https://www.451alliance.com/Portals/5/2016reports/083116_wearable_demand/Demand%20for%20Wearables%20Drifts%20Lower_sep16.pdf">https://www.451alliance.com/Portals/5/2016reports/083116_wearable_demand/Demand%20for%20Wearables%20Drifts%20Lower_sep16.pdf</a></p>
+<h3 id="sử-dụng-repl">Sử dụng REPL:</h3>
+<p>Gõ lệnh swift không kèm theo tham số nào, chúng ta sẽ có được một shell tương tác có khả năng đọc, evaluate và in kết quả của bất kì đoạn code Swift nào mà bạn nhập vào:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ swift
+Welcome to Swift version 3.0 (swift-3.0-PREVIEW-2). Type :help for assistance.
+  1&gt; 1 + 1
+$R0: Int = 2
+  2&gt; let greet = "Xin chao Swift"
+greet: String = "Xin chao Swift"
+  3&gt; print(greet)
+Xin chao Swift
+  4&gt;
+</code></pre>
+</div>
+<p>Chúng ta còn có thể import các module của hệ thống như <code class="highlighter-rouge">Darwin</code> trên Mac hay <code class="highlighter-rouge">Glibc</code> trên Linux:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>1&gt; import Glibc
+2&gt; random() % 10
+$R0: Int = 3
+</code></pre>
+</div>
+
+<h3 id="tạo-package-và-build-file-thực-thi-với-build-system">Tạo Package và build file thực thi với <code class="highlighter-rouge">Build System</code></h3>
+<ol>
+  <li>Kiểm tra phiên bản Swift có hỗ trợ build hay không:
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ swift build --help
+OVERVIEW: Build sources into binary products
+USAGE: swift build [mode] [options]
+...
+</code></pre>
+    </div>
+  </li>
+  <li>Tạo package:
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ mkdir Hello
+$ cd Hello
+</code></pre>
+    </div>
+    <p>Mọi package cần có một file Package.swift trong thư mục gốc:</p>
+    <div class="highlighter-rouge"><pre class="highlight"><code>touch Package.swift
+</code></pre>
+    </div>
+    <p>Tạo thư mục chứa source code:</p>
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ mkdir Sources
+</code></pre>
+    </div>
+  </li>
+  <li>Build file thực thi:</li>
+</ol>
+
+<p>Tạo file main.swift trong <code class="highlighter-rouge">Sources/</code> với nội dung sau bằng text editor bất kỳ:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>print("Xin chào Swift")
+</code></pre>
+</div>
+<p>Biên dịch package bằng lệnh <code class="highlighter-rouge">swift build</code>:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ swift build
+Compile Swift Module 'Hello' (1 sources)
+Linking .build/debug/Hello
+</code></pre>
+</div>
+<p>Chạy thử nào:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ .build/debug/Hello
+Xin chào Swift
+</code></pre>
+</div>
+<p>Kiểm tra file build ra thuộc loại nào:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ file .build/debug/Hello
+.build/debug/Hello: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=becde89d40e02d3c9d9ca147580844d632f1c8f4, not stripped
+</code></pre>
+</div>
+<p>Chúng ta có thể thấy file được build ra có định dạng ELF, đây là định dạng file thực thi của Linux, điều đó có nghĩa Swift biên dịch source code qua native code -&gt; chương trình sẽ được chạy trực tiếp trên máy thật chứ không phải thông qua VM như Java hay .NET :cool:</p>
+
+<p>Nói đến Swift thì chắc chắn đó là một câu chuyện dài, bài viết này chỉ nhằm mục đích “Hello World” nên xin tạm dừng tại đây, hẹn gặp các bạn vào những bài viết sau :grin:</p>
 
 
         </section>
@@ -172,19 +265,19 @@
             
             
             <figure class="author-image">
-                <a class="img" href="/author/nkimkha" style="background-image: url(/assets/images/avatars/nkimkha.jpg)"><span class="hidden">nkimkha's Picture</span></a>
+                <a class="img" href="/author/nguquen" style="background-image: url(/assets/images/avatars/thien.png)"><span class="hidden">nguquen's Picture</span></a>
             </figure>
             
 
             <section class="author">
-                <h4><a href="/author/nkimkha">Nguyễn Kim Kha</a></h4>
+                <h4><a href="/author/nguquen">Thien Le</a></h4>
 
                 
-                    <p> ENTP Type.
+                    <p> Ngủ để mà quên...
 </p>
                 
                 <div class="author-meta">
-                    <span class="author-location icon-location"> HCMC, Vietnam</span>
+                    <span class="author-location icon-location"> Nowhere</span>
                     
                 </div>
             </section>
@@ -193,22 +286,22 @@
 
             <section class="share">
                 <h4>Share this post</h4>
-                <a class="icon-twitter" href="http://twitter.com/share?text=Báo cáo về tình trạng sử dụng thiết bị wearable&amp;url=http://blog.botbie.io/2016/11/10/bao-cao-ve-tinh-trang-su-dung-thiet-bi-wearable"
+                <a class="icon-twitter" href="http://twitter.com/share?text=Xin chào Swift&amp;url=http://blog.botbie.io/2016/07/08/xin-chao-swift"
                     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                     <span class="hidden">Twitter</span>
                 </a>
-                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.botbie.io/2016/11/10/bao-cao-ve-tinh-trang-su-dung-thiet-bi-wearable"
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.botbie.io/2016/07/08/xin-chao-swift"
                     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                     <span class="hidden">Facebook</span>
                 </a>
-                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.botbie.io/2016/11/10/bao-cao-ve-tinh-trang-su-dung-thiet-bi-wearable"
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.botbie.io/2016/07/08/xin-chao-swift"
                    onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
                     <span class="hidden">Google+</span>
                 </a>
             </section>
 
             
-                <div data-width="100%" class="fb-comments" data-href="http://blog.botbie.io/2016/11/10/bao-cao-ve-tinh-trang-su-dung-thiet-bi-wearable"></div>
+                <div data-width="100%" class="fb-comments" data-href="http://blog.botbie.io/2016/07/08/xin-chao-swift"></div>
             
 
         </footer>
@@ -221,20 +314,20 @@
 
     <!-- [[! next_post ]] -->
     
-        <a class="read-next-story " style="background-image: url(/assets/images/covers/cover2.jpg)" href="/2016/11/13/nhung-kien-thuc-co-ban-ve-game-leagues-of-legends">
+        <a class="read-next-story " style="background-image: url(/assets/images/covers/cover4.jpg)" href="/2016/07/16/lap-trinh-socket-tren-swift-voi-bluesocket">
             <section class="post">
-                <h2>Những kiến thức cơ bản về game Leagues of Legends</h2>
-                <p>Game do công ty Riot phát hành, tại VN là Garena với tên **Liên minh...</p>
+                <h2>Lập trình socket trên Swift với BlueSocket</h2>
+                <p>### Giới thiệu ---------- Để lập trình socket trên Swift chúng ta có thể dùng...</p>
             </section>
         </a>
     
     <!-- [[! /next_post ]] -->
     <!-- [[! prev_post ]] -->
     
-        <a class="read-next-story prev " style="background-image: url(/assets/images/covers/cover2.jpg)" href="/2016/11/10/ban-do-nhung-noi-co-ban-xang-e5">
+        <a class="read-next-story prev " style="background-image: url(/assets/images/covers/cover2.jpg)" href="/2016/06/26/bitcoin-la-gi">
             <section class="post">
-                <h2>Bản đồ những nơi có bán xăng E5</h2>
-                <p>Bản đồ này do tôi tạo và cập nhật… Thống kê trên bản đồ những...</p>
+                <h2>Bitcoin là gì</h2>
+                <p>Bitcoin là đồng tiền số quản lý phi tập trung do Satoshi Nakamoto sáng tạo....</p>
             </section>
         </a>
     

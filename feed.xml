@@ -98,6 +98,38 @@
     
       
       <item>
+        <title>Lập trình socket trên Swift với BlueSocket</title>
+        
+          <description>&lt;h3 id=&quot;giới-thiệu&quot;&gt;Giới thiệu&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;Để lập trình socket trên Swift chúng ta có thể dùng các hàm quen thuộc như socket, bind, listen, connect.v.v.v. thông qua thư viện của hệ thống như Glibc (Linux) / Darwin (MacOS). Nhưng như vậy thì khá là tay chân, hiện tại có nhiều thư viện Swift đã bọc các hàm của hệ thống này trong những class của Swift, việc của chúng ta chỉ là import và sử dụng các class của Swift này thôi :cool:. Trong bài viết này mình sẽ sử dụng thư viện &lt;a href=&quot;https://github.com/IBM-Swift/BlueSocket&quot;&gt;BlueSocket&lt;/a&gt; được viết bởi IBM.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 16 Jul 2016 00:00:00 +0000</pubDate>
+        <link>
+        http://blog.botbie.io/2016/07/16/lap-trinh-socket-tren-swift-voi-bluesocket</link>
+        <guid isPermaLink="true">http://blog.botbie.io/2016/07/16/lap-trinh-socket-tren-swift-voi-bluesocket</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Xin chào Swift</title>
+        
+          <description>&lt;p&gt;Swift là ngôn ngữ lập trình được phát triển bởi Apple, release vào năm 2014, phiên bản mới nhất tại thời điểm viết bài này là 3.0 Preview 2. Apple đã tạo ra một điểm nhấn khi quyết định open source Swift vào ngày 3-12-2015, Swift hiện tại có thể develop và thực thi trên cả môi trường Linux lẫn Mac, mở ra cơ hội tiếp cận ngôn ngữ này cho những người dùng Linux. Swift đã không còn là một ngôn ngữ chỉ để thay thế objective-c khi phát triển ứng dụng cho Mac/iOS mà giờ đây chúng ta hoàn toàn có thể viết bất kì chương trình nào với nó, ví dụ như các ứng dụng Server-Side cho Linux. Hiện đã có một vài web framework cho Swift như &lt;a href=&quot;https://github.com/IBM-Swift/Kitura&quot;&gt;Kitura&lt;/a&gt; được phát triển bởi IBM, hay &lt;a href=&quot;http://www.perfect.org/&quot;&gt;Perfect&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Fri, 08 Jul 2016 00:00:00 +0000</pubDate>
+        <link>
+        http://blog.botbie.io/2016/07/08/xin-chao-swift</link>
+        <guid isPermaLink="true">http://blog.botbie.io/2016/07/08/xin-chao-swift</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Bitcoin là gì</title>
         
           <description>&lt;p&gt;Bitcoin là đồng tiền số quản lý phi tập trung do Satoshi Nakamoto sáng tạo. Nó không tín nhiệm một máy chủ trung tâm làm nhiệm vụ xử lý giao dịch hay lưu trữ tiền tệ mà sử dụng một mạng ngang hàng: Bitcoin cấp quyền cho các nút mạng khác nhau kiểm chứng giao dịch thông qua sức mạnh của máy tính, các giao dịch cũng như phát hành tiền được thực hiện theo sự đồng thuận trong phần mềm. Có tối đa  2,099,999,997,690,000 đơn vị Bitcoin (được gọi là satoshi) có thể được phát hành, hiện tại 1 Bitcoin = 100,000,000 satoshi. Nói cách khác, số lượng Bitcoin tối đa sẽ xuất hiện trên thế giới là 21 triệu, ước tính năm 2140 toàn bộ số bitcoin này sẽ được phát hành hết.&lt;/p&gt;
