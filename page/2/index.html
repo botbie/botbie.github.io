@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- [[! Page Meta ]] -->
-    <title>Author</title>
+    <title>Finding The Way Home</title>
     <meta name="description" content="Botbie Blog - Lãng du đi vô định cánh trym trời" />
 
     <meta name="HandheldFriendly" content="True" />
@@ -60,7 +60,7 @@
 
 
 </head>
-<body class="author-template nav-closed">
+<body class="paged archive-template nav-closed">
 
     <div class="nav">
     <h3 class="nav-title">Menu</h3>
@@ -68,7 +68,7 @@
         <span class="hidden">Close</span>
     </a>
     <ul>
-        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-home  nav-current" role="presentation"><a href="/">Home</a></li>
         <li class="nav-about " role="presentation"><a href="/about">About</a></li>
         
         
@@ -108,54 +108,41 @@
     <div class="site-wrapper">
 
         <!-- [[! Everything else gets inserted here ]] -->
-        <!-- < default}} -->
+        <!-- < default -->
 <!-- The tag above means - insert everything in this file into the [body] of the default.hbs template -->
 
-<!-- The big featured header -->
-
-<!-- Everything inside the #author tags pulls data from the author -->
-<!-- #author  -->
-    <header class="main-header author-head " style="background-image: url(/assets/images/covers/cover4.jpg) ">
-        <nav class="main-nav overlay clearfix">
-          <a class="blog-logo" href="/"><img src="/assets/images/ghost.png" alt="Blog Logo" /></a>
-            
-                <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
-            
-        </nav>
-    </header>
-
-    <section class="author-profile inner">
+<!-- The big featured header  -->
+<header class="main-header "
+        style="background-image: url(/assets/images/covers/cover1.jpg) ">
+    <nav class="main-nav overlay clearfix">
+      <a class="blog-logo" href="/"><img src="/assets/images/ghost.png" alt="Blog Logo" /></a>
         
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
         
-        <figure class="author-image">
-            <div class="img" style="background-image: url(/assets/images/avatars/nkimkha.jpg)"><span class="hidden">Nguyễn Kim Kha's Picture</span></div>
-        </figure>
-        
-        <h1 class="author-title">Nguyễn Kim Kha</h1>
-        
-            <h2 class="author-bio">ENTP Type.
-</h2>
-        
-        <div class="author-meta">
-            <span class="author-location icon-location">HCMC, Vietnam</span>
-            
-            <!-- <span class="author-stats"><i class="icon-stats"></i> [[plural ../pagination.total empty='No posts' singular='% post' plural='% posts']]</span> -->
-            <span class="author-stats"><i class="icon-stats"></i>5 posts</span>
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Botbie Blog</h1>
+            <h2 class="page-description">Lãng du đi vô định cánh trym trời</h2>
         </div>
-    </section>
-<!-- /author -->
+    </div>
+    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+</header>
 
 <!-- The main content area on the homepage -->
 <main id="content" class="content" role="main">
 
-    <!-- The tag below includes the post loop - partials/loop.hbs  -->
+    <!-- The tag below includes the post loop - partials/loop.hbs -->
         <!-- Previous/next page links - only displayed on page 2+ -->
     <div class="extra-pagination inner">
         
-            
-<nav class="pagination" role="pagination">
+            <nav class="pagination" role="pagination">
     
-    <span class="page-number"> Page 1 of 1 </span>
+        
+            <a class="newer-posts" href="/" title="Previous Page">&laquo; Newer Posts</a>
+        
+    
+    <span class="page-number"> Page 2 of 2 </span>
     
 </nav>
 
@@ -167,135 +154,67 @@
     
     <article class="post">
         <header class="post-header">
-            <h2 class="post-title"><a href="/2017/01/19/phan-tich-tai-chinh-cho-startup">Phân tích tài chính cho Startup</a></h2>
+            <h2 class="post-title"><a href="/2016/07/31/trai-nghiem-hashcat-voi-gpu-cui-mia">Trải nghiệm hashcat với GPU cùi mía</a></h2>
         </header>
         <section class="post-excerpt">
-            <p>Phần I - Câu Hỏi Giả sử bạn mở một công ty thương mại, phân phối mặt hàng ngách - doanh thu, và lợi nhuận ròng... <a class="read-more" href="/2017/01/19/phan-tich-tai-chinh-cho-startup">&raquo;</a></p>
+            <p>Số là mình vừa kiếm được một con card đồ họa cũ, GeForce 210: CUDA Cores: 16 Graphics Clock (MHz): 589MHz Processor Clock (MHz): 1402MHz Graphics... <a class="read-more" href="/2016/07/31/trai-nghiem-hashcat-voi-gpu-cui-mia">&raquo;</a></p>
         </section>
         <footer class="post-meta">
-            <img class="author-thumb" src="/assets/images/avatars/nkimkha.jpg" alt="Author image" nopin="nopin" />
+            <img class="author-thumb" src="/assets/images/avatars/thien.png" alt="Author image" nopin="nopin" />
             <!-- author -->
-            <a href='/author/nkimkha'>Nguyễn Kim Kha</a>
+            <a href='/author/nguquen'>Thien Le</a>
             <!-- [[tags prefix=" on "]] -->
             
                 on
                 
                     
-                       <a href='/tag/startup'>Startup</a>
+                       <a href='/tag/gpu'>Gpu</a>,
+                    
+                
+                    
+                       <a href='/tag/hashcat'>Hashcat</a>
                     
                 
             
-            <time class="post-date" datetime="2017-01-19">19 Jan 2017</time>
+            <time class="post-date" datetime="2016-07-31">31 Jul 2016</time>
         </footer>
     </article>
     
     
     <article class="post">
         <header class="post-header">
-            <h2 class="post-title"><a href="/2016/11/13/nhung-kien-thuc-co-ban-ve-game-leagues-of-legends">Những kiến thức cơ bản về game Leagues of Legends</a></h2>
+            <h2 class="post-title"><a href="/2016/06/26/bitcoin-la-gi">Bitcoin là gì</a></h2>
         </header>
         <section class="post-excerpt">
-            <p>Game do công ty Riot phát hành, tại VN là Garena với tên Liên minh huyền thoại. Thông tin cơ bản 10 người chơi, chia làm... <a class="read-more" href="/2016/11/13/nhung-kien-thuc-co-ban-ve-game-leagues-of-legends">&raquo;</a></p>
+            <p>Bitcoin là đồng tiền số quản lý phi tập trung do Satoshi Nakamoto sáng tạo. Nó không tín nhiệm một máy chủ trung tâm làm nhiệm... <a class="read-more" href="/2016/06/26/bitcoin-la-gi">&raquo;</a></p>
         </section>
         <footer class="post-meta">
-            <img class="author-thumb" src="/assets/images/avatars/nkimkha.jpg" alt="Author image" nopin="nopin" />
+            <img class="author-thumb" src="/assets/images/avatars/casper.png" alt="Author image" nopin="nopin" />
             <!-- author -->
-            <a href='/author/nkimkha'>Nguyễn Kim Kha</a>
+            <a href='/author/jaken'>Toan Huynh</a>
             <!-- [[tags prefix=" on "]] -->
             
                 on
                 
                     
-                       <a href='/tag/games'>Games</a>
+                       <a href='/tag/bitcoin'>Bitcoin</a>
                     
                 
             
-            <time class="post-date" datetime="2016-11-13">13 Nov 2016</time>
-        </footer>
-    </article>
-    
-    
-    <article class="post">
-        <header class="post-header">
-            <h2 class="post-title"><a href="/2016/11/10/bao-cao-ve-tinh-trang-su-dung-thiet-bi-wearable">Báo cáo về tình trạng sử dụng thiết bị wearable</a></h2>
-        </header>
-        <section class="post-excerpt">
-            <p>Thống kê về tình trạng sử dụng thiết bị wearable cho thấy các điểm sau: Lượng người dùng đang có xu hướng giảm, và giảm khá... <a class="read-more" href="/2016/11/10/bao-cao-ve-tinh-trang-su-dung-thiet-bi-wearable">&raquo;</a></p>
-        </section>
-        <footer class="post-meta">
-            <img class="author-thumb" src="/assets/images/avatars/nkimkha.jpg" alt="Author image" nopin="nopin" />
-            <!-- author -->
-            <a href='/author/nkimkha'>Nguyễn Kim Kha</a>
-            <!-- [[tags prefix=" on "]] -->
-            
-                on
-                
-                    
-                       <a href='/tag/links'>Links</a>
-                    
-                
-            
-            <time class="post-date" datetime="2016-11-10">10 Nov 2016</time>
-        </footer>
-    </article>
-    
-    
-    <article class="post">
-        <header class="post-header">
-            <h2 class="post-title"><a href="/2016/11/10/ban-do-nhung-noi-co-ban-xang-e5">Bản đồ những nơi có bán xăng E5</a></h2>
-        </header>
-        <section class="post-excerpt">
-            <p>Bản đồ này do tôi tạo và cập nhật… Thống kê trên bản đồ những chỗ có bán xăng sinh học E5. https://drive.google.com/open?id=1czfSMBiAOKWz8-AqHgTHAmdaUao&amp;usp=sharing Nếu thấy sai... <a class="read-more" href="/2016/11/10/ban-do-nhung-noi-co-ban-xang-e5">&raquo;</a></p>
-        </section>
-        <footer class="post-meta">
-            <img class="author-thumb" src="/assets/images/avatars/nkimkha.jpg" alt="Author image" nopin="nopin" />
-            <!-- author -->
-            <a href='/author/nkimkha'>Nguyễn Kim Kha</a>
-            <!-- [[tags prefix=" on "]] -->
-            
-                on
-                
-                    
-                       <a href='/tag/links'>Links</a>
-                    
-                
-            
-            <time class="post-date" datetime="2016-11-10">10 Nov 2016</time>
-        </footer>
-    </article>
-    
-    
-    <article class="post">
-        <header class="post-header">
-            <h2 class="post-title"><a href="/2016/11/09/donald-trump-thang-va-xu-huong-cuc-doan-dang-gia-tang">Bản đồ những nơi có bán xăng E5</a></h2>
-        </header>
-        <section class="post-excerpt">
-            <p>Một cách thiển cận, khi quan sát các sự kiện gần đây, dường như xu hướng cực đoan đang thắng thế ở thế giới hiện đại.... <a class="read-more" href="/2016/11/09/donald-trump-thang-va-xu-huong-cuc-doan-dang-gia-tang">&raquo;</a></p>
-        </section>
-        <footer class="post-meta">
-            <img class="author-thumb" src="/assets/images/avatars/nkimkha.jpg" alt="Author image" nopin="nopin" />
-            <!-- author -->
-            <a href='/author/nkimkha'>Nguyễn Kim Kha</a>
-            <!-- [[tags prefix=" on "]] -->
-            
-                on
-                
-                    
-                       <a href='/tag/opinions'>Opinions</a>
-                    
-                
-            
-            <time class="post-date" datetime="2016-11-09">09 Nov 2016</time>
+            <time class="post-date" datetime="2016-06-26">26 Jun 2016</time>
         </footer>
     </article>
     
 
     <!-- Previous/next page links - displayed on every page -->
     
-        
-<nav class="pagination" role="pagination">
+        <nav class="pagination" role="pagination">
     
-    <span class="page-number"> Page 1 of 1 </span>
+        
+            <a class="newer-posts" href="/" title="Previous Page">&laquo; Newer Posts</a>
+        
+    
+    <span class="page-number"> Page 2 of 2 </span>
     
 </nav>
 
