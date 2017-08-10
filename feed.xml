@@ -130,6 +130,28 @@
     
       
       <item>
+        <title>Cài đặt OpenVPN dễ dàng với docker</title>
+        
+          <description>&lt;p&gt;Trong thời buổi “đứt cáp” thường xuyên hơn cơm bữa, việc tự trang bị cho mình 1 vpn server đặt tại nước ngoài là cần thiết phòng khi vật vả. Việc sử dụng OpenVPN có mấy điểm lợi sau:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Các kết nối được mã hóa, tránh bị sniff khi tham gia mạng công cộng như wifi ở các quán cafe.&lt;/li&gt;
+  &lt;li&gt;OpenVPN dùng OpenSSL để mã hóa, nếu config port của OpenVPN là 443 thì rất khó để phân biệt traffic của OpenVPN với traffic HTTPS thông thường nên rất khó bị block.&lt;/li&gt;
+  &lt;li&gt;Ẩn IP thật khi tham gia vào internet.&lt;/li&gt;
+  &lt;li&gt;Những khi “đứt cáp” thì tốc độ vẫn rất tốt nếu đặt server đúng chỗ :grin:. Theo quan sát của mình vào những lúc “đứt cáp” thì đường truyền tới Hongkong vẫn ngon lành. Ví dụ VPS mình thuê có network speed = 2Mbps thì khi download hoàn toàn full 2Mbps :cool:.&lt;/li&gt;
+  &lt;li&gt;Bạn có thể remote vào máy tính đặt ở nhà để làm việc mà không cần phải làm gì thêm, chỉ cần máy ở nhà và máy hiện tại cùng kết nối vào VPN :gem:&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Sat, 02 Jul 2016 00:00:00 +0000</pubDate>
+        <link>
+        http://blog.botbie.io/2016/07/02/cai-dat-openvpn-de-dang-voi-docker</link>
+        <guid isPermaLink="true">http://blog.botbie.io/2016/07/02/cai-dat-openvpn-de-dang-voi-docker</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Bitcoin là gì</title>
         
           <description>&lt;p&gt;Bitcoin là đồng tiền số quản lý phi tập trung do Satoshi Nakamoto sáng tạo. Nó không tín nhiệm một máy chủ trung tâm làm nhiệm vụ xử lý giao dịch hay lưu trữ tiền tệ mà sử dụng một mạng ngang hàng: Bitcoin cấp quyền cho các nút mạng khác nhau kiểm chứng giao dịch thông qua sức mạnh của máy tính, các giao dịch cũng như phát hành tiền được thực hiện theo sự đồng thuận trong phần mềm. Có tối đa  2,099,999,997,690,000 đơn vị Bitcoin (được gọi là satoshi) có thể được phát hành, hiện tại 1 Bitcoin = 100,000,000 satoshi. Nói cách khác, số lượng Bitcoin tối đa sẽ xuất hiện trên thế giới là 21 triệu, ước tính năm 2140 toàn bộ số bitcoin này sẽ được phát hành hết.&lt;/p&gt;
@@ -140,6 +162,21 @@
         <link>
         http://blog.botbie.io/2016/06/26/bitcoin-la-gi</link>
         <guid isPermaLink="true">http://blog.botbie.io/2016/06/26/bitcoin-la-gi</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Bảo mật MongoDB - tấn công injection với php</title>
+        
+          <description>&lt;p&gt;Trước khi chúng ta thực hiện MongoDB injection, chúng ta cần phải hiểu MongoDB chính xác là cái gì và tại sao chúng ta dùng nó thay vì các database khác. MongoDB không dùng SQL nên người ta cho rằng nó không thể bị tấn công bởi các loại injection. Nhưng hãy tin tôi, không ai được sinh ra với khía cạnh bảo mật sẵn có. Chúng ta phải thi công vài logic để chống lại khi bị tấn công.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sun, 05 Jun 2016 00:00:00 +0000</pubDate>
+        <link>
+        http://blog.botbie.io/2016/06/05/bao-mat-mongodb-tan-cong-injection-voi-php</link>
+        <guid isPermaLink="true">http://blog.botbie.io/2016/06/05/bao-mat-mongodb-tan-cong-injection-voi-php</guid>
       </item>
       
     

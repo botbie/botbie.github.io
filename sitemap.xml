@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://blog.botbie.io/2016/06/05/bao-mat-mongodb-tan-cong-injection-voi-php</loc>
+<lastmod>2016-06-05T00:00:00+00:00</lastmod>
+</url>
+<url>
 <loc>http://blog.botbie.io/2016/06/26/bitcoin-la-gi</loc>
 <lastmod>2016-06-26T00:00:00+00:00</lastmod>
+</url>
+<url>
+<loc>http://blog.botbie.io/2016/07/02/cai-dat-openvpn-de-dang-voi-docker</loc>
+<lastmod>2016-07-02T00:00:00+00:00</lastmod>
 </url>
 <url>
 <loc>http://blog.botbie.io/2016/07/08/xin-chao-swift</loc>
@@ -55,7 +63,19 @@
 <loc>http://blog.botbie.io/author/jaken/</loc>
 </url>
 <url>
+<loc>http://blog.botbie.io/tag/mongodb/</loc>
+</url>
+<url>
+<loc>http://blog.botbie.io/tag/injection/</loc>
+</url>
+<url>
 <loc>http://blog.botbie.io/tag/bitcoin/</loc>
+</url>
+<url>
+<loc>http://blog.botbie.io/tag/docker/</loc>
+</url>
+<url>
+<loc>http://blog.botbie.io/tag/openvpn/</loc>
 </url>
 <url>
 <loc>http://blog.botbie.io/tag/swift/</loc>
@@ -80,5 +100,8 @@
 </url>
 <url>
 <loc>http://blog.botbie.io/page/2/</loc>
+</url>
+<url>
+<loc>http://blog.botbie.io/page/3/</loc>
 </url>
 </urlset>

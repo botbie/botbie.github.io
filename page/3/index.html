@@ -37,22 +37,22 @@
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Botbie Blog" />
 <meta property="og:description" content="Lãng du đi vô định cánh trym trời" />
-<meta property="og:url" content="http://blog.botbie.io/tag/startup/" />
-<meta property="og:image" content="http://blog.botbie.io/assets/images/covers/cover4.jpg" />
+<meta property="og:url" content="http://blog.botbie.io/page/3/" />
+<meta property="og:image" content="http://blog.botbie.io/assets/images/covers/cover1.jpg" />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Botbie Blog" />
 <meta name="twitter:description" content="Lãng du đi vô định cánh trym trời" />
-<meta name="twitter:url" content="http://blog.botbie.io/tag/startup/" />
-<meta name="twitter:image:src" content="http://blog.botbie.io/assets/images/covers/cover4.jpg" />
+<meta name="twitter:url" content="http://blog.botbie.io/page/3/" />
+<meta name="twitter:image:src" content="http://blog.botbie.io/assets/images/covers/cover1.jpg" />
 
 <script type="application/ld+json">
 {
     "@context": "http://schema.org",
     "@type": "Website",
     "publisher": "Botbie Blog",
-    "url": "http://blog.botbie.io/tag/startup/",
-    "image": "http://blog.botbie.io/assets/images/covers/cover4.jpg",
+    "url": "http://blog.botbie.io/page/3/",
+    "image": "http://blog.botbie.io/assets/images/covers/cover1.jpg",
     "description": "Lãng du đi vô định cánh trym trời"
 }
 </script>
@@ -62,7 +62,7 @@
 
 
 </head>
-<body class="tag-template nav-closed">
+<body class="paged archive-template nav-closed">
 
     <div class="nav">
     <h3 class="nav-title">Menu</h3>
@@ -70,7 +70,7 @@
         <span class="hidden">Close</span>
     </a>
     <ul>
-        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-home  nav-current" role="presentation"><a href="/">Home</a></li>
         <li class="nav-about " role="presentation"><a href="/about">About</a></li>
         <li class="nav-author " role="presentation"><a href="/author">Contributors</a></li>
         
@@ -120,7 +120,7 @@
         
         
         
-        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/startup">Startup</a></li>
+        <li class="nav-speeches " role="presentation"><a href="/tag/startup">Startup</a></li>
         
     </ul>
     <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
@@ -131,14 +131,12 @@
     <div class="site-wrapper">
 
         <!-- [[! Everything else gets inserted here ]] -->
-        <!-- < dynamically overriding backgrounds for tags as well as descriptions -->
-
-
-<!-- < default}} -->
+        <!-- < default -->
 <!-- The tag above means - insert everything in this file into the [body] of the default.hbs template -->
 
-<!-- If we have a tag cover, display that - else blog cover - else nothing -->
-<header class="main-header tag-head " style="background-image: url(/assets/images/covers/cover4.jpg) ">
+<!-- The big featured header  -->
+<header class="main-header "
+        style="background-image: url(/assets/images/covers/cover1.jpg) ">
     <nav class="main-nav overlay clearfix">
       <a class="blog-logo" href="/"><img src="/assets/images/botbie.png" alt="Blog Logo" /></a>
         
@@ -147,14 +145,11 @@
     </nav>
     <div class="vertical">
         <div class="main-header-content inner">
-            <h1 class="page-title">Startup</h1>
-            <h2 class="page-description">
-            
-			    A 1-post collection
-            
-            </h2>
+            <h1 class="page-title">Botbie Blog</h1>
+            <h2 class="page-description">Lãng du đi vô định cánh trym trời</h2>
         </div>
     </div>
+    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
 </header>
 
 <!-- The main content area on the homepage -->
@@ -166,7 +161,11 @@
         
             <nav class="pagination" role="pagination">
     
-    <span class="page-number"> Page 1 of 1 </span>
+        
+            <a class="newer-posts" href="/page/2" title="Previous Page">&laquo; Newer Posts</a>
+      
+    
+    <span class="page-number"> Page 3 of 3 </span>
     
 </nav>
 
@@ -178,25 +177,29 @@
     
     <article class="post">
         <header class="post-header">
-            <h2 class="post-title"><a href="/2017/01/19/phan-tich-tai-chinh-cho-startup">Phân tích tài chính cho Startup</a></h2>
+            <h2 class="post-title"><a href="/2016/06/05/bao-mat-mongodb-tan-cong-injection-voi-php">Bảo mật MongoDB - tấn công injection với php</a></h2>
         </header>
         <section class="post-excerpt">
-            <p>Phần I - Câu Hỏi Giả sử bạn mở một công ty thương mại, phân phối mặt hàng ngách - doanh thu, và lợi nhuận ròng... <a class="read-more" href="/2017/01/19/phan-tich-tai-chinh-cho-startup">&raquo;</a></p>
+            <p>Trước khi chúng ta thực hiện MongoDB injection, chúng ta cần phải hiểu MongoDB chính xác là cái gì và tại sao chúng ta dùng nó... <a class="read-more" href="/2016/06/05/bao-mat-mongodb-tan-cong-injection-voi-php">&raquo;</a></p>
         </section>
         <footer class="post-meta">
-            <img class="author-thumb" src="/assets/images/avatars/nkimkha.jpg" alt="Author image" nopin="nopin" />
+            <img class="author-thumb" src="/assets/images/avatars/thien.png" alt="Author image" nopin="nopin" />
             <!-- author -->
-            <a href='/author/nkimkha'>Nguyễn Kim Kha</a>
+            <a href='/author/nguquen'>Thien Le</a>
             <!-- [[tags prefix=" on "]] -->
             
                 on
                 
                     
-                       <a href='/tag/startup'>Startup</a>
+                       <a href='/tag/mongodb'>Mongodb</a>,
+                    
+                
+                    
+                       <a href='/tag/injection'>Injection</a>
                     
                 
             
-            <time class="post-date" datetime="2017-01-19">19 Jan 2017</time>
+            <time class="post-date" datetime="2016-06-05">05 Jun 2016</time>
         </footer>
     </article>
     
@@ -205,7 +208,11 @@
     
         <nav class="pagination" role="pagination">
     
-    <span class="page-number"> Page 1 of 1 </span>
+        
+            <a class="newer-posts" href="/page/2" title="Previous Page">&laquo; Newer Posts</a>
+      
+    
+    <span class="page-number"> Page 3 of 3 </span>
     
 </nav>
 
