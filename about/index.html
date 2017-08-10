@@ -8,7 +8,7 @@
 
     <!-- [[! Page Meta ]] -->
     <title>About</title>
-    <meta name="description" content="Lãng du đi vô định cánh trym trời" />
+    <meta name="description" content="Your mind is for having ideas, not holding them..." />
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -36,13 +36,13 @@
 <meta property="og:site_name" content="Botbie Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="About" />
-<meta property="og:description" content="Lãng du đi vô định cánh trym trời" />
+<meta property="og:description" content="Your mind is for having ideas, not holding them..." />
 <meta property="og:url" content="http://blog.botbie.io/about/" />
 <meta property="og:image" content="http://blog.botbie.io/assets/images/covers/cover7.jpg" />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="About" />
-<meta name="twitter:description" content="Lãng du đi vô định cánh trym trời" />
+<meta name="twitter:description" content="Your mind is for having ideas, not holding them..." />
 <meta name="twitter:url" content="http://blog.botbie.io/about/" />
 <meta name="twitter:image:src" content="http://blog.botbie.io/assets/images/covers/cover7.jpg" />
 
@@ -53,7 +53,7 @@
     "publisher": "Botbie Blog",
     "url": "http://blog.botbie.io/about/",
     "image": "http://blog.botbie.io/assets/images/covers/cover7.jpg",
-    "description": "Lãng du đi vô định cánh trym trời"
+    "description": "Your mind is for having ideas, not holding them..."
 }
 </script>
 
@@ -185,6 +185,39 @@ $ gem install bundler
   </li>
   <li>Access local server at: <code class="highlighter-rouge">http://localhost:4000/</code></li>
 </ol>
+
+<h2 id="how-to-become-a-contributor">How to become a contributor?</h2>
+<p>Like normal open source project on Github, you should fork <code class="highlighter-rouge">https://github.com/botbie/blog</code>, make changes and create a Pull Request.</p>
+
+<p>If you are a new contributor, you must register your profile by adding an entry in <code class="highlighter-rouge">_data/authors.yml</code>, example:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>just_another_cool_contributor:
+  username: just_another_cool_contributor
+  avatar: /assets/images/avatars/casper.png
+  cover: /assets/images/covers/casper.jpg
+  name: Cool Name
+  location: In the shell
+  intro: &gt;
+    I'm a ghost...
+</code></pre>
+</div>
+
+<p>To add a new article, create a file in <code class="highlighter-rouge">_posts</code> with file name follow this format: <code class="highlighter-rouge">&lt;year&gt;-&lt;month&gt;-&lt;day&gt;-slug-of-the-article.md</code></p>
+
+<p>Article is just a markdown file with some information in Front Matter to describe your post, example:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>---
+layout: post
+cover: 'assets/images/covers/cover2.jpg'
+title: Article Title
+date: 2017-08-10
+tags: [cool, blog]
+author: just_another_cool_contributor
+description: &gt;
+  Description here.
+---
+
+Your main content here.
+</code></pre>
+</div>
 
         </section>
 
