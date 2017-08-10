@@ -141,7 +141,34 @@
         </header>
 
         <section class="post-content">
-            <p>Đây là trang blog của Botbie.IO, trang đang được phát triển…</p>
+            <p>This is an open source blog platform that based on Jekyll and hosted by Github. Everyone are free to join us to contribute your articles.</p>
+
+<p>To run this blog on your machine, just follow these steps:</p>
+
+<ol>
+  <li>Clone the respository:
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ git clone https://github.com/botbie/blog.git
+</code></pre>
+    </div>
+  </li>
+  <li>Install ruby 2.x and bundler:
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ brew install ruby
+$ gem install bundler
+</code></pre>
+    </div>
+  </li>
+  <li>Install required gems:
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ bundle install
+</code></pre>
+    </div>
+  </li>
+  <li>Run the local server:
+    <div class="highlighter-rouge"><pre class="highlight"><code>bundle exec jekyll serve
+</code></pre>
+    </div>
+  </li>
+  <li>Access local server at: <code class="highlighter-rouge">http://localhost:4000/</code></li>
+</ol>
 
         </section>
 
