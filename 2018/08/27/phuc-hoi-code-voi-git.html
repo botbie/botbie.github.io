@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    <title>Phục hồi code với git</title>
+    <meta name="description" content="Phục hồi code với git" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" >
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css"
+          href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- [[! highlight.js ]] -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+    
+<link rel="canonical" href="/" />
+<meta name="referrer" content="origin" />
+<link rel="next" href="/page/2/" />
+
+<meta property="og:site_name" content="Botbie Blog" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Phục hồi code với git" />
+<meta property="og:description" content="Phục hồi code với git" />
+<meta property="og:url" content="http://blog.botbie.io/2018/08/27/phuc-hoi-code-voi-git" />
+<meta property="og:image" content="http://blog.botbie.io/assets/images/covers/cover2.jpg" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Phục hồi code với git" />
+<meta name="twitter:description" content="Phục hồi code với git" />
+<meta name="twitter:url" content="http://blog.botbie.io/2018/08/27/phuc-hoi-code-voi-git" />
+<meta name="twitter:image:src" content="http://blog.botbie.io/assets/images/covers/cover2.jpg" />
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Botbie Blog",
+    "url": "http://blog.botbie.io/2018/08/27/phuc-hoi-code-voi-git",
+    "image": "http://blog.botbie.io/assets/images/covers/cover2.jpg",
+    "description": "Phục hồi code với git"
+}
+</script>
+
+<meta name="generator" content="Jekyll 3.0.0" />
+<link rel="alternate" type="application/rss+xml" title="Botbie Blog" href="/feed.xml" />
+
+
+</head>
+<body class="home-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-about " role="presentation"><a href="/about">About</a></li>
+        <li class="nav-author " role="presentation"><a href="/author">Contributors</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/mongodb">Mongodb</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/injection">Injection</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bitcoin">Bitcoin</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptography">Cryptography</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptocurrency">Cryptocurrency</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hash">Hash</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bài-dịch">Bài dịch</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/docker">Docker</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/openvpn">Openvpn</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/swift">Swift</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/gpu">Gpu</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hashcat">Hashcat</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/opinions">Opinions</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/links">Links</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/games">Games</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/startup">Startup</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/system">System</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/vps">Vps</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/server">Server</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hosting">Hosting</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bookreview">Bookreview</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/triết-học">Triết học</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/nghệ-thuật-sống">Nghệ thuật sống</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/internet">Internet</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/npo">Npo</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/source-control">Source control</a></li>
+        
+        
+        
+        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/git">Git</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/devops">Devops</a></li>
+        
+    </ul>
+    <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/images/covers/cover2.jpg) ">
+    <nav class="main-nav  overlay  clearfix">
+      <a class="blog-logo" href="/"><img src="/assets/images/botbie.png" alt="Blog Logo" /></a>
+        
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-test tag-content">
+
+        <header class="post-header">
+            <h1 class="post-title">Phục hồi code với git</h1>
+            <section class="post-meta">
+            <time class="post-date" datetime="2018-08-27">27 Aug 2018</time>
+                <!-- [[tags prefix=" on "]] -->
+                
+                on 
+                    
+                       <a href='/tag/source-control'>Source control</a>,
+                    
+                
+                    
+                       <a href='/tag/git'>Git</a>,
+                    
+                
+                    
+                       <a href='/tag/devops'>Devops</a>
+                    
+                
+                
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <p>Trong git có nhiều cách để phục hồi hay quay lại trạng thái của code. Ở đây ta sẽ nói về 2 phần chính là code đã được commit nhưng chưa push và code đã được commit và cũng đã được push lên repository.</p>
+
+<p>Với code đã commit nhưng chưa được push ta có thể dùng git reset với –soft hoặc –hard tùy mục đích. Vì code chưa được push (nghĩa là người khác chưa biết và chưa pull về) nên ta có thể thoải mái quay lại một commit cụ thể nào đó và xóa các commit “xấu” mà không ai biết trước khi push lên.</p>
+
+<p>Với code đã commit và cũng đã được push lên repository nghĩa là đã có người biết và đã có người pull code về thì việc phục hồi không còn đơn giản nữa. Đồng nghĩa là ta không thể xóa các commit “xấu” mà chỉ có thể sửa chữa commit “xấu” bằng một commit “đính chính”. History của commit không thay đổi. Lệnh sử dụng ở đây là git revert</p>
+
+<p>Hãy xem ví dụ sau, giả sử ta có các commit như sau và đã được push lên repository</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>~$ git lola
+* 1f7a1ac (HEAD -&gt; master, origin/master) Add function in script nginxstatus
+* 4bd503a Dummy log
+* 5ecc61b Add code in script
+* c9d82f4 It is 23:31
+* 39de993 dummy commit
+* ae1a975 Move script to bin dir
+* e936714 Backup database with shell script
+* c0704cc Script check status of nginx
+* 9b5e2ee kill mysql query
+* 4ad7f45 Add license
+* 39bd57e Add REAME.md
+</code></pre>
+</div>
+<p>Như ta thấy HEAD đang ở master (local) và cũng đang ở origin/master (remote)</p>
+
+<p>Trong trường hợp ta muốn quay trở lại commit c9d82f4 thì ta chỉ có thể revert về commit này như sau</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>~$ git revert c9d82f4
+</code></pre>
+</div>
+<p>=&gt; sẽ mở 1 editor và viết commit mesg vào đây, kết quả sẽ được như sau</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>~$ git lol
+* 5eb5150 (HEAD -&gt; master) Revert "It is 23:31"
+* 1f7a1ac (origin/master) Add function in script nginxstatus
+* 4bd503a Dummy log
+* 5ecc61b Add code in script
+* c9d82f4 It is 23:31
+* 39de993 dummy commit
+* ae1a975 Move script to bin dir
+* e936714 Backup database with shell script
+* c0704cc Script check status of nginx
+* 9b5e2ee kill mysql query
+* 4ad7f45 Add license
+* 39bd57e Add REAME.m
+</code></pre>
+</div>
+<p>Như ta thấy đã revert về trạng thái của commit c9d82f4 nhưng các commit sau đó thì vẫn còn và xuất hiện thêm 1 commit đính chính và ta có thể push lên bình thường.</p>
+
+<p>Câu hỏi là ta có thể quay lại trạng thái tại commit c9d82f4 và xóa tất cả các commit sau nó hay không? Thực tế là hoàn toàn được</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>~$ git reset c9d82f4 --hard
+~$ git lola
+* 5eb5150 (origin/master, origin/HEAD) Revert "It is 23:31"
+* 1f7a1ac Add function in script nginxstatus
+* 4bd503a Dummy log
+* 5ecc61b Add code in script
+* c9d82f4 (HEAD -&gt; master) It is 23:31
+* 39de993 dummy commit
+* ae1a975 Move script to bin dir
+* e936714 Backup database with shell script
+* c0704cc Script check status of nginx
+* 9b5e2ee kill mysql query
+* 4ad7f45 Add license
+* 39bd57e Add REAME.md
+</code></pre>
+</div>
+<p>=&gt; ta sẽ thấy HEAD của master (local repo) thì ở commit c9d82f4, nhưng trên origin/master (remote repo) thì ở 5eb5150. Nếu bây giờ ta push lên thì chắc chắn là server sẽ từ chối và bắt chúng ta pull về trước khi push lên.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>~$ git push
+error: failed to push some refs to 'git@bitbucket.org:xluffy/demo.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details
+</code></pre>
+</div>
+<p>Đây là nguyên tác của Source Control, nghĩa là cái gì đã chia sẻ, ghi dấu lịch sử thì không thể xóa bỏ.</p>
+
+<p>Như trên nếu muốn push ta có thể -f (force)</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>~$ git push -f 
+~$ git lola
+* c9d82f4 (HEAD -&gt; master, origin/master, origin/HEAD) It is 23:31
+* 39de993 dummy commit
+* ae1a975 Move script to bin dir
+* e936714 Backup database with shell script
+* c0704cc Script check status of nginx
+* 9b5e2ee kill mysql query
+* 4ad7f45 Add license
+* 39bd57e Add REAME.m
+</code></pre>
+</div>
+<p>Như ta thấy HEAD đều đã ở master (local) và origin/master (remote), các commit sau c9d82f4 cũng đã bị xóa bỏ.</p>
+
+<p>Quay trở lại vấn đề là có nên git push -f hay không? thì như đã nói ở trên là nguyên tắc của Source Control là cái gì đã ghi dấu lịch sử thì không thể xóa lịch sử mà ta chỉ có thể sửa đổi bằng cách ghi một commit mới. Chuyện này đảm bảo cho ta vấn đề không ai có thể xóa đi lịch sử.</p>
+
+<p>Ví dụ với svn nếu có một ai đó quay trở lại commit đầu tiên và force commit lên server. Sau đó tất cả các lập trình viên khác đều svn update và giả sử không có bản backup repo thì coi như ta sẽ mất hết lịch sử.</p>
+
+<p>Với git thì không đến mức nguy hiểm như vậy (do cơ chế phân tán của git) TUY NHIÊN việc dùng git push -f trên các repo chung là BAD PRACTICE KHÔNG NÊN dùng. Và chỉ nên dùng với owner-branch nếu muốn chỉnh commit cho đẹp.</p>
+
+<p>Vậy làm sao để tránh được vấn đề trên. Điểm lợi hại của git là cheap branch, một số git server như gitlab hay github có hỗ trợ tính năng fork và pull/merge request. Áp dụng việc tách branch và dùng các tính năng trên sẽ dễ dàng khi phục hồi code và không ảnh hưởng tới người khác. Như dịch vụ gitlab còn có chức năng protect branch (mặc định là master) để đảm bảo là ngoài owner thì không ai có thể được code và push trực tiếp trên nhánh master. NGUYÊN TẮC là đừng bao giờ code chung trên 1 branch.</p>
+
+<p>Write-up cho vấn đề sáng nay</p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            
+            <figure class="author-image">
+                <a class="img" href="/author/xluffy" style="background-image: url(/assets/images/avatars/xluffy.jpeg)"><span class="hidden">xluffy's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/xluffy">xluffy</a></h4>
+
+                
+                    <p> I'm a ghost...
+</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> In the shell</span>
+                    
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=Phục hồi code với git&amp;url=http://blog.botbie.io/2018/08/27/phuc-hoi-code-voi-git"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.botbie.io/2018/08/27/phuc-hoi-code-voi-git"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.botbie.io/2018/08/27/phuc-hoi-code-voi-git"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+            
+                <div data-width="100%" class="fb-comments" data-href="http://blog.botbie.io/2018/08/27/phuc-hoi-code-voi-git"></div>
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+        <a class="read-next-story " style="background-image: url(/assets/images/covers/cover2.jpg)" href="/2018/08/27/bitcoin-basic">
+            <section class="post">
+                <h2>Giới thiệu bitcoin cơ bản</h2>
+                <p>Giới thiệu bitcoin cơ bản
+
+### [Bitcoin là gì](../../../2016/06/26/bitcoin-la-gi)
+### [Block hashing algorithm](../../../2016/06/27/bitcoin-block-hashing-algorithm)</p>
+            </section>
+        </a>
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/images/covers/internet-archive.png)" href="/2018/08/26/the-internet-archive">
+            <section class="post">
+                <h2>The Internet Archive</h2>
+                <p>The Internet Archive là một kho lưu trữ khổng lồ phi lợi nhuận được tạo...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+        <footer class="site-footer clearfix">
+          <section class="copyright"><a href="/">Botbie Blog</a> &copy; 2018</section>
+          <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/biomadeira/jasper">Jasper</a></section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-51088846-5', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=1555729331387875";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, "script", "facebook-jssdk"));</script>
+
+</body>
+</html>
