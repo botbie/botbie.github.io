@@ -23,21 +23,6 @@
     
       
       <item>
-        <title>Phục hồi code với git</title>
-        
-          <description>&lt;p&gt;Trong git có nhiều cách để phục hồi hay quay lại trạng thái của code. Ở đây ta sẽ nói về 2 phần chính là code đã được commit nhưng chưa push và code đã được commit và cũng đã được push lên repository.&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Mon, 27 Aug 2018 00:00:00 +0000</pubDate>
-        <link>
-        http://blog.botbie.io/2018/08/27/phuc-hoi-code-voi-git</link>
-        <guid isPermaLink="true">http://blog.botbie.io/2018/08/27/phuc-hoi-code-voi-git</guid>
-      </item>
-      
-    
-      
-      <item>
         <title>The Internet Archive</title>
         
           <description>&lt;p&gt;&lt;a href=&quot;https://archive.org/&quot;&gt;The Internet Archive&lt;/a&gt; là một kho lưu trữ khổng lồ phi lợi nhuận được tạo ra để lưu trữ dữ liệu trên internet: văn bản, hình ảnh, âm thanh, phần mềm. Họ tự đặt ra cho mình sứ mệnh càn quét intenet định kỳ và lưu lại tất cả những dữ liệu thu được. Có lẽ bạn sẽ thấy họ kỳ quặc vì internet không chỉ có vàng, mà còn đầy rác. Nhưng nếu bạn ở tình huống của tôi hôm nay, bạn sẽ thấy đó là một ý tưởng tuyệt vời và những con người đã tạo ra nó mới đáng yêu làm sao.&lt;/p&gt;
@@ -63,21 +48,6 @@
         <link>
         http://blog.botbie.io/2018/08/26/how-to-be-stoic</link>
         <guid isPermaLink="true">http://blog.botbie.io/2018/08/26/how-to-be-stoic</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Chia sẻ kinh nghiệm đăng kí VPS</title>
-        
-          <description>&lt;p&gt;Mình chia sẻ bài viết này cho các bạn muốn sở hữu một VPS giá rẻ cho riêng mình. Mục đích thì vô vàn: có người cần nơi để host một trang blog, website cá nhân, có người muốn nâng cao kĩ năng system (như mình) có người đơn giản muốn có 1 proxy cá nhân để vượt qua các vụ chặn facebook chẳng hạn …&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Sun, 26 Aug 2018 00:00:00 +0000</pubDate>
-        <link>
-        http://blog.botbie.io/2018/08/26/chia-se-kinh-nghiem-dang-ky-vps</link>
-        <guid isPermaLink="true">http://blog.botbie.io/2018/08/26/chia-se-kinh-nghiem-dang-ky-vps</guid>
       </item>
       
     
@@ -227,21 +197,6 @@
     
       
       <item>
-        <title>Block hashing algorithm - thuật toán băm khối</title>
-        
-          <description>&lt;p&gt;Quá trình đào bitcoin sử dụng thuật toán hashcash để tạo hash &lt;a href=&quot;https://en.bitcoin.it/wiki/Proof_of_work&quot;&gt;‘proof of work’&lt;/a&gt; (bằng chứng về công việc). Thuật toán hashcash yêu cầu những đối số sau: một chuỗi, một số nonce, và một biến đếm. Trong bitcoin chuỗi được mã hóa trong phần đầu cấu trúc dữ liệu của khối, bao gồm phiên bản, hash của khối trước đó, hash gốc của cây Merkle chứa tất cả các giao dịch trong khối, thời gian hiện tại, và độ khó. Bitcoin lưu trữ một số nonce khac trong trường extraNone, là một phần của giao dịch coinbase, nằm ở node lá trái nhất của cây Merkle (giao dịch coinbase là giao dịch đầu trong khối). Biến đếm Nonce khoảng 32 bit nên mỗi lần biến tràn, trường extraNonce phải tăng (hoặc thay đổi) để việc tính toán hash không bị lặp. Những khái niệm quanh thuật toán hashcash khá đơn giản, dễ hiểu và được trình bay chi tiết hơn &lt;a href=&quot;https://web.archive.org/web/20170117040618/https://en.bitcoin.it/wiki/Hashcash&quot;&gt;ở đây&lt;/a&gt;. Khi đào bitcoin, thuật toán hashcash liên tục hash header của khối khi tăng dần biến đếm và trường nonce. Tăng trường extraNonce làm thay đổi nội dung giao dịch coinbase, dẫn đến thay đổi hash của cây merkle. Đôi khi block cũng thay đổi khi đang làm việc với nó (thêm transaction hoặc thay đổi timestamp).&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Mon, 27 Jun 2016 00:00:00 +0000</pubDate>
-        <link>
-        http://blog.botbie.io/2016/06/27/bitcoin-block-hashing-algorithm</link>
-        <guid isPermaLink="true">http://blog.botbie.io/2016/06/27/bitcoin-block-hashing-algorithm</guid>
-      </item>
-      
-    
-      
-      <item>
         <title>Bitcoin là gì</title>
         
           <description>&lt;p&gt;Bitcoin là đồng tiền số quản lý phi tập trung do Satoshi Nakamoto sáng tạo. Nó không tín nhiệm một máy chủ trung tâm làm nhiệm vụ xử lý giao dịch hay lưu trữ tiền tệ mà sử dụng một mạng ngang hàng: Bitcoin cấp quyền cho các nút mạng khác nhau kiểm chứng giao dịch thông qua sức mạnh của máy tính, các giao dịch cũng như phát hành tiền được thực hiện theo sự đồng thuận trong phần mềm. Có tối đa  2,099,999,997,690,000 đơn vị Bitcoin (được gọi là satoshi) có thể được phát hành, hiện tại 1 Bitcoin = 100,000,000 satoshi. Nói cách khác, số lượng Bitcoin tối đa sẽ xuất hiện trên thế giới là 21 triệu, ước tính năm 2140 toàn bộ số bitcoin này sẽ được phát hành hết.&lt;/p&gt;
@@ -252,6 +207,51 @@
         <link>
         http://blog.botbie.io/2016/06/26/bitcoin-la-gi</link>
         <guid isPermaLink="true">http://blog.botbie.io/2016/06/26/bitcoin-la-gi</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Chia sẻ kinh nghiệm đăng kí VPS</title>
+        
+          <description>&lt;p&gt;Mình chia sẻ bài viết này cho các bạn muốn sở hữu một VPS giá rẻ cho riêng mình. Mục đích thì vô vàn: có người cần nơi để host một trang blog, website cá nhân, có người muốn nâng cao kĩ năng system (như mình) có người đơn giản muốn có 1 proxy cá nhân để vượt qua các vụ chặn facebook chẳng hạn …&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 18 Jun 2016 00:00:00 +0000</pubDate>
+        <link>
+        http://blog.botbie.io/2016/06/18/chia-se-kinh-nghiem-dang-ky-vps</link>
+        <guid isPermaLink="true">http://blog.botbie.io/2016/06/18/chia-se-kinh-nghiem-dang-ky-vps</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Block hashing algorithm - thuật toán băm khối</title>
+        
+          <description>&lt;p&gt;Quá trình đào bitcoin sử dụng thuật toán hashcash để tạo hash &lt;a href=&quot;https://en.bitcoin.it/wiki/Proof_of_work&quot;&gt;‘proof of work’&lt;/a&gt; (bằng chứng về công việc). Thuật toán hashcash yêu cầu những đối số sau: một chuỗi, một số nonce, và một biến đếm. Trong bitcoin chuỗi được mã hóa trong phần đầu cấu trúc dữ liệu của khối, bao gồm phiên bản, hash của khối trước đó, hash gốc của cây Merkle chứa tất cả các giao dịch trong khối, thời gian hiện tại, và độ khó. Bitcoin lưu trữ một số nonce khac trong trường extraNone, là một phần của giao dịch coinbase, nằm ở node lá trái nhất của cây Merkle (giao dịch coinbase là giao dịch đầu trong khối). Biến đếm Nonce khoảng 32 bit nên mỗi lần biến tràn, trường extraNonce phải tăng (hoặc thay đổi) để việc tính toán hash không bị lặp. Những khái niệm quanh thuật toán hashcash khá đơn giản, dễ hiểu và được trình bay chi tiết hơn &lt;a href=&quot;https://web.archive.org/web/20170117040618/https://en.bitcoin.it/wiki/Hashcash&quot;&gt;ở đây&lt;/a&gt;. Khi đào bitcoin, thuật toán hashcash liên tục hash header của khối khi tăng dần biến đếm và trường nonce. Tăng trường extraNonce làm thay đổi nội dung giao dịch coinbase, dẫn đến thay đổi hash của cây merkle. Đôi khi block cũng thay đổi khi đang làm việc với nó (thêm transaction hoặc thay đổi timestamp).&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 18 Jun 2016 00:00:00 +0000</pubDate>
+        <link>
+        http://blog.botbie.io/2016/06/18/bitcoin-block-hashing-algorithm</link>
+        <guid isPermaLink="true">http://blog.botbie.io/2016/06/18/bitcoin-block-hashing-algorithm</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Phục hồi code với git</title>
+        
+          <description>&lt;p&gt;Trong git có nhiều cách để phục hồi hay quay lại trạng thái của code. Ở đây ta sẽ nói về 2 phần chính là code đã được commit nhưng chưa push và code đã được commit và cũng đã được push lên repository.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Fri, 17 Jun 2016 00:00:00 +0000</pubDate>
+        <link>
+        http://blog.botbie.io/2016/06/17/phuc-hoi-code-voi-git</link>
+        <guid isPermaLink="true">http://blog.botbie.io/2016/06/17/phuc-hoi-code-voi-git</guid>
       </item>
       
     
