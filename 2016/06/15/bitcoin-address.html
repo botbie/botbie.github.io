@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    <title>Bitcoin address</title>
+    <meta name="description" content="Bitcoin address - địa chỉ bitcoin, là một chuỗi 26-35 ký tự chữ và số, bắt đầu với 1 hoặc 3, là đích của một thanh toán bitcoin. Bất kỳ người dùng bitcoin nào cũng có thể tự tạo địa chỉ bitcoin của mình miễn phí." />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" >
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css"
+          href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- [[! highlight.js ]] -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+    
+<link rel="canonical" href="/" />
+<meta name="referrer" content="origin" />
+<link rel="next" href="/page/2/" />
+
+<meta property="og:site_name" content="Botbie Blog" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Bitcoin address" />
+<meta property="og:description" content="Bitcoin address - địa chỉ bitcoin, là một chuỗi 26-35 ký tự chữ và số, bắt đầu với 1 hoặc 3, là đích của một thanh toán bitcoin. Bất kỳ người dùng bitcoin nào cũng có thể tự tạo địa chỉ bitcoin của mình miễn phí." />
+<meta property="og:url" content="http://blog.botbie.io/2016/06/15/bitcoin-address" />
+<meta property="og:image" content="http://blog.botbie.io/assets/images/covers/cover2.jpg" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Bitcoin address" />
+<meta name="twitter:description" content="Bitcoin address - địa chỉ bitcoin, là một chuỗi 26-35 ký tự chữ và số, bắt đầu với 1 hoặc 3, là đích của một thanh toán bitcoin. Bất kỳ người dùng bitcoin nào cũng có thể tự tạo địa chỉ bitcoin của mình miễn phí." />
+<meta name="twitter:url" content="http://blog.botbie.io/2016/06/15/bitcoin-address" />
+<meta name="twitter:image:src" content="http://blog.botbie.io/assets/images/covers/cover2.jpg" />
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Botbie Blog",
+    "url": "http://blog.botbie.io/2016/06/15/bitcoin-address",
+    "image": "http://blog.botbie.io/assets/images/covers/cover2.jpg",
+    "description": "Bitcoin address - địa chỉ bitcoin, là một chuỗi 26-35 ký tự chữ và số, bắt đầu với 1 hoặc 3, là đích của một thanh toán bitcoin. Bất kỳ người dùng bitcoin nào cũng có thể tự tạo địa chỉ bitcoin của mình miễn phí."
+}
+</script>
+
+<meta name="generator" content="Jekyll 3.0.0" />
+<link rel="alternate" type="application/rss+xml" title="Botbie Blog" href="/feed.xml" />
+
+
+</head>
+<body class="home-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-about " role="presentation"><a href="/about">About</a></li>
+        <li class="nav-author " role="presentation"><a href="/author">Contributors</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/mongodb">Mongodb</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/injection">Injection</a></li>
+        
+        
+        
+        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/bitcoin">Bitcoin</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bài-dịch">Bài dịch</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptocurrency">Cryptocurrency</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/blockchain">Blockchain</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/source-control">Source control</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/git">Git</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/devops">Devops</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptography">Cryptography</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hash">Hash</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/system">System</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/vps">Vps</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/server">Server</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hosting">Hosting</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/docker">Docker</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/openvpn">Openvpn</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/swift">Swift</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/gpu">Gpu</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hashcat">Hashcat</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/opinions">Opinions</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/links">Links</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/games">Games</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/startup">Startup</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bookreview">Bookreview</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/triết-học">Triết học</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/nghệ-thuật-sống">Nghệ thuật sống</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/internet">Internet</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/npo">Npo</a></li>
+        
+    </ul>
+    <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/images/covers/cover2.jpg) ">
+    <nav class="main-nav  overlay  clearfix">
+      <a class="blog-logo" href="/"><img src="/assets/images/botbie.png" alt="Blog Logo" /></a>
+        
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-test tag-content">
+
+        <header class="post-header">
+            <h1 class="post-title">Bitcoin address</h1>
+            <section class="post-meta">
+            <time class="post-date" datetime="2016-06-15">15 Jun 2016</time>
+                <!-- [[tags prefix=" on "]] -->
+                
+                on 
+                    
+                       <a href='/tag/bitcoin'>Bitcoin</a>,
+                    
+                
+                    
+                       <a href='/tag/bài-dịch'>Bài dịch</a>,
+                    
+                
+                    
+                       <a href='/tag/cryptocurrency'>Cryptocurrency</a>,
+                    
+                
+                    
+                       <a href='/tag/blockchain'>Blockchain</a>
+                    
+                
+                
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <p>Bitcoin address - địa chỉ bitcoin, là một chuỗi 26-35 ký tự chữ và số, bắt đầu với 1 hoặc 3, là đích của một thanh toán bitcoin. Bất kỳ người dùng bitcoin nào cũng có thể tự tạo địa chỉ bitcoin của mình miễn phí. Ví dụ với phần mềm <a href="https://bitcoin.org/en/bitcoin-core/">Bitcoin Core</a>, bạn có thể nhấn nút “New Address” để tạo một địa chỉ mới. Bạn cũng có thể lấy một địa chỉ Bitcoin bằng ví online, hoặc một trang giao dịch bitcoin.</p>
+
+<p>Hiện có hai loại định dạng cho địa chỉ bitcoin:</p>
+
+<ul>
+  <li>Địa chỉ <a href="https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash">P2PKH</a> thông thường bắt đầu với số 1, ví dụ: 1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2.</li>
+  <li>Địa chỉ loại mới <a href="https://en.bitcoin.it/wiki/Pay_to_script_hash">P2SH</a> bắt đầu với số 3, ví dụ : 3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy.</li>
+</ul>
+
+<p><em>Địa chỉ bitcoin dùng một lần</em>
+Giống như là địa chỉ email, bạn có thể gửi bitcoin cho một người bằng cách gửi tới địa chỉ họ cung cấp. Nhưng khác với email, một người có thể có rất nhiều địa chỉ bitcoin, và mỗi địa chỉ được khuyến cáo nên dùng một lần cho mỗi giao dịch. Hầu hết các phần mềm bitcoin và trang web sẽ có công cụ tự động sinh ra một địa chỉ mới mỗi khi bạn tạo một hóa đơn hay yêu cầu trả tiền.</p>
+
+<h5 id="Địa-chỉ-bitcoin-có-thể-tạo-mà-không-cần-internet">Địa chỉ bitcoin có thể tạo mà không cần internet</h5>
+
+<p>Để tạo ra một địa chỉ bitcoin bạn không cần phải kết nối tới mạng lưới bitcoin. Bạn hoàn toàn có thể tạo ra một số lượng lớn địa chỉ dùng các công cụ miễn phí, và không cần kết nối. Việc tạo ra hàng loạt địa chỉ có thể hữu dụng trong một số trường hợp, ví dụ một trang web thương mại tạo ra hàng loại địa chỉ sẵn và cung cấp cho người dùng mỗi khi họ chọn trả tiền bằng bitcoin. Các “ví HD” mới còn cho phép sinh ra một token “seed”, có thể đưa nó cho một hệ thống khác (như là webserver) sinh ra các địa chỉ, các địa chỉ này có thể nhận coin bình thường, nhưng chỉ có ví tạo token seed có thể dùng tiền đã nhận .</p>
+
+<h5 id="Địa-chỉ-có-phân-biệt-hoa-thường-và-chính-xác">Địa chỉ có phân biệt hoa thường và chính xác</h5>
+<p>Địa chỉ bitcoin có phân biệt hoa-thường. Vì vậy mà nó nên được copy và paste bằng máy tính. Nếu bạn viết tay một địa chỉ bitcoin, và mỗi ký tự không được viết rõ ràng - hoa thường, địa chỉ bitcoin sai sẽ không thể dùng được, hệ thống bitcoin báo “địa chỉ sai”</p>
+
+<p>Xác xuất một địa chỉ gõ nhầm được hệ thống chấp nhận (trùng với một địa chỉ đúng) là 1 trên 2 lũy thừa 32, khoảng 1 phần 4.29 tỉ</p>
+
+<h5 id="chứng-minh-sở-hữu-với-một-địa-chỉ">Chứng minh sở hữu với một địa chỉ</h5>
+<p>Hầu hết các ví bitcion có một chức năng “ký” một thông điệp, chứng minh bạn sẽ nhận tiền qua một địa chỉ nào đó. Chức năng này khá hữu ích, chẵn hạn trong các hợp đồng số.</p>
+
+<p>Một vài dịch vụ dựa trên tính năng này, sử dụng một địa chỉ đặc biệt chỉ dùng để xác thực, trong trường hợp này địa chỉ đó không nên được dùng để giao dịch bitcoin. Khi bạn đăng nhập để dùng dịch vụ, bạn sẽ cung cấp một chữ ký chứng minh bạn là cùng một người đã cung cấp một địa chỉ cho trước.</p>
+
+<p>Chú ý là những chữ ký này chỉ có chức năng xác minh người nhận. Vì bitcoin không có một “địa chỉ gửi”, bạn không thể chứng minh bạn là người gửi tiền.</p>
+
+<p>Các chuẩn chữ ký hiện tại chỉ tương thích với phiên bản gốc của địa chỉ bitcoin (bắt đầu với số 1)</p>
+
+<h5 id="xác-nhận-địa-chỉ">Xác nhận địa chỉ</h5>
+<p>Nếu bạn muốn kiểm tra xem một địa chỉ bitcoin là đúng hay không, bạn nên sử dụng phương pháp trong <a href="https://bitcointalk.org/index.php?topic=1026.0">bài này</a> , không nên chỉ kiểm tra độ dài chuỗi, các ký tự cho phép, hay có phải địa chỉ bắt đầu bằng 1 và 3 không. Bạn cũng có thể dùng các công cụ mã mở hoặc online.</p>
+
+<h5 id="Địa-chỉ-nhiều-chữ-ký">Địa chỉ nhiều chữ ký</h5>
+<p>Các địa chỉ có thể được tạo bằng cách kết hợp nhiều khóa bí mật (địa chỉ dạng này bắt đầu bằng số 3). Điều này giúp tạo ra một số tính năng mới của bitcoin. Bạn có thể tưởng tượng một giao dịch “trả cho anh A và anh B” - ta cần cả A và B để có thể nhận được món tiền.</p>
+
+<p>Các yêu cầu cần thiết (số lượng khóa bí mật, khóa công khai…) cần phải được thỏa mãn để người tạo có thể nhận được món tiền, và khi một địa chỉ được tạo, các yêu cầu không thể thay đổi trừ phi tạo mới một địa chỉ khác.</p>
+
+<h5 id="có-gì-trong-địa-chỉ-bitcoin">Có gì trong địa chỉ bitcoin</h5>
+<p>Hầu hết các địa chỉ bitcoin gồm 34 ký tự. Chúng chứa các số và ký tự hoa thường ngẫu nhiên, nhưng một số ký tự dễ nhìn sai sẽ không được sử dụng, chúng bao gồm chữ “O”, số “0”, chữ “I” hoa, chữ “l” thường.</p>
+
+<p>Một số địa chỉ bitcion có thể ngắn hơn 34 ký tự (ít nhất là 26) và vẫn hợp lệ. Có một số lượng đáng kể các địa chỉ bitcoin có 33 ký tự, và số lượng ngắn hơn thì ít hơn. Mỗi địa chỉ dựa trên một con số, những địa chỉ ngắn được kiểm tra dễ dàng bởi vì chúng bắt đầu với những con số 0, và khi bỏ đi những số 0 ở đầu, địa chỉ được mã hóa sẽ ngắn hơn.</p>
+
+<p>Một vài ký tự trong địa chỉ được dùng để checksum, từ đó các lỗi gõ nhầm có thể được nhận ra dễ dàng. Việc checksum cũng cho phép các phần mềm bitcoin có thể kiểm tra một địa chỉ ngắn là hợp lệ hay là một địa chỉ dài bị thiếu một vài ký tự.</p>
+
+<h5 id="testnet">Testnet</h5>
+<p>Các địa chỉ trên Bitcoin Testnet được tạo ra với vài phiên bản khác nhau, với các ký tự đầu khác nhau</p>
+
+<h5 id="hiểu-nhầm">Hiểu nhầm</h5>
+<p><strong>Dùng lại địa chỉ</strong></p>
+
+<p>Địa chỉ bitcoin chỉ nên dùng một lần, xem thêm bài <a href="https://en.bitcoin.it/wiki/Address_reuse">tái sử dụng địa chỉ bitcoin</a> để biết nguyên nhân.</p>
+
+<p><strong>Tiền trong địa chỉ</strong></p>
+
+<p>Địa chỉ không phải là tài khoản hay ví, nên không chứa tiền. Nó chỉ có chức năng nhận tiền, và bạn không gửi “từ” một địa chỉ nào. Một vài dịch vụ và phần mềm hiển thị bitcoin được nhận từ một địa chỉ, cộng các bitcoin gửi đến từ các giao dịch ngẫu nhiên vào một “số dư trong địa chỉ bitcoin”, nhưng con số này thực ra là vô nghĩa: nó không có nghĩa là bitcoin đã được gửi đến địa chỉ đó, hay họ vẫn giữ những bitcoin đã nhận.</p>
+
+<p>Một ví dụ về việc hiểu nhầm này là khi người ta tin rằng địa chỉ bitcoin của họ chứa 3BTC. Họ chi 0.5 BTC và tin là giờ địa chỉ còn 2.5BTC khi thực tế là nó còn 0. 2.5BTC còn lại đã được chuyển tới một địa chỉ khác không được backup và mất đi. Điều này đôi khi xảy ra với người sử dụng ví bitcoin giấy</p>
+
+<p><strong>“Địa chỉ gửi”</strong></p>
+
+<p>Giao dịch bitcoin không có dạng “địa chỉ gửi”, hay “địa chỉ nguồn”. Nếu muốn biết thêm bạn có thể <a href="https://en.bitcoin.it/wiki/From_address">xem ở đây</a></p>
+
+<p>Dịch từ https://en.bitcoin.it/wiki/Address</p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            
+            <figure class="author-image">
+                <a class="img" href="/author/jaken" style="background-image: url(/assets/images/avatars/jaken.jpeg)"><span class="hidden">jaken's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/jaken">Jaken Ty</a></h4>
+
+                
+                    <p> I'm a ghost...
+</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> In the shell</span>
+                    
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=Bitcoin address&amp;url=http://blog.botbie.io/2016/06/15/bitcoin-address"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.botbie.io/2016/06/15/bitcoin-address"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.botbie.io/2016/06/15/bitcoin-address"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+            
+                <div data-width="100%" class="fb-comments" data-href="http://blog.botbie.io/2016/06/15/bitcoin-address"></div>
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+        <a class="read-next-story " style="background-image: url(/assets/images/covers/cover2.jpg)" href="/2016/06/16/bitcoin-genesis-block">
+            <section class="post">
+                <h2>Bitcoin genesis block</h2>
+                <p>Trong bitcoin, genesis block hay khối nguyên thủy là block đầu tiên của chuỗi block....</p>
+            </section>
+        </a>
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/images/covers/cover2.jpg)" href="/2016/06/05/bao-mat-mongodb-tan-cong-injection-voi-php">
+            <section class="post">
+                <h2>Bảo mật MongoDB - tấn công injection với php</h2>
+                <p>Trước khi chúng ta thực hiện MongoDB injection, chúng ta cần phải hiểu MongoDB chính...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+        <footer class="site-footer clearfix">
+          <section class="copyright"><a href="/">Botbie Blog</a> &copy; 2018</section>
+          <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/biomadeira/jasper">Jasper</a></section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-51088846-5', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=1555729331387875";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, "script", "facebook-jssdk"));</script>
+
+</body>
+</html>

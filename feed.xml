@@ -257,6 +257,36 @@
     
       
       <item>
+        <title>Bitcoin genesis block</title>
+        
+          <description>&lt;p&gt;Trong bitcoin, genesis block hay khối nguyên thủy là block đầu tiên của chuỗi block. Các phiên bản mới của bitcoin đánh số 0 cho block này, những phiên bản cũ hơn thì đánh số 1. Khối nguyên thủy luôn được lưu cứng trong các phần mềm sử dụng bitcoin. Nó là block duy nhất không có block đi trước, và trong bitcoin cũng như một số đồng tiền tương tự, nó tạo ra &lt;a href=&quot;https://www.reddit.com/r/Bitcoin/comments/1nc13r/the_first_50btc_block_reward_cant_be_spend_why/&quot;&gt;một món tiền không dùng được&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Thu, 16 Jun 2016 00:00:00 +0000</pubDate>
+        <link>
+        http://blog.botbie.io/2016/06/16/bitcoin-genesis-block</link>
+        <guid isPermaLink="true">http://blog.botbie.io/2016/06/16/bitcoin-genesis-block</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Bitcoin address</title>
+        
+          <description>&lt;p&gt;Bitcoin address - địa chỉ bitcoin, là một chuỗi 26-35 ký tự chữ và số, bắt đầu với 1 hoặc 3, là đích của một thanh toán bitcoin. Bất kỳ người dùng bitcoin nào cũng có thể tự tạo địa chỉ bitcoin của mình miễn phí. Ví dụ với phần mềm &lt;a href=&quot;https://bitcoin.org/en/bitcoin-core/&quot;&gt;Bitcoin Core&lt;/a&gt;, bạn có thể nhấn nút “New Address” để tạo một địa chỉ mới. Bạn cũng có thể lấy một địa chỉ Bitcoin bằng ví online, hoặc một trang giao dịch bitcoin.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 15 Jun 2016 00:00:00 +0000</pubDate>
+        <link>
+        http://blog.botbie.io/2016/06/15/bitcoin-address</link>
+        <guid isPermaLink="true">http://blog.botbie.io/2016/06/15/bitcoin-address</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Bảo mật MongoDB - tấn công injection với php</title>
         
           <description>&lt;p&gt;Trước khi chúng ta thực hiện MongoDB injection, chúng ta cần phải hiểu MongoDB chính xác là cái gì và tại sao chúng ta dùng nó thay vì các database khác. MongoDB không dùng SQL nên người ta cho rằng nó không thể bị tấn công bởi các loại injection. Nhưng hãy tin tôi, không ai được sinh ra với khía cạnh bảo mật sẵn có. Chúng ta phải thi công vài logic để chống lại khi bị tấn công.&lt;/p&gt;
