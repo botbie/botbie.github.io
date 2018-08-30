@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>Using blockhash as a random source</title>
+        
+          <description>&lt;p&gt;Sáng nay jaken vừa được gửi một bản đánh giá về phương pháp sinh số ngẫu nhiên trong game Star của sòng bạc TrueFlip. Reviewer đánh giá như sau: “Poor technology, no RNG algorithm, only using a BTC hash which could be tampered by BTC miners.”&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Thu, 30 Aug 2018 00:00:00 +0000</pubDate>
+        <link>
+        http://blog.botbie.io/2018/08/30/blockhash-as-random-source</link>
+        <guid isPermaLink="true">http://blog.botbie.io/2018/08/30/blockhash-as-random-source</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Giới thiệu bitcoin cơ bản</title>
         
           <description>&lt;p&gt;Giới thiệu bitcoin cơ bản&lt;/p&gt;
