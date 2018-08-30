@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- [[! Page Meta ]] -->
-    <title>Giới thiệu bitcoin cơ bản</title>
-    <meta name="description" content="Giới thiệu bitcoin cơ bản" />
+    <title>Botbie Blog</title>
+    <meta name="description" content="Your mind is for having ideas, not holding them..." />
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,25 +35,25 @@
 
 <meta property="og:site_name" content="Botbie Blog" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Giới thiệu bitcoin cơ bản" />
-<meta property="og:description" content="Giới thiệu bitcoin cơ bản" />
-<meta property="og:url" content="http://blog.botbie.io/2018/08/27/bitcoin-basic" />
-<meta property="og:image" content="http://blog.botbie.io/assets/images/covers/cover2.jpg" />
+<meta property="og:title" content="Botbie Blog" />
+<meta property="og:description" content="Your mind is for having ideas, not holding them..." />
+<meta property="og:url" content="http://blog.botbie.io/tag/security/" />
+<meta property="og:image" content="http://blog.botbie.io/assets/images/covers/cover4.jpg" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Giới thiệu bitcoin cơ bản" />
-<meta name="twitter:description" content="Giới thiệu bitcoin cơ bản" />
-<meta name="twitter:url" content="http://blog.botbie.io/2018/08/27/bitcoin-basic" />
-<meta name="twitter:image:src" content="http://blog.botbie.io/assets/images/covers/cover2.jpg" />
+<meta name="twitter:title" content="Botbie Blog" />
+<meta name="twitter:description" content="Your mind is for having ideas, not holding them..." />
+<meta name="twitter:url" content="http://blog.botbie.io/tag/security/" />
+<meta name="twitter:image:src" content="http://blog.botbie.io/assets/images/covers/cover4.jpg" />
 
 <script type="application/ld+json">
 {
     "@context": "http://schema.org",
     "@type": "Website",
     "publisher": "Botbie Blog",
-    "url": "http://blog.botbie.io/2018/08/27/bitcoin-basic",
-    "image": "http://blog.botbie.io/assets/images/covers/cover2.jpg",
-    "description": "Giới thiệu bitcoin cơ bản"
+    "url": "http://blog.botbie.io/tag/security/",
+    "image": "http://blog.botbie.io/assets/images/covers/cover4.jpg",
+    "description": "Your mind is for having ideas, not holding them..."
 }
 </script>
 
@@ -62,7 +62,7 @@
 
 
 </head>
-<body class="home-template nav-closed">
+<body class="tag-template nav-closed">
 
     <div class="nav">
     <h3 class="nav-title">Menu</h3>
@@ -76,7 +76,7 @@
         
         
         
-        <li class="nav-speeches " role="presentation"><a href="/tag/security">Security</a></li>
+        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/security">Security</a></li>
         
         
         
@@ -92,7 +92,7 @@
         
         
         
-        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/bitcoin">Bitcoin</a></li>
+        <li class="nav-speeches " role="presentation"><a href="/tag/bitcoin">Bitcoin</a></li>
         
         
         
@@ -211,138 +211,92 @@
     <div class="site-wrapper">
 
         <!-- [[! Everything else gets inserted here ]] -->
-        <!-- < default -->
+        <!-- < dynamically overriding backgrounds for tags as well as descriptions -->
 
-<!-- The comment above "< default" means - insert everything in this file into -->
-    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
 
-<!-- Everything inside the #post tags pulls data from the post -->
-<!-- #post -->
+<!-- < default}} -->
+<!-- The tag above means - insert everything in this file into the [body] of the default.hbs template -->
 
-<header class="main-header post-head " style="background-image: url(/assets/images/covers/cover2.jpg) ">
-    <nav class="main-nav  overlay  clearfix">
+<!-- If we have a tag cover, display that - else blog cover - else nothing -->
+<header class="main-header tag-head " style="background-image: url(/assets/images/covers/cover4.jpg) ">
+    <nav class="main-nav overlay clearfix">
       <a class="blog-logo" href="/"><img src="/assets/images/botbie.png" alt="Blog Logo" /></a>
         
             <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
         
     </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Security</h1>
+            <h2 class="page-description">
+            
+			    A 1-post collection
+            
+            </h2>
+        </div>
+    </div>
 </header>
 
-<main class="content" role="main">
+<!-- The main content area on the homepage -->
+<main id="content" class="content" role="main">
 
-    <article class="post tag-test tag-content">
+    <!-- The tag below includes the post loop - partials/loop.hbs -->
+        <!-- Previous/next page links - only displayed on page 2+ -->
+    <div class="extra-pagination inner">
+        
+            <nav class="pagination" role="pagination">
+    
+    <span class="page-number"> Page 1 of 1 </span>
+    
+</nav>
 
+        
+    </div>
+
+    <!-- This is the post loop - each post will be output using this markup -->
+    
+    
+    <article class="post">
         <header class="post-header">
-            <h1 class="post-title">Giới thiệu bitcoin cơ bản</h1>
-            <section class="post-meta">
-            <time class="post-date" datetime="2018-08-27">27 Aug 2018</time>
-                <!-- [[tags prefix=" on "]] -->
-                
-                on 
-                    
-                       <a href='/tag/bitcoin'>Bitcoin</a>,
-                    
-                
-                    
-                       <a href='/tag/cryptocurrency'>Cryptocurrency</a>
-                    
-                
-                
-            </section>
+            <h2 class="post-title"><a href="/2014/07/01/binary-analysis-next-chapter-of-the-game">BINARY ANALYSIS - NEXT CHAPTER OF THE GAME</a></h2>
         </header>
-
-        <section class="post-content">
-
-            <p>Giới thiệu bitcoin cơ bản</p>
-
-<ul>
-  <li><a href="../../../2016/06/26/bitcoin-la-gi">Bitcoin là gì</a></li>
-  <li><a href="../../../2016/06/18/bitcoin-block-hashing-algorithm">Block hashing algorithm</a></li>
-  <li><a href="../../../2016/06/16/bitcoin-genesis-block">Bitcoin genesis block</a></li>
-  <li><a href="../../../2016/06/15/bitcoin-address">Bitcoin address</a></li>
-</ul>
-
-
+        <section class="post-excerpt">
+            <p>Tiêu đề ? Người viết tính đặt tiêu đề là Phân tích mã: Chương tiếp theo của trò chơi, nhưng nghe gượng gượng nên cuối cùng người viết bài chọn tên này, 1 cái tên Tây cho một bài viết Tiếng Việt, một sự kết hợp không đẹp lắm :”&gt; Mở Trò chơi phân tích mã bắt đầu từ những... <a class="read-more" href="/2014/07/01/binary-analysis-next-chapter-of-the-game">&raquo;</a></p>
         </section>
-
-        <footer class="post-footer">
-
-            <!-- Everything inside the #author tags pulls data from the author -->
-            <!-- #author-->
-
+        <footer class="post-meta">
+            <img class="author-thumb" src="/assets/images/avatars/khoai.jpeg" alt="Author image" nopin="nopin" />
+            <!-- author -->
+            <a href='/author/khoai'>Khoai</a>
+            <!-- [[tags prefix=" on "]] -->
             
-            
-            <figure class="author-image">
-                <a class="img" href="/author/jaken" style="background-image: url(/assets/images/avatars/jaken.jpeg)"><span class="hidden">jaken's Picture</span></a>
-            </figure>
-            
-
-            <section class="author">
-                <h4><a href="/author/jaken">Jaken Ty</a></h4>
-
+                on
                 
-                    <p> I'm a ghost...
-</p>
-                
-                <div class="author-meta">
-                    <span class="author-location icon-location"> In the shell</span>
                     
-                </div>
-            </section>
-
-            <!-- /author  -->
-
-            <section class="share">
-                <h4>Share this post</h4>
-                <a class="icon-twitter" href="http://twitter.com/share?text=Giới thiệu bitcoin cơ bản&amp;url=http://blog.botbie.io/2018/08/27/bitcoin-basic"
-                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-                    <span class="hidden">Twitter</span>
-                </a>
-                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.botbie.io/2018/08/27/bitcoin-basic"
-                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-                    <span class="hidden">Facebook</span>
-                </a>
-                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.botbie.io/2018/08/27/bitcoin-basic"
-                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-                    <span class="hidden">Google+</span>
-                </a>
-            </section>
-
+                       <a href='/tag/security'>Security</a>,
+                    
+                
+                    
+                       <a href='/tag/ctf'>Ctf</a>
+                    
+                
             
-                <div data-width="100%" class="fb-comments" data-href="http://blog.botbie.io/2018/08/27/bitcoin-basic"></div>
-            
-
+            <time class="post-date" datetime="2014-07-01">01 Jul 2014</time>
         </footer>
-
     </article>
+    
+
+    <!-- Previous/next page links - displayed on every page -->
+    
+        <nav class="pagination" role="pagination">
+    
+    <span class="page-number"> Page 1 of 1 </span>
+    
+</nav>
+
+    
+
 
 </main>
-
-<aside class="read-next">
-
-    <!-- [[! next_post ]] -->
-    
-        <a class="read-next-story " style="background-image: url(/assets/images/covers/cover2.jpg)" href="/2018/08/30/blockhash-as-random-source">
-            <section class="post">
-                <h2>Using blockhash as a random source</h2>
-                <p>Sáng nay jaken vừa được gửi một bản đánh giá về phương pháp sinh số...</p>
-            </section>
-        </a>
-    
-    <!-- [[! /next_post ]] -->
-    <!-- [[! prev_post ]] -->
-    
-        <a class="read-next-story prev " style="background-image: url(/assets/images/covers/internet-archive.png)" href="/2018/08/26/the-internet-archive">
-            <section class="post">
-                <h2>The Internet Archive</h2>
-                <p>The Internet Archive là một kho lưu trữ khổng lồ phi lợi nhuận được tạo...</p>
-            </section>
-        </a>
-    
-    <!-- [[! /prev_post ]] -->
-</aside>
-
-<!-- /post -->
 
 
         <footer class="site-footer clearfix">
