@@ -263,7 +263,7 @@
 
 <p>Việc đọc mã thuần với các disassembler là chưa đủ, người ta muốn theo dõi chương trình đó chạy ra sao, làm cái gì. Vậy là các trình debugger ra đời để đáp ứng nhu cầu đó. Các debugger thật tuyệt vời, nó làm đơn giản hóa việc hiểu 1 đoạn mã làm cái gì thay vì chỉ ngồi tưởng tượng. Các tool debugger tiêu biểu: <strong>Ollydbg</strong>, <strong>gdb</strong>, <strong>Windbg</strong> …</p>
 
-<p>Nhưng việc ngồi mòn mông để ngồi dò từng dòng lệnh asm của 1 chương trình, nhất là với các chương trình lớn và mã rối rắm thì là cả một thảm họa. Phải có gì đó giúp tự động hóa, giúp cuộc  đời này tươi đẹp hơn, giúp người lười có nhiều thời gian để ăn ngủ hơn thay vì phải ngồi debug cả buổi.</p>
+<p>Nhưng việc ngồi mòn mông để ngồi dò từng dòng lệnh asm của 1 chương trình, nhất là với các chương trình lớn và mã rối rắm thì là cả một thảm họa. Phải có gì đó giúp tự động hóa, giúp cuộc đời này tươi đẹp hơn, giúp người lười có nhiều thời gian để ăn ngủ hơn thay vì phải ngồi debug cả buổi.</p>
 
 <p>Người ta chia việc phân tích mã thực thi (<strong>binary analysis</strong>) thành 2 mảng khác nhau như sau:</p>
 
@@ -275,6 +275,7 @@
 <p>Tất nhiên mỗi phương pháp đều có thế mạnh, yếu riêng :</p>
 
 <p><strong>Phân tích tĩnh</strong>:</p>
+
 <ul>
   <li>Đảm bảo phân tích trọn vẹn code, do suy cho cùng thì mọi hành vi của chương trình đều nằm cả trên 1 cục binary đó mà thôi, tất nhiên điều này là rất khó</li>
   <li>Tốc độ nhanh</li>
@@ -282,6 +283,7 @@
 </ul>
 
 <p><strong>Phân tích động</strong></p>
+
 <ul>
   <li>Sẽ thấy được những điều mà phương pháp tĩnh không cho thấy được, như tụi pack chẳng hạn</li>
   <li>Tuy nhiên do giả lập lại quá trình thực thi nên bị gặp vấp phải các vấn đề như không khó có thể thực thi đến mọi ngóc ngách của chương trình, các trick để loop vô cùng, các trick nhận dạng bị debug …</li>
@@ -289,8 +291,9 @@
 </ul>
 
 <p>Trong quá khứ, việc phân tích mã tĩnh chiếm ưu thế, nhưng càng gần đây việc phân tích mã động ngày càng phát triển do:</p>
+
 <ul>
-  <li>Máy tính ngày càng mạnh, công nghệ ảo hóa ngày càng tốt, đảm bảo tốc  độ cho việc này</li>
+  <li>Máy tính ngày càng mạnh, công nghệ ảo hóa ngày càng tốt, đảm bảo tốc độ cho việc này</li>
   <li>Tụi binary sau này ngày càng đông và hung hãn, chưa kể nhiều đứa còn rất khó hiểu nếu chỉ nhìn mặt chúng nó (phân tích tĩnh), thôi thì cứ thả cho nó chạy xem nó làm gì cho trực quan</li>
 </ul>
 
@@ -443,7 +446,7 @@ int main(int argc, char *argv[]) {
 </code></pre>
 </div>
 
-<p>Compile  tại: ./hook/hit</p>
+<p>Compile tại: ./hook/hit</p>
 
 <p>Command thực thi:
 <code class="highlighter-rouge">./pin/pin -injection child -t runner.so -s tools/strings.lua -- ./hook/hit test &gt;out.log</code></p>
@@ -470,12 +473,13 @@ int main(int argc, char *argv[]) {
 
 <p><strong>b. Break game</strong></p>
 
-<p>Chúng ta sẽ cùng ngâm cứu lại một bài viết cũ: http://blog.botbie.com/2012/12/31/29c3-ctf-misc-300-funchive/ , bằng hướng tiếp cận mới này.</p>
+<p>Chúng ta sẽ cùng ngâm cứu lại một bài viết cũ: <a href="/2012/12/31/29c3-ctf-misc-300-funchive">https://blog.botbie.io/2012/12/31/29c3-ctf-misc-300-funchive</a> , bằng hướng tiếp cận mới này.</p>
 
 <p>Một command nhỏ:
 <code class="highlighter-rouge">./pin/pin -injection child -t runner.so -s tools/strings.lua -- rar p funchive.rar &gt;out.log</code></p>
 
 <p>Và chúng ta cùng xem log và có những dòng sau:</p>
+
 <div class="highlighter-rouge"><pre class="highlight"><code>-- at 413d86 used 29C3_rarvm_is_awel
 -- at 413d8b used 29C3_rarvm_is_awela
 -- at 413d98 used 29C3_rarvm_is_awe
@@ -557,6 +561,13 @@ int main(int argc, char *argv[]) {
     
     <!-- [[! /next_post ]] -->
     <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/images/covers/cover2.jpg)" href="/2012/12/31/29c3-ctf-misc-300-funchive">
+            <section class="post">
+                <h2>29C3 CTF | MISC 300 FUNCHIVE</h2>
+                <p>A late christmas present! Open it! Open it! http://dl.ctftime.org/57/205/funchive.rar Ta có một file nén rar,...</p>
+            </section>
+        </a>
     
     <!-- [[! /prev_post ]] -->
 </aside>

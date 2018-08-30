@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- [[! Page Meta ]] -->
-    <title>Botbie Blog</title>
-    <meta name="description" content="Your mind is for having ideas, not holding them..." />
+    <title>29C3 CTF | MISC 300 FUNCHIVE</title>
+    <meta name="description" content="A late christmas present! Open it! Open it!" />
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,25 +35,25 @@
 
 <meta property="og:site_name" content="Botbie Blog" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Botbie Blog" />
-<meta property="og:description" content="Your mind is for having ideas, not holding them..." />
-<meta property="og:url" content="http://blog.botbie.io/tag/ctf/" />
-<meta property="og:image" content="http://blog.botbie.io/assets/images/covers/cover4.jpg" />
+<meta property="og:title" content="29C3 CTF | MISC 300 FUNCHIVE" />
+<meta property="og:description" content="A late christmas present! Open it! Open it!" />
+<meta property="og:url" content="http://blog.botbie.io/2012/12/31/29c3-ctf-misc-300-funchive" />
+<meta property="og:image" content="http://blog.botbie.io/assets/images/covers/cover2.jpg" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Botbie Blog" />
-<meta name="twitter:description" content="Your mind is for having ideas, not holding them..." />
-<meta name="twitter:url" content="http://blog.botbie.io/tag/ctf/" />
-<meta name="twitter:image:src" content="http://blog.botbie.io/assets/images/covers/cover4.jpg" />
+<meta name="twitter:title" content="29C3 CTF | MISC 300 FUNCHIVE" />
+<meta name="twitter:description" content="A late christmas present! Open it! Open it!" />
+<meta name="twitter:url" content="http://blog.botbie.io/2012/12/31/29c3-ctf-misc-300-funchive" />
+<meta name="twitter:image:src" content="http://blog.botbie.io/assets/images/covers/cover2.jpg" />
 
 <script type="application/ld+json">
 {
     "@context": "http://schema.org",
     "@type": "Website",
     "publisher": "Botbie Blog",
-    "url": "http://blog.botbie.io/tag/ctf/",
-    "image": "http://blog.botbie.io/assets/images/covers/cover4.jpg",
-    "description": "Your mind is for having ideas, not holding them..."
+    "url": "http://blog.botbie.io/2012/12/31/29c3-ctf-misc-300-funchive",
+    "image": "http://blog.botbie.io/assets/images/covers/cover2.jpg",
+    "description": "A late christmas present! Open it! Open it!"
 }
 </script>
 
@@ -62,7 +62,7 @@
 
 
 </head>
-<body class="tag-template nav-closed">
+<body class="home-template nav-closed">
 
     <div class="nav">
     <h3 class="nav-title">Menu</h3>
@@ -211,121 +211,169 @@
     <div class="site-wrapper">
 
         <!-- [[! Everything else gets inserted here ]] -->
-        <!-- < dynamically overriding backgrounds for tags as well as descriptions -->
+        <!-- < default -->
 
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
 
-<!-- < default}} -->
-<!-- The tag above means - insert everything in this file into the [body] of the default.hbs template -->
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
 
-<!-- If we have a tag cover, display that - else blog cover - else nothing -->
-<header class="main-header tag-head " style="background-image: url(/assets/images/covers/cover4.jpg) ">
-    <nav class="main-nav overlay clearfix">
+<header class="main-header post-head " style="background-image: url(/assets/images/covers/cover2.jpg) ">
+    <nav class="main-nav  overlay  clearfix">
       <a class="blog-logo" href="/"><img src="/assets/images/botbie.png" alt="Blog Logo" /></a>
         
             <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
         
     </nav>
-    <div class="vertical">
-        <div class="main-header-content inner">
-            <h1 class="page-title">Ctf</h1>
-            <h2 class="page-description">
-            
-			    A 2-post collection
-            
-            </h2>
-        </div>
-    </div>
 </header>
 
-<!-- The main content area on the homepage -->
-<main id="content" class="content" role="main">
+<main class="content" role="main">
 
-    <!-- The tag below includes the post loop - partials/loop.hbs -->
-        <!-- Previous/next page links - only displayed on page 2+ -->
-    <div class="extra-pagination inner">
-        
-            <nav class="pagination" role="pagination">
-    
-    <span class="page-number"> Page 1 of 1 </span>
-    
-</nav>
+    <article class="post tag-test tag-content">
 
-        
-    </div>
-
-    <!-- This is the post loop - each post will be output using this markup -->
-    
-    
-    <article class="post">
         <header class="post-header">
-            <h2 class="post-title"><a href="/2014/07/01/binary-analysis-next-chapter-of-the-game">BINARY ANALYSIS - NEXT CHAPTER OF THE GAME</a></h2>
-        </header>
-        <section class="post-excerpt">
-            <p>Tiêu đề ? Người viết tính đặt tiêu đề là Phân tích mã: Chương tiếp theo của trò chơi, nhưng nghe gượng gượng nên cuối cùng người viết bài chọn tên này, 1 cái tên Tây cho một bài viết Tiếng Việt, một sự kết hợp không đẹp lắm :”&gt; Mở Trò chơi phân tích mã bắt đầu từ những... <a class="read-more" href="/2014/07/01/binary-analysis-next-chapter-of-the-game">&raquo;</a></p>
-        </section>
-        <footer class="post-meta">
-            <img class="author-thumb" src="/assets/images/avatars/khoai.jpeg" alt="Author image" nopin="nopin" />
-            <!-- author -->
-            <a href='/author/khoai'>Khoai</a>
-            <!-- [[tags prefix=" on "]] -->
-            
-                on
-                
-                    
-                       <a href='/tag/security'>Security</a>,
-                    
-                
-                    
-                       <a href='/tag/ctf'>Ctf</a>
-                    
-                
-            
-            <time class="post-date" datetime="2014-07-01">01 Jul 2014</time>
-        </footer>
-    </article>
-    
-    
-    <article class="post">
-        <header class="post-header">
-            <h2 class="post-title"><a href="/2012/12/31/29c3-ctf-misc-300-funchive">29C3 CTF | MISC 300 FUNCHIVE</a></h2>
-        </header>
-        <section class="post-excerpt">
-            <p>A late christmas present! Open it! Open it! http://dl.ctftime.org/57/205/funchive.rar Ta có một file nén rar, xả nén ta có một file mang tên flag với thông điệp như sau: 29C3_this_is_no_flag! No flag, tất nhiên là vậy. Coi kỹ hơn chút, file nặng 1103 byte nhưng chỉ để có nội dung file nhỏ vậy, như vậy còn gì trong đó nữa.... <a class="read-more" href="/2012/12/31/29c3-ctf-misc-300-funchive">&raquo;</a></p>
-        </section>
-        <footer class="post-meta">
-            <img class="author-thumb" src="/assets/images/avatars/khoai.jpeg" alt="Author image" nopin="nopin" />
-            <!-- author -->
-            <a href='/author/khoai'>Khoai</a>
-            <!-- [[tags prefix=" on "]] -->
-            
-                on
-                
-                    
-                       <a href='/tag/security'>Security</a>,
-                    
-                
-                    
-                       <a href='/tag/ctf'>Ctf</a>
-                    
-                
-            
+            <h1 class="post-title">29C3 CTF | MISC 300 FUNCHIVE</h1>
+            <section class="post-meta">
             <time class="post-date" datetime="2012-12-31">31 Dec 2012</time>
+                <!-- [[tags prefix=" on "]] -->
+                
+                on 
+                    
+                       <a href='/tag/security'>Security</a>,
+                    
+                
+                    
+                       <a href='/tag/ctf'>Ctf</a>
+                    
+                
+                
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <blockquote>
+  <p>A late christmas present! Open it! Open it!
+http://dl.ctftime.org/57/205/funchive.rar</p>
+</blockquote>
+
+<p>Ta có một file nén rar, xả nén ta có một file mang tên flag với thông điệp như sau:</p>
+
+<blockquote>
+  <p>29C3_this_is_no_flag!</p>
+</blockquote>
+
+<p>No flag, tất nhiên là vậy.</p>
+
+<p>Coi kỹ hơn chút, file nặng 1103 byte nhưng chỉ để có nội dung file nhỏ vậy, như vậy còn gì trong đó nữa. Để ý chút là file dùng dạng nén rar, nhớ ra trước đây có đọc một bài viết nói về máy ảo của Rar mang tên là rarvm, google lại chút: http://blog.cmpxchg8b.com/2012/09/fun-with-constrained-programming.html</p>
+
+<p>Tìm một source nào đó để decompile hoặc debug được cái rarvm nếu có, tìm thấy source giải nén rar: http://www.rarlab.com/rar/unrarsrc-4.2.4.tar.gz</p>
+
+<p>Mở bằng Visual Studio ra và debug, chỉnh một chút về parameter truyền vào cho tiện debug.</p>
+
+<p>F5 phát coi chạy được không cái đã.</p>
+
+<p>Ok, chạy ổn, tiếp tục.</p>
+
+<p>Đọc code một vòng và đặt break point, F5 và ta thấy một số thông tin quan trọng sau</p>
+
+<p>Cái này cho thấy tới 960 byte trong file rar này là thuộc rarvm, có vẻ đi đúng hướng. Sâu hơn một chút:</p>
+
+<p>Vùng code cho máy ảo rarvm có 209 mã lệnh.</p>
+
+<p>Với lối suy nghĩ đơn giản là mọi dữ liệu xuất ra bên ngoài đều thông qua lệnh MOV (và họ hàng MOVB. MOVD), còn sau đó nó tính toán gì đi nữa thì cục dữ liệu vẫn nằm đó, nên ta đặt break point tại 3 mã lệnh máy ảo thực thi nó rồi liên tục xem thông tin debug trên memory tới vị trí đích nó cần move data tới.</p>
+
+<p>Chú ý đoạn code sau:</p>
+
+<p>Sau một hồi chạy ra debug có kết quả sau:</p>
+
+<p>Copy nó lại, nó đã có thể là flag</p>
+
+<p>F5 thêm chút nữa, dữ liệu tại địa chỉ này sẽ bị ghi đè lại và trở thành dữ liệu</p>
+
+<p>29C3_this_is_no_flag!</p>
+
+<p>như ta giải nén thấy bên trên.</p>
+
+<p>Flag bài:</p>
+
+<p>29C3_rarvm_is_awesome</p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            
+            <figure class="author-image">
+                <a class="img" href="/author/khoai" style="background-image: url(/assets/images/avatars/khoai.jpeg)"><span class="hidden">khoai's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/khoai">Khoai</a></h4>
+
+                
+                    <p> I'm a ghost...
+</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> In the shell</span>
+                    
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=29C3 CTF | MISC 300 FUNCHIVE&amp;url=http://blog.botbie.io/2012/12/31/29c3-ctf-misc-300-funchive"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.botbie.io/2012/12/31/29c3-ctf-misc-300-funchive"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.botbie.io/2012/12/31/29c3-ctf-misc-300-funchive"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+            
+                <div data-width="100%" class="fb-comments" data-href="http://blog.botbie.io/2012/12/31/29c3-ctf-misc-300-funchive"></div>
+            
+
         </footer>
+
     </article>
-    
-
-    <!-- Previous/next page links - displayed on every page -->
-    
-        <nav class="pagination" role="pagination">
-    
-    <span class="page-number"> Page 1 of 1 </span>
-    
-</nav>
-
-    
-
 
 </main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+        <a class="read-next-story " style="background-image: url(/assets/images/covers/cover2.jpg)" href="/2014/07/01/binary-analysis-next-chapter-of-the-game">
+            <section class="post">
+                <h2>BINARY ANALYSIS - NEXT CHAPTER OF THE GAME</h2>
+                <p>**Tiêu đề ?** Người viết tính đặt tiêu đề là Phân tích mã: Chương tiếp...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
 
 
         <footer class="site-footer clearfix">
