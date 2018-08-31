@@ -8,7 +8,22 @@
     
       
       <item>
-        <title>Splunk vs Elastic Stack - Bạn chọn bộ công cụ nào để quản lý logs?</title>
+        <title>Xây dựng backend ở SoundCloud</title>
+        
+          <description>&lt;h4 id=&quot;phần-1-xử-lý-kiến-trúc-cũ-để-xây-dựng-backend-ở-soundcloud&quot;&gt;Phần 1: Xử lý kiến trúc cũ để xây dựng backend ở SoundCloud&lt;/h4&gt;
+
+</description>
+        
+        <pubDate>Fri, 31 Aug 2018 00:00:00 +0000</pubDate>
+        <link>
+        http://blog.botbie.io/2018/08/31/xay-dung-backend-o-soundcloud</link>
+        <guid isPermaLink="true">http://blog.botbie.io/2018/08/31/xay-dung-backend-o-soundcloud</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Kiến trúc của hệ thống backend được sử dụng cho chức năng LINE LIVE</title>
         
           <description>&lt;p&gt;Đây là một bài blog của tác giả Oklahomer đến từ LINE Corp. Trong bài này, tác giả sẽ trình bày về kiến trúc của hệ thống backend được sử dụng cho chức năng &lt;a href=&quot;https://live.line.me/&quot;&gt;LINE LIVE&lt;/a&gt;, một dịch vụ live stream.&lt;/p&gt;
 

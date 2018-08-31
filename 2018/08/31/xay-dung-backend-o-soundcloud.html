@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    <title>Xây dựng backend ở SoundCloud</title>
+    <meta name="description" content="Building Products at SoundCloud " />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" >
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css"
+          href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- [[! highlight.js ]] -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+    
+<link rel="canonical" href="/" />
+<meta name="referrer" content="origin" />
+<link rel="next" href="/page/2/" />
+
+<meta property="og:site_name" content="Botbie Blog" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Xây dựng backend ở SoundCloud" />
+<meta property="og:description" content="Building Products at SoundCloud " />
+<meta property="og:url" content="http://blog.botbie.io/2018/08/31/xay-dung-backend-o-soundcloud" />
+<meta property="og:image" content="http://blog.botbie.io/assets/images/covers/soundcloud-icon.png" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Xây dựng backend ở SoundCloud" />
+<meta name="twitter:description" content="Building Products at SoundCloud " />
+<meta name="twitter:url" content="http://blog.botbie.io/2018/08/31/xay-dung-backend-o-soundcloud" />
+<meta name="twitter:image:src" content="http://blog.botbie.io/assets/images/covers/soundcloud-icon.png" />
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Botbie Blog",
+    "url": "http://blog.botbie.io/2018/08/31/xay-dung-backend-o-soundcloud",
+    "image": "http://blog.botbie.io/assets/images/covers/soundcloud-icon.png",
+    "description": "Building Products at SoundCloud "
+}
+</script>
+
+<meta name="generator" content="Jekyll 3.0.0" />
+<link rel="alternate" type="application/rss+xml" title="Botbie Blog" href="/feed.xml" />
+
+
+</head>
+<body class="home-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-about " role="presentation"><a href="/about">About</a></li>
+        <li class="nav-author " role="presentation"><a href="/author">Contributors</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/security">Security</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ctf">Ctf</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/mongodb">Mongodb</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/injection">Injection</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bitcoin">Bitcoin</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bài-dịch">Bài dịch</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptocurrency">Cryptocurrency</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/blockchain">Blockchain</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/plugin">Plugin</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/nodebb">Nodebb</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ide">Ide</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/source-control">Source control</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/git">Git</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/devops">Devops</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptography">Cryptography</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hash">Hash</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/system">System</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/vps">Vps</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/server">Server</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hosting">Hosting</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/docker">Docker</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/openvpn">Openvpn</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/swift">Swift</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ai">Ai</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/agent">Agent</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/gpu">Gpu</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hashcat">Hashcat</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/splunk">Splunk</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/elastic">Elastic</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/kibana">Kibana</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/opinions">Opinions</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/links">Links</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/games">Games</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/startup">Startup</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bookreview">Bookreview</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/triết-học">Triết học</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/nghệ-thuật-sống">Nghệ thuật sống</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/internet">Internet</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/npo">Npo</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/rng">Rng</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/architect">Architect</a></li>
+        
+        
+        
+        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/backend">Backend</a></li>
+        
+        
+        
+        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/soundcloud">Soundcloud</a></li>
+        
+    </ul>
+    <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/images/covers/soundcloud-icon.png) ">
+    <nav class="main-nav  overlay  clearfix">
+      <a class="blog-logo" href="/"><img src="/assets/images/botbie.png" alt="Blog Logo" /></a>
+        
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-test tag-content">
+
+        <header class="post-header">
+            <h1 class="post-title">Xây dựng backend ở SoundCloud</h1>
+            <section class="post-meta">
+            <time class="post-date" datetime="2018-08-31">31 Aug 2018</time>
+                <!-- [[tags prefix=" on "]] -->
+                
+                on 
+                    
+                       <a href='/tag/architect'>Architect</a>,
+                    
+                
+                    
+                       <a href='/tag/bài-dịch'>Bài dịch</a>,
+                    
+                
+                    
+                       <a href='/tag/backend'>Backend</a>,
+                    
+                
+                    
+                       <a href='/tag/soundcloud'>Soundcloud</a>
+                    
+                
+                
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <h4 id="phần-1-xử-lý-kiến-trúc-cũ-để-xây-dựng-backend-ở-soundcloud">Phần 1: Xử lý kiến trúc cũ để xây dựng backend ở SoundCloud</h4>
+
+<p>Hầu hết các thành phần backend của SoundCloud’s đều được viết bằng ngôn ngữ Scala, Clojure, hay JRuby, nhưng không phải tất các trường hợp đều như thế. Cũng giống như các công ty công nghệ khởi nghiệp khác, Soundcloud đã xây dựng một backend duy nhất bằng ngôn ngữ Ruby on Rails chạy trên MRI, một trình thông dịch chính thức của Ruby. Họ sử dụng MySQL để lưu trữ cơ sở dữ liệu, tăng tốc độ truy vấn bằng cách sử dụng Memcached để caching dữ liệu.</p>
+
+<p>Ở SoundCloud trong các buổi nói chuyện họ hay gọi hệ thống này bằng một cái tên khá kêu: “Tàu Mẹ” (Mothership). Một kiến trúc như thế đã tỏ ra là một giải pháp tốt để xây dựng một sản phẩm mới được sử dụng bởi hàng trăm nghìn nghệ sĩ trên khắp thế giới để chia sẽ những bài hát, những bản nháp ra cộng đồng yêu âm nhạc.</p>
+
+<p>Mã nguồn lập trình trên Rail chứa tất cả các API Public, mở ra để hàng nghìn các dịch vụ khác sử dụng, và luôn cả phần web application của Soundcloud.com. Với việc ra mắt phiên bản kế tiếp The Next SoundCloud vào năm 2012, họ đã đưa một tập API và được sử dụng chung cho tất cả các phiên bản iOS/Android, ứng dụng web trên trang soundcloud.com, bao gồm luôn các dịch vụ khác của đối tác và các nhà phát triển.</p>
+
+<p><img src="/assets/images/posts/2018-08-31/product-engineering-diagram-1-08b8fce10d63d1c3fa73732bc8cf3ede.jpg" alt="alt" /></p>
+
+<p>Vào thời điểm đấy, cứ mỗi phút trôi qua thì có 12 giờ âm nhạc được tải lên, và hàng trăm triệu người dùng nền tảng này mỗi ngày. Soundcloud phải đối mặt với những thách thức mở rộng hệ thống cả về mạng xã hội lẫn nền tảng phân phối âm nhạc.
+Để mở rộng nền tảng dưa trên Rails đến mức đấy, họ phát triển và đóng góp cho cộng đồng khá nhiều thư viện cũng như các công cụ để giúp xử lý:</p>
+
+<ul>
+  <li><a href="https://github.com/soundcloud/lhm">Các vấn đề về chuyển dữ liệu giữa các database</a></li>
+  <li><a href="https://github.com/soundcloud/master_slave_adapter">Tối ưu truy xuất database trên Rails</a></li>
+  <li><a href="https://github.com/soundcloud/empipelines">Sử lý một lượng lớn message</a></li>
+  <li>Và <a href="https://github.com/soundcloud">nhiều công cụ khác</a></li>
+</ul>
+
+<p>Cuối cùng họ quyết định là phải thay đổi cách mà họ xây dựng backend, vì họ luôn cảm thấy mình chỉ đang chấp vá hệ thống và không giải quyết triệt để vấn đề mở rộng hệ thống ở mức cơ bản.
+Việc đầu tiên cần phải làm là thay đổi kiến trúc của hệ thống. Họ quyết định chuyển sang hướng thiết kế kiến trúc <a href="http://martinfowler.com/articles/microservices.html">microservice</a> . Trong cách thiết kế này, kỹ sư phải chia nhỏ hệ thống lớn thành những thành phần rất nhỏ. Mỗi thành phần phải được thiết kế sao cho xử lý trọn vẹn nghiệp vụ mà nó đảm nhận - bao gồm luôn cả tầng lưu trữ dữ liệu cũng như nền tảng mà nó cần (tham khảo thêm về <a href="http://martinfowler.com/bliki/BoundedContext.html">Bounded Context</a>)</p>
+
+<h5 id="mô-hình-microservices">Mô hình microservices</h5>
+
+<p>Sự tái thiết kế lớn như thế đã mang đến rất nhiều khó khăn cho họ trong quá khứ, vì thế cả team quyết định cách tốt nhất để tiếp cận để đối phó với những thay đổi về kiến trúc là sẽ không chia “Tàu Mẹ” ra ngay lúc đấy, nhưng cũng sẽ không thêm bất cứ tính năng gì mới vào. Tất cả những tính năng mới sẽ được xây dựng theo mô hình microservices, và khi có một tính năng cần có sự thay đổi lớn của “Tàu Mẹ” thì họ sẽ cố gắn mang thành phần đó ra từ “Tàu Mẹ” trong nổ lực chia nhỏ hệ thống thành từng phần nhỏ.</p>
+
+<p>Một sự bắt đầu khá tốt, nhưng chẳng bao lâu sau họ phát hiện ra một vấn đề: Bởi vì hầu hết các nghiệp vụ của họ vẫn còn nằm trong khối Rails, và các thành phần được xây dựng mới phải giao tiếp với cục backend cũ theo một cách nào đó.</p>
+
+<p>Một trong những lựa chọn xung quanh vấn đề này là để các microservices truy cập trực tiếp vào cơ sơ dữ liệu của “Tàu Mẹ”. Đây là một trong những cách tiếp cận rất phổ biến , bởi vì cơ sở dữ liệu là dùng chung, nhưng nó không phải là như nhau đối với các service khác nhau. Đều này dẫn đến khá nhiều vấn đề khi chúng ta cần thay đổi cấu trúc của table dùng chung đó.</p>
+
+<p>Thay vào đó, họ đã đưa ra một bộ API dùng chúng, và các microservices nội bộ cũng sẽ hành xử tương tự nhưng các ứng dụng của bên thứ ba tích hợp vào hệ thống của Soundcloud.</p>
+
+<p><img src="/assets/images/posts/2018-08-31/product-engineering-diagram-2-2da8994f1d05bae59d82fa8bc6a4e71d.jpg" alt="alt" /></p>
+
+<p>Một vấn đề lớn nữa họ phải đối mặt sau khí xử dụng mô hình như trên, đó là các microservice của họ cần phải phản ứng lại đối với những hành động của người dùng. Ví dụ như hệ thống push-notification, nó cần phải biết khi có bất bình luận nào một ca khúc và nó sẽ thông báo cho các nghệ sĩ sở hữu ca khúc đấy. Với nhu cầu mở rộng lớn như vậy thì các polling sẽ không thể là một giải pháp tốt. Họ cần phải tạo ra một mô hình tốt hơn để giải quyết bài toán này.</p>
+
+<p>Và như thế họ đã sử dụng AMQP (một hệ thống nhận message và push cho worker), cụ thể đó là RabbitMQ - Với một ứng dụng viết bằng Rails bạn cần một cách nào đáy đẩy message một cách chậm rãi tới các worker để tránh các vấn đề về xử lý đồng thời (một điểm yếu của trình thông dịch Ruby) bạn có thể tham khảo thêm bài viết chi tiết về vấn đề xử dụng AMQP <a href="https://www.infoq.com/presentations/amqp-soundcloud">ở đây</a>, thông qua nhiều phát triển và thử nghiệm họ tạo ra một mô hình gọi là: Semantic Events, khi có sự thay đổi trên dữ liệu được xác định sự thay đổi đấy sẽ được gửi đến một worker trung gian, sau đó worker trung gian sẽ gửi sự thay đổi này đến các microservices liên quan.</p>
+
+<p><img src="/assets/images/posts/2018-08-31/product-engineering-diagram-3-5d8570410fc6fd538e56fb35c08311a9.jpg" alt="alt" /></p>
+
+<p>Kiến trúc này kích hoạt mô hình <a href="http://martinfowler.com/eaaDev/EventSourcing.html">Event Sourcing</a>, đó là cách mà họ xử lý vấn đề chia sẽ dữ liệu, nhưng khi dùng kiến trúc này nó vẫn cần sử dụng các API từ “Tàu Mẹ”. Ví dụ như nó vấn cần sử dụng API để lấy danh sách các fan của nghệ sĩ cùng địa chỉ email để thống báo cho họ biết khi nghệ sĩ của họ cập nhật một bài hát mới.</p>
+
+<p>Trong khi hầu hết các dữ liệu đã có sẵn thông qua các API, họ lại bị ràng buộc bởi những qui tắc mà họ đặt ra cho các dịch vụ của bên thứ 3. Ví dụ như đối với một microservice để thông báo cho người dùng về những hoạt động mà được thiết lập ở mức riêng tư thì nó không thể truy xuất được bởi vị các API đấy chỉ có thể truy xuất thông tin công cộng.</p>
+
+<p>Và họ đã tìm ra một số giải pháp để xử lý vấn đề đấy, một trong những cách phổ biến đó là tách những models của Rails từ “Tàu Mẹ” và đưa nó trở thành phần chia sẽ. Một số vấn đề quan trọng trong cách tiếp cận này đó là chi phí quản lý sự đồng bộ của các models đấy ở các microservices khác nhau, và rõ ràng là khi các microservices đấy viết bằng các ngôn ngữ khác thì chi phí đó càng cao lên. Do đó họ cần phải suy nghĩ về một giải pháp khác tốt hơn.</p>
+
+<p>Cuối cùng họ quyết định sử dụng tính năng của Rails engine để triển khai các API nội bộ và chỉ các ứng dụng trong mạng nội bộ mới có thể truy xuất được. Để điều khiển việc này họ sử dụng Oauth 2.0 để xác thực các ứng dụng.</p>
+
+<p><img src="/assets/images/posts/2018-08-31/product-engineering-diagram-4-87b0bd948d36defb5ecb639220a365b5.jpg" alt="alt" /></p>
+
+<p>Họ đã nổ lực không ngừng để mang các tính năng từ “Tàu Mẹ” ra ngoài microservice bằng cách xử dụng cả 2 giải pháp là push và pull để tương tác với hệ thống củ. Các kiến trúc của microservice đã tỏ ra rất quan trọng để phát triển các tính nắng mới với chu trình phát triển ngắn hơn rất nhiều.</p>
+
+<hr />
+
+<h4 id="phần-2-phá-vỡ-hệ-thống-cũ-để-xây-dựng-backend-ở-soundcloud">Phần 2: Phá vỡ hệ thống cũ để xây dựng backend ở SoundCloud</h4>
+
+<h5 id="Đội-kỹ-sư-ở-soundcloud">Đội kỹ sư ở SoundCloud</h5>
+<p>Ở phần I, chúng ta đã cùng tìm hiểu về việc đội kỹ sư ở SoundCloud xây dựng các microservice với ngôn ngữ Scala, Clojure, và Ruby mà không có sự gắn kết chặt chẽ với hệ thống cũ của họ dựa trên Rails. Sau đó việc thay đổi kiến trúc như vậy làm cho họ có thể tự do xây dựng những tính năng mới và nhiều cải tiến rất linh hoạt. Một câu hỏi khá quan trọng là: Làm thế nào để họ tách những tính năng từ một cục nguyên khối viết trên Rails hay họ gọi là “Tàu Mẹ”?</p>
+
+<p>Tách một hệ thống cũ ra không phải một chuyện dễ dàng, nhưng may mắn là chúng ta có rất nhiều open-source và các công cụ hỗ trợ dể làm chuyện đấy.</p>
+
+<p>Bước đầu tiền cần làm đó là xác định cũng thành phần mà chúng ta cần tách ra. Ở SoundCloud, họ quyêt định sử dụng phong cách thiết kế theo hướng <a href="http://www.amazon.com/gp/product/0321125215/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0321125215&amp;linkCode=as2&amp;tag=fragmental-20&amp;linkId=ZQCEXWYXNZ5AA2WS">Bounded Context</a>. Một ví dụ rõ ràng về Bounded Context là chức năng nhắn tin giữa những người dùng trên SoundCloud, đây là một thành phần toàn mà bộ tính năng của nó có tính gắn kết cao và không liên quan nhiều đến phần còn lại của hệ thống, và nó chỉ nắm giữ các liên kết yếu đến phần còn lại của dữ liệu.</p>
+
+<p>Sau khi đã xác định các Bounded Context, nhiệm vụ kế tiếp là tìm cách tách chúng ra khỏi “Tàu Mẹ”. Không may thay Rails ActiveRecord framework dẫn đắt cách thiết kế kiến trúc rất gắn kết. Một đoạn code mẫu theo cách thiết kế đấy như sau:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>def index
+  if (InboxItem === item)
+    respond mailbox_items_in_collection.index.paginate(:page =&gt; params[:page])
+  else
+    respond mailbox_items_in_collection.paginate(
+      :joins =&gt; "INNER JOIN messages ON #{safe_collection}_items.message_id = messages.id",
+      :page  =&gt; params[:page],
+      :order =&gt; 'messages.created_at DESC')
+  end
+end
+</code></pre>
+</div>
+<p>Bởi vì họ muốn tách chức năng nhắn tin như một Bounded Context ra một microservice, họ cần phải làm cho code trên trở nên linh động hơn. Bước đầu tiên cần phải làm cấu trúc lại code theo cách như này (bạn có thể tham khảo thêm về tư tưởng xử lý các thành phần lỗi thời ở đây: <a href="http://www.amazon.com/gp/product/0131177052/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0131177052&amp;linkCode=as2&amp;tag=fragmental-20&amp;linkId=5KPGXJ7FUWPGJR3K">Working Effectively with Legacy Code</a>)</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>def index
+  conversations = cursor_for do |cursor|
+    conversations_service.conversations_for(
+    current_user,
+    cursor[:offset],
+    cursor[:limit])
+  end
+
+  respond collection_for(conversations, :conversations)
+end
+</code></pre>
+</div>
+<p>Phiên bản đầu tiên của phương thức conversations_service#conversations_for không có sự khác biệt với bản ở trên là bao; chức năng của nó tương tự như những gì làm trên ActiveRecord.</p>
+
+<p>Họ đã sẵn sàng để tách phần chức năng này ra thành một microservice mà không cần có nhiều sự thay đổi ở tầng Controller và Presentation. Đầu tiên họ thực hiên thay thế phần conversations_service#conversations_for bằng cách gọi service thông qua http request:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>def conversations_for(user, offset = 0, limit = 50)
+  response = @http_client.do_get(service_path(user), pagination(offset, limit))
+  parse_response(user, response)
+end
+</code></pre>
+</div>
+<p>Họ cố gắn tránh sự thay đổi quá lớn nhiều nhất có thể , và với yêu cầu đấy học buộc phải để các microservices làm việc với “Tàu Mẹ” trong một khoản thời gian dài và trong khi đó họ sẽ tranh thủ để mang logic ra ngoài các microservice mới.</p>
+
+<p>Như có mô tả trước đây họ không muốn sử dụng cơ sở dữ liệu của “Tàu Mẹ” như là nơi các microservice tương tác với hệ thống củ. Họ sẽ tổ chức cơ sở dữ liệu như là một ứng dụng và xây dựng các service để tích hợp và điều đấy buộc họ phải tìm cách đồng bộ dữ liệu giữa các microservice sử dụng nó.</p>
+
+<p>Mặc dù dự định là như vậy nhưng mà họ vẫn phải sử dụng cơ sơ dữ liệu từ “Tàu Mẹ” trong giai đoạn chuyển tiếp.</p>
+
+<p>Điều này mang lại hai vấn đề khá quan trọng. Trong khi giai đoạn chuyển tiếp hoàn tất, các microservice mới không thể đổi cấu trúc của các bảng trong MySQL, thậm chí tệ hơn là phải sử dụng một hệ thống lưu trữ mới. Một ví dụ cho trường hợp này đó là hẹ thống nhắn tin từ người dùng này đến người dùng khác, nó được xây dựng dưa trên mô hình thread-based và được thay thế bằng một cái khác, họ phải có những crobjobs để giữa cho 2 database dược đồng bộ.</p>
+
+<p>Một vấn đề khác liên quan đến hệ thống Semantic Events được mô tả ở phần I. Các hệ thống của họ được thiết kế để khi có sự thay đổi trên dữ liệu (ví dụ 1 người dùng comment vào một bài nhạc nào đấy) thì sẽ phát ra các events đến các microservice liên quan, hệ thống hiện tại chỉ cho phép event được phát ra từ một hệ thống, bởi vì họ không thể để cả “Tàu Mẹ” và các microservice mới cùng phát ra những event, và vì thế họ đã chỉ chuyển đổi sang hệ thống microservice mới khi mà họ đã hoàn tất các tính năng như của “Tàu Mẹ”. Với chiến lược này họ đã gặp ít vấn đề hơn họ nghĩ, tuy nhiên vì ưu tiên làm sao để ít có tác động tới hệ thống đang chạy nên việc chuyển đổi bị hạn chế, không diễn ra nhanh chóng được.</p>
+
+<p>Bằng cách sử dụng cách này họ đã chuyển hầu hết các chức năng của “Tàu Mẹ” ra các microservices. Hiện tại họ đã xây dựng hệ thống nhắn tin giữa người dùng hoàn toàn độc lập với hệ thống cũ (bạn có thể tham khảo <a href="https://blog.soundcloud.com/2014/01/13/hear-whats-happening-new-messaging/">ở đây</a>)</p>
+
+<p>Ở phần tiếp theo chúng ta sẽ cùng theo dõi họ đã sử dụng Scala &amp; Finagle như thế nào để xây dựng các microservice.</p>
+
+<hr />
+
+<h4 id="phần-3-sử-dụng-scala-và-finagle-xây-dựng-microservices-ở-soundcloud">Phần 3: Sử dụng Scala và Finagle xây dựng Microservices ở SoundCloud</h4>
+<h5 id="ruby-on-rails">Ruby on Rails</h5>
+<p>Ở hai phần trước, chúng ta đã cũng xem cách mà các kỹ sư ở SoundCloud mang các tính năng từ một cục nguyên khối dùng Ruby on Rails ra thành các microservices. Và trong phần này chúng ta sẽ đi vào chi tiết hơn về nền tảng và ngôn ngữ mà họ sử dụng dể triển khai các microservices đấy.</p>
+
+<p>Vào thời điểm họ bắt đầu quá trình xây dựng các hệ thống bên ngoài “Tàu Mẹ” (Rails monolith), họ cũng chia nhỏ đội kỹ thuật ra thành nhiều nhóm nhỏ, và mỗi nhóm nhỏ sẽ phụ tránh một phần nhỏ nằm trong toàn bộ hệ thống của SoundCloud.</p>
+
+<p>Đó là một giai đoạn thử nghiệm lớn, thay vì xác định một ngôn ngữ mà toàn bộ thành viên sẽ sử dụng chung, thì họ cho phép bất cứ ngôn ngữ nào mà developer cảm thấy tự tin để đưa vào sản phẩm, thì developer cứ thoãi mái sử dụng chúng.</p>
+
+<p>Điều này dẫn đến một vụ <a href="https://en.wikipedia.org/wiki/Cambrian_explosion">bùng nổ của ngôn ngữ</a>. Họ có những hệ thống được phát triền từ nhiều ngôn ngữ khác nhau từ Perl cho đến Julia, bao gồm luôn cả Haskell, Erlang và node.js</p>
+
+<p>Trong khi quá trình này tỏ ra khá hiệu quả trong việc tạo ra các hệ thống mới, thì họ bắt đầu gặp vấn đề khi vận hành và bảo trì chúng. Vấn đề về việc kế thừa những gì đã làm khi có một thành viên trong team rời khỏi là rất thấp (xem thêm <a href="https://en.wikipedia.org/wiki/Bus_factor">khái niệm bus factor</a>), và cuối cùng họ đã quyết định củng cố lại các công cụ mà họ sử dụng.</p>
+
+<h5 id="java-virtual-machine">Java Virtual Machine</h5>
+<p>Dựa trên sở thích và kiến thức chuyên môn của mỗi nhóm, kết hợp với đánh giá của cộng đồng và các đồng nghiệp, họ đã quyết định gắn bó với JVM (Java Virtual Machine) họ lựa cho JRuby, Clojure và Scala là các ngôn ngữ chính được sử dụng để phát triển tất các sản phẩm. Các công cụ để quản lý và vận hành thì họ sử dựng Go và Ruby.</p>
+
+<p>Hóa ra việc lựa chọn nền tảng và ngôn ngữ chỉ là một bước nhỏ trong quá trình xây dựng sản phẩm theo kiến trúc microservice. Một khía cạnh khá quan trọng khác trong việc tổ chức các microservices là: giao tiếp giữa các microservices (RPC), khả năng phục hồi (resilience), và xử lý đồng thời giữa các microservices (concurrency).</p>
+
+<p>Sau khi tìm hiểu và tạo ra một vài bản mẫu thì họ kết thúc với ba sự lựa chọn:</p>
+
+<ul>
+  <li>Sử dụng thuần Netty để triển khai.</li>
+  <li>Sử dụng bộ sậu của Netflix.</li>
+  <li>Cuối cùng là bộ sậu Finagle.</li>
+</ul>
+
+<p>Việc sử dụng thuần Netty khá là hấp ở giai đoạn ban đầu, với hướng đi này có rất nhiều tài liệu tốt để nghiên, sự cập nhật từ cộng đồng, có hỗ trợ HTTP, giao thức để thực hiện gọi qua các microservice khác khá tốt. Nhưng sau một thời gian họ cảm thấy họ phải bắt đầu xây dựng lại hầu hết các tính năng của hệ thống như: khả năng phục hồi và xử lý đồng thời giữ các microservices. Với yêu cầu như thế họ muốn sử dụng những thứ đã có sẵn hơn là đi phát minh lại bánh xe.</p>
+
+<h5 id="finagle">Finagle</h5>
+<p>Họ chuyển qua thử sử dụng bộ sậu của Netflix như <a href="http://blog.josephwilk.net/clojure/building-clojure-services-at-scale.html">Hystrix và Clojure</a>. <a href="https://github.com/Netflix/Hystrix">Hytrix</a> đã thể hiện rất tốt khả năng xử lý đồng thời và phục hồi khi có lỗi, nhưng những API của nó đều dựa trên <a href="https://github.com/Netflix/Hystrix/wiki/How-To-Use">mẫu thiết kế Command</a>. Theo kinh nghiệm của họ thì các command của Hystrix không thuận tiện để tạo command mới lắm trừ khi bạn sử dụng <a href="https://github.com/ReactiveX/RxJava">RxJava</a>. Mặc dù họ đã sử dụng thư viện này ở một số hệ thống backend và ứng dụng Android, nhưng họ nghĩ lập trình theo hướng reactive không phải là hướng tiếp cận tốt nhất cho mọi trường hợp.</p>
+
+<p>Sau đó họ chuyển qua sử dụng <a href="http://twitter.github.io/finagle/">Finagle</a>, một cách xây dựng giao thức giao tiếp giữa các microservices (RPC: Remote Procedure Call) được pháp triển bởi Twitter và sử dụng bởi nhiều công ty có quy mô như SoundCloud. Finagle làm rất tốt các yêu cầu mà họ đề ra ban đầu, và hướng thiết kế của nó cũng khá quen thuộc và dễ dàng mở rộng (xem thêm về <a href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/PipesAndFilters.html">Pipes and Filters</a> và <a href="http://docs.scala-lang.org/overviews/core/futures.html">Futures Model</a>)</p>
+
+<p>Vấn đề đầu tiên khi họ sử dụng Finagle là: trái ngược với các lựa chọn thay thế khác, Finagle được viết bằng Scala, và được chạy trên JVM cùng với các ứng dụng viết bằng Clojure và JRuby, họ nghĩ rằng điều này không quá quan trọng, chỉ thêm khoản 5MB vào vùng chuyển đổi các thư viện, việc chạy runtime khá ổn định và ít thay đổi.</p>
+
+<p>Vấn đế lớn hơn đó là việc chuyển đổi framework để phù hợp với hệ thống của họ:</p>
+
+<ul>
+  <li>Twitter sử dụng Thrift cho hầu hết các RPC của họ, còn ở SoundCloud thì dùng HTTP.</li>
+  <li>Twitter sử dụng ZooKeeper để phục vụ cho Discovery Service, ở SoundCloud thì dùng DNS.</li>
+  <li>Twitter sử dụng Java properties cho hệ thống configuration, ở SoundCloud thì dùng biến môi trường.</li>
+  <li>Twitter và Soundclound có hệ thu thập log khác nhau và monitor khác nhau.</li>
+</ul>
+
+<p>May mắn thay, Finagle được thiết kế rất tốt cho việc thay thế các thành phần trong framework bằng các hệ thống khác, hầu hết các vấn đề được giải quyết với những thay đổi rất nhỏ.</p>
+
+<p>Sau đó họ lại phải đối mặt với sự lộn về cơ chế Futures trong Scala. Heather Miller thành viên của core team Scala có giải thích cụ thể về vấn đề này qua bài presentation: <a href="https://www.infoq.com/presentations/Asynchronous-Scala-Java">A Bright Future Full of Promise</a>. Tóm lại các chế về Futures và Promises mà SoundCloud đang sử dụng có sự khác biệt giữa Finalge của Twitter và thuần của Scala. Mặc dù Scala cho phép sự tương thích giữa các cơ chế nhưng các bạn developer ở SoundCloud quyết định sử dụng toàn bộ cơ chế về <a href="https://groups.google.com/forum/#!msg/finaglers/wjADYhoiJKM/Ejqd6A9rahMJ">Futures &amp; Promise của Twitter</a> và dành phần lớn thời gian để <a href="https://github.com/twitter/util/pull/97">giúp Fingale tiến về gần hơn</a> với phiên bản mới nhất của Scala.</p>
+
+<h5 id="thrift-memcached-redis-và-mysql">Thrift, Memcached, Redis và MySQL</h5>
+<p>Cùng với những vấn đề được giải quyết, họ tập trung vào việc làm thế nào để phát triển backend tốt nhất với việc sử dụng Finagle. May mắn là triết lý thiết kế của Finagle khá độc đáo và được phát triển bởi Marius Eriksen, một trong những thành viên gạo cội của Finalge, các bạn có thể tham khảo thêm về bài viết của Marius về triết lý <a href="https://monkey.org/~marius/funsrv.pdf">Your Server as a Function</a>. Bạn không cần phải tuân thủ theo những triết lý này khi bạn sử dụng chúng, nhưng theo kinh nghiệm của anh em devs tại SoundCloud thì nếu tuân theo triết lý đấy thì việc tích hợp và sẽ trở nên mượt mà hơn. Nếu bạn sử dụng Functional Programing trên Scala thì việc theo các nguyên tắc ấy lại càng dễ dàng.</p>
+
+<p>Ở SoundCloud họ sử dụng Finagle cho HTTP, Thrift, Memcached, Redis và MySQL. Mỗi request đến SoundCloud thì ít nhất phải đi qua một microservices có sử dụng Finagle, và hiệu quả của nó thật sự khá tuyệt vời.</p>
+
+<hr />
+<p>Hẹn gặp các bạn ở những bài blog tiếp theo.</p>
+
+<p>Source: Tech Blog SoundCloud</p>
+
+<p><a href="https://developers.soundcloud.com/blog/building-products-at-soundcloud-part-1-dealing-with-the-monolith">Building Products at SoundCloud —Part I: Dealing with the Monolith</a></p>
+
+<p><a href="https://developers.soundcloud.com/blog/building-products-at-soundcloud-part-2-breaking-the-monolith">Building Products at SoundCloud—Part II: Breaking the Monolith</a></p>
+
+<p><a href="https://developers.soundcloud.com/blog/building-products-at-soundcloud-part-3-microservices-in-scala-and-finagle">https://developers.soundcloud.com/blog/building-products-at-soundcloud-part-3-microservices-in-scala-and-finagle</a></p>
+
+<p>Proof of work:
+<a href="https://web.archive.org/web/20170117054230/https://botbie.io/topic/50/xay-dung-backend-o-soundcloud-phan-3-su-dung-scala-va-finagle-xay-dung-microservices">The web archive</a></p>
+
+<p><a href="https://vi-vn.facebook.com/babyrobots/posts/1023456101024609">FB ref</a></p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            
+            <figure class="author-image">
+                <a class="img" href="/author/tiennv147" style="background-image: url(/assets/images/avatars/tiennv147.jpg)"><span class="hidden">tiennv147's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/tiennv147">Tiến Nguyễn</a></h4>
+
+                
+                    <p> I'm a ghost...</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> In the shell</span>
+                    
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=Xây dựng backend ở SoundCloud&amp;url=http://blog.botbie.io/2018/08/31/xay-dung-backend-o-soundcloud"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.botbie.io/2018/08/31/xay-dung-backend-o-soundcloud"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.botbie.io/2018/08/31/xay-dung-backend-o-soundcloud"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+            
+                <div data-width="100%" class="fb-comments" data-href="http://blog.botbie.io/2018/08/31/xay-dung-backend-o-soundcloud"></div>
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/images/covers/casper.jpg)" href="/2018/08/31/kien-truc-cua-he-thong-backend-duoc-su-dung-cho-chuc-nang-line-live">
+            <section class="post">
+                <h2>Kiến trúc của hệ thống backend được sử dụng cho chức năng LINE LIVE</h2>
+                <p>Đây là một bài blog của tác giả Oklahomer đến từ LINE Corp. Trong bài...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+        <footer class="site-footer clearfix">
+          <section class="copyright"><a href="/">Botbie Blog</a> &copy; 2018</section>
+          <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/biomadeira/jasper">Jasper</a></section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-51088846-5', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=1555729331387875";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, "script", "facebook-jssdk"));</script>
+
+</body>
+</html>
