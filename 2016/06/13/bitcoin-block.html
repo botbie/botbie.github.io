@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    <title>Bitcoin block</title>
+    <meta name="description" content="Dữ liệu giao dịch bitcoin được lưu trữ trên các tập tin gọi là block. Bạn có thể tưởng tượng mỗi block giống như là một trang trong cuốn sổ ghi nợ, với mỗi dòng ghi lại số lượng tiền một người đã mượn/ trả. Các block được sắp xếp thành một chuỗi theo thời gian ( block chain). Các giao dịch mới được các bitcoin miner sắp xếp vào các block mới, được đặt vào cuối chuỗi và không thể bị thay đổi hoặc xóa khi nó đã được mạng bitcoin thừa nhận (tuy nhiên một số phần mềm bỏ qua các block rác - block không có hiệu lực)." />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" >
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css"
+          href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- [[! highlight.js ]] -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+    
+<link rel="canonical" href="/" />
+<meta name="referrer" content="origin" />
+<link rel="next" href="/page/2/" />
+
+<meta property="og:site_name" content="Botbie Blog" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Bitcoin block" />
+<meta property="og:description" content="Dữ liệu giao dịch bitcoin được lưu trữ trên các tập tin gọi là block. Bạn có thể tưởng tượng mỗi block giống như là một trang trong cuốn sổ ghi nợ, với mỗi dòng ghi lại số lượng tiền một người đã mượn/ trả. Các block được sắp xếp thành một chuỗi theo thời gian ( block chain). Các giao dịch mới được các bitcoin miner sắp xếp vào các block mới, được đặt vào cuối chuỗi và không thể bị thay đổi hoặc xóa khi nó đã được mạng bitcoin thừa nhận (tuy nhiên một số phần mềm bỏ qua các block rác - block không có hiệu lực)." />
+<meta property="og:url" content="http://blog.botbie.io/2016/06/13/bitcoin-block" />
+<meta property="og:image" content="http://blog.botbie.io/assets/images/covers/cover2.jpg" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Bitcoin block" />
+<meta name="twitter:description" content="Dữ liệu giao dịch bitcoin được lưu trữ trên các tập tin gọi là block. Bạn có thể tưởng tượng mỗi block giống như là một trang trong cuốn sổ ghi nợ, với mỗi dòng ghi lại số lượng tiền một người đã mượn/ trả. Các block được sắp xếp thành một chuỗi theo thời gian ( block chain). Các giao dịch mới được các bitcoin miner sắp xếp vào các block mới, được đặt vào cuối chuỗi và không thể bị thay đổi hoặc xóa khi nó đã được mạng bitcoin thừa nhận (tuy nhiên một số phần mềm bỏ qua các block rác - block không có hiệu lực)." />
+<meta name="twitter:url" content="http://blog.botbie.io/2016/06/13/bitcoin-block" />
+<meta name="twitter:image:src" content="http://blog.botbie.io/assets/images/covers/cover2.jpg" />
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Botbie Blog",
+    "url": "http://blog.botbie.io/2016/06/13/bitcoin-block",
+    "image": "http://blog.botbie.io/assets/images/covers/cover2.jpg",
+    "description": "Dữ liệu giao dịch bitcoin được lưu trữ trên các tập tin gọi là block. Bạn có thể tưởng tượng mỗi block giống như là một trang trong cuốn sổ ghi nợ, với mỗi dòng ghi lại số lượng tiền một người đã mượn/ trả. Các block được sắp xếp thành một chuỗi theo thời gian ( block chain). Các giao dịch mới được các bitcoin miner sắp xếp vào các block mới, được đặt vào cuối chuỗi và không thể bị thay đổi hoặc xóa khi nó đã được mạng bitcoin thừa nhận (tuy nhiên một số phần mềm bỏ qua các block rác - block không có hiệu lực)."
+}
+</script>
+
+<meta name="generator" content="Jekyll 3.0.0" />
+<link rel="alternate" type="application/rss+xml" title="Botbie Blog" href="/feed.xml" />
+
+
+</head>
+<body class="home-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-about " role="presentation"><a href="/about">About</a></li>
+        <li class="nav-author " role="presentation"><a href="/author">Contributors</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/security">Security</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ctf">Ctf</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/mongodb">Mongodb</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/injection">Injection</a></li>
+        
+        
+        
+        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/bitcoin">Bitcoin</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bài-dịch">Bài dịch</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptocurrency">Cryptocurrency</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/blockchain">Blockchain</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/plugin">Plugin</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/nodebb">Nodebb</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ide">Ide</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/source-control">Source control</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/git">Git</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/devops">Devops</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptography">Cryptography</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hash">Hash</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/system">System</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/vps">Vps</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/server">Server</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hosting">Hosting</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/docker">Docker</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/openvpn">Openvpn</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/swift">Swift</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/gpu">Gpu</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hashcat">Hashcat</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/opinions">Opinions</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/links">Links</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/games">Games</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/startup">Startup</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bookreview">Bookreview</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/triết-học">Triết học</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/nghệ-thuật-sống">Nghệ thuật sống</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/internet">Internet</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/npo">Npo</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/rng">Rng</a></li>
+        
+    </ul>
+    <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/images/covers/cover2.jpg) ">
+    <nav class="main-nav  overlay  clearfix">
+      <a class="blog-logo" href="/"><img src="/assets/images/botbie.png" alt="Blog Logo" /></a>
+        
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-test tag-content">
+
+        <header class="post-header">
+            <h1 class="post-title">Bitcoin block</h1>
+            <section class="post-meta">
+            <time class="post-date" datetime="2016-06-13">13 Jun 2016</time>
+                <!-- [[tags prefix=" on "]] -->
+                
+                on 
+                    
+                       <a href='/tag/bitcoin'>Bitcoin</a>,
+                    
+                
+                    
+                       <a href='/tag/bài-dịch'>Bài dịch</a>,
+                    
+                
+                    
+                       <a href='/tag/cryptocurrency'>Cryptocurrency</a>,
+                    
+                
+                    
+                       <a href='/tag/blockchain'>Blockchain</a>
+                    
+                
+                
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <p>Dữ liệu giao dịch bitcoin được lưu trữ trên các tập tin gọi là block. Bạn có thể tưởng tượng mỗi block giống như là một trang trong cuốn sổ ghi nợ, với mỗi dòng ghi lại số lượng tiền một người đã mượn/ trả. Các block được sắp xếp thành một chuỗi theo thời gian ( block chain). Các giao dịch mới được các bitcoin miner sắp xếp vào các block mới, được đặt vào cuối chuỗi và không thể bị thay đổi hoặc xóa khi nó đã được mạng bitcoin thừa nhận (tuy nhiên một số phần mềm bỏ qua các block rác - block không có hiệu lực).</p>
+
+<h4 id="cấu-trúc-một-block">Cấu trúc một block</h4>
+<pre><code class="language-`">4 bytes đầu: magic number 0xD9B4BEF9
+4 bytes kế: số byte trong block
+80 bytes kế: Blockheader
+1-9 bytes kế: transaction counter
+Danh sách các transactions
+</code></pre>
+<h4 id="mô-tả">Mô tả</h4>
+
+<p>Mỗi block là một bản ghi của một vài hoặc tất cả các giao dịch gần nhất, và một tham chiếu tới block trước nó. Nó cũng chứa một đáp án cho “bài toán đố khó giải”, đáp án này khác nhau với mỗi block. Các block mới không thể được gửi tới mạng bitcoin mà không có đáp án này, quá trình “đào bitcoin” là cuộc thi giữa các thợ mỏ để “giải” block hiện tại, tìm ra câu trả lời sớm nhất. Bài toán trong mỗi block đặc biệt khó, nhưng khi một đáp án đúng được tìm thấy, việc kiểm tra tính đúng đắn của đáp án này lại rất dễ. Mỗi block có thể có vài đáp án đúng khác nhau, nhưng chỉ cần tìm được một đáp án để giải bài toán.</p>
+
+<p>Vì có một phần thưởng: các bitcoin mới sẽ được phát hành như phần quà cho việc giải đố các block, mỗi block cũng chứa một record ghi địa chỉ bitcoin hoặc script nhận phần quà. Record này được gọi là generation transaction hoặc coinbase transaction, và luôn là giao dịch đầu của các block. Số bitcoin phát hành trong một block ban đầu là 50 và giảm còn một nữa mỗi 210000 block (khoảng bốn năm).</p>
+
+<p>Các giao dịch bitcoin được người gửi công bố trên toàn hệ thống, và tất cả các máy đào trong mạng sẽ nhận, thêm nó vào block đang làm việc. Các thợ mỏ được khuyến khích thêm các transaction vào block bằng mức phí đính kèm giao dịch.</p>
+
+<p>Độ khó của bài toán được thay đổi tự động bởi hệ thống bitcoin, ví dụ hệ thống đặt một mục tiêu là giải 6 block mỗi giờ, sau 2016 blocks (giải trong khoảng hai tuần), tất cả các máy bitcoin so sánh số block thực sự giải được với con số giả định ban đầu. Dựa vào đó, mạng bitcoin có thể đưa ra quyết định tăng hoặc giảm độ khó của các block sinh ra.</p>
+
+<p>Vì mỗi block có chứa một tham chiếu tới block trước, tất cả các block kết nối với nhau thành một xâu chuỗi. Tuy nhiên, xâu chuỗi này không luôn thẳng mà đôi khi có những nhánh rẽ: ví dụ hai thợ mỏ cùng lúc giải được một block, độc lập với người kia. Mạng bitcoin được thiết kế để có thể xử lý những nhánh rẽ này, và chỉ có một trong hai nhánh sẽ là chuỗi chính được quyền sống sót.</p>
+
+<p>Các client chọn nhánh “dài nhất” là nhánh hợp lệ. “Độ dài” của nhánh tính theo độ khó tổng của các blocks, chứ không phải số block. Điều ngày ngăn cản một kẻ tấn công tạo một số lượng lớn các block dễ và tạo nên một chuỗi “dài”</p>
+
+<h4 id="các-câu-hỏi-thường-gặp-về-block">Các câu hỏi thường gặp về block</h4>
+
+<ul>
+  <li>
+    <p><a href="https://blockexplorer.com/api/status?q=getBlockCount">Hiện có bao nhiêu block</a>?</p>
+  </li>
+  <li>
+    <p>Số lượng tối đa block là bao nhiêu?</p>
+
+    <p>Không có một số block tối đa, các block liên tục được add vào block chain mỗi 10 phút</p>
+  </li>
+  <li>
+    <p>Ngay cả khi 21 triệu bitcoin được phát hành hết?</p>
+
+    <p>Đúng, các transaction sẽ còn được sinh ra chừng nào còn người sử dụng bitcoin</p>
+  </li>
+  <li>
+    <p>Cần bao lâu để tạo ra một block bằng tay?</p>
+
+    <p>Không có một con số chính xác, bạn thử đoán xem.</p>
+  </li>
+  <li>
+    <p>Nếu tôi giải 1% của block và…?</p>
+
+    <p>Không có khái niệm giải 1% của block. Bạn không có một “tiến độ giải block” dù đã giải bao lâu, sau 24 giờ làm việc, xác xuất bạn giải được bài toán vẫn bằng lúc bạn bắt đầu giải cách đây 24h. Giống như ảo tưởng của tay đánh bạc, giải bài toán tương tự như việc gieo xúc sắc, xác xuất bạn gieo được ba mặt sáu là như nhau bất chấp bạn đã gieo bao nhiêu lần.</p>
+  </li>
+</ul>
+
+<p>Tôi muốn biết sâu hơn về phần kỹ thuật của block?
+Vâng, có một bài chi tiết <a href="/2016/06/18/bitcoin-block-hashing-algorithm">ở đây</a></p>
+
+<p>Dịch từ https://en.bitcoin.it/wiki/Block</p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            
+            <figure class="author-image">
+                <a class="img" href="/author/jaken" style="background-image: url(/assets/images/avatars/jaken.jpeg)"><span class="hidden">jaken's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/jaken">Jaken Ty</a></h4>
+
+                
+                    <p> I'm a ghost...
+</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> In the shell</span>
+                    
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=Bitcoin block&amp;url=http://blog.botbie.io/2016/06/13/bitcoin-block"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.botbie.io/2016/06/13/bitcoin-block"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.botbie.io/2016/06/13/bitcoin-block"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+            
+                <div data-width="100%" class="fb-comments" data-href="http://blog.botbie.io/2016/06/13/bitcoin-block"></div>
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+        <a class="read-next-story " style="background-image: url(/assets/images/covers/cover2.jpg)" href="/2016/06/14/bitcoin-mining">
+            <section class="post">
+                <h2>Bitcoin mining</h2>
+                <p>Mining (đào mỏ) trong bitcoin là quá trình thêm các bản ghi giao dịch vào...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/images/covers/cover2.jpg)" href="/2016/06/11/soan-thao-markdown-bang-vscode">
+            <section class="post">
+                <h2>Soạn thảo markdown bằng vscode</h2>
+                <p>Gần đây vscode (Visual Studio Code) đang nổi lên như 1 thế lực ^^. Nó...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+        <footer class="site-footer clearfix">
+          <section class="copyright"><a href="/">Botbie Blog</a> &copy; 2018</section>
+          <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/biomadeira/jasper">Jasper</a></section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-51088846-5', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=1555729331387875";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, "script", "facebook-jssdk"));</script>
+
+</body>
+</html>

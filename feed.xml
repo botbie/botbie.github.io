@@ -143,6 +143,21 @@
     
       
       <item>
+        <title>Chưa hiểu về bitcoin? Sau đây là bài giải thích mà trẻ 5 tuổi cũng hiểu được.</title>
+        
+          <description>&lt;p&gt;Lượm lặt trên mạng thấy được bài này nên chia sẻ.!&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 09 Nov 2016 00:00:00 +0000</pubDate>
+        <link>
+        http://blog.botbie.io/2016/11/09/chua-hieu-ve-bitcoin-sau-day-la-bai-giai-thich-ma-tre-5-tuoi-cung-hieu-duoc</link>
+        <guid isPermaLink="true">http://blog.botbie.io/2016/11/09/chua-hieu-ve-bitcoin-sau-day-la-bai-giai-thich-ma-tre-5-tuoi-cung-hieu-duoc</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Trải nghiệm hashcat với GPU cùi mía</title>
         
           <description>&lt;p&gt;Số là mình vừa kiếm được một con card đồ họa cũ, GeForce 210:&lt;/p&gt;
@@ -297,6 +312,81 @@
         <link>
         http://blog.botbie.io/2016/06/15/bitcoin-address</link>
         <guid isPermaLink="true">http://blog.botbie.io/2016/06/15/bitcoin-address</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Bitcoin mining</title>
+        
+          <description>&lt;p&gt;Mining (đào mỏ) trong bitcoin là quá trình thêm các bản ghi giao dịch vào sổ ghi nợ công cộng bitcoin. Sổ ghi nợ này gọi là block chain, gồm một chuỗi các block. Block chain cho phép xác thực các giao dịch đã được thực hiện trong mạng bitcoin, các node bitcoin sử dụng nó để nhận ra các giao dịch hợp lệ, từ chối các giao dịch không hợp lệ như gửi một coin hai hoặc nhiều lần.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 14 Jun 2016 00:00:00 +0000</pubDate>
+        <link>
+        http://blog.botbie.io/2016/06/14/bitcoin-mining</link>
+        <guid isPermaLink="true">http://blog.botbie.io/2016/06/14/bitcoin-mining</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Bitcoin block</title>
+        
+          <description>&lt;p&gt;Dữ liệu giao dịch bitcoin được lưu trữ trên các tập tin gọi là block. Bạn có thể tưởng tượng mỗi block giống như là một trang trong cuốn sổ ghi nợ, với mỗi dòng ghi lại số lượng tiền một người đã mượn/ trả. Các block được sắp xếp thành một chuỗi theo thời gian ( block chain). Các giao dịch mới được các bitcoin miner sắp xếp vào các block mới, được đặt vào cuối chuỗi và không thể bị thay đổi hoặc xóa khi nó đã được mạng bitcoin thừa nhận (tuy nhiên một số phần mềm bỏ qua các block rác - block không có hiệu lực).&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 13 Jun 2016 00:00:00 +0000</pubDate>
+        <link>
+        http://blog.botbie.io/2016/06/13/bitcoin-block</link>
+        <guid isPermaLink="true">http://blog.botbie.io/2016/06/13/bitcoin-block</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Soạn thảo markdown bằng vscode</title>
+        
+          <description>&lt;p&gt;Gần đây vscode (Visual Studio Code) đang nổi lên như 1 thế lực ^^. Nó là một text editor được phát triển bởi Microsoft https://code.visualstudio.com/, và theo mình nó hoàn toàn có thể so sánh với các text editor nổi tiếng khác như sublime.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 11 Jun 2016 00:00:00 +0000</pubDate>
+        <link>
+        http://blog.botbie.io/2016/06/11/soan-thao-markdown-bang-vscode</link>
+        <guid isPermaLink="true">http://blog.botbie.io/2016/06/11/soan-thao-markdown-bang-vscode</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Plugin News cho NodeBB</title>
+        
+          <description>&lt;p&gt;Để phục vụ nhu cầu của botbie.io, hiện mình đang phát triển plugin này và chia sẽ trên github https://github.com/nguquen/nodebb-plugin-news :v:&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 11 Jun 2016 00:00:00 +0000</pubDate>
+        <link>
+        http://blog.botbie.io/2016/06/11/plugin-news-cho-nodebb</link>
+        <guid isPermaLink="true">http://blog.botbie.io/2016/06/11/plugin-news-cho-nodebb</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Bitcoin blockchain</title>
+        
+          <description>&lt;p&gt;Block chain là cơ sở dữ liệu dùng lưu trữ các giao dịch của hệ thống bitcoin, toàn bộ dữ liệu được lưu trữ tại mỗi node của hệ thống. Mọi người có thể tải về toàn bộ dữ liệu, chứa tất cả các giao dịch bitcoin đã từng thực hiện. Với toàn bộ thông tin đó, ai cũng có thể biết mỗi địa chỉ bitcoin chứa bao nhiêu tiền tại một thời điểm bất kỳ.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Fri, 10 Jun 2016 00:00:00 +0000</pubDate>
+        <link>
+        http://blog.botbie.io/2016/06/10/bitcoin-blockchain</link>
+        <guid isPermaLink="true">http://blog.botbie.io/2016/06/10/bitcoin-blockchain</guid>
       </item>
       
     
