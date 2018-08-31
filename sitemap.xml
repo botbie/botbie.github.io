@@ -65,6 +65,10 @@
 <lastmod>2016-07-08T00:00:00+00:00</lastmod>
 </url>
 <url>
+<loc>http://blog.botbie.io/2016/07/11/bitcoin-agent</loc>
+<lastmod>2016-07-11T00:00:00+00:00</lastmod>
+</url>
+<url>
 <loc>http://blog.botbie.io/2016/07/16/lap-trinh-socket-tren-swift-voi-bluesocket</loc>
 <lastmod>2016-07-16T00:00:00+00:00</lastmod>
 </url>
@@ -115,6 +119,10 @@
 <url>
 <loc>http://blog.botbie.io/2018/08/30/blockhash-as-random-source</loc>
 <lastmod>2018-08-30T00:00:00+00:00</lastmod>
+</url>
+<url>
+<loc>http://blog.botbie.io/2018/08/31/kien-truc-cua-he-thong-backend-duoc-su-dung-cho-chuc-nang-line-live</loc>
+<lastmod>2018-08-31T00:00:00+00:00</lastmod>
 </url>
 <url>
 <loc>http://blog.botbie.io/author/</loc>
@@ -177,6 +185,9 @@
 <loc>http://blog.botbie.io/tag/bitcoin/page/2/</loc>
 </url>
 <url>
+<loc>http://blog.botbie.io/tag/bitcoin/page/3/</loc>
+</url>
+<url>
 <loc>http://blog.botbie.io/tag/bi-dch/</loc>
 </url>
 <url>
@@ -190,6 +201,9 @@
 </url>
 <url>
 <loc>http://blog.botbie.io/tag/blockchain/</loc>
+</url>
+<url>
+<loc>http://blog.botbie.io/tag/blockchain/page/2/</loc>
 </url>
 <url>
 <loc>http://blog.botbie.io/tag/plugin/</loc>
@@ -237,6 +251,12 @@
 <loc>http://blog.botbie.io/tag/swift/</loc>
 </url>
 <url>
+<loc>http://blog.botbie.io/tag/ai/</loc>
+</url>
+<url>
+<loc>http://blog.botbie.io/tag/agent/</loc>
+</url>
+<url>
 <loc>http://blog.botbie.io/tag/gpu/</loc>
 </url>
 <url>
@@ -282,6 +302,12 @@
 <loc>http://blog.botbie.io/tag/rng/</loc>
 </url>
 <url>
+<loc>http://blog.botbie.io/tag/architect/</loc>
+</url>
+<url>
+<loc>http://blog.botbie.io/tag/backend/</loc>
+</url>
+<url>
 <loc>http://blog.botbie.io/page/2/</loc>
 </url>
 <url>
@@ -295,5 +321,8 @@
 </url>
 <url>
 <loc>http://blog.botbie.io/page/6/</loc>
+</url>
+<url>
+<loc>http://blog.botbie.io/page/7/</loc>
 </url>
 </urlset>

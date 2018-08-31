@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>Splunk vs Elastic Stack - Bạn chọn bộ công cụ nào để quản lý logs?</title>
+        
+          <description>&lt;p&gt;Đây là một bài blog của tác giả Oklahomer đến từ LINE Corp. Trong bài này, tác giả sẽ trình bày về kiến trúc của hệ thống backend được sử dụng cho chức năng &lt;a href=&quot;https://live.line.me/&quot;&gt;LINE LIVE&lt;/a&gt;, một dịch vụ live stream.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Fri, 31 Aug 2018 00:00:00 +0000</pubDate>
+        <link>
+        http://blog.botbie.io/2018/08/31/kien-truc-cua-he-thong-backend-duoc-su-dung-cho-chuc-nang-line-live</link>
+        <guid isPermaLink="true">http://blog.botbie.io/2018/08/31/kien-truc-cua-he-thong-backend-duoc-su-dung-cho-chuc-nang-line-live</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Using blockhash as a random source</title>
         
           <description>&lt;p&gt;Sáng nay jaken vừa được gửi một bản đánh giá về phương pháp sinh số ngẫu nhiên trong game Star của sòng bạc TrueFlip. Reviewer đánh giá như sau: “Poor technology, no RNG algorithm, only using a BTC hash which could be tampered by BTC miners.”&lt;/p&gt;
@@ -200,6 +215,21 @@
         <link>
         http://blog.botbie.io/2016/07/16/lap-trinh-socket-tren-swift-voi-bluesocket</link>
         <guid isPermaLink="true">http://blog.botbie.io/2016/07/16/lap-trinh-socket-tren-swift-voi-bluesocket</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Bitcoin Agent</title>
+        
+          <description>&lt;p&gt;Bitcoin Agent là một chương trình tự động có thể tự sống bằng cách bán dịch vụ lấy bitcoin, và dùng tiền thu được để thuê server. Các Agent làm việc có lời nhuật có thể tự nhân bản nó và mở rộng trên internet bằng cách thuê thêm các server, tạo thêm các instance của chính nó.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 11 Jul 2016 00:00:00 +0000</pubDate>
+        <link>
+        http://blog.botbie.io/2016/07/11/bitcoin-agent</link>
+        <guid isPermaLink="true">http://blog.botbie.io/2016/07/11/bitcoin-agent</guid>
       </item>
       
     
