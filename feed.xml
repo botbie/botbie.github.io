@@ -8,6 +8,22 @@
     
       
       <item>
+        <title>[flareon2018] chal5 WebAssembly writeup: side channel attack</title>
+        
+          <description>&lt;h2 id=&quot;Đọc-đề&quot;&gt;Đọc đề&lt;/h2&gt;
+&lt;p&gt;Bài WebAssembly là một trang web nho nhỏ, một đoạn JavaScript vừa đủ gọn để gọi được viết bằng WebAssemly (tất nhiên rồi, đề nó vậy mà). Đoạn JavaScript nhỏ xinh để gọi như sau:&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 13 Oct 2018 19:05:00 +0000</pubDate>
+        <link>
+        http://blog.botbie.io/2018/10/13/flareon2018-chal5-webassembly-writeup-side-channel-attack</link>
+        <guid isPermaLink="true">http://blog.botbie.io/2018/10/13/flareon2018-chal5-webassembly-writeup-side-channel-attack</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Bàn về thí nghiệm xác định chiều không gian thứ 4?</title>
         
           <description>&lt;p&gt;Bài viết này phản hồi về nội dung bài viết này: &lt;a href=&quot;http://khoahocphattrien.vn/khoa-hoc/phat-hien-chan-dong-2-thi-nghiem-dong-thoi-xac-nhan-chieu-khong-gian-thu-4/20180917092138773p1c160.htm&quot;&gt;http://khoahocphattrien.vn/khoa-hoc/phat-hien-chan-dong-2-thi-nghiem-dong-thoi-xac-nhan-chieu-khong-gian-thu-4/20180917092138773p1c160.htm&lt;/a&gt;, tiêu đề bài này có vẻ gây sốc, nhưng bài viết gốc tiếng Anh thì không như vậy: &lt;a href=&quot;https://physicsworld.com/a/quantum-hall-effect-in-4d-is-created-in-the-lab/&quot;&gt;https://physicsworld.com/a/quantum-hall-effect-in-4d-is-created-in-the-lab/&lt;/a&gt;&lt;/p&gt;

@@ -149,6 +149,10 @@
 <lastmod>2018-09-26T00:00:00+00:00</lastmod>
 </url>
 <url>
+<loc>http://blog.botbie.io/2018/10/13/flareon2018-chal5-webassembly-writeup-side-channel-attack</loc>
+<lastmod>2018-10-13T19:05:00+00:00</lastmod>
+</url>
+<url>
 <loc>http://blog.botbie.io/author/</loc>
 </url>
 <url>
@@ -354,6 +358,15 @@
 </url>
 <url>
 <loc>http://blog.botbie.io/tag/theory/</loc>
+</url>
+<url>
+<loc>http://blog.botbie.io/tag/ctf/</loc>
+</url>
+<url>
+<loc>http://blog.botbie.io/tag/webassembly/</loc>
+</url>
+<url>
+<loc>http://blog.botbie.io/tag/side-channel-attack/</loc>
 </url>
 <url>
 <loc>http://blog.botbie.io/page/2/</loc>
