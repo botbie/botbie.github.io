@@ -38,13 +38,13 @@
 <meta property="og:title" content="[flareon2018] chal5 WebAssembly writeup: side channel attack" />
 <meta property="og:description" content="nom nom" />
 <meta property="og:url" content="http://blog.botbie.io/2018/10/13/flareon2018-chal5-webassembly-writeup-side-channel-attack" />
-<meta property="og:image" content="" />
+<meta property="og:image" content="http://blog.botbie.io/assets/media/flaron18_wasm_02.png" />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="[flareon2018] chal5 WebAssembly writeup: side channel attack" />
 <meta name="twitter:description" content="nom nom" />
 <meta name="twitter:url" content="http://blog.botbie.io/2018/10/13/flareon2018-chal5-webassembly-writeup-side-channel-attack" />
-<meta name="twitter:image:src" content="" />
+<meta name="twitter:image:src" content="http://blog.botbie.io/assets/media/flaron18_wasm_02.png" />
 
 <script type="application/ld+json">
 {
@@ -52,7 +52,7 @@
     "@type": "Website",
     "publisher": "Botbie Blog",
     "url": "http://blog.botbie.io/2018/10/13/flareon2018-chal5-webassembly-writeup-side-channel-attack",
-    "image": "",
+    "image": "http://blog.botbie.io/assets/media/flaron18_wasm_02.png",
     "description": "nom nom"
 }
 </script>
@@ -299,8 +299,8 @@
 <!-- Everything inside the #post tags pulls data from the post -->
 <!-- #post -->
 
-<header class="main-header post-head no-cover">
-    <nav class="main-nav  clearfix">
+<header class="main-header post-head " style="background-image: url(/assets/media/flaron18_wasm_02.png) ">
+    <nav class="main-nav  overlay  clearfix">
       <a class="blog-logo" href="/"><img src="/assets/images/botbie.png" alt="Blog Logo" /></a>
         
             <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
@@ -402,8 +402,8 @@
 
 <p>Đoạn mã giả với đầy những ký tự bí ẩn dạng như thế này:</p>
 <div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="k">static</span> <span class="n">u32</span> <span class="nf">Match</span><span class="p">(</span><span class="n">u32</span> <span class="n">p0</span><span class="p">,</span> <span class="n">u32</span> <span class="n">p1</span><span class="p">,</span> <span class="n">u32</span> <span class="n">p2</span><span class="p">,</span> <span class="n">u32</span> <span class="n">p3</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">u32</span> <span class="n">l0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l3</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l4</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l5</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l6</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l7</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> 
-      <span class="n">l8</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l9</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l10</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l11</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l12</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l13</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l14</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l15</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> 
+  <span class="n">u32</span> <span class="n">l0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l3</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l4</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l5</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l6</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l7</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="n">l8</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l9</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l10</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l11</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l12</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l13</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l14</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l15</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
       <span class="n">l16</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l17</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l18</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l19</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l20</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l21</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l22</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l23</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
   <span class="n">FUNC_PROLOGUE</span><span class="p">;</span>
   <span class="n">u32</span> <span class="n">i0</span><span class="p">,</span> <span class="n">i1</span><span class="p">,</span> <span class="n">i2</span><span class="p">,</span> <span class="n">i3</span><span class="p">,</span> <span class="n">i4</span><span class="p">;</span>
@@ -550,7 +550,7 @@ Mình tìm ra công cụ có cái tên rất cute là <a href="https://github.co
 <div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">results</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">instance</span> <span class="o">=</span> <span class="nx">results</span><span class="p">.</span><span class="nx">instance</span><span class="p">;</span>
   <span class="c1">/// comment</span>
-  
+
   <span class="kd">function</span> <span class="nx">run</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
       <span class="kd">var</span> <span class="nx">q</span> <span class="o">=</span> <span class="nx">key</span><span class="p">;</span>
       <span class="nx">resetSA</span><span class="p">();</span>
@@ -562,7 +562,7 @@ Mình tìm ra công cụ có cái tên rất cute là <a href="https://github.co
       <span class="kd">let</span> <span class="nx">pb</span> <span class="o">=</span> <span class="nx">wasm_alloc</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="mh">0x200</span><span class="p">);</span>
       <span class="nx">wasm_write</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="nx">pb</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
 
-    
+
       <span class="k">if</span> <span class="p">(</span><span class="nx">instance</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">Match</span><span class="p">(</span><span class="nx">pa</span><span class="p">,</span> <span class="nx">a</span><span class="p">.</span><span class="nx">byteLength</span><span class="p">,</span> <span class="nx">pb</span><span class="p">,</span> <span class="nx">b</span><span class="p">.</span><span class="nx">byteLength</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
           <span class="c1">// PARTY POPPER</span>
           <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"container"</span><span class="p">).</span><span class="nx">innerText</span> <span class="o">=</span> <span class="s2">"🎉"</span><span class="p">;</span>
@@ -606,7 +606,7 @@ Mình tìm ra công cụ có cái tên rất cute là <a href="https://github.co
       <span class="kd">let</span> <span class="nx">pb</span> <span class="o">=</span> <span class="nx">wasm_alloc</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="mh">0x200</span><span class="p">);</span>
       <span class="nx">wasm_write</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="nx">pb</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
 
-    
+
       <span class="k">if</span> <span class="p">(</span><span class="nx">instance</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">Match</span><span class="p">(</span><span class="nx">pa</span><span class="p">,</span> <span class="nx">a</span><span class="p">.</span><span class="nx">byteLength</span><span class="p">,</span> <span class="nx">pb</span><span class="p">,</span> <span class="nx">b</span><span class="p">.</span><span class="nx">byteLength</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
           <span class="c1">// PARTY POPPER</span>
           <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"container"</span><span class="p">).</span><span class="nx">innerText</span> <span class="o">=</span> <span class="s2">"🎉"</span><span class="p">;</span>
@@ -667,15 +667,20 @@ Mình tìm ra công cụ có cái tên rất cute là <a href="https://github.co
 
             
             
+            <figure class="author-image">
+                <a class="img" href="/author/khoai" style="background-image: url(/assets/images/avatars/khoai.jpeg)"><span class="hidden">khoai's Picture</span></a>
+            </figure>
+            
 
             <section class="author">
-                <h4><a href="/author/"></a></h4>
+                <h4><a href="/author/khoai">Khoai</a></h4>
 
                 
-                    <p>Read <a href="/author/">more posts</a> by this author.</p>
+                    <p> I'm a ghost...
+</p>
                 
                 <div class="author-meta">
-                    
+                    <span class="author-location icon-location"> In the shell</span>
                     
                 </div>
             </section>
