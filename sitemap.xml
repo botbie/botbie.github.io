@@ -153,6 +153,10 @@
 <lastmod>2018-10-13T19:05:00+00:00</lastmod>
 </url>
 <url>
+<loc>http://blog.botbie.io/2018/11/14/concurrency-pattern-active-object</loc>
+<lastmod>2018-11-14T00:00:00+00:00</lastmod>
+</url>
+<url>
 <loc>http://blog.botbie.io/author/</loc>
 </url>
 <url>
@@ -370,6 +374,12 @@
 </url>
 <url>
 <loc>http://blog.botbie.io/tag/side-channel-attack/</loc>
+</url>
+<url>
+<loc>http://blog.botbie.io/tag/design-pattern/</loc>
+</url>
+<url>
+<loc>http://blog.botbie.io/tag/concurrency-programming/</loc>
 </url>
 <url>
 <loc>http://blog.botbie.io/page/2/</loc>

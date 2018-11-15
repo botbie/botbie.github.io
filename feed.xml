@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>Concurrency Pattern - Active Object</title>
+        
+          <description>&lt;p&gt;Active Object là một design pattern sử dụng trong lập trình đa luồng, nó giải quyết bài toán concurrency bằng cách tách bạch lời gọi hàm và thực thi của các đối tượng. Mỗi đối tượng Active Object sở hữu một luồng riêng để thực thi tác vụ, một scheduler quản lý thứ tự thực hiện tác vụ, nhờ đó cung cấp lời gọi hàm bất đồng bộ để giải quyết vấn đề tương tranh trong tính toán song song.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 14 Nov 2018 00:00:00 +0000</pubDate>
+        <link>
+        http://blog.botbie.io/2018/11/14/concurrency-pattern-active-object</link>
+        <guid isPermaLink="true">http://blog.botbie.io/2018/11/14/concurrency-pattern-active-object</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>[flareon2018] chal5 WebAssembly writeup: side channel attack</title>
         
           <description>&lt;h2 id=&quot;Đọc-đề&quot;&gt;Đọc đề&lt;/h2&gt;
