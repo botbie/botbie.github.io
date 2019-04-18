@@ -353,33 +353,30 @@
             <h2 id="1-bên-trong-integertostringint">1. Bên trong Integer.toString(int)</h2>
 
 <p>Cú pháp:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>public static String toString(int i)
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public static String toString(int i)
+</code></pre></div></div>
 
 <p>Ví dụ:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>    int a = 123456; 
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    int a = 123456; 
     String str_a = Integer.toString(a); 
     System.out.println("String str_a = " + str_a); 
     // Output: String str_a = 123456
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Sử dụng thật đơn giản phải ko nào, nhưng bên trong thì nó implement như thế nào nhỉ?</p>
 
 <p><a href="http://developer.classpath.org/doc/java/lang/Integer-source.html">Source của GNU Classpath</a> khá đơn giản, nó sử dụng hàm String.valueOf(int) vì hàm này có sẵn trong libgcj và là hàm native nhanh :3</p>
-<div class="highlighter-rouge"><pre class="highlight"><code> 221:   public static String toString(int i)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 221:   public static String toString(int i)
  222:   {
  223:     // This is tricky: in libgcj, String.valueOf(int) is a fast native
  224:     // implementation.  In Classpath it just calls back to
  225:     // Integer.toString(int, int).
  226:     return String.valueOf(i);
  227:   }
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Hàm này được implement native thế nào, hãy để lại cho phần dưới và xem các lib khác toString(int) như thế nào đã. Xem qua <a href="http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/java/lang/Integer.java">OpenJDK 8</a> hàm toString dài hơn ta tưởng:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>     * Returns a {@code String} object representing the
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     * Returns a {@code String} object representing the
      * specified integer. The argument is converted to signed decimal
      * representation and returned as a string, exactly as if the
      * argument and radix 10 were given as arguments to the {@link
@@ -396,10 +393,9 @@
         getChars(i, size, buf);
         return new String(buf, true);
     }
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Với Integer.MIN_VALUE, vì -Integer.MIN_VALUE = Integer.MIN_VALUE, case đặc biệt này được fix cứng luôn, các số khác được tính từng ký tự và đổ vào một mảng char[] có kích thước tính theo hàm <a href="http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/java/lang/Integer.java#l471">stringSize</a>:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>    final static int [] sizeTable = { 9, 99, 999, 9999, 99999, 999999, 9999999,
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    final static int [] sizeTable = { 9, 99, 999, 9999, 99999, 999999, 9999999,
                                       99999999, 999999999, Integer.MAX_VALUE };
     // Requires positive x
     static int stringSize(int x) {
@@ -407,12 +403,11 @@
             if (x &lt;= sizeTable[i])
                 return i+1;
     }
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Để tăng tốc việc tính độ dài của chuỗi số, hàm không sử dụng phép chia cho 10 mà chỉ sử dụng toán tử + kèm so sánh với một bảng sizeTable có sẵn các kích thước của chuối số.</p>
 
 <p>Xem tiếp hàm getChars nào :3</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>/**
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/**
      * Places characters representing the integer i into the
      * character array buf. The characters are placed into
      * the buffer backwards starting with the least significant
@@ -454,8 +449,7 @@
             buf [--charPos] = sign;
         }
     }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Ở đây có vài trick được đưa vào để tăng tốc xử lý: khi số lớn hơn 65536, mỗi vòng lặp sinh ra 2 ký tự thay vì 1 (tại sao lại là 2 mà ko phải 3-4) với hai bảng <a href="http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/java/lang/Integer.java#l355">DigitOnes</a> và <a href="http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/java/lang/Integer.java#l342">DigitTens</a> cache sẵn giá trị. Ta thấy một trick khác là để tính phần dư, tác giả ko sử dụng phép modulo mà đi qua hai bước: thực hiện phép chia lấy kq q, trừ số gốc cho q x 100, thêm 1 trick khác để tăng tốc phép nhân cho 100 mà ko sử dụng toán tử nhân: dùng tổng của 3 phép dịch bit (100 = 2^6 + 2^5 + 2^2).</p>
 
@@ -463,17 +457,15 @@
 
 <p>Phép chia 10 được đổi thành tích với 52429 (số gần nhất với 2^19) và phép dịch logic 19 bit:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>q = (i * 52429) &gt;&gt;&gt; (16+3);
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>q = (i * 52429) &gt;&gt;&gt; (16+3);
+</code></pre></div></div>
 
 <p>(có lý do gì đặt 16 + 3 ở đây mà ko đặt 19 ko nhỉ, mình đoán là việc này sẽ tạo ra 2 phép dịch bit, dịch 16 sau đó dịch 3, sau đó compiler sẽ optimize tùy theo bộ xử lý sử dụng thanh ghi 16 hay 32 bit)
 Phép nhân 52429 cũng có thể được đổi thành 3 lần cộng và dịch bit, nhưng có thể nó không nhanh hơn nên vẫn nhân bình thường.</p>
 
 <p>Phép nhân 10 được đổi thành tổng 2 phép dịch bit</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>(q &lt;&lt; 3) + (q &lt;&lt; 1)
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(q &lt;&lt; 3) + (q &lt;&lt; 1)
+</code></pre></div></div>
 
 <p>Tới đây đã hết phần thuật toán + trick phức tạp trong việc tạo chuỗi, ta đã có một mảng char chứa từng ký tự của chuối số, tạo một String từ mảng đó là xong.</p>
 
@@ -481,7 +473,7 @@ Phép nhân 52429 cũng có thể được đổi thành 3 lần cộng và dị
 
 <p>Open JDK sử dụng hàm Integer.toString để implement <a href="http://hg.openjdk.java.net/jdk7u/jdk7u6/jdk/file/8c2c5d63a17e/src/share/classes/java/lang/String.java#l2958">String.valueOf</a>, không có gì để nói thêm, hãy xem thử hàm <a href="https://gnu.googlesource.com/gcc/+/gcc-5_3_0-release/libjava/java/lang/String.java#1261">String.valueOf của libgcj</a>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>  /**
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  /**
    * Returns a String representing an integer.
    *
    * @param i the integer
@@ -489,12 +481,11 @@ Phép nhân 52429 cũng có thể được đổi thành 3 lần cộng và dị
    * @see Integer#toString(int)
    */
   public static native String valueOf(int i);
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Nó là <a href="https://gnu.googlesource.com/gcc/+/gcc-5_3_0-release/libjava/Makefile.in#376">hàm native</a> được implement trong <a href="https://gnu.googlesource.com/gcc/+/gcc-5_3_0-release/libjava/java/lang/natString.cc#401">natString.cc</a> của lib java gcc, thuật toán đơn giản dễ hiểu:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/* Put printed (decimal) representation of NUM in a buffer.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/* Put printed (decimal) representation of NUM in a buffer.
    BUFEND marks the end of the buffer, which must be at least 11 jchars long.
    Returns the COUNT of jchars written.  The result is in
    (BUFEND - COUNT) (inclusive) upto (BUFEND) (exclusive). */
@@ -535,8 +526,7 @@ java::lang::String::valueOf (jint num)
   int i = _Jv_FormatInt (buffer+11, num);
   return _Jv_NewString (buffer+11-i, i);
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="refs">Refs:</h2>
 

@@ -423,7 +423,7 @@ Việc đầu tiên cần phải làm là thay đổi kiến trúc của hệ th
 <p>Bước đầu tiền cần làm đó là xác định cũng thành phần mà chúng ta cần tách ra. Ở SoundCloud, họ quyêt định sử dụng phong cách thiết kế theo hướng <a href="http://www.amazon.com/gp/product/0321125215/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0321125215&amp;linkCode=as2&amp;tag=fragmental-20&amp;linkId=ZQCEXWYXNZ5AA2WS">Bounded Context</a>. Một ví dụ rõ ràng về Bounded Context là chức năng nhắn tin giữa những người dùng trên SoundCloud, đây là một thành phần toàn mà bộ tính năng của nó có tính gắn kết cao và không liên quan nhiều đến phần còn lại của hệ thống, và nó chỉ nắm giữ các liên kết yếu đến phần còn lại của dữ liệu.</p>
 
 <p>Sau khi đã xác định các Bounded Context, nhiệm vụ kế tiếp là tìm cách tách chúng ra khỏi “Tàu Mẹ”. Không may thay Rails ActiveRecord framework dẫn đắt cách thiết kế kiến trúc rất gắn kết. Một đoạn code mẫu theo cách thiết kế đấy như sau:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>def index
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def index
   if (InboxItem === item)
     respond mailbox_items_in_collection.index.paginate(:page =&gt; params[:page])
   else
@@ -433,10 +433,9 @@ Việc đầu tiên cần phải làm là thay đổi kiến trúc của hệ th
       :order =&gt; 'messages.created_at DESC')
   end
 end
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Bởi vì họ muốn tách chức năng nhắn tin như một Bounded Context ra một microservice, họ cần phải làm cho code trên trở nên linh động hơn. Bước đầu tiên cần phải làm cấu trúc lại code theo cách như này (bạn có thể tham khảo thêm về tư tưởng xử lý các thành phần lỗi thời ở đây: <a href="http://www.amazon.com/gp/product/0131177052/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0131177052&amp;linkCode=as2&amp;tag=fragmental-20&amp;linkId=5KPGXJ7FUWPGJR3K">Working Effectively with Legacy Code</a>)</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>def index
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def index
   conversations = cursor_for do |cursor|
     conversations_service.conversations_for(
     current_user,
@@ -446,17 +445,15 @@ end
 
   respond collection_for(conversations, :conversations)
 end
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Phiên bản đầu tiên của phương thức conversations_service#conversations_for không có sự khác biệt với bản ở trên là bao; chức năng của nó tương tự như những gì làm trên ActiveRecord.</p>
 
 <p>Họ đã sẵn sàng để tách phần chức năng này ra thành một microservice mà không cần có nhiều sự thay đổi ở tầng Controller và Presentation. Đầu tiên họ thực hiên thay thế phần conversations_service#conversations_for bằng cách gọi service thông qua http request:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>def conversations_for(user, offset = 0, limit = 50)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def conversations_for(user, offset = 0, limit = 50)
   response = @http_client.do_get(service_path(user), pagination(offset, limit))
   parse_response(user, response)
 end
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Họ cố gắn tránh sự thay đổi quá lớn nhiều nhất có thể , và với yêu cầu đấy học buộc phải để các microservices làm việc với “Tàu Mẹ” trong một khoản thời gian dài và trong khi đó họ sẽ tranh thủ để mang logic ra ngoài các microservice mới.</p>
 
 <p>Như có mô tả trước đây họ không muốn sử dụng cơ sở dữ liệu của “Tàu Mẹ” như là nơi các microservice tương tác với hệ thống củ. Họ sẽ tổ chức cơ sở dữ liệu như là một ứng dụng và xây dựng các service để tích hợp và điều đấy buộc họ phải tìm cách đồng bộ dữ liệu giữa các microservice sử dụng nó.</p>

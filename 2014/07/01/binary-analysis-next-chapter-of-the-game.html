@@ -424,7 +424,7 @@
   <li>Với đoạn code sau:</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>int main(int argc, char** argv) {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int main(int argc, char** argv) {
   printf("Enter key: ");
   char szKey[128] = {0};
   gets(szKey);
@@ -434,8 +434,7 @@
     printf("Wrong !\n");
   return 0;
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Không xét tới độ phức tạp để reverse, pack hay cái gì ở đây, chúng ta nhìn nhận đoạn code này trên quan điểm brute-force. Đoạn code không quá khó để brute-force.
 Chúng ta đều biết <strong>strcmp</strong> sẽ so sánh từng ký tự từ trái qua phải đến hết, do vậy với mỗi ký tự đúng bên trái thì ứng dụng này sẽ thay đổi một số thao tác so với khi sai.
@@ -456,7 +455,7 @@ Viết một đoạn code nhỏ để <strong>đếm số lệnh ứng dụng th
 
 <p><strong>icount.so</strong> : là một thư viện nhỏ trong example code của pin, nó làm nhiệm vụ đếm số mã lệnh thực hiện của một chương trình.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import popen2, string
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import popen2, string
 
 INFILE = "fx"
 CMD  = "../../../pin -t obj-ia32/icount.so -- target/SimpleVM &lt;" + INFILE
@@ -483,8 +482,7 @@ for entry in range(0, len(choices)):
   print "&gt;", key
   writeFile(key)
   execlCommand(CMD)
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><strong>B. Nhúng scripting trong pin</strong></p>
 
@@ -508,7 +506,7 @@ Mục tiêu cụ thể trong phần này khi sử dụng <strong>pint: Tìm ki�
 
 <p><strong>a. Lab</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>#include "stdio.h"
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include "stdio.h"
 void writeWrong() {
   printf("wrong\n");
 }
@@ -540,8 +538,7 @@ int main(int argc, char *argv[]) {
   writeWrong();
   return 0;
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Compile tại: ./hook/hit</p>
 
@@ -552,7 +549,7 @@ int main(int argc, char *argv[]) {
 
 <p>Có một trong đó chứa vài dòng như sau:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>-- at b77a9968 used LC_ADDRESS=vi_VN
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-- at b77a9968 used LC_ADDRESS=vi_VN
 -- at b77a9968 used SSH_AGENT_PID=1661
 -- at b77a9968 used LC_MONETARY=vi_VN
 -- at b77a9968 used GPG_AGENT_INFO=/run/user/khoai/keyring-yZfjCc/gpg:0:1
@@ -565,8 +562,7 @@ int main(int argc, char *argv[]) {
 -- at b779d8ec used strc
 -- at b779d8ec used strcm
 -- at b5c84188 used key_found_me_plz_:x
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><strong>b. Break game</strong></p>
 
@@ -577,15 +573,14 @@ int main(int argc, char *argv[]) {
 
 <p>Và chúng ta cùng xem log và có những dòng sau:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>-- at 413d86 used 29C3_rarvm_is_awel
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-- at 413d86 used 29C3_rarvm_is_awel
 -- at 413d8b used 29C3_rarvm_is_awela
 -- at 413d98 used 29C3_rarvm_is_awe
 -- at 413d9e used 29C3_rarvm_is_awelag
 -- at 41428d used
 -- at 4142a0 used
 -- at 413d86 used 29C3_rarvm_is_awesome
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>:D , quá nhẹ nhàng cho 1 bài CTF 300 điểm :3</p>
 

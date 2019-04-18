@@ -357,7 +357,7 @@
             <h2 id="đọc-đề">Đọc đề</h2>
 <p>Bài WebAssembly là một trang web nho nhỏ, một đoạn JavaScript vừa đủ gọn để gọi được viết bằng WebAssemly (tất nhiên rồi, đề nó vậy mà). Đoạn JavaScript nhỏ xinh để gọi như sau:</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">fetch</span><span class="p">(</span><span class="s2">"test.wasm"</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fetch</span><span class="p">(</span><span class="s2">"test.wasm"</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span>
   <span class="nx">response</span><span class="p">.</span><span class="nx">arrayBuffer</span><span class="p">()</span>
 <span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">bytes</span> <span class="o">=&gt;</span>
   <span class="nx">WebAssembly</span><span class="p">.</span><span class="nx">instantiate</span><span class="p">(</span><span class="nx">bytes</span><span class="p">,</span> <span class="p">{</span>
@@ -368,7 +368,7 @@
 
       <span class="na">putc_js</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">c</span> <span class="o">=</span> <span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">(</span><span class="nx">c</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">c</span> <span class="o">==</span> <span class="s2">"\n"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">c</span> <span class="o">==</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span> <span class="p">{</span>
           <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">wasm_stdout</span><span class="p">);</span>
           <span class="nx">wasm_stdout</span>  <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -380,11 +380,11 @@
 <span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">results</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">instance</span> <span class="o">=</span> <span class="nx">results</span><span class="p">.</span><span class="nx">instance</span><span class="p">;</span>
 
-    <span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Uint8Array</span><span class="p">([</span>
+    <span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Uint8Array</span><span class="p">([</span>
         <span class="mh">0xE4</span><span class="p">,</span> <span class="mh">0x47</span><span class="p">,</span> <span class="mh">0x30</span><span class="p">,</span> <span class="mh">0x10</span><span class="p">,</span> <span class="mh">0x61</span><span class="p">,</span> <span class="mh">0x24</span><span class="p">,</span> <span class="mh">0x52</span><span class="p">,</span> <span class="mh">0x21</span><span class="p">,</span> <span class="mh">0x86</span><span class="p">,</span> <span class="mh">0x40</span><span class="p">,</span> <span class="mh">0xAD</span><span class="p">,</span> <span class="mh">0xC1</span><span class="p">,</span> <span class="mh">0xA0</span><span class="p">,</span> <span class="mh">0xB4</span><span class="p">,</span> <span class="mh">0x50</span><span class="p">,</span> <span class="mh">0x22</span><span class="p">,</span> <span class="mh">0xD0</span><span class="p">,</span> <span class="mh">0x75</span><span class="p">,</span> <span class="mh">0x32</span><span class="p">,</span> <span class="mh">0x48</span><span class="p">,</span> <span class="mh">0x24</span><span class="p">,</span> <span class="mh">0x86</span><span class="p">,</span> <span class="mh">0xE3</span><span class="p">,</span> <span class="mh">0x48</span><span class="p">,</span> <span class="mh">0xA1</span><span class="p">,</span> <span class="mh">0x85</span><span class="p">,</span> <span class="mh">0x36</span><span class="p">,</span> <span class="mh">0x6D</span><span class="p">,</span> <span class="mh">0xCC</span><span class="p">,</span> <span class="mh">0x33</span><span class="p">,</span> <span class="mh">0x7B</span><span class="p">,</span> <span class="mh">0x6E</span><span class="p">,</span> <span class="mh">0x93</span><span class="p">,</span> <span class="mh">0x7F</span><span class="p">,</span> <span class="mh">0x73</span><span class="p">,</span> <span class="mh">0x61</span><span class="p">,</span> <span class="mh">0xA0</span><span class="p">,</span> <span class="mh">0xF6</span><span class="p">,</span> <span class="mh">0x86</span><span class="p">,</span> <span class="mh">0xEA</span><span class="p">,</span> <span class="mh">0x55</span><span class="p">,</span> <span class="mh">0x48</span><span class="p">,</span> <span class="mh">0x2A</span><span class="p">,</span> <span class="mh">0xB3</span><span class="p">,</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="mh">0x6F</span><span class="p">,</span> <span class="mh">0x91</span><span class="p">,</span> <span class="mh">0x90</span><span class="p">,</span> <span class="mh">0xA1</span><span class="p">,</span> <span class="mh">0x93</span><span class="p">,</span> <span class="mh">0x70</span><span class="p">,</span> <span class="mh">0x7A</span><span class="p">,</span> <span class="mh">0x06</span><span class="p">,</span> <span class="mh">0x2A</span><span class="p">,</span> <span class="mh">0x6A</span><span class="p">,</span> <span class="mh">0x66</span><span class="p">,</span> <span class="mh">0x64</span><span class="p">,</span> <span class="mh">0xCA</span><span class="p">,</span> <span class="mh">0x94</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">,</span> <span class="mh">0x4C</span><span class="p">,</span> <span class="mh">0x10</span><span class="p">,</span> <span class="mh">0x61</span><span class="p">,</span> <span class="mh">0x53</span><span class="p">,</span> <span class="mh">0x77</span><span class="p">,</span> <span class="mh">0x72</span><span class="p">,</span> <span class="mh">0x42</span><span class="p">,</span> <span class="mh">0xE9</span><span class="p">,</span> <span class="mh">0x8C</span><span class="p">,</span> <span class="mh">0x30</span><span class="p">,</span> <span class="mh">0x2D</span><span class="p">,</span> <span class="mh">0xF3</span><span class="p">,</span> <span class="mh">0x6F</span><span class="p">,</span> <span class="mh">0x6F</span><span class="p">,</span> <span class="mh">0xB1</span><span class="p">,</span> <span class="mh">0x91</span><span class="p">,</span> <span class="mh">0x65</span><span class="p">,</span> <span class="mh">0x24</span><span class="p">,</span> <span class="mh">0x0A</span><span class="p">,</span> <span class="mh">0x14</span><span class="p">,</span> <span class="mh">0x21</span><span class="p">,</span> <span class="mh">0x42</span><span class="p">,</span> <span class="mh">0xA3</span><span class="p">,</span> <span class="mh">0xEF</span><span class="p">,</span> <span class="mh">0x6F</span><span class="p">,</span> <span class="mh">0x55</span><span class="p">,</span> <span class="mh">0x97</span><span class="p">,</span> <span class="mh">0xD6</span>
     <span class="p">]);</span>
 
-    <span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Uint8Array</span><span class="p">(</span><span class="k">new</span> <span class="nx">TextEncoder</span><span class="p">().</span><span class="nx">encode</span><span class="p">(</span><span class="nx">getParameterByName</span><span class="p">(</span><span class="s2">"q"</span><span class="p">)));</span>
+    <span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Uint8Array</span><span class="p">(</span><span class="k">new</span> <span class="nx">TextEncoder</span><span class="p">().</span><span class="nx">encode</span><span class="p">(</span><span class="nx">getParameterByName</span><span class="p">(</span><span class="s2">"q"</span><span class="p">)));</span>
 
     <span class="kd">let</span> <span class="nx">pa</span> <span class="o">=</span> <span class="nx">wasm_alloc</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="mh">0x200</span><span class="p">);</span>
     <span class="nx">wasm_write</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="nx">pa</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
@@ -400,8 +400,7 @@
         <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"container"</span><span class="p">).</span><span class="nx">innerText</span> <span class="o">=</span> <span class="s2">"💩"</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Đoạn code nhỏ xinh dễ đọc, dễ hiểu và lâu ra kết quả này như sau:</p>
 <ol>
@@ -418,7 +417,7 @@
 <p><img src="/assets/media/flaron18_wasm_02.png" alt="flaron18_wasm_02.png" /></p>
 
 <p>Đoạn mã giả với đầy những ký tự bí ẩn dạng như thế này:</p>
-<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="k">static</span> <span class="n">u32</span> <span class="nf">Match</span><span class="p">(</span><span class="n">u32</span> <span class="n">p0</span><span class="p">,</span> <span class="n">u32</span> <span class="n">p1</span><span class="p">,</span> <span class="n">u32</span> <span class="n">p2</span><span class="p">,</span> <span class="n">u32</span> <span class="n">p3</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="n">u32</span> <span class="nf">Match</span><span class="p">(</span><span class="n">u32</span> <span class="n">p0</span><span class="p">,</span> <span class="n">u32</span> <span class="n">p1</span><span class="p">,</span> <span class="n">u32</span> <span class="n">p2</span><span class="p">,</span> <span class="n">u32</span> <span class="n">p3</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">u32</span> <span class="n">l0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l3</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l4</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l5</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l6</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l7</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
       <span class="n">l8</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l9</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l10</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l11</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l12</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l13</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l14</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l15</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
       <span class="n">l16</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l17</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l18</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l19</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l20</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l21</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l22</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l23</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -442,8 +441,7 @@
   <span class="n">i32_store</span><span class="p">((</span><span class="o">&amp;</span><span class="n">memory</span><span class="p">),</span> <span class="p">(</span><span class="n">u64</span><span class="p">)(</span><span class="n">i0</span> <span class="o">+</span> <span class="mi">16</span><span class="p">),</span> <span class="n">i1</span><span class="p">);</span>
   <span class="n">i0</span> <span class="o">=</span> <span class="n">l2</span><span class="p">;</span>
   <span class="n">i1</span> <span class="o">=</span> <span class="n">p3</span><span class="p">;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Trong một sự nổ lực, mình Google xem các tiền bối đi trước nói chuyện với các bài WASM thế nào, mọi thứ đều thật đẹp khi mình đọc thấy một writeup dài vài cây số <a href="https://github.com/balsn/ctf_writeup/tree/master/20180421-*ctf#wasm-sces60107">ở đây</a>, những hi vọng tốt lành nhanh chóng tan đi khi writeup bắt đầu bằng hơn 900 dòng mã C rồi bạn ấy dễ dàng phát biểu một dòng đầy thần kỳ.</p>
 <blockquote>
@@ -459,7 +457,7 @@ Mình tìm ra công cụ có cái tên rất cute là <a href="https://github.co
 
 <p><strong>wasabi</strong> hỗ trợ đếm từng loại instruction, do chưa biết nên đếm loại nào, mình code đoạn cho đếm từng loại.</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="cm">/*
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*
  * User-facing API for dynamic analyses.
  */</span>
 
@@ -558,13 +556,12 @@ Mình tìm ra công cụ có cái tên rất cute là <a href="https://github.co
     <span class="p">},</span>
 
 <span class="p">};</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Các challenge của flareon đều có flag là một cái email. Nên mình lập một whitelist các ký tự có thể thuộc flag.
 Đầu tiên cần chạy thử nghiệm, với từng ký tự thử xem hướng side channel này có khả thi không. Đoạn code dò của mình sau:</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">results</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">results</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">instance</span> <span class="o">=</span> <span class="nx">results</span><span class="p">.</span><span class="nx">instance</span><span class="p">;</span>
   <span class="c1">/// comment</span>
 
@@ -572,7 +569,7 @@ Mình tìm ra công cụ có cái tên rất cute là <a href="https://github.co
       <span class="kd">var</span> <span class="nx">q</span> <span class="o">=</span> <span class="nx">key</span><span class="p">;</span>
       <span class="nx">resetSA</span><span class="p">();</span>
       <span class="c1">// let b = new Uint8Array(new TextEncoder().encode(getParameterByName("q")));</span>
-      <span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Uint8Array</span><span class="p">(</span><span class="k">new</span> <span class="nx">TextEncoder</span><span class="p">().</span><span class="nx">encode</span><span class="p">(</span><span class="nx">key</span><span class="p">));</span>
+      <span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Uint8Array</span><span class="p">(</span><span class="k">new</span> <span class="nx">TextEncoder</span><span class="p">().</span><span class="nx">encode</span><span class="p">(</span><span class="nx">key</span><span class="p">));</span>
       <span class="kd">let</span> <span class="nx">pa</span> <span class="o">=</span> <span class="nx">wasm_alloc</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="mh">0x200</span><span class="p">);</span>
       <span class="nx">wasm_write</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="nx">pa</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
 
@@ -591,7 +588,7 @@ Mình tìm ra công cụ có cái tên rất cute là <a href="https://github.co
       <span class="p">}</span>
   <span class="p">}</span>
 
-  <span class="kd">var</span> <span class="nx">choices</span> <span class="o">=</span> <span class="s2">"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789-~!@#$%^&amp;*()_+[]\{}|;':&lt;&gt;?/,."</span>
+  <span class="kd">var</span> <span class="nx">choices</span> <span class="o">=</span> <span class="s2">"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789-~!@#$%^&amp;*()_+[]</span><span class="err">\</span><span class="s2">{}|;':&lt;&gt;?/,."</span>
 
   <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">choices</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">ch</span> <span class="o">=</span> <span class="nx">choices</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
@@ -600,15 +597,14 @@ Mình tìm ra công cụ có cái tên rất cute là <a href="https://github.co
     <span class="nx">printSA</span><span class="p">(</span><span class="nx">ch</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Bằng cách quan sát kết quả xuất ra, ta có thể nhận ra 1 ký tự cho kết quả cho kết quả đếm khác các ký tự còn lại, ký tự đầu tiên là: <strong>w</strong>
 <img src="/assets/media/flaron18_wasm_03.png" alt="flaron18_wasm_03.png" /></p>
 
 <p>Bằng cách tiếp tục nới rộng ra, ta có thể tìm ra flag. Ta biết flag của flag là như thường lệ là một cái email, vậy ký tự space không tồn tại trong đó. Đoạn code hoàn chỉnh để tự tìm flag như sau:</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">results</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">results</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">instance</span> <span class="o">=</span> <span class="nx">results</span><span class="p">.</span><span class="nx">instance</span><span class="p">;</span>
     <span class="c1">/// comment</span>
 
@@ -616,7 +612,7 @@ Mình tìm ra công cụ có cái tên rất cute là <a href="https://github.co
       <span class="kd">var</span> <span class="nx">q</span> <span class="o">=</span> <span class="nx">key</span><span class="p">;</span>
       <span class="nx">resetSA</span><span class="p">();</span>
       <span class="c1">// let b = new Uint8Array(new TextEncoder().encode(getParameterByName("q")));</span>
-      <span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Uint8Array</span><span class="p">(</span><span class="k">new</span> <span class="nx">TextEncoder</span><span class="p">().</span><span class="nx">encode</span><span class="p">(</span><span class="nx">key</span><span class="p">));</span>
+      <span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Uint8Array</span><span class="p">(</span><span class="k">new</span> <span class="nx">TextEncoder</span><span class="p">().</span><span class="nx">encode</span><span class="p">(</span><span class="nx">key</span><span class="p">));</span>
       <span class="kd">let</span> <span class="nx">pa</span> <span class="o">=</span> <span class="nx">wasm_alloc</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="mh">0x200</span><span class="p">);</span>
       <span class="nx">wasm_write</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="nx">pa</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
 
@@ -635,7 +631,7 @@ Mình tìm ra công cụ có cái tên rất cute là <a href="https://github.co
       <span class="p">}</span>
   <span class="p">}</span>
 
-  <span class="kd">var</span> <span class="nx">choices</span> <span class="o">=</span> <span class="s2">" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789-~!@#$%^&amp;*()_+[]\{}|;':&lt;&gt;?/,."</span>
+  <span class="kd">var</span> <span class="nx">choices</span> <span class="o">=</span> <span class="s2">" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789-~!@#$%^&amp;*()_+[]</span><span class="err">\</span><span class="s2">{}|;':&lt;&gt;?/,."</span>
   <span class="kd">var</span> <span class="nx">cur</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
   <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">pos</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">;</span> <span class="nx">pos</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// console.log("key_len:", pos);</span>
@@ -663,8 +659,7 @@ Mình tìm ra công cụ có cái tên rất cute là <a href="https://github.co
   <span class="p">}</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"flag: "</span><span class="p">,</span> <span class="nx">cur</span><span class="p">);</span>
 <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Kết quả chạy:
 <img src="/assets/media/flaron18_wasm_04.png" alt="flaron18_wasm_04.png" /></p>

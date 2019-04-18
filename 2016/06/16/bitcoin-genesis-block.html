@@ -362,7 +362,7 @@
 
 <h3 id="khối-nguyên-thủy">Khối nguyên thủy</h3>
 <p>Dưới đây là nội dung của khối nguyên thủy, và nó xuất hiên trong một comment của một phiên bản Bitcoin cũ (dòng 1613). Đoạn thứ nhất liệt kê tất cả các biến cần thiết để tái tạo lại block. Đoạn thứ hai của block được ghi dưới dạng ngắn, chứa một bản rút gọn của đoạn đầu.</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>GetHash()      = 0x000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GetHash()      = 0x000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
 hashMerkleRoot = 0x4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b
 txNew.vin[0].scriptSig     = 486604799 4 0x736B6E616220726F662074756F6C69616220646E6F63657320666F206B6E697262206E6F20726F6C6C65636E61684320393030322F6E614A2F33302073656D695420656854
 txNew.vout[0].nValue       = 5000000000
@@ -377,8 +377,7 @@ CBlock(hash=000000000019d6, ver=1, hashPrevBlock=00000000000000, hashMerkleRoot=
     CTxIn(COutPoint(000000, -1), coinbase 04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73)
     CTxOut(nValue=50.00000000, scriptPubKey=0x5F1DF16B2B704C8A578D0B)
   vMerkleTree: 4a5e1e
-</code></pre>
-</div>
+</code></pre></div></div>
 <h3 id="hash">Hash</h3>
 <p>Hash của khối nguyên thủy là 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f, dư hai số 0 so với yêu cầu của các khối đầu tiên.</p>
 
@@ -397,7 +396,7 @@ The Times 03/Jan/2009 Chancellor on brink of second bailout for banks</p>
 <p><img src="https://en.bitcoin.it/w/images/en/1/1d/Jonny1000thetimes.png" alt="alt" /></p>
 
 <p><a href="https://bitcointalk.org/index.php?topic=52706">Dữ liệu block dưới dạng hex</a></p>
-<div class="highlighter-rouge"><pre class="highlight"><code>0000   01 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00   ................
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0000   01 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00   ................
 0010   00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00   ................
 0020   00 00 00 00 3B A3 ED FD  7A 7B 12 B2 7A C7 2C 3E   ....;£íýz{.²zÇ,&gt;
 0030   67 76 8F 61 7F C8 1B C3  88 8A 51 32 3A 9F B8 AA   gv.a.È.ÃˆŠQ2:Ÿ¸ª
@@ -415,11 +414,10 @@ The Times 03/Jan/2009 Chancellor on brink of second bailout for banks</p>
 00F0   79 62 E0 EA 1F 61 DE B6  49 F6 BC 3F 4C EF 38 C4   ybàê.aÞ¶Iö¼?Lï8Ä
 0100   F3 55 04 E5 1E C1 12 DE  5C 38 4D F7 BA 0B 8D 57   óU.å.Á.Þ\8M÷º..W
 0110   8A 4C 70 2B 6B F1 1D 5F  AC 00 00 00 00            ŠLp+kñ._¬....
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Dữ liệu chia theo từng phần:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>01000000 - version
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>01000000 - version
 0000000000000000000000000000000000000000000000000000000000000000 - prev block
 3BA3EDFD7A7B12B27AC72C3E67768F617FC81BC3888A51323A9FB8AA4B1E5E4A - merkle root
 29AB5F49 - timestamp
@@ -437,8 +435,7 @@ FFFFFFFF - sequence
 43 - pk_script length
 4104678AFDB0FE5548271967F1A67130B7105CD6A828E03909A67962E0EA1F61DEB649F6BC3F4CEF38C4F35504E51EC112DE5C384DF7BA0B8D578A4C702B6BF11D5FAC - pk_script
 00000000 - lock time
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Bạn có thể dùng <a href="https://blockexplorer.com/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f">block explorer</a> hoặc <a href="https://blockchain.info/block/00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048">blockchain.info</a> để xem khối nguyên thủy như những khối khác.</p>
 
 <p>Dịch từ https://en.bitcoin.it/wiki/Genesis_block</p>

@@ -351,37 +351,32 @@
 <h3 id="cài-đặt">Cài đặt:</h3>
 <ol>
   <li>Cài đặt dependencies:
-    <div class="highlighter-rouge"><pre class="highlight"><code>$ sudo apt-get install clang libicu-dev
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get install clang libicu-dev
+</code></pre></div>    </div>
   </li>
   <li>Tải về phiên bản release mới nhất (3.0 Preview 2):
-    <div class="highlighter-rouge"><pre class="highlight"><code>$ wget https://swift.org/builds/swift-3.0-preview-2/ubuntu1510/swift-3.0-PREVIEW-2/swift-3.0-PREVIEW-2-ubuntu15.10.tar.gz
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget https://swift.org/builds/swift-3.0-preview-2/ubuntu1510/swift-3.0-PREVIEW-2/swift-3.0-PREVIEW-2-ubuntu15.10.tar.gz
+</code></pre></div>    </div>
   </li>
   <li>Giải nén file vừa tải về:
-    <div class="highlighter-rouge"><pre class="highlight"><code>$ tar xzf swift-3.0-PREVIEW-2-ubuntu15.10.tar.gz
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ tar xzf swift-3.0-PREVIEW-2-ubuntu15.10.tar.gz
+</code></pre></div>    </div>
   </li>
   <li>Add Swift toolchain vào PATH:
-    <div class="highlighter-rouge"><pre class="highlight"><code>$ export PATH="/&lt;path&gt;/swift-3.0-PREVIEW-2-ubuntu15.10/usr/bin:$PATH"
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ export PATH="/&lt;path&gt;/swift-3.0-PREVIEW-2-ubuntu15.10/usr/bin:$PATH"
+</code></pre></div>    </div>
   </li>
   <li>Kiểm tra swift đã cài đúng chưa:
-    <div class="highlighter-rouge"><pre class="highlight"><code>$ swift --version
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ swift --version
 Swift version 3.0 (swift-3.0-PREVIEW-2)
 Target: x86_64-unknown-linux-gnu
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
 </ol>
 
 <h3 id="sử-dụng-repl">Sử dụng REPL:</h3>
 <p>Gõ lệnh swift không kèm theo tham số nào, chúng ta sẽ có được một shell tương tác có khả năng đọc, evaluate và in kết quả của bất kì đoạn code Swift nào mà bạn nhập vào:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>$ swift
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ swift
 Welcome to Swift version 3.0 (swift-3.0-PREVIEW-2). Type :help for assistance.
   1&gt; 1 + 1
 $R0: Int = 2
@@ -390,62 +385,52 @@ greet: String = "Xin chao Swift"
   3&gt; print(greet)
 Xin chao Swift
   4&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Chúng ta còn có thể import các module của hệ thống như <code class="highlighter-rouge">Darwin</code> trên Mac hay <code class="highlighter-rouge">Glibc</code> trên Linux:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>1&gt; import Glibc
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1&gt; import Glibc
 2&gt; random() % 10
 $R0: Int = 3
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="tạo-package-và-build-file-thực-thi-với-build-system">Tạo Package và build file thực thi với <code class="highlighter-rouge">Build System</code></h3>
 <ol>
   <li>Kiểm tra phiên bản Swift có hỗ trợ build hay không:
-    <div class="highlighter-rouge"><pre class="highlight"><code>$ swift build --help
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ swift build --help
 OVERVIEW: Build sources into binary products
 USAGE: swift build [mode] [options]
 ...
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>Tạo package:
-    <div class="highlighter-rouge"><pre class="highlight"><code>$ mkdir Hello
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mkdir Hello
 $ cd Hello
-</code></pre>
-    </div>
+</code></pre></div>    </div>
     <p>Mọi package cần có một file Package.swift trong thư mục gốc:</p>
-    <div class="highlighter-rouge"><pre class="highlight"><code>touch Package.swift
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>touch Package.swift
+</code></pre></div>    </div>
     <p>Tạo thư mục chứa source code:</p>
-    <div class="highlighter-rouge"><pre class="highlight"><code>$ mkdir Sources
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mkdir Sources
+</code></pre></div>    </div>
   </li>
   <li>Build file thực thi:</li>
 </ol>
 
 <p>Tạo file main.swift trong <code class="highlighter-rouge">Sources/</code> với nội dung sau bằng text editor bất kỳ:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>print("Xin chào Swift")
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print("Xin chào Swift")
+</code></pre></div></div>
 <p>Biên dịch package bằng lệnh <code class="highlighter-rouge">swift build</code>:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>$ swift build
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ swift build
 Compile Swift Module 'Hello' (1 sources)
 Linking .build/debug/Hello
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Chạy thử nào:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>$ .build/debug/Hello
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ .build/debug/Hello
 Xin chào Swift
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Kiểm tra file build ra thuộc loại nào:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>$ file .build/debug/Hello
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ file .build/debug/Hello
 .build/debug/Hello: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=becde89d40e02d3c9d9ca147580844d632f1c8f4, not stripped
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Chúng ta có thể thấy file được build ra có định dạng ELF, đây là định dạng file thực thi của Linux, điều đó có nghĩa Swift biên dịch source code qua native code -&gt; chương trình sẽ được chạy trực tiếp trên máy thật chứ không phải thông qua VM như Java hay .NET :cool:</p>
 
 <p>Nói đến Swift thì chắc chắn đó là một câu chuyện dài, bài viết này chỉ nhằm mục đích “Hello World” nên xin tạm dừng tại đây, hẹn gặp các bạn vào những bài viết sau :grin:</p>

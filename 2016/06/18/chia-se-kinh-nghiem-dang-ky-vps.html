@@ -392,9 +392,8 @@
 <p>Phần này phụ thuộc vào phần trước các bạn chọn OS gì nhá, mình chon CentOS 7, các bạn chọn OS khác sẽ phải thay đổi các command line đôi chút.</p>
 
 <p>Trước tiên các bạn phải đăng nhập được vào server thông qua ssh tool.</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>ssh root@&lt;server-ip-address&gt;
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh root@&lt;server-ip-address&gt;
+</code></pre></div></div>
 <p>password được vultr random và lưu trữ ở đây:</p>
 
 <p><img src="/assets/images/posts/2017-01-16/vps001.png" alt="alt" /></p>
@@ -402,150 +401,121 @@
 <h3 id="1-tạo-một-user-mới">1. Tạo một user mới:</h3>
 
 <p>Vì lý do bảo mật, các bạn nên có một user mới để thực hiện các tác vụ thông thường hằng ngày thay vì sử dụng user root.</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>adduser tin.tt
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>adduser tin.tt
+</code></pre></div></div>
 <p>Đặt password cho account mới</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>passwd tin.tt
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>passwd tin.tt
+</code></pre></div></div>
 <p>Thêm user này vào group wheel (đây là group mặc định được gán quyền sudo)</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>gpasswd -a tin.tt wheel
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpasswd -a tin.tt wheel
+</code></pre></div></div>
 <p>Tiếp theo là add một ssh-key vào server để bạn có thể ssh vào server mà không cần dùng đến password.
 Đăng xuất khỏi server (Ctrl + D).</p>
 
 <p>Generate một ssh key cho máy tính cá nhân của bạn</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>ssh-keygen -t rsa
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen -t rsa
+</code></pre></div></div>
 <p>Copy public key lên server</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>ssh-copy-id tin.tt@&lt;server-ip-address&gt;
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-copy-id tin.tt@&lt;server-ip-address&gt;
+</code></pre></div></div>
 <p>Cuối cùng là thử login vào server với ssh-key mới.</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>ssh tin.tt@&lt;server-ip-address&gt;
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh tin.tt@&lt;server-ip-address&gt;
+</code></pre></div></div>
 <h3 id="2-chặn-ssh-bằng-account-root-và-phương-thức-xác-thực-password">2. Chặn ssh bằng account root và phương thức xác thực password</h3>
 <p>Sau bước trên, bạn đã có thể login vào server bằng user mới, và các tác vụ cần quyền admin có thể sử dụng sudo để làm. Vậy nên thêm một recommend để tăng tính bảo mật cho server là ngăn chặn quyền truy cập từ user root và phương thức xác thực password.</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo nano /etc/ssh/sshd_config
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo nano /etc/ssh/sshd_config
+</code></pre></div></div>
 <p>Tìm và chỉnh sửa 2 config như sau:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>PermitRootLogin no
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PermitRootLogin no
 
 PasswordAuthentication no
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Lưu lại và restart sshd service</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo systemctl reload sshd
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo systemctl reload sshd
+</code></pre></div></div>
 <h3 id="3-cấu-hình-timezone">3. Cấu hình timezone</h3>
 <p>Mặc định, server sẽ sử dụng giờ UTC. Để thuận tiện sử dụng, bạn nên đổi sang giờ địa phương.</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo ln -sf /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo ln -sf /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime
+</code></pre></div></div>
 <p>Bây giờ bạn có thể kiểm tra lại giờ server với command date</p>
 
 <h3 id="4-cấu-hình-iptables-firewall">4. Cấu hình IPTables Firewall</h3>
 
 <p>Mặc định CentOS 7 sử dụng FirewallD. Nên chúng ta cần gỡ FirewallD trước, sau đó mới cài IPTables.</p>
-<div class="highlighter-rouge"><pre class="highlight"><code># uninstall FirewallD
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># uninstall FirewallD
 sudo yum remove -y firewalld
 # install IPTables
 sudo yum install -y iptables-services
 sudo systemctl start iptables
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Cấu hình để IPTables start với OS</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo systemctl enable iptables
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo systemctl enable iptables
+</code></pre></div></div>
 <p>Bây giờ hãy xem các thông số mặc định của iptables</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo iptables -L -n
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo iptables -L -n
+</code></pre></div></div>
 <p>Những thông số trên là runtime nên sẽ mất khi ta restart server, để giữ lại các cấu hình này ta sử dụng</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo /usr/libexec/iptables/iptables.init save
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo /usr/libexec/iptables/iptables.init save
+</code></pre></div></div>
 <p>Command trên sẽ lưu những thông số cấu hình iptables vào</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>/etc/sysconfig/iptables
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/etc/sysconfig/iptables
+</code></pre></div></div>
 <p>Cuối cùng là cho phép server serve các port thông dụng của http và https</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo nano /etc/sysconfig/iptables
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo nano /etc/sysconfig/iptables
+</code></pre></div></div>
 <p>Chỉnh sửa thành</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>-A INPUT -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-A INPUT -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
 -A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT
 -A INPUT -p tcp -m state --state NEW -m tcp --dport 443 -j ACCEPT
 -A INPUT -j REJECT --reject-with icmp-host-prohibited
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Lưu lại và restart iptables service</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo systemctl reload iptables
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo systemctl reload iptables
+</code></pre></div></div>
 <h3 id="5-thay-đổi-port-mặc-định-để-ssh">5. Thay đổi port mặc định để ssh</h3>
 <p>Sau 1 tuần sử dụng server mình nhận thấy một vấn đề lớn đó là server liên tục bị các tool tự động ssh vào, mặc dùng không vào được server nhưng cũng làm ảnh hưởng băng thông server.
 Vì vậy mình đã đổi port ssh trên server (mặc định là 22)</p>
 
 <p>Đầu tiên là đổi cấu hình ssh</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo nano /etc/ssh/sshd_config
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo nano /etc/ssh/sshd_config
+</code></pre></div></div>
 <p>TÌm và đổi thông số Port thành:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>Port 2244
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Port 2244
+</code></pre></div></div>
 <p>Sau đó update firewall:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo nano /etc/sysconfig/iptables
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo nano /etc/sysconfig/iptables
+</code></pre></div></div>
 <p>Thêm vào:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>-A INPUT -p tcp -m state --state NEW -m tcp --dport 2244 -j ACCEPT
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-A INPUT -p tcp -m state --state NEW -m tcp --dport 2244 -j ACCEPT
+</code></pre></div></div>
 <p>Restart iptables service</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo systemctl reload iptables
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo systemctl reload iptables
+</code></pre></div></div>
 <p>Restart sshd service</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>service sshd restart
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>service sshd restart
+</code></pre></div></div>
 <p>Từ giờ khi ssh vào server các bạn thêm option -p như sau:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>ssh root@&lt;server-ip-address&gt; -p 2244
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh root@&lt;server-ip-address&gt; -p 2244
+</code></pre></div></div>
 <h2 id="bước-3-cài-đặt-nginx-để-host-nội-dung-mà-mình-muốn">Bước 3: Cài đặt nginx để host nội dung mà mình muốn.</h2>
 <p>Sau bước 2 các bạn đã có 1 server cho riêng mình để có thể nghịch bất cứ điều gì bạn muốn với những thiết lập cơ bản về bảo mật.
 Bước này sẽ hướng dẫn thêm cho bạn nào muốn host một file html lên server</p>
 
 <p>Cài nginx. Tìm hiểu về nginx ở <a href="https://www.nginx.com/">đây</a></p>
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo yum install nginx
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo yum install nginx
+</code></pre></div></div>
 <p>Start nginx lên:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo systemctl start nginx
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo systemctl start nginx
+</code></pre></div></div>
 <p>Các bạn có thể mở browser và truy cập vào link http://server_domain_name_or_IP/ để thấy được thành quả:
 <img src="/assets/images/posts/2017-01-16/vps002nginx.png" alt="alt" /></p>
 
 <p>Nếu bạn muốn thay đổi nội dung hiện thị thì vào đây</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>/usr/share/nginx/html
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/share/nginx/html
+</code></pre></div></div>
 <p>Cuối cùng nhớ thêm nginx vào các service sẽ start cùng với OS</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo systemctl enable nginx
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo systemctl enable nginx
+</code></pre></div></div>
 
 
         </section>

@@ -351,7 +351,7 @@
 <p>Để lập trình socket trên Swift chúng ta có thể dùng các hàm quen thuộc như socket, bind, listen, connect.v.v.v. thông qua thư viện của hệ thống như Glibc (Linux) / Darwin (MacOS). Nhưng như vậy thì khá là tay chân, hiện tại có nhiều thư viện Swift đã bọc các hàm của hệ thống này trong những class của Swift, việc của chúng ta chỉ là import và sử dụng các class của Swift này thôi :cool:. Trong bài viết này mình sẽ sử dụng thư viện <a href="https://github.com/IBM-Swift/BlueSocket">BlueSocket</a> được viết bởi IBM.</p>
 
 <p>Để sử dụng BlueSocket, chúng ta khai báo dependencies trong Package.swift:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>import PackageDescription
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import PackageDescription
 
 let package = Package(
     name: "...",
@@ -360,17 +360,15 @@ let package = Package(
     ]
 )
 
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Với url là url của thư viện, majorVersion, minor là version của thư viện. Ví dụ BlueSocket đang release tới version 0.6.2 thì majorVersion = 0 và minor = 6.[more]</p>
 
 <h3 id="sử-dụng-bluesocket">Sử dụng BlueSocket</h3>
 <hr />
 <h4 id="trước-khi-sử-dụng">Trước khi sử dụng</h4>
 <p>Phải luôm import Socket framework:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>import Socket
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Socket
+</code></pre></div></div>
 <h4 id="tạo-socket">Tạo socket:</h4>
 <p>BlueSocket hỗ trợ 4 phương thức factory khác nhau để tạo instance socket:</p>
 <ul>
@@ -414,7 +412,7 @@ let package = Package(
 <hr />
 <h4 id="echoserver">EchoServer:</h4>
 <p>EchoServer.swift</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>import Socket
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Socket
 import Dispatch
 
 class EchoServer {
@@ -438,10 +436,9 @@ class EchoServer {
     }
 
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>main.swift</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>import Foundation
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Foundation
 import Socket
 
 let server = try EchoServer(port: 1337)
@@ -465,13 +462,12 @@ try server.listen() {(socket:Socket) in
     }
     socket.close()
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Full project: <a href="https://github.com/nguquen/EchoServer">https://github.com/nguquen/EchoServer</a></p>
 
 <h4 id="echoclient">EchoClient:</h4>
 <p>EchoClient.swift</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>import Socket
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Socket
 
 class EchoClient {
     let port: Int32
@@ -490,10 +486,9 @@ class EchoClient {
     }
 }
 
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>main.swift</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>import Foundation
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Foundation
 import Socket
 
 let port: Int32 = 1337
@@ -525,8 +520,7 @@ try client.connect() {(socket: Socket) in
     socket.close()
 }
 
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Full project: <a href="https://github.com/nguquen/EchoClient">https://github.com/nguquen/EchoClient</a></p>
 
 <h4 id="chạy-thử">Chạy thử:</h4>

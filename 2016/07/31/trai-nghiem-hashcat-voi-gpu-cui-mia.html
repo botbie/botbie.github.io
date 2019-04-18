@@ -368,12 +368,11 @@ Graphics Performance: low-580</p>
 </ul>
 
 <p>Nhưng từ phiên bản 3.0, hashcat đã gộp chung hai phiên bản này làm một dưới cái tên thống nhất là hashcat :cat: . Tải về dùng thử thôi:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>$ wget http://hashcat.net/files/hashcat-3.00.7z
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget http://hashcat.net/files/hashcat-3.00.7z
 $ 7zr x hashcat-3.00.7z
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Chạy chế độ benchmark:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>$ cd hashcat-3.00
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd hashcat-3.00
 $ ./hashcat64.bin -b
 hashcat (v3.00-1-g67a8d97) starting in benchmark-mode...
 
@@ -390,15 +389,13 @@ OpenCL Platform #2: Intel(R) Corporation
 
 ERROR: No devices found/left
 
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Mặc định hashcat sẽ sử dụng GPU để chạy, với lỗi này có thể hiểu là con card đồ họa này quá cùi nên hashcat không thèm dùng :cold_sweat: . Search thử thì thấy giang hồ bảo có thể dùng version cũ hơn cho GeForce 210, mình tải thử bản cuda 2.01:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>$ wget https://hashcat.net/files_legacy/cudaHashcat-2.01.7z
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget https://hashcat.net/files_legacy/cudaHashcat-2.01.7z
 $ 7zr x cudaHashcat-2.01.7z
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Chạy thử nào:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>$ cd cudaHashcat-2.01
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd cudaHashcat-2.01
 $ ./cudaHashcat64.bin -b
 cudaHashcat v2.01 starting in benchmark-mode...
 
@@ -411,23 +408,20 @@ ERROR: Shader Model 1.0 - 1.3 based GPU detected. Support for CUDA was dropped b
 
 
        Remove it from your system or use -d and select only supported cards.
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Không khá hơn mấy, dùng hàng cũ nó khổ thế đấy :dizzy_face: . Lại tìm kiếm thông tin trên mạng thì giang hồ bảo bản 1.31 có thể chạy tốt, lại thử xem sao:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>$ wget https://hashcat.net/files_legacy/cudaHashcat-1.31.7z
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget https://hashcat.net/files_legacy/cudaHashcat-1.31.7z
 $ 7zr x cudaHashcat-1.31.7z
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Chạy thử lần nữa nào:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>$ cd cudaHashcat-1.31
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd cudaHashcat-1.31
 $ ./cudaHashcat64.bin -b
 ERROR: This copy of cudaHashcat is outdated. Get a more recent version.
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>wtf? Lại tìm hiểu tiếp thì được biết bên trong hashcat có một thứ gọi là timebomb, khi chạy nó sẽ kiểm tra time hệ thống, nếu quá hạn sẽ không cho dùng nữa. OK thôi, cài sẵn IDA bữa giờ mà không dùng, cũng nên mang ra thử :angry:</p>
 
 <p>Disassembly cudaHashcat-1.31, dễ dàng tìm thấy đoạn code sau:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>.text:0000000000409A22                 lea     rdi, [rbp+timer] ; timer
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.text:0000000000409A22                 lea     rdi, [rbp+timer] ; timer
 .text:0000000000409A29                 call    _time
 .text:0000000000409A2E                 mov     rax, qword ptr [rbp+timer]
 .text:0000000000409A35                 lea     rdi, [rbp+timer] ; timer
@@ -435,14 +429,13 @@ ERROR: This copy of cudaHashcat is outdated. Get a more recent version.
 .text:0000000000409A43                 call    _localtime
 .text:0000000000409A48                 cmp     dword ptr [rax+14h], 73h
 .text:0000000000409A4C                 jg      loc_40A929
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Có thể hiểu đơn giản là chương trình sẽ gọi hàm <code class="highlighter-rouge">localtime</code>, và kiểm tra số năm, nếu lớn hơn  2015 (1900 + 73h) thì sẽ báo lỗi. Patch ngay lệnh <code class="highlighter-rouge">jg</code> là có thể sử dụng chương trình được:</p>
 
 <p><img src="https://i.gyazo.com/39bc479a790662e2a8ec0b3f9e559dd4.png" alt="patch" /></p>
 
 <p>Lúc đó chương trình sẽ như sau:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>.text:0000000000409A22                 lea     rdi, [rbp+timer] ; timer
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.text:0000000000409A22                 lea     rdi, [rbp+timer] ; timer
 .text:0000000000409A29                 call    _time
 .text:0000000000409A2E                 mov     rax, qword ptr [rbp+timer]
 .text:0000000000409A35                 lea     rdi, [rbp+timer] ; timer
@@ -456,11 +449,10 @@ ERROR: This copy of cudaHashcat is outdated. Get a more recent version.
 .text:0000000000409A50                 nop
 .text:0000000000409A51                 nop
 .text:0000000000409A52                 xor     esi, esi
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>OK, lưu chương trình vừa patch lại và chạy thử:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>$ ./cudaHashcat64.bin -b
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./cudaHashcat64.bin -b
 cudaHashcat v1.31 starting in benchmark-mode...
 
 Device #1: GeForce 210, 1023MB, 1230Mhz, 2MCU
@@ -471,11 +463,10 @@ Workload: 1024 loops, 256 accel
 
 Speed.GPU.#1.: 85782.8 kH/s
 ....
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Có thể thấy là mặc dù đã sử dụng được hashcat với GPU GeForce 210, nhưng speed của nó vẫn không bằng CPU i7. Đây là benchmark khi chạy hashcat 3.0 chọn option chỉ dùng CPU:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>$ ./hashcat64.bin -b -D 1
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./hashcat64.bin -b -D 1
 hashcat (v3.00-1-g67a8d97) starting in benchmark-mode...
 
 OpenCL Platform #1: NVIDIA Corporation
@@ -490,8 +481,7 @@ OpenCL Platform #2: Intel(R) Corporation
 Hashtype: MD4
 
 Speed.Dev.#2.:  1016.1 MH/s (96.05ms)
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Tất nhiên bài viết này chỉ mang ý nghĩa trải nghiệm, nếu bạn có ý định tận dụng sức mạnh của GPU để crack password, hãy đầu tư một con card đồ họa khủng hơn ^^.</p>
 

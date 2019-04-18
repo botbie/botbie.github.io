@@ -373,16 +373,14 @@
 
 <p>Ồ!! Nó đã dump toàn bộ database cho chúng ta. Bạn có thể thấy được vấn đề ở đâu không? Nó xảy ra bởi vì input này: http://localhost/mongo/show.php?u_id[$ne]=2
 đã tạo ra câu truy vấn mongodb sau:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>$qry= array(“id” =&gt; array(“$ne” =&gt; 2))
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$qry= array(“id” =&gt; array(“$ne” =&gt; 2))
+</code></pre></div></div>
 <p>Cho nên nó hiển thị tất cả kết quả ngoại trừ <em>id=2.</em></p>
 
 <p>Hãy xem một trường hợp khác, trong đó script làm cùng một công việc như script trên, nhưng lần này chúng ta tạo câu truy vấn mongodb bằng phương thức findOne.
 Đầu tiên chúng ta xem qua cách làm việc của phương thức findOne. Phương thức này có cú pháp như sau:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>db.collection.findOne(query, projection)
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>db.collection.findOne(query, projection)
+</code></pre></div></div>
 <p>Nó trả về document thoả mãn điều kiện truy vấn. Ví dụ nếu chúng ta cần tìm kết quả được liên kết với <em>id=2</em>, câu lệnh sau sẽ được thực hiện.</p>
 
 <p><img src="http://blog.securelayer7.net/wp-content/uploads/2016/06/mongodb_4.png" alt="alt text" /></p>
@@ -392,9 +390,8 @@
 <p><img src="http://blog.securelayer7.net/wp-content/uploads/2016/06/mongodb_5.png" alt="alt text" /></p>
 
 <p>Điểm quan trọng ở đây đó là tìm cách phá vỡ câu truy vấn và sau đó fix nó lại. Bạn có thể đoán điều gì sẽ xảy ra với câu truy vấn sau không?</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>http://localhost/mongo/inject.php?u_name=dummy’});return{something:1,something:2}}//&amp;u_pass=dummy
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://localhost/mongo/inject.php?u_name=dummy’});return{something:1,something:2}}//&amp;u_pass=dummy
+</code></pre></div></div>
 <p>Nó sẽ phá vỡ câu truy vấn và trả về tham số mong muốn:</p>
 
 <p><img src="http://blog.securelayer7.net/wp-content/uploads/2016/06/mongodb_6.png" alt="alt text" /></p>
@@ -432,9 +429,8 @@
 <p><img src="http://blog.securelayer7.net/wp-content/uploads/2016/06/mongodb_13.png" alt="alt text" /></p>
 
 <p>Trong trường hợp thứ hai chúng ta có thể sử dụng phương thức <strong>addslashes()</strong> , bằng cách này câu truy vấn sẽ không thể bị phá vỡ bởi kẻ tấn công. Tuy nhiên dùng regular expression để thay thế những ký tự đặc biệt cũng là một ý tưởng tốt. Bạn có thể sử dụng Regex sau:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>$u_name =preg_replace(‘/[^a-z0-9]/i’, ‘\’, $_GET[‘u_name’]);
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$u_name =preg_replace(‘/[^a-z0-9]/i’, ‘\’, $_GET[‘u_name’]);
+</code></pre></div></div>
 <p><img src="http://blog.securelayer7.net/wp-content/uploads/2016/06/mongodb_14.png" alt="alt text" /></p>
 
 <p>Bây giờ nếu chúng ta thử phá vỡ câu truy vấn, nó sẽ không xuất hiện lỗi.</p>

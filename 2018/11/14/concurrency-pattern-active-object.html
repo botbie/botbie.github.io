@@ -374,7 +374,7 @@
 
 <h3 id="ví-dụ-dễ-hiểu">Ví dụ dễ hiểu</h3>
 <p>Ví dụ một lớp java bình thường:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>class MyClass {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class MyClass {
 
     private double val = 0.0;
     
@@ -386,11 +386,10 @@
         val = 2.0;
     }
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Trong lập trình đa luồng, khi hai phương thức doSomething và doSomethingElse được thực hiện bởi các luồng khác nhau cùng lúc, giá trị của val sẽ không xác định được, nó phụ thuộc vào thứ tự xử lý - vốn không được quản lý ở đây. Đây là lỗi race condition kinh điển mà hầu hết lập trình viên đều gặp trong đời. Trong trường hợp đơn giản, bạn chỉ cần dùng phép đồng bộ với từ khoá <code class="highlighter-rouge">synchronized</code> thần thánh để xử lý. Hoặc bạn sử dụng một pattern như Active Object:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>class MyActiveObject {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class MyActiveObject {
 
     private double val = 0.0;
 
@@ -433,12 +432,11 @@
         );
     }
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Dùng Java 8 viết thì sạch đẹp hơn xíu:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>public class MyClass {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class MyClass {
     private double val; 
     
     // container for tasks
@@ -457,8 +455,7 @@
         fj.execute(() -&gt; {val = 2.0;});
     }
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Như vậy, active object tự nó có riêng một thread, và các tác vụ bên ngoài yêu cầu sẽ được đẩy vào một blocking queue nội bộ. Thread chỉ cần bốc ra tuần tự và xử lý. Phiên bản Active Object hoàn toàn thread-safe. Dù cho doSomething và doSomethingElse có được gọi tuần tự hay song song, cuối cùng chúng sẽ vẫn dc xử lý tuần tự.</p>
 

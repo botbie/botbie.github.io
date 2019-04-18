@@ -361,7 +361,7 @@
 <p>Với code đã commit và cũng đã được push lên repository nghĩa là đã có người biết và đã có người pull code về thì việc phục hồi không còn đơn giản nữa. Đồng nghĩa là ta không thể xóa các commit “xấu” mà chỉ có thể sửa chữa commit “xấu” bằng một commit “đính chính”. History của commit không thay đổi. Lệnh sử dụng ở đây là git revert</p>
 
 <p>Hãy xem ví dụ sau, giả sử ta có các commit như sau và đã được push lên repository</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>~$ git lola
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~$ git lola
 * 1f7a1ac (HEAD -&gt; master, origin/master) Add function in script nginxstatus
 * 4bd503a Dummy log
 * 5ecc61b Add code in script
@@ -373,16 +373,14 @@
 * 9b5e2ee kill mysql query
 * 4ad7f45 Add license
 * 39bd57e Add REAME.md
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Như ta thấy HEAD đang ở master (local) và cũng đang ở origin/master (remote)</p>
 
 <p>Trong trường hợp ta muốn quay trở lại commit c9d82f4 thì ta chỉ có thể revert về commit này như sau</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>~$ git revert c9d82f4
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~$ git revert c9d82f4
+</code></pre></div></div>
 <p>=&gt; sẽ mở 1 editor và viết commit mesg vào đây, kết quả sẽ được như sau</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>~$ git lol
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~$ git lol
 * 5eb5150 (HEAD -&gt; master) Revert "It is 23:31"
 * 1f7a1ac (origin/master) Add function in script nginxstatus
 * 4bd503a Dummy log
@@ -395,12 +393,11 @@
 * 9b5e2ee kill mysql query
 * 4ad7f45 Add license
 * 39bd57e Add REAME.m
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Như ta thấy đã revert về trạng thái của commit c9d82f4 nhưng các commit sau đó thì vẫn còn và xuất hiện thêm 1 commit đính chính và ta có thể push lên bình thường.</p>
 
 <p>Câu hỏi là ta có thể quay lại trạng thái tại commit c9d82f4 và xóa tất cả các commit sau nó hay không? Thực tế là hoàn toàn được</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>~$ git reset c9d82f4 --hard
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~$ git reset c9d82f4 --hard
 ~$ git lola
 * 5eb5150 (origin/master, origin/HEAD) Revert "It is 23:31"
 * 1f7a1ac Add function in script nginxstatus
@@ -414,21 +411,19 @@
 * 9b5e2ee kill mysql query
 * 4ad7f45 Add license
 * 39bd57e Add REAME.md
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>=&gt; ta sẽ thấy HEAD của master (local repo) thì ở commit c9d82f4, nhưng trên origin/master (remote repo) thì ở 5eb5150. Nếu bây giờ ta push lên thì chắc chắn là server sẽ từ chối và bắt chúng ta pull về trước khi push lên.</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>~$ git push
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~$ git push
 error: failed to push some refs to 'git@bitbucket.org:xluffy/demo.git'
 hint: Updates were rejected because the tip of your current branch is behind
 hint: its remote counterpart. Integrate the remote changes (e.g.
 hint: 'git pull ...') before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Đây là nguyên tác của Source Control, nghĩa là cái gì đã chia sẻ, ghi dấu lịch sử thì không thể xóa bỏ.</p>
 
 <p>Như trên nếu muốn push ta có thể -f (force)</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>~$ git push -f 
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~$ git push -f 
 ~$ git lola
 * c9d82f4 (HEAD -&gt; master, origin/master, origin/HEAD) It is 23:31
 * 39de993 dummy commit
@@ -438,8 +433,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details
 * 9b5e2ee kill mysql query
 * 4ad7f45 Add license
 * 39bd57e Add REAME.m
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Như ta thấy HEAD đều đã ở master (local) và origin/master (remote), các commit sau c9d82f4 cũng đã bị xóa bỏ.</p>
 
 <p>Quay trở lại vấn đề là có nên git push -f hay không? thì như đã nói ở trên là nguyên tắc của Source Control là cái gì đã ghi dấu lịch sử thì không thể xóa lịch sử mà ta chỉ có thể sửa đổi bằng cách ghi một commit mới. Chuyện này đảm bảo cho ta vấn đề không ai có thể xóa đi lịch sử.</p>
