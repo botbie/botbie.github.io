@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    <title>BINARY ANALYSIS - NEXT CHAPTER OF THE GAME</title>
+    <meta name="description" content="Trò chơi phân tích mã bắt đầu từ những ngày đầu ngành điện tử – tin học xuất hiện, từ vụ tháo mạch điện, chọc mũi hàn của các bạn làm điện tử, rồi sau này là các trình disassembler xuất hiện cho mảng tin học hí hoáy. Kéo dài từ các trình disassembler sơ khai cho đến IDA thần thánh thông dụng hiện tại..." />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" >
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css"
+          href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- [[! highlight.js ]] -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+    
+<link rel="canonical" href="/" />
+<meta name="referrer" content="origin" />
+<link rel="next" href="/page/2/" />
+
+<meta property="og:site_name" content="Botbie Blog" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="BINARY ANALYSIS - NEXT CHAPTER OF THE GAME" />
+<meta property="og:description" content="Trò chơi phân tích mã bắt đầu từ những ngày đầu ngành điện tử – tin học xuất hiện, từ vụ tháo mạch điện, chọc mũi hàn của các bạn làm điện tử, rồi sau này là các trình disassembler xuất hiện cho mảng tin học hí hoáy. Kéo dài từ các trình disassembler sơ khai cho đến IDA thần thánh thông dụng hiện tại..." />
+<meta property="og:url" content="http://blog.botbie.io/2014/07/01/binary-analysis-next-chapter-of-the-game" />
+<meta property="og:image" content="http://blog.botbie.io/assets/images/covers/cover2.jpg" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="BINARY ANALYSIS - NEXT CHAPTER OF THE GAME" />
+<meta name="twitter:description" content="Trò chơi phân tích mã bắt đầu từ những ngày đầu ngành điện tử – tin học xuất hiện, từ vụ tháo mạch điện, chọc mũi hàn của các bạn làm điện tử, rồi sau này là các trình disassembler xuất hiện cho mảng tin học hí hoáy. Kéo dài từ các trình disassembler sơ khai cho đến IDA thần thánh thông dụng hiện tại..." />
+<meta name="twitter:url" content="http://blog.botbie.io/2014/07/01/binary-analysis-next-chapter-of-the-game" />
+<meta name="twitter:image:src" content="http://blog.botbie.io/assets/images/covers/cover2.jpg" />
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Botbie Blog",
+    "url": "http://blog.botbie.io/2014/07/01/binary-analysis-next-chapter-of-the-game",
+    "image": "http://blog.botbie.io/assets/images/covers/cover2.jpg",
+    "description": "Trò chơi phân tích mã bắt đầu từ những ngày đầu ngành điện tử – tin học xuất hiện, từ vụ tháo mạch điện, chọc mũi hàn của các bạn làm điện tử, rồi sau này là các trình disassembler xuất hiện cho mảng tin học hí hoáy. Kéo dài từ các trình disassembler sơ khai cho đến IDA thần thánh thông dụng hiện tại..."
+}
+</script>
+
+<meta name="generator" content="Jekyll 3.0.0" />
+<link rel="alternate" type="application/rss+xml" title="Botbie Blog" href="/feed.xml" />
+
+
+</head>
+<body class="home-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-about " role="presentation"><a href="/about">About</a></li>
+        <li class="nav-author " role="presentation"><a href="/author">Contributors</a></li>
+        <li class="nav-links " role="presentation"><a href="/links">Useful links</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/security">Security</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ctf">Ctf</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/mongodb">Mongodb</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/injection">Injection</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bitcoin">Bitcoin</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bài-dịch">Bài dịch</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptocurrency">Cryptocurrency</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/blockchain">Blockchain</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/plugin">Plugin</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/nodebb">Nodebb</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ide">Ide</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/source-control">Source control</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/git">Git</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/devops">Devops</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptography">Cryptography</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hash">Hash</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/system">System</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/vps">Vps</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/server">Server</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hosting">Hosting</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/docker">Docker</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/openvpn">Openvpn</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/swift">Swift</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ai">Ai</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/agent">Agent</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/gpu">Gpu</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hashcat">Hashcat</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/splunk">Splunk</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/elastic">Elastic</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/kibana">Kibana</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/opinions">Opinions</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/links">Links</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/games">Games</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/startup">Startup</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bookreview">Bookreview</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/triết-học">Triết học</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/nghệ-thuật-sống">Nghệ thuật sống</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/internet">Internet</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/npo">Npo</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/rng">Rng</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/architect">Architect</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/backend">Backend</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/soundcloud">Soundcloud</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/sharing">Sharing</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/investment">Investment</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/loving">Loving</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/psychedelic">Psychedelic</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/science">Science</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/theory">Theory</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ctf">Ctf</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/webassembly">Webassembly</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/side-channel-attack">Side channel attack</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/design-pattern">Design pattern</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/concurrency-programming">Concurrency programming</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/java">Java</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/string">String</a></li>
+        
+    </ul>
+    <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/images/covers/cover2.jpg) ">
+    <nav class="main-nav  overlay  clearfix">
+      <a class="blog-logo" href="/"><img src="/assets/images/botbie.png" alt="Blog Logo" /></a>
+        
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-test tag-content">
+
+        <header class="post-header">
+            <h1 class="post-title">BINARY ANALYSIS - NEXT CHAPTER OF THE GAME</h1>
+            <section class="post-meta">
+            <time class="post-date" datetime="2014-07-01">01 Jul 2014</time>
+                <!-- [[tags prefix=" on "]] -->
+                
+                on 
+                    
+                       <a href='/tag/security'>Security</a>,
+                    
+                
+                    
+                       <a href='/tag/ctf'>Ctf</a>
+                    
+                
+                
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <p><strong>Tiêu đề ?</strong></p>
+
+<p>Người viết tính đặt tiêu đề là Phân tích mã: Chương tiếp theo của trò chơi, nhưng nghe gượng gượng nên cuối cùng người viết bài chọn tên này, 1 cái tên Tây cho một bài viết Tiếng Việt, một sự kết hợp không đẹp lắm :”&gt;</p>
+
+<p><strong>Mở</strong></p>
+
+<p>Trò chơi phân tích mã bắt đầu từ những ngày đầu ngành điện tử – tin học xuất hiện, từ vụ tháo mạch điện, chọc mũi hàn của các bạn làm điện tử, rồi sau này là các trình disassembler xuất hiện cho mảng tin học hí hoáy. Kéo dài từ các trình disassembler sơ khai cho đến IDA thần thánh thông dụng hiện tại.</p>
+
+<p>Việc đọc mã thuần với các disassembler là chưa đủ, người ta muốn theo dõi chương trình đó chạy ra sao, làm cái gì. Vậy là các trình debugger ra đời để đáp ứng nhu cầu đó. Các debugger thật tuyệt vời, nó làm đơn giản hóa việc hiểu 1 đoạn mã làm cái gì thay vì chỉ ngồi tưởng tượng. Các tool debugger tiêu biểu: <strong>Ollydbg</strong>, <strong>gdb</strong>, <strong>Windbg</strong> …</p>
+
+<p>Nhưng việc ngồi mòn mông để ngồi dò từng dòng lệnh asm của 1 chương trình, nhất là với các chương trình lớn và mã rối rắm thì là cả một thảm họa. Phải có gì đó giúp tự động hóa, giúp cuộc đời này tươi đẹp hơn, giúp người lười có nhiều thời gian để ăn ngủ hơn thay vì phải ngồi debug cả buổi.</p>
+
+<p>Người ta chia việc phân tích mã thực thi (<strong>binary analysis</strong>) thành 2 mảng khác nhau như sau:</p>
+
+<ul>
+  <li><strong>Phân tích tĩnh (Static code analysis)</strong>: Ngồi nhìn một đoạn code đứng im ru, bạn cố tìm hiểu, khi làm việc nó sẽ làm cái gì, việc này khá giống với việc bạn nói chuyện với một cục đá -_-</li>
+  <li><strong>Phân tích động (Dynamic program analysis)</strong>: Thay vì chỉ ngồi nhìn ngắm dung nhan đoạn code, bạn có thể xem quá trình đoạn code đó làm việc, xem nó buồn vui thế nào, hiếu động ra sao… một nhánh của phương pháp này là phân tích hành vi</li>
+</ul>
+
+<p>Tất nhiên mỗi phương pháp đều có thế mạnh, yếu riêng :</p>
+
+<p><strong>Phân tích tĩnh</strong>:</p>
+
+<ul>
+  <li>Đảm bảo phân tích trọn vẹn code, do suy cho cùng thì mọi hành vi của chương trình đều nằm cả trên 1 cục binary đó mà thôi, tất nhiên điều này là rất khó</li>
+  <li>Tốc độ nhanh</li>
+  <li>Nhưng phương pháp này sẽ phải rất mệt với đám làm rối code (obfuscation), pack … thậm chí theo quan điểm cá nhân của người viết thì với 1 bộ làm rối đủ tốt thì phân tích tĩnh là bất lực.</li>
+</ul>
+
+<p><strong>Phân tích động</strong></p>
+
+<ul>
+  <li>Sẽ thấy được những điều mà phương pháp tĩnh không cho thấy được, như tụi pack chẳng hạn</li>
+  <li>Tuy nhiên do giả lập lại quá trình thực thi nên bị gặp vấp phải các vấn đề như không khó có thể thực thi đến mọi ngóc ngách của chương trình, các trick để loop vô cùng, các trick nhận dạng bị debug …</li>
+  <li>Tốc độ chậm hơn phân tích tĩnh</li>
+</ul>
+
+<p>Trong quá khứ, việc phân tích mã tĩnh chiếm ưu thế, nhưng càng gần đây việc phân tích mã động ngày càng phát triển do:</p>
+
+<ul>
+  <li>Máy tính ngày càng mạnh, công nghệ ảo hóa ngày càng tốt, đảm bảo tốc độ cho việc này</li>
+  <li>Tụi binary sau này ngày càng đông và hung hãn, chưa kể nhiều đứa còn rất khó hiểu nếu chỉ nhìn mặt chúng nó (phân tích tĩnh), thôi thì cứ thả cho nó chạy xem nó làm gì cho trực quan</li>
+</ul>
+
+<p>Bài viết này, người viết sẽ nói về việc tự động hóa trong việc phân tích mã động. Bước đầu làm quen với vấn đề này.</p>
+
+<p><strong>Nhập</strong></p>
+
+<p>Có nhiều sự lựa chọn để phân tích động, các công cụ cho phép thực thi file binary, theo dõi quá trình thực thi chi tiết từng mã thực thi (asm), bạn có thể tưởng tượng đơn giản là bạn đang dùng một cái <strong>Ollydbg</strong>, nhưng khác cái là bạn sẽ làm việc đó tự động hóa (bằng code) thay vì ngồi gõ từng phím nóng để debug code.</p>
+
+<p>Các công cụ tiêu biểu: <strong>pin</strong>, <strong>Valgrind</strong>, <strong>DynamoRIO</strong> … nhưng mình thích nhất <strong>pin</strong> đơn giản do tên nó dễ nhớ và nhiều sample.</p>
+
+<p><a href="https://software.intel.com/en-us/articles/pin-a-dynamic-binary-instrumentation-tool">pin</a> là một công cụ mạnh mẽ của Intel để phân tích động, với kho đồ chơi có sẵn gọi là <strong>pintools</strong>, một kho đồ chơi cực kỳ giá trị và rộng lớn, tìm hiểu cho hết công năng của mớ đồ cũng không phải dễ dàng.</p>
+
+<p>Mỗi tool của pin là được lưu dưới dạng một tập tin liên kết động (dynamic library), mỗi thư viện này sẽ làm việc mà bạn lập trình cho nó (dựa trên framework của pin). Khi chương trình thực thi, bạn sẽ cần chọn thư viện tương ứng và nó sẽ tương tác với chương trình bạn cần phân tích trong quá trình thực thi.</p>
+
+<p>Chúng ta sẽ quan sát 2 ứng dụng của <strong>pin</strong></p>
+
+<p><strong>A. Binary <a href="http://en.wikipedia.org/wiki/Side_channel_attack">Side channel attack</a></strong></p>
+
+<p><strong>1. Sơ lược</strong></p>
+
+<p>“Tấn công qua kênh phụ không đòi hỏi bất cứ một sự xâm nhập trực tiếp nào vào thiết bị. Cụ thể là người tấn công sẽ tìm cách đo các tín hiệu như năng lượng tiêu thụ điện, cường độ của trường điện từ phát ra từ thiết bị. Sau đó các thông tin này sẽ được quan sát và xử lý để tìm ra thông tin bí mật.”</p>
+
+<p>Nguồn: http://tudien.vntelecom.org/Side_Channel_Attack</p>
+
+<p><strong>2. Phương pháp</strong></p>
+
+<p><strong>a. Lab</strong></p>
+
+<ul>
+  <li>Với đoạn code sau:</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>int main(int argc, char** argv) {
+  printf("Enter key: ");
+  char szKey[128] = {0};
+  gets(szKey);
+  if (strcmp(szKey, "ikju") == 0)
+    printf("Correct !\n");
+  else
+    printf("Wrong !\n");
+  return 0;
+}
+</code></pre>
+</div>
+
+<p>Không xét tới độ phức tạp để reverse, pack hay cái gì ở đây, chúng ta nhìn nhận đoạn code này trên quan điểm brute-force. Đoạn code không quá khó để brute-force.
+Chúng ta đều biết <strong>strcmp</strong> sẽ so sánh từng ký tự từ trái qua phải đến hết, do vậy với mỗi ký tự đúng bên trái thì ứng dụng này sẽ thay đổi một số thao tác so với khi sai.
+Viết một đoạn code nhỏ để <strong>đếm số lệnh ứng dụng thi hành với từng input</strong> (một ký tự ‘a’ -&gt; ‘z’) ta có bảng số liệu sau:
+<img src="/assets/images/posts/2014-07-01/table.png" alt="alt text" /></p>
+
+<p>Không quá khó để nhận ra sự khác biệt của ký tự <strong>i</strong>. Thao tác này nên lặp lại vài lần để kiểm tra việc focus vào ký tự đó theo một rule nào đó là đúng hay sai.</p>
+
+<p><strong>b. Break game</strong></p>
+
+<p>Trong thực tế áp dụng, đã áp dụng phương pháp này để giải quyết bài SimpleVM ( http://reversing.kr/challenge.php ), một script nhỏ và phân tích các thông số thủ công trong vòng nửa giờ cho ra key: id3*nxx (phần xx dấu đi để bạn tự thực nghiệm)</p>
+
+<p>Submit và kết quả chính xác.</p>
+
+<p><strong>3. Code</strong></p>
+
+<p>Script viết trên <a href="http://www.python.org/">Python</a> kết hợp với <a href="http://software.intel.com/en-us/articles/pin-a-dynamic-binary-instrumentation-tool">PINTool</a> để thực thi SimpleVM tự động cùng với key brute-force, hiện trong mỗi bước tăng chiều dài key thực hiện thủ công (hardcode), phân tích rule bằng mắt (+ niềm tin) :”&gt;</p>
+
+<p><strong>icount.so</strong> : là một thư viện nhỏ trong example code của pin, nó làm nhiệm vụ đếm số mã lệnh thực hiện của một chương trình.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>import popen2, string
+
+INFILE = "fx"
+CMD  = "../../../pin -t obj-ia32/icount.so -- target/SimpleVM &lt;" + INFILE
+
+def execlCommand(command):
+  fin, fout = popen2.popen2(command)
+  #print "&gt;", command
+  result1 = fin.readline()
+  print result1
+  result2 = fin.readline()
+  print result2
+  fin.close()
+
+choices = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789 ~!@#$%^&amp;*()_+[]\{}|;':&lt;&gt;?/,."
+
+def writeFile(data):
+  f = open(INFILE, 'w')
+  f.write(data)
+  f.close()
+
+for entry in range(0, len(choices)):
+  #id3*
+  key = 'i' choices[entry:entry+1]
+  print "&gt;", key
+  writeFile(key)
+  execlCommand(CMD)
+</code></pre>
+</div>
+
+<p><strong>B. Nhúng scripting trong pin</strong></p>
+
+<p><strong>1. Sơ lược</strong></p>
+
+<p>Dù có thể code các dynamic library như ở ví dụ trên, tuy nhiên việc này tốn nhiều thời gian cho mỗi lần điều chỉnh code phân tích (code, compile, chạy lại …).
+Phần này người viết giới thiệu một wrapper giúp đơn giản hóa việc này. Scripting nhúng ở đây là sử dụng ngôn ngữ Lua.
+Link project: https://github.com/hexgolems/pint
+Mục tiêu cụ thể trong phần này khi sử dụng <strong>pint: Tìm kiếm tất cả string có thể in được (printable) trên bộ nhớ của chương trình khi thực thi</strong></p>
+
+<p>Các ứng dụng :</p>
+
+<ul>
+  <li>Một số bài CTF binary đơn giản dùng các hình thức so sánh input với flag để kiểm tra đúng sai, tất nhiên là chuỗi flag này thường được mã hóa cẩn thận. Nhưng khi so sánh thì nó cũng phải giải mã, sau đó thì đọc vùng memory đó để so sánh. Điển hình nhất là tụi dùng hàm strcmp, memcmp…</li>
+  <li>Do mục tiêu code chỉ tìm string printable tại các address chương trình đọc đến, nên gần như toàn bộ string printable được chương trình đọc tới đều bị nhận dạng, nên các hàm compare string tự chế, hay printf, hay LoadLibrary, hay mọi API khác nếu có dùng string đều bị nhận dạng, việc này cũng giúp phân tích phân tích dễ dàng hơn các string đã obfuscate hay các dạng phân tích malware động. Nói kiểu này thì nghe rất hoành tráng, nhưng thực ra thì không có gì cả.</li>
+</ul>
+
+<p>Nói nhiều vây thôi, chứ tóm lại code nó nằm tại đây (bạn nên custom tùy theo nhu cầu): https://github.com/hexgolems/pint/blob/master/tools/strings.lua</p>
+
+<p><strong>2. Sử dụng</strong></p>
+
+<p><strong>a. Lab</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#include "stdio.h"
+void writeWrong() {
+  printf("wrong\n");
+}
+void writeKey() {
+  printf("right\n");
+}
+int checkKey(char* s) {
+  char cipher[] = {0xC1, 0xCF, 0xD3, 0xF5, 0xCC, 0xC5, 0xDF, 0xC4, 0xCE, 0xF5, 0xC7, 0xCF, 0xF5, 0xDA, 0xC6, 0xD0, 0xF5, 0x90, 0xD2};
+  char plain[128] = {0};
+  int i = 0;
+  for (i=0; i&lt;sizeof(cipher); i++) {
+    plain[i] = (char)(cipher[i] ^ 0xAA);
+  }
+  if (!strcmp(s, plain))
+    return 1;
+  return 0;
+}
+int main(int argc, char *argv[]) {
+  char test[256] = {0};
+  printf("do you see me ???\n");
+  if (argc != 2) {
+    printf("error\n");
+    return -1;
+  }
+  if (checkKey(argv[1])) {
+    writeKey();
+    return 0;
+  }
+  writeWrong();
+  return 0;
+}
+</code></pre>
+</div>
+
+<p>Compile tại: ./hook/hit</p>
+
+<p>Command thực thi:
+<code class="highlighter-rouge">./pin/pin -injection child -t runner.so -s tools/strings.lua -- ./hook/hit test &gt;out.log</code></p>
+
+<p>Ta có một file kết quả: out.log</p>
+
+<p>Có một trong đó chứa vài dòng như sau:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- at b77a9968 used LC_ADDRESS=vi_VN
+-- at b77a9968 used SSH_AGENT_PID=1661
+-- at b77a9968 used LC_MONETARY=vi_VN
+-- at b77a9968 used GPG_AGENT_INFO=/run/user/khoai/keyring-yZfjCc/gpg:0:1
+....
+-- at b5bb3e20 used do you see me
+-- at b5bb3e20 used do you see me ?
+-- at b5bb3e20 used do you see me ??
+-- at b779d8c9 used strcmp
+-- at b779d8ec used str
+-- at b779d8ec used strc
+-- at b779d8ec used strcm
+-- at b5c84188 used key_found_me_plz_:x
+</code></pre>
+</div>
+
+<p><strong>b. Break game</strong></p>
+
+<p>Chúng ta sẽ cùng ngâm cứu lại một bài viết cũ: <a href="/2012/12/31/29c3-ctf-misc-300-funchive">https://blog.botbie.io/2012/12/31/29c3-ctf-misc-300-funchive</a> , bằng hướng tiếp cận mới này.</p>
+
+<p>Một command nhỏ:
+<code class="highlighter-rouge">./pin/pin -injection child -t runner.so -s tools/strings.lua -- rar p funchive.rar &gt;out.log</code></p>
+
+<p>Và chúng ta cùng xem log và có những dòng sau:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- at 413d86 used 29C3_rarvm_is_awel
+-- at 413d8b used 29C3_rarvm_is_awela
+-- at 413d98 used 29C3_rarvm_is_awe
+-- at 413d9e used 29C3_rarvm_is_awelag
+-- at 41428d used
+-- at 4142a0 used
+-- at 413d86 used 29C3_rarvm_is_awesome
+</code></pre>
+</div>
+
+<p>:D , quá nhẹ nhàng cho 1 bài CTF 300 điểm :3</p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            
+            <figure class="author-image">
+                <a class="img" href="/author/khoai" style="background-image: url(/assets/images/avatars/khoai.jpeg)"><span class="hidden">khoai's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/khoai">Khoai</a></h4>
+
+                
+                    <p> I'm a ghost...
+</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> In the shell</span>
+                    
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=BINARY ANALYSIS - NEXT CHAPTER OF THE GAME&amp;url=http://blog.botbie.io/2014/07/01/binary-analysis-next-chapter-of-the-game"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.botbie.io/2014/07/01/binary-analysis-next-chapter-of-the-game"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.botbie.io/2014/07/01/binary-analysis-next-chapter-of-the-game"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+            
+                <div data-width="100%" class="fb-comments" data-href="http://blog.botbie.io/2014/07/01/binary-analysis-next-chapter-of-the-game"></div>
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+        <a class="read-next-story " style="background-image: url(/assets/images/covers/cover2.jpg)" href="/2016/06/05/bao-mat-mongodb-tan-cong-injection-voi-php">
+            <section class="post">
+                <h2>Bảo mật MongoDB - tấn công injection với php</h2>
+                <p>Trước khi chúng ta thực hiện MongoDB injection, chúng ta cần phải hiểu MongoDB chính...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/images/covers/cover2.jpg)" href="/2012/12/31/29c3-ctf-misc-300-funchive">
+            <section class="post">
+                <h2>29C3 CTF | MISC 300 FUNCHIVE</h2>
+                <p>A late christmas present! Open it! Open it! http://dl.ctftime.org/57/205/funchive.rar Ta có một file nén rar,...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+        <footer class="site-footer clearfix">
+          <section class="copyright"><a href="/">Botbie Blog</a> &copy; 2019</section>
+          <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/biomadeira/jasper">Jasper</a></section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-51088846-5', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=1555729331387875";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, "script", "facebook-jssdk"));</script>
+
+</body>
+</html>

@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    <title>[flareon2018] chal5 WebAssembly writeup: side channel attack</title>
+    <meta name="description" content="nom nom" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" >
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css"
+          href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- [[! highlight.js ]] -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+    
+<link rel="canonical" href="/" />
+<meta name="referrer" content="origin" />
+<link rel="next" href="/page/2/" />
+
+<meta property="og:site_name" content="Botbie Blog" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="[flareon2018] chal5 WebAssembly writeup: side channel attack" />
+<meta property="og:description" content="nom nom" />
+<meta property="og:url" content="http://blog.botbie.io/2018/10/13/flareon2018-chal5-webassembly-writeup-side-channel-attack" />
+<meta property="og:image" content="http://blog.botbie.io/assets/media/flaron18_wasm_02.png" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="[flareon2018] chal5 WebAssembly writeup: side channel attack" />
+<meta name="twitter:description" content="nom nom" />
+<meta name="twitter:url" content="http://blog.botbie.io/2018/10/13/flareon2018-chal5-webassembly-writeup-side-channel-attack" />
+<meta name="twitter:image:src" content="http://blog.botbie.io/assets/media/flaron18_wasm_02.png" />
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Botbie Blog",
+    "url": "http://blog.botbie.io/2018/10/13/flareon2018-chal5-webassembly-writeup-side-channel-attack",
+    "image": "http://blog.botbie.io/assets/media/flaron18_wasm_02.png",
+    "description": "nom nom"
+}
+</script>
+
+<meta name="generator" content="Jekyll 3.0.0" />
+<link rel="alternate" type="application/rss+xml" title="Botbie Blog" href="/feed.xml" />
+
+
+</head>
+<body class="home-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-about " role="presentation"><a href="/about">About</a></li>
+        <li class="nav-author " role="presentation"><a href="/author">Contributors</a></li>
+        <li class="nav-links " role="presentation"><a href="/links">Useful links</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/security">Security</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ctf">Ctf</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/mongodb">Mongodb</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/injection">Injection</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bitcoin">Bitcoin</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bài-dịch">Bài dịch</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptocurrency">Cryptocurrency</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/blockchain">Blockchain</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/plugin">Plugin</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/nodebb">Nodebb</a></li>
+        
+        
+        
+        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/ide">Ide</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/source-control">Source control</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/git">Git</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/devops">Devops</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptography">Cryptography</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hash">Hash</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/system">System</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/vps">Vps</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/server">Server</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hosting">Hosting</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/docker">Docker</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/openvpn">Openvpn</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/swift">Swift</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ai">Ai</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/agent">Agent</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/gpu">Gpu</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hashcat">Hashcat</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/splunk">Splunk</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/elastic">Elastic</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/kibana">Kibana</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/opinions">Opinions</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/links">Links</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/games">Games</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/startup">Startup</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bookreview">Bookreview</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/triết-học">Triết học</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/nghệ-thuật-sống">Nghệ thuật sống</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/internet">Internet</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/npo">Npo</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/rng">Rng</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/architect">Architect</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/backend">Backend</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/soundcloud">Soundcloud</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/sharing">Sharing</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/investment">Investment</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/loving">Loving</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/psychedelic">Psychedelic</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/science">Science</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/theory">Theory</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ctf">Ctf</a></li>
+        
+        
+        
+        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/webassembly">Webassembly</a></li>
+        
+        
+        
+        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/side-channel-attack">Side channel attack</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/design-pattern">Design pattern</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/concurrency-programming">Concurrency programming</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/java">Java</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/string">String</a></li>
+        
+    </ul>
+    <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/media/flaron18_wasm_02.png) ">
+    <nav class="main-nav  overlay  clearfix">
+      <a class="blog-logo" href="/"><img src="/assets/images/botbie.png" alt="Blog Logo" /></a>
+        
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-test tag-content">
+
+        <header class="post-header">
+            <h1 class="post-title">[flareon2018] chal5 WebAssembly writeup: side channel attack</h1>
+            <section class="post-meta">
+            <time class="post-date" datetime="2018-10-13">13 Oct 2018</time>
+                <!-- [[tags prefix=" on "]] -->
+                
+                on 
+                    
+                       <a href='/tag/ctf'>Ctf</a>,
+                    
+                
+                    
+                       <a href='/tag/webassembly'>Webassembly</a>,
+                    
+                
+                    
+                       <a href='/tag/side-channel-attack'>Side channel attack</a>
+                    
+                
+                
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <h2 id="đọc-đề">Đọc đề</h2>
+<p>Bài WebAssembly là một trang web nho nhỏ, một đoạn JavaScript vừa đủ gọn để gọi được viết bằng WebAssemly (tất nhiên rồi, đề nó vậy mà). Đoạn JavaScript nhỏ xinh để gọi như sau:</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">fetch</span><span class="p">(</span><span class="s2">"test.wasm"</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span>
+  <span class="nx">response</span><span class="p">.</span><span class="nx">arrayBuffer</span><span class="p">()</span>
+<span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">bytes</span> <span class="o">=&gt;</span>
+  <span class="nx">WebAssembly</span><span class="p">.</span><span class="nx">instantiate</span><span class="p">(</span><span class="nx">bytes</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">env</span><span class="p">:</span> <span class="p">{</span>
+    <span class="c1">/// comment</span>
+     <span class="p">},</span>
+      <span class="na">__syscall6</span><span class="p">:</span> <span class="kd">function</span> <span class="nx">__syscall6</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">d</span><span class="p">,</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">f</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">syscall</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="nx">n</span><span class="p">,</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">d</span><span class="p">,</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">f</span><span class="p">]);</span> <span class="p">},</span>
+
+      <span class="na">putc_js</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">c</span> <span class="o">=</span> <span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">(</span><span class="nx">c</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">c</span> <span class="o">==</span> <span class="s2">"\n"</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">wasm_stdout</span><span class="p">);</span>
+          <span class="nx">wasm_stdout</span>  <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="nx">wasm_stdout</span> <span class="o">+=</span> <span class="nx">c</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+<span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">results</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">instance</span> <span class="o">=</span> <span class="nx">results</span><span class="p">.</span><span class="nx">instance</span><span class="p">;</span>
+
+    <span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Uint8Array</span><span class="p">([</span>
+        <span class="mh">0xE4</span><span class="p">,</span> <span class="mh">0x47</span><span class="p">,</span> <span class="mh">0x30</span><span class="p">,</span> <span class="mh">0x10</span><span class="p">,</span> <span class="mh">0x61</span><span class="p">,</span> <span class="mh">0x24</span><span class="p">,</span> <span class="mh">0x52</span><span class="p">,</span> <span class="mh">0x21</span><span class="p">,</span> <span class="mh">0x86</span><span class="p">,</span> <span class="mh">0x40</span><span class="p">,</span> <span class="mh">0xAD</span><span class="p">,</span> <span class="mh">0xC1</span><span class="p">,</span> <span class="mh">0xA0</span><span class="p">,</span> <span class="mh">0xB4</span><span class="p">,</span> <span class="mh">0x50</span><span class="p">,</span> <span class="mh">0x22</span><span class="p">,</span> <span class="mh">0xD0</span><span class="p">,</span> <span class="mh">0x75</span><span class="p">,</span> <span class="mh">0x32</span><span class="p">,</span> <span class="mh">0x48</span><span class="p">,</span> <span class="mh">0x24</span><span class="p">,</span> <span class="mh">0x86</span><span class="p">,</span> <span class="mh">0xE3</span><span class="p">,</span> <span class="mh">0x48</span><span class="p">,</span> <span class="mh">0xA1</span><span class="p">,</span> <span class="mh">0x85</span><span class="p">,</span> <span class="mh">0x36</span><span class="p">,</span> <span class="mh">0x6D</span><span class="p">,</span> <span class="mh">0xCC</span><span class="p">,</span> <span class="mh">0x33</span><span class="p">,</span> <span class="mh">0x7B</span><span class="p">,</span> <span class="mh">0x6E</span><span class="p">,</span> <span class="mh">0x93</span><span class="p">,</span> <span class="mh">0x7F</span><span class="p">,</span> <span class="mh">0x73</span><span class="p">,</span> <span class="mh">0x61</span><span class="p">,</span> <span class="mh">0xA0</span><span class="p">,</span> <span class="mh">0xF6</span><span class="p">,</span> <span class="mh">0x86</span><span class="p">,</span> <span class="mh">0xEA</span><span class="p">,</span> <span class="mh">0x55</span><span class="p">,</span> <span class="mh">0x48</span><span class="p">,</span> <span class="mh">0x2A</span><span class="p">,</span> <span class="mh">0xB3</span><span class="p">,</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="mh">0x6F</span><span class="p">,</span> <span class="mh">0x91</span><span class="p">,</span> <span class="mh">0x90</span><span class="p">,</span> <span class="mh">0xA1</span><span class="p">,</span> <span class="mh">0x93</span><span class="p">,</span> <span class="mh">0x70</span><span class="p">,</span> <span class="mh">0x7A</span><span class="p">,</span> <span class="mh">0x06</span><span class="p">,</span> <span class="mh">0x2A</span><span class="p">,</span> <span class="mh">0x6A</span><span class="p">,</span> <span class="mh">0x66</span><span class="p">,</span> <span class="mh">0x64</span><span class="p">,</span> <span class="mh">0xCA</span><span class="p">,</span> <span class="mh">0x94</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">,</span> <span class="mh">0x4C</span><span class="p">,</span> <span class="mh">0x10</span><span class="p">,</span> <span class="mh">0x61</span><span class="p">,</span> <span class="mh">0x53</span><span class="p">,</span> <span class="mh">0x77</span><span class="p">,</span> <span class="mh">0x72</span><span class="p">,</span> <span class="mh">0x42</span><span class="p">,</span> <span class="mh">0xE9</span><span class="p">,</span> <span class="mh">0x8C</span><span class="p">,</span> <span class="mh">0x30</span><span class="p">,</span> <span class="mh">0x2D</span><span class="p">,</span> <span class="mh">0xF3</span><span class="p">,</span> <span class="mh">0x6F</span><span class="p">,</span> <span class="mh">0x6F</span><span class="p">,</span> <span class="mh">0xB1</span><span class="p">,</span> <span class="mh">0x91</span><span class="p">,</span> <span class="mh">0x65</span><span class="p">,</span> <span class="mh">0x24</span><span class="p">,</span> <span class="mh">0x0A</span><span class="p">,</span> <span class="mh">0x14</span><span class="p">,</span> <span class="mh">0x21</span><span class="p">,</span> <span class="mh">0x42</span><span class="p">,</span> <span class="mh">0xA3</span><span class="p">,</span> <span class="mh">0xEF</span><span class="p">,</span> <span class="mh">0x6F</span><span class="p">,</span> <span class="mh">0x55</span><span class="p">,</span> <span class="mh">0x97</span><span class="p">,</span> <span class="mh">0xD6</span>
+    <span class="p">]);</span>
+
+    <span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Uint8Array</span><span class="p">(</span><span class="k">new</span> <span class="nx">TextEncoder</span><span class="p">().</span><span class="nx">encode</span><span class="p">(</span><span class="nx">getParameterByName</span><span class="p">(</span><span class="s2">"q"</span><span class="p">)));</span>
+
+    <span class="kd">let</span> <span class="nx">pa</span> <span class="o">=</span> <span class="nx">wasm_alloc</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="mh">0x200</span><span class="p">);</span>
+    <span class="nx">wasm_write</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="nx">pa</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
+
+    <span class="kd">let</span> <span class="nx">pb</span> <span class="o">=</span> <span class="nx">wasm_alloc</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="mh">0x200</span><span class="p">);</span>
+    <span class="nx">wasm_write</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="nx">pb</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">instance</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">Match</span><span class="p">(</span><span class="nx">pa</span><span class="p">,</span> <span class="nx">a</span><span class="p">.</span><span class="nx">byteLength</span><span class="p">,</span> <span class="nx">pb</span><span class="p">,</span> <span class="nx">b</span><span class="p">.</span><span class="nx">byteLength</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// PARTY POPPER</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"container"</span><span class="p">).</span><span class="nx">innerText</span> <span class="o">=</span> <span class="s2">"🎉"</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// PILE OF POO</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"container"</span><span class="p">).</span><span class="nx">innerText</span> <span class="o">=</span> <span class="s2">"💩"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>Đoạn code nhỏ xinh dễ đọc, dễ hiểu và lâu ra kết quả này như sau:</p>
+<ol>
+  <li>Lấy paramater truyền từ biến <strong>“q”</strong> nhập vào trên URL.</li>
+  <li>Ghi nó vào trong khối WASM, cùng với một cục init data trong biến <strong>a</strong> hardcode.</li>
+  <li>Gọi hàm Match trong WASM, nếu kết quả bằng 1 thì emoji 🎉 sẽ hiện ra khen thưởng cho bạn, nếu không thì một cục sh!t xinh 💩 sẽ đập vào mắt bạn. Ban tổ chức quên khi rõ bạn nên xem mấy emoji này trên Firefox để tăng độ sinh động.</li>
+</ol>
+
+<p>WASM nhỏ nhắn thu mình trong kích thước 4.061 bytes với cái giản dị nhẹ nhàng va vào mắt thanh niên đọc đề <strong>test.wasm</strong>.
+<img src="/assets/media/flaron18_wasm_01.png" alt="flaron18_wasm_01.png" /></p>
+
+<p>Với vài dòng Google tối thiểu bạn có thể thoi thóm hi vọng decompile file binary này bằng <a href="https://github.com/WebAssembly/wabt/tree/master/wasm2c">wasm2c</a>. Sau vài phát gõ phím chúng ta nhanh chóng thấy một đoạn mã giả C dài hơn 2 ngàn dòng (cụ thể là 2144 dòng).</p>
+
+<p><img src="/assets/media/flaron18_wasm_02.png" alt="flaron18_wasm_02.png" /></p>
+
+<p>Đoạn mã giả với đầy những ký tự bí ẩn dạng như thế này:</p>
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="k">static</span> <span class="n">u32</span> <span class="nf">Match</span><span class="p">(</span><span class="n">u32</span> <span class="n">p0</span><span class="p">,</span> <span class="n">u32</span> <span class="n">p1</span><span class="p">,</span> <span class="n">u32</span> <span class="n">p2</span><span class="p">,</span> <span class="n">u32</span> <span class="n">p3</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">u32</span> <span class="n">l0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l3</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l4</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l5</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l6</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l7</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="n">l8</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l9</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l10</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l11</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l12</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l13</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l14</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l15</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="n">l16</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l17</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l18</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l19</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l20</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l21</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l22</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">l23</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">FUNC_PROLOGUE</span><span class="p">;</span>
+  <span class="n">u32</span> <span class="n">i0</span><span class="p">,</span> <span class="n">i1</span><span class="p">,</span> <span class="n">i2</span><span class="p">,</span> <span class="n">i3</span><span class="p">,</span> <span class="n">i4</span><span class="p">;</span>
+  <span class="p">...</span>
+  <span class="n">i0</span> <span class="o">=</span> <span class="mi">11u</span><span class="p">;</span>
+  <span class="n">i0</span> <span class="o">=</span> <span class="n">l2</span><span class="p">;</span>
+  <span class="n">i1</span> <span class="o">=</span> <span class="n">l4</span><span class="p">;</span>
+  <span class="n">i0</span> <span class="o">+=</span> <span class="n">i1</span><span class="p">;</span>
+  <span class="n">l5</span> <span class="o">=</span> <span class="n">i0</span><span class="p">;</span>
+  <span class="n">i0</span> <span class="o">=</span> <span class="n">l5</span><span class="p">;</span>
+  <span class="n">l6</span> <span class="o">=</span> <span class="n">i0</span><span class="p">;</span>
+  <span class="n">i0</span> <span class="o">=</span> <span class="mi">0u</span><span class="p">;</span>
+  <span class="n">i32_store</span><span class="p">((</span><span class="o">&amp;</span><span class="n">memory</span><span class="p">),</span> <span class="p">(</span><span class="n">u64</span><span class="p">)(</span><span class="n">i0</span> <span class="o">+</span> <span class="mi">24</span><span class="p">),</span> <span class="n">i1</span><span class="p">);</span>
+  <span class="n">i0</span> <span class="o">=</span> <span class="n">l2</span><span class="p">;</span>
+  <span class="n">i1</span> <span class="o">=</span> <span class="n">p1</span><span class="p">;</span>
+  <span class="n">i32_store</span><span class="p">((</span><span class="o">&amp;</span><span class="n">memory</span><span class="p">),</span> <span class="p">(</span><span class="n">u64</span><span class="p">)(</span><span class="n">i0</span> <span class="o">+</span> <span class="mi">20</span><span class="p">),</span> <span class="n">i1</span><span class="p">);</span>
+  <span class="n">i0</span> <span class="o">=</span> <span class="n">l2</span><span class="p">;</span>
+  <span class="n">i1</span> <span class="o">=</span> <span class="n">p2</span><span class="p">;</span>
+  <span class="n">i32_store</span><span class="p">((</span><span class="o">&amp;</span><span class="n">memory</span><span class="p">),</span> <span class="p">(</span><span class="n">u64</span><span class="p">)(</span><span class="n">i0</span> <span class="o">+</span> <span class="mi">16</span><span class="p">),</span> <span class="n">i1</span><span class="p">);</span>
+  <span class="n">i0</span> <span class="o">=</span> <span class="n">l2</span><span class="p">;</span>
+  <span class="n">i1</span> <span class="o">=</span> <span class="n">p3</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>Trong một sự nổ lực, mình Google xem các tiền bối đi trước nói chuyện với các bài WASM thế nào, mọi thứ đều thật đẹp khi mình đọc thấy một writeup dài vài cây số <a href="https://github.com/balsn/ctf_writeup/tree/master/20180421-*ctf#wasm-sces60107">ở đây</a>, những hi vọng tốt lành nhanh chóng tan đi khi writeup bắt đầu bằng hơn 900 dòng mã C rồi bạn ấy dễ dàng phát biểu một dòng đầy thần kỳ.</p>
+<blockquote>
+  <p>The first thing come out in my mind is that It’s TEA.
+But there some difference.</p>
+</blockquote>
+
+<p>Mình không có đủ các kiên trì kiểu này. Nhưng thế giới có rất nhiều người tài và đầy thằng đểu. Nếu không làm được người tài thì mình làm thằng còn lại vậy. Trong thoi thóp mình nhớ lại một cách đểu trước đây từng dùng, <a href="https://blog.botbie.io/2014/07/01/binary-analysis-next-chapter-of-the-game">side channel attack</a>.</p>
+
+<h2 id="giải-bài">Giải bài</h2>
+<p>Mục tiêu của mình là tìm một công cụ để đếm số instruction thực thi của WASM, bằng cách đếm sự khác nhau của các instruction thực thi mỗi khi thay đổi input đầu vào, bằng cách đó có thể dò ra flag. Chi tiết hơn về cách thức này bạn có thể đọc lại <a href="https://blog.botbie.io/2014/07/01/binary-analysis-next-chapter-of-the-game">bài cũ</a> mình đã nói bên trên.
+Mình tìm ra công cụ có cái tên rất cute là <a href="https://github.com/danleh/wasabi">wasabi</a>.</p>
+
+<p><strong>wasabi</strong> hỗ trợ đếm từng loại instruction, do chưa biết nên đếm loại nào, mình code đoạn cho đếm từng loại.</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="cm">/*
+ * User-facing API for dynamic analyses.
+ */</span>
+
+<span class="nx">sa</span> <span class="o">=</span> <span class="p">{</span>
+
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">resetSA</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">sa</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">start</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">nop</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">unreachable</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">if_</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">br</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">br_if</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">br_table</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">begin</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">end</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">drop</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">select</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">call_pre</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">call_post</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">return_</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">load</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">store</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">printSA</span><span class="p">(</span><span class="nx">prefix</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">prefix</span><span class="p">,</span> <span class="s2">"sa:"</span><span class="p">,</span>
+        <span class="s2">"start="</span> <span class="p">,</span> <span class="nx">sa</span><span class="p">.</span><span class="nx">start</span><span class="p">,</span>
+        <span class="s2">"nop="</span> <span class="p">,</span> <span class="nx">sa</span><span class="p">.</span><span class="nx">nop</span><span class="p">,</span>
+        <span class="s2">"unreachable="</span> <span class="p">,</span> <span class="nx">sa</span><span class="p">.</span><span class="nx">unreachable</span><span class="p">,</span>
+        <span class="s2">"if_="</span> <span class="p">,</span> <span class="nx">sa</span><span class="p">.</span><span class="nx">if_</span><span class="p">,</span>
+        <span class="s2">"br="</span> <span class="p">,</span> <span class="nx">sa</span><span class="p">.</span><span class="nx">br</span><span class="p">,</span>
+        <span class="s2">"br_if="</span> <span class="p">,</span> <span class="nx">sa</span><span class="p">.</span><span class="nx">br_if</span><span class="p">,</span>
+        <span class="s2">"br_table="</span> <span class="p">,</span> <span class="nx">sa</span><span class="p">.</span><span class="nx">br_table</span><span class="p">,</span>
+        <span class="s2">"begin="</span> <span class="p">,</span> <span class="nx">sa</span><span class="p">.</span><span class="nx">begin</span><span class="p">,</span>
+        <span class="s2">"end="</span> <span class="p">,</span> <span class="nx">sa</span><span class="p">.</span><span class="nx">end</span><span class="p">,</span>
+        <span class="s2">"drop="</span> <span class="p">,</span> <span class="nx">sa</span><span class="p">.</span><span class="nx">drop</span><span class="p">,</span>
+        <span class="s2">"select="</span> <span class="p">,</span> <span class="nx">sa</span><span class="p">.</span><span class="nx">select</span><span class="p">,</span>
+        <span class="s2">"call_pre="</span> <span class="p">,</span> <span class="nx">sa</span><span class="p">.</span><span class="nx">call_pre</span><span class="p">,</span>
+        <span class="s2">"call_post="</span> <span class="p">,</span> <span class="nx">sa</span><span class="p">.</span><span class="nx">call_post</span><span class="p">,</span>
+        <span class="s2">"load="</span> <span class="p">,</span> <span class="nx">sa</span><span class="p">.</span><span class="nx">load</span><span class="p">,</span>
+        <span class="s2">"store="</span> <span class="p">,</span> <span class="nx">sa</span><span class="p">.</span><span class="nx">store</span>
+        <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">getSAStr</span><span class="p">(</span><span class="nx">prefix</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">sa</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">Wasabi</span><span class="p">.</span><span class="nx">analysis</span> <span class="o">=</span> <span class="p">{</span>
+
+    <span class="nx">start</span><span class="p">(</span><span class="nx">location</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">sa</span><span class="p">.</span><span class="nx">start</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="nx">if_</span><span class="p">(</span><span class="nx">location</span><span class="p">,</span> <span class="nx">condition</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">sa</span><span class="p">.</span><span class="nx">if_</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="nx">br</span><span class="p">(</span><span class="nx">location</span><span class="p">,</span> <span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">sa</span><span class="p">.</span><span class="nx">br</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="nx">br_if</span><span class="p">(</span><span class="nx">location</span><span class="p">,</span> <span class="nx">conditionalTarget</span><span class="p">,</span> <span class="nx">condition</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">sa</span><span class="p">.</span><span class="nx">if_</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="nx">br_table</span><span class="p">(</span><span class="nx">location</span><span class="p">,</span> <span class="nx">table</span><span class="p">,</span> <span class="nx">defaultTarget</span><span class="p">,</span> <span class="nx">tableIdx</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">sa</span><span class="p">.</span><span class="nx">br_table</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="nx">begin</span><span class="p">(</span><span class="nx">location</span><span class="p">,</span> <span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">sa</span><span class="p">.</span><span class="nx">begin</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="nx">end</span><span class="p">(</span><span class="nx">location</span><span class="p">,</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">beginLocation</span><span class="p">,</span> <span class="nx">ifLocation</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">sa</span><span class="p">.</span><span class="nx">end</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="nx">drop</span><span class="p">(</span><span class="nx">location</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">sa</span><span class="p">.</span><span class="nx">drop</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="nx">select</span><span class="p">(</span><span class="nx">location</span><span class="p">,</span> <span class="nx">cond</span><span class="p">,</span> <span class="nx">first</span><span class="p">,</span> <span class="nx">second</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">sa</span><span class="p">.</span><span class="nx">select</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="nx">call_pre</span><span class="p">(</span><span class="nx">location</span><span class="p">,</span> <span class="nx">targetFunc</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="nx">indirectTableIdx</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">sa</span><span class="p">.</span><span class="nx">call_pre</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="nx">call_post</span><span class="p">(</span><span class="nx">location</span><span class="p">,</span> <span class="nx">values</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">sa</span><span class="p">.</span><span class="nx">call_post</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="nx">return_</span><span class="p">(</span><span class="nx">location</span><span class="p">,</span> <span class="nx">values</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">sa</span><span class="p">.</span><span class="nx">return_</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="nx">load</span><span class="p">(</span><span class="nx">location</span><span class="p">,</span> <span class="nx">op</span><span class="p">,</span> <span class="nx">memarg</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">sa</span><span class="p">.</span><span class="nx">load</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="nx">store</span><span class="p">(</span><span class="nx">location</span><span class="p">,</span> <span class="nx">op</span><span class="p">,</span> <span class="nx">memarg</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">sa</span><span class="p">.</span><span class="nx">store</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">},</span>
+
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<p>Các challenge của flareon đều có flag là một cái email. Nên mình lập một whitelist các ký tự có thể thuộc flag.
+Đầu tiên cần chạy thử nghiệm, với từng ký tự thử xem hướng side channel này có khả thi không. Đoạn code dò của mình sau:</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">results</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">instance</span> <span class="o">=</span> <span class="nx">results</span><span class="p">.</span><span class="nx">instance</span><span class="p">;</span>
+  <span class="c1">/// comment</span>
+
+  <span class="kd">function</span> <span class="nx">run</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">q</span> <span class="o">=</span> <span class="nx">key</span><span class="p">;</span>
+      <span class="nx">resetSA</span><span class="p">();</span>
+      <span class="c1">// let b = new Uint8Array(new TextEncoder().encode(getParameterByName("q")));</span>
+      <span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Uint8Array</span><span class="p">(</span><span class="k">new</span> <span class="nx">TextEncoder</span><span class="p">().</span><span class="nx">encode</span><span class="p">(</span><span class="nx">key</span><span class="p">));</span>
+      <span class="kd">let</span> <span class="nx">pa</span> <span class="o">=</span> <span class="nx">wasm_alloc</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="mh">0x200</span><span class="p">);</span>
+      <span class="nx">wasm_write</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="nx">pa</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
+
+      <span class="kd">let</span> <span class="nx">pb</span> <span class="o">=</span> <span class="nx">wasm_alloc</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="mh">0x200</span><span class="p">);</span>
+      <span class="nx">wasm_write</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="nx">pb</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+
+
+      <span class="k">if</span> <span class="p">(</span><span class="nx">instance</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">Match</span><span class="p">(</span><span class="nx">pa</span><span class="p">,</span> <span class="nx">a</span><span class="p">.</span><span class="nx">byteLength</span><span class="p">,</span> <span class="nx">pb</span><span class="p">,</span> <span class="nx">b</span><span class="p">.</span><span class="nx">byteLength</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+          <span class="c1">// PARTY POPPER</span>
+          <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"container"</span><span class="p">).</span><span class="nx">innerText</span> <span class="o">=</span> <span class="s2">"🎉"</span><span class="p">;</span>
+          <span class="nb">window</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="c1">// PILE OF POO</span>
+          <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"container"</span><span class="p">).</span><span class="nx">innerText</span> <span class="o">=</span> <span class="s2">"💩"</span><span class="p">;</span>
+          <span class="k">return</span> <span class="nx">getSAStr</span><span class="p">();</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="kd">var</span> <span class="nx">choices</span> <span class="o">=</span> <span class="s2">"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789-~!@#$%^&amp;*()_+[]\{}|;':&lt;&gt;?/,."</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">choices</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">ch</span> <span class="o">=</span> <span class="nx">choices</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+    <span class="nx">resetSA</span><span class="p">()</span>
+    <span class="kd">var</span> <span class="nx">trySA</span> <span class="o">=</span> <span class="nx">run</span><span class="p">(</span><span class="nx">ch</span><span class="p">);</span>
+    <span class="nx">printSA</span><span class="p">(</span><span class="nx">ch</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>Bằng cách quan sát kết quả xuất ra, ta có thể nhận ra 1 ký tự cho kết quả cho kết quả đếm khác các ký tự còn lại, ký tự đầu tiên là: <strong>w</strong>
+<img src="/assets/media/flaron18_wasm_03.png" alt="flaron18_wasm_03.png" /></p>
+
+<p>Bằng cách tiếp tục nới rộng ra, ta có thể tìm ra flag. Ta biết flag của flag là như thường lệ là một cái email, vậy ký tự space không tồn tại trong đó. Đoạn code hoàn chỉnh để tự tìm flag như sau:</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">results</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">instance</span> <span class="o">=</span> <span class="nx">results</span><span class="p">.</span><span class="nx">instance</span><span class="p">;</span>
+    <span class="c1">/// comment</span>
+
+  <span class="kd">function</span> <span class="nx">run</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">q</span> <span class="o">=</span> <span class="nx">key</span><span class="p">;</span>
+      <span class="nx">resetSA</span><span class="p">();</span>
+      <span class="c1">// let b = new Uint8Array(new TextEncoder().encode(getParameterByName("q")));</span>
+      <span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Uint8Array</span><span class="p">(</span><span class="k">new</span> <span class="nx">TextEncoder</span><span class="p">().</span><span class="nx">encode</span><span class="p">(</span><span class="nx">key</span><span class="p">));</span>
+      <span class="kd">let</span> <span class="nx">pa</span> <span class="o">=</span> <span class="nx">wasm_alloc</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="mh">0x200</span><span class="p">);</span>
+      <span class="nx">wasm_write</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="nx">pa</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
+
+      <span class="kd">let</span> <span class="nx">pb</span> <span class="o">=</span> <span class="nx">wasm_alloc</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="mh">0x200</span><span class="p">);</span>
+      <span class="nx">wasm_write</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="nx">pb</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+
+
+      <span class="k">if</span> <span class="p">(</span><span class="nx">instance</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">Match</span><span class="p">(</span><span class="nx">pa</span><span class="p">,</span> <span class="nx">a</span><span class="p">.</span><span class="nx">byteLength</span><span class="p">,</span> <span class="nx">pb</span><span class="p">,</span> <span class="nx">b</span><span class="p">.</span><span class="nx">byteLength</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+          <span class="c1">// PARTY POPPER</span>
+          <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"container"</span><span class="p">).</span><span class="nx">innerText</span> <span class="o">=</span> <span class="s2">"🎉"</span><span class="p">;</span>
+          <span class="nb">window</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="c1">// PILE OF POO</span>
+          <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"container"</span><span class="p">).</span><span class="nx">innerText</span> <span class="o">=</span> <span class="s2">"💩"</span><span class="p">;</span>
+          <span class="k">return</span> <span class="nx">getSAStr</span><span class="p">();</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="kd">var</span> <span class="nx">choices</span> <span class="o">=</span> <span class="s2">" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789-~!@#$%^&amp;*()_+[]\{}|;':&lt;&gt;?/,."</span>
+  <span class="kd">var</span> <span class="nx">cur</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">pos</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">;</span> <span class="nx">pos</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// console.log("key_len:", pos);</span>
+    <span class="kd">var</span> <span class="nx">i</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">countSA</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">choices</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">ch</span> <span class="o">=</span> <span class="nx">choices</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">q</span> <span class="o">=</span> <span class="nx">cur</span> <span class="o">+</span> <span class="nx">ch</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">trySA</span> <span class="o">=</span> <span class="nx">run</span><span class="p">(</span><span class="nx">q</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">countSA</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+          <span class="c1">// set on first sight</span>
+          <span class="nx">countSA</span> <span class="o">=</span> <span class="nx">trySA</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">countSA</span> <span class="o">!=</span> <span class="nx">trySA</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">cur</span> <span class="o">+=</span> <span class="nx">ch</span><span class="p">;</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"-&gt; "</span> <span class="o">+</span> <span class="nx">cur</span><span class="p">);</span>
+          <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="nx">i</span> <span class="o">==</span> <span class="nx">choices</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"flag on len: "</span> <span class="o">+</span> <span class="nx">pos</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"flag: "</span><span class="p">,</span> <span class="nx">cur</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>Kết quả chạy:
+<img src="/assets/media/flaron18_wasm_04.png" alt="flaron18_wasm_04.png" /></p>
+
+<p>Thử lại phát:
+<img src="/assets/media/flaron18_wasm_05.png" alt="flaron18_wasm_05.png" /></p>
+
+<p>Bingo 😄</p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            
+            <figure class="author-image">
+                <a class="img" href="/author/khoai" style="background-image: url(/assets/images/avatars/khoai.jpeg)"><span class="hidden">khoai's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/khoai">Khoai</a></h4>
+
+                
+                    <p> I'm a ghost...
+</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> In the shell</span>
+                    
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=[flareon2018] chal5 WebAssembly writeup: side channel attack&amp;url=http://blog.botbie.io/2018/10/13/flareon2018-chal5-webassembly-writeup-side-channel-attack"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.botbie.io/2018/10/13/flareon2018-chal5-webassembly-writeup-side-channel-attack"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.botbie.io/2018/10/13/flareon2018-chal5-webassembly-writeup-side-channel-attack"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+            
+                <div data-width="100%" class="fb-comments" data-href="http://blog.botbie.io/2018/10/13/flareon2018-chal5-webassembly-writeup-side-channel-attack"></div>
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+        <a class="read-next-story " style="background-image: url(/assets/images/covers/cover3.jpg)" href="/2018/11/14/concurrency-pattern-active-object">
+            <section class="post">
+                <h2>Concurrency Pattern - Active Object</h2>
+                <p>Active Object là một design pattern sử dụng trong lập trình đa luồng, nó giải...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/media/Torus.png)" href="/2018/09/26/ban-ve-thi-nghiem-xac-dinh-chieu-khong-gian-thu-4">
+            <section class="post">
+                <h2>Bàn về thí nghiệm xác định chiều không gian thứ 4?</h2>
+                <p>Bài viết này phản hồi về nội dung bài viết này: http://khoahocphattrien.vn/khoa-hoc/phat-hien-chan-dong-2-thi-nghiem-dong-thoi-xac-nhan-chieu-khong-gian-thu-4/20180917092138773p1c160.htm, tiêu đề bài...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+        <footer class="site-footer clearfix">
+          <section class="copyright"><a href="/">Botbie Blog</a> &copy; 2019</section>
+          <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/biomadeira/jasper">Jasper</a></section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-51088846-5', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=1555729331387875";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, "script", "facebook-jssdk"));</script>
+
+</body>
+</html>

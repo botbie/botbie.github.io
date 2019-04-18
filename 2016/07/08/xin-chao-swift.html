@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    <title>Xin chào Swift</title>
+    <meta name="description" content="Swift là ngôn ngữ lập trình được phát triển bởi Apple, release vào năm 2014, phiên bản mới nhất tại thời điểm viết bài này là 3.0 Preview 2. Apple đã tạo ra một điểm nhấn khi quyết định open source Swift vào ngày 3-12-2015, Swift hiện tại có thể develop và thực thi trên cả môi trường Linux lẫn Mac, mở ra cơ hội tiếp cận ngôn ngữ này cho những người dùng Linux. Swift đã không còn là một ngôn ngữ chỉ để thay thế objective-c khi phát triển ứng dụng cho Mac/iOS mà giờ đây chúng ta hoàn toàn có thể viết bất kì chương trình nào với nó, ví dụ như các ứng dụng Server-Side cho Linux." />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" >
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css"
+          href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- [[! highlight.js ]] -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+    
+<link rel="canonical" href="/" />
+<meta name="referrer" content="origin" />
+<link rel="next" href="/page/2/" />
+
+<meta property="og:site_name" content="Botbie Blog" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Xin chào Swift" />
+<meta property="og:description" content="Swift là ngôn ngữ lập trình được phát triển bởi Apple, release vào năm 2014, phiên bản mới nhất tại thời điểm viết bài này là 3.0 Preview 2. Apple đã tạo ra một điểm nhấn khi quyết định open source Swift vào ngày 3-12-2015, Swift hiện tại có thể develop và thực thi trên cả môi trường Linux lẫn Mac, mở ra cơ hội tiếp cận ngôn ngữ này cho những người dùng Linux. Swift đã không còn là một ngôn ngữ chỉ để thay thế objective-c khi phát triển ứng dụng cho Mac/iOS mà giờ đây chúng ta hoàn toàn có thể viết bất kì chương trình nào với nó, ví dụ như các ứng dụng Server-Side cho Linux." />
+<meta property="og:url" content="http://blog.botbie.io/2016/07/08/xin-chao-swift" />
+<meta property="og:image" content="http://blog.botbie.io/assets/images/covers/cover4.jpg" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Xin chào Swift" />
+<meta name="twitter:description" content="Swift là ngôn ngữ lập trình được phát triển bởi Apple, release vào năm 2014, phiên bản mới nhất tại thời điểm viết bài này là 3.0 Preview 2. Apple đã tạo ra một điểm nhấn khi quyết định open source Swift vào ngày 3-12-2015, Swift hiện tại có thể develop và thực thi trên cả môi trường Linux lẫn Mac, mở ra cơ hội tiếp cận ngôn ngữ này cho những người dùng Linux. Swift đã không còn là một ngôn ngữ chỉ để thay thế objective-c khi phát triển ứng dụng cho Mac/iOS mà giờ đây chúng ta hoàn toàn có thể viết bất kì chương trình nào với nó, ví dụ như các ứng dụng Server-Side cho Linux." />
+<meta name="twitter:url" content="http://blog.botbie.io/2016/07/08/xin-chao-swift" />
+<meta name="twitter:image:src" content="http://blog.botbie.io/assets/images/covers/cover4.jpg" />
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Botbie Blog",
+    "url": "http://blog.botbie.io/2016/07/08/xin-chao-swift",
+    "image": "http://blog.botbie.io/assets/images/covers/cover4.jpg",
+    "description": "Swift là ngôn ngữ lập trình được phát triển bởi Apple, release vào năm 2014, phiên bản mới nhất tại thời điểm viết bài này là 3.0 Preview 2. Apple đã tạo ra một điểm nhấn khi quyết định open source Swift vào ngày 3-12-2015, Swift hiện tại có thể develop và thực thi trên cả môi trường Linux lẫn Mac, mở ra cơ hội tiếp cận ngôn ngữ này cho những người dùng Linux. Swift đã không còn là một ngôn ngữ chỉ để thay thế objective-c khi phát triển ứng dụng cho Mac/iOS mà giờ đây chúng ta hoàn toàn có thể viết bất kì chương trình nào với nó, ví dụ như các ứng dụng Server-Side cho Linux."
+}
+</script>
+
+<meta name="generator" content="Jekyll 3.0.0" />
+<link rel="alternate" type="application/rss+xml" title="Botbie Blog" href="/feed.xml" />
+
+
+</head>
+<body class="home-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-about " role="presentation"><a href="/about">About</a></li>
+        <li class="nav-author " role="presentation"><a href="/author">Contributors</a></li>
+        <li class="nav-links " role="presentation"><a href="/links">Useful links</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/security">Security</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ctf">Ctf</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/mongodb">Mongodb</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/injection">Injection</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bitcoin">Bitcoin</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bài-dịch">Bài dịch</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptocurrency">Cryptocurrency</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/blockchain">Blockchain</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/plugin">Plugin</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/nodebb">Nodebb</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ide">Ide</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/source-control">Source control</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/git">Git</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/devops">Devops</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptography">Cryptography</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hash">Hash</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/system">System</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/vps">Vps</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/server">Server</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hosting">Hosting</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/docker">Docker</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/openvpn">Openvpn</a></li>
+        
+        
+        
+        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/swift">Swift</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ai">Ai</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/agent">Agent</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/gpu">Gpu</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hashcat">Hashcat</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/splunk">Splunk</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/elastic">Elastic</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/kibana">Kibana</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/opinions">Opinions</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/links">Links</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/games">Games</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/startup">Startup</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bookreview">Bookreview</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/triết-học">Triết học</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/nghệ-thuật-sống">Nghệ thuật sống</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/internet">Internet</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/npo">Npo</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/rng">Rng</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/architect">Architect</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/backend">Backend</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/soundcloud">Soundcloud</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/sharing">Sharing</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/investment">Investment</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/loving">Loving</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/psychedelic">Psychedelic</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/science">Science</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/theory">Theory</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ctf">Ctf</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/webassembly">Webassembly</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/side-channel-attack">Side channel attack</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/design-pattern">Design pattern</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/concurrency-programming">Concurrency programming</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/java">Java</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/string">String</a></li>
+        
+    </ul>
+    <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/images/covers/cover4.jpg) ">
+    <nav class="main-nav  overlay  clearfix">
+      <a class="blog-logo" href="/"><img src="/assets/images/botbie.png" alt="Blog Logo" /></a>
+        
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-test tag-content">
+
+        <header class="post-header">
+            <h1 class="post-title">Xin chào Swift</h1>
+            <section class="post-meta">
+            <time class="post-date" datetime="2016-07-08">08 Jul 2016</time>
+                <!-- [[tags prefix=" on "]] -->
+                
+                on 
+                    
+                       <a href='/tag/swift'>Swift</a>
+                    
+                
+                
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <p>Swift là ngôn ngữ lập trình được phát triển bởi Apple, release vào năm 2014, phiên bản mới nhất tại thời điểm viết bài này là 3.0 Preview 2. Apple đã tạo ra một điểm nhấn khi quyết định open source Swift vào ngày 3-12-2015, Swift hiện tại có thể develop và thực thi trên cả môi trường Linux lẫn Mac, mở ra cơ hội tiếp cận ngôn ngữ này cho những người dùng Linux. Swift đã không còn là một ngôn ngữ chỉ để thay thế objective-c khi phát triển ứng dụng cho Mac/iOS mà giờ đây chúng ta hoàn toàn có thể viết bất kì chương trình nào với nó, ví dụ như các ứng dụng Server-Side cho Linux. Hiện đã có một vài web framework cho Swift như <a href="https://github.com/IBM-Swift/Kitura">Kitura</a> được phát triển bởi IBM, hay <a href="http://www.perfect.org/">Perfect</a>.</p>
+
+<h3 id="cài-đặt">Cài đặt:</h3>
+<ol>
+  <li>Cài đặt dependencies:
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ sudo apt-get install clang libicu-dev
+</code></pre>
+    </div>
+  </li>
+  <li>Tải về phiên bản release mới nhất (3.0 Preview 2):
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ wget https://swift.org/builds/swift-3.0-preview-2/ubuntu1510/swift-3.0-PREVIEW-2/swift-3.0-PREVIEW-2-ubuntu15.10.tar.gz
+</code></pre>
+    </div>
+  </li>
+  <li>Giải nén file vừa tải về:
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ tar xzf swift-3.0-PREVIEW-2-ubuntu15.10.tar.gz
+</code></pre>
+    </div>
+  </li>
+  <li>Add Swift toolchain vào PATH:
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ export PATH="/&lt;path&gt;/swift-3.0-PREVIEW-2-ubuntu15.10/usr/bin:$PATH"
+</code></pre>
+    </div>
+  </li>
+  <li>Kiểm tra swift đã cài đúng chưa:
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ swift --version
+Swift version 3.0 (swift-3.0-PREVIEW-2)
+Target: x86_64-unknown-linux-gnu
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<h3 id="sử-dụng-repl">Sử dụng REPL:</h3>
+<p>Gõ lệnh swift không kèm theo tham số nào, chúng ta sẽ có được một shell tương tác có khả năng đọc, evaluate và in kết quả của bất kì đoạn code Swift nào mà bạn nhập vào:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ swift
+Welcome to Swift version 3.0 (swift-3.0-PREVIEW-2). Type :help for assistance.
+  1&gt; 1 + 1
+$R0: Int = 2
+  2&gt; let greet = "Xin chao Swift"
+greet: String = "Xin chao Swift"
+  3&gt; print(greet)
+Xin chao Swift
+  4&gt;
+</code></pre>
+</div>
+<p>Chúng ta còn có thể import các module của hệ thống như <code class="highlighter-rouge">Darwin</code> trên Mac hay <code class="highlighter-rouge">Glibc</code> trên Linux:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>1&gt; import Glibc
+2&gt; random() % 10
+$R0: Int = 3
+</code></pre>
+</div>
+
+<h3 id="tạo-package-và-build-file-thực-thi-với-build-system">Tạo Package và build file thực thi với <code class="highlighter-rouge">Build System</code></h3>
+<ol>
+  <li>Kiểm tra phiên bản Swift có hỗ trợ build hay không:
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ swift build --help
+OVERVIEW: Build sources into binary products
+USAGE: swift build [mode] [options]
+...
+</code></pre>
+    </div>
+  </li>
+  <li>Tạo package:
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ mkdir Hello
+$ cd Hello
+</code></pre>
+    </div>
+    <p>Mọi package cần có một file Package.swift trong thư mục gốc:</p>
+    <div class="highlighter-rouge"><pre class="highlight"><code>touch Package.swift
+</code></pre>
+    </div>
+    <p>Tạo thư mục chứa source code:</p>
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ mkdir Sources
+</code></pre>
+    </div>
+  </li>
+  <li>Build file thực thi:</li>
+</ol>
+
+<p>Tạo file main.swift trong <code class="highlighter-rouge">Sources/</code> với nội dung sau bằng text editor bất kỳ:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>print("Xin chào Swift")
+</code></pre>
+</div>
+<p>Biên dịch package bằng lệnh <code class="highlighter-rouge">swift build</code>:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ swift build
+Compile Swift Module 'Hello' (1 sources)
+Linking .build/debug/Hello
+</code></pre>
+</div>
+<p>Chạy thử nào:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ .build/debug/Hello
+Xin chào Swift
+</code></pre>
+</div>
+<p>Kiểm tra file build ra thuộc loại nào:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ file .build/debug/Hello
+.build/debug/Hello: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=becde89d40e02d3c9d9ca147580844d632f1c8f4, not stripped
+</code></pre>
+</div>
+<p>Chúng ta có thể thấy file được build ra có định dạng ELF, đây là định dạng file thực thi của Linux, điều đó có nghĩa Swift biên dịch source code qua native code -&gt; chương trình sẽ được chạy trực tiếp trên máy thật chứ không phải thông qua VM như Java hay .NET :cool:</p>
+
+<p>Nói đến Swift thì chắc chắn đó là một câu chuyện dài, bài viết này chỉ nhằm mục đích “Hello World” nên xin tạm dừng tại đây, hẹn gặp các bạn vào những bài viết sau :grin:</p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            
+            <figure class="author-image">
+                <a class="img" href="/author/nguquen" style="background-image: url(/assets/images/avatars/thien.png)"><span class="hidden">nguquen's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/nguquen">Thien Le</a></h4>
+
+                
+                    <p> Ngủ để mà quên...
+</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> Nowhere</span>
+                    
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=Xin chào Swift&amp;url=http://blog.botbie.io/2016/07/08/xin-chao-swift"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.botbie.io/2016/07/08/xin-chao-swift"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.botbie.io/2016/07/08/xin-chao-swift"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+            
+                <div data-width="100%" class="fb-comments" data-href="http://blog.botbie.io/2016/07/08/xin-chao-swift"></div>
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+        <a class="read-next-story " style="background-image: url(/assets/images/covers/cover4.jpg)" href="/2016/07/11/bitcoin-agent">
+            <section class="post">
+                <h2>Bitcoin Agent</h2>
+                <p>Bitcoin Agent là một chương trình tự động có thể tự sống bằng cách bán...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/images/covers/cover2.jpg)" href="/2016/07/02/cai-dat-openvpn-de-dang-voi-docker">
+            <section class="post">
+                <h2>Cài đặt OpenVPN dễ dàng với docker</h2>
+                <p>Trong thời buổi “đứt cáp” thường xuyên hơn cơm bữa, việc tự trang bị cho...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+        <footer class="site-footer clearfix">
+          <section class="copyright"><a href="/">Botbie Blog</a> &copy; 2019</section>
+          <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/biomadeira/jasper">Jasper</a></section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-51088846-5', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=1555729331387875";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, "script", "facebook-jssdk"));</script>
+
+</body>
+</html>

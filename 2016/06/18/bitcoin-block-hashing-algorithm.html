@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    <title>Block hashing algorithm - thuật toán băm khối</title>
+    <meta name="description" content="Quá trình đào bitcoin sử dụng thuật toán hashcash để tạo hash 'proof of work' https://en.bitcoin.it/wiki/Proof_of_work (bằng chứng về công việc)" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" >
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css"
+          href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- [[! highlight.js ]] -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+    
+<link rel="canonical" href="/" />
+<meta name="referrer" content="origin" />
+<link rel="next" href="/page/2/" />
+
+<meta property="og:site_name" content="Botbie Blog" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Block hashing algorithm - thuật toán băm khối" />
+<meta property="og:description" content="Quá trình đào bitcoin sử dụng thuật toán hashcash để tạo hash 'proof of work' https://en.bitcoin.it/wiki/Proof_of_work (bằng chứng về công việc)" />
+<meta property="og:url" content="http://blog.botbie.io/2016/06/18/bitcoin-block-hashing-algorithm" />
+<meta property="og:image" content="http://blog.botbie.io/assets/images/covers/cover2.jpg" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Block hashing algorithm - thuật toán băm khối" />
+<meta name="twitter:description" content="Quá trình đào bitcoin sử dụng thuật toán hashcash để tạo hash 'proof of work' https://en.bitcoin.it/wiki/Proof_of_work (bằng chứng về công việc)" />
+<meta name="twitter:url" content="http://blog.botbie.io/2016/06/18/bitcoin-block-hashing-algorithm" />
+<meta name="twitter:image:src" content="http://blog.botbie.io/assets/images/covers/cover2.jpg" />
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Botbie Blog",
+    "url": "http://blog.botbie.io/2016/06/18/bitcoin-block-hashing-algorithm",
+    "image": "http://blog.botbie.io/assets/images/covers/cover2.jpg",
+    "description": "Quá trình đào bitcoin sử dụng thuật toán hashcash để tạo hash 'proof of work' https://en.bitcoin.it/wiki/Proof_of_work (bằng chứng về công việc)"
+}
+</script>
+
+<meta name="generator" content="Jekyll 3.0.0" />
+<link rel="alternate" type="application/rss+xml" title="Botbie Blog" href="/feed.xml" />
+
+
+</head>
+<body class="home-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-about " role="presentation"><a href="/about">About</a></li>
+        <li class="nav-author " role="presentation"><a href="/author">Contributors</a></li>
+        <li class="nav-links " role="presentation"><a href="/links">Useful links</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/security">Security</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ctf">Ctf</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/mongodb">Mongodb</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/injection">Injection</a></li>
+        
+        
+        
+        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/bitcoin">Bitcoin</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bài-dịch">Bài dịch</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptocurrency">Cryptocurrency</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/blockchain">Blockchain</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/plugin">Plugin</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/nodebb">Nodebb</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ide">Ide</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/source-control">Source control</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/git">Git</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/devops">Devops</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptography">Cryptography</a></li>
+        
+        
+        
+        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/hash">Hash</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/system">System</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/vps">Vps</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/server">Server</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hosting">Hosting</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/docker">Docker</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/openvpn">Openvpn</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/swift">Swift</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ai">Ai</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/agent">Agent</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/gpu">Gpu</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hashcat">Hashcat</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/splunk">Splunk</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/elastic">Elastic</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/kibana">Kibana</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/opinions">Opinions</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/links">Links</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/games">Games</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/startup">Startup</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bookreview">Bookreview</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/triết-học">Triết học</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/nghệ-thuật-sống">Nghệ thuật sống</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/internet">Internet</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/npo">Npo</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/rng">Rng</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/architect">Architect</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/backend">Backend</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/soundcloud">Soundcloud</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/sharing">Sharing</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/investment">Investment</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/loving">Loving</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/psychedelic">Psychedelic</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/science">Science</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/theory">Theory</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ctf">Ctf</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/webassembly">Webassembly</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/side-channel-attack">Side channel attack</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/design-pattern">Design pattern</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/concurrency-programming">Concurrency programming</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/java">Java</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/string">String</a></li>
+        
+    </ul>
+    <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/images/covers/cover2.jpg) ">
+    <nav class="main-nav  overlay  clearfix">
+      <a class="blog-logo" href="/"><img src="/assets/images/botbie.png" alt="Blog Logo" /></a>
+        
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-test tag-content">
+
+        <header class="post-header">
+            <h1 class="post-title">Block hashing algorithm - thuật toán băm khối</h1>
+            <section class="post-meta">
+            <time class="post-date" datetime="2016-06-18">18 Jun 2016</time>
+                <!-- [[tags prefix=" on "]] -->
+                
+                on 
+                    
+                       <a href='/tag/bitcoin'>Bitcoin</a>,
+                    
+                
+                    
+                       <a href='/tag/cryptography'>Cryptography</a>,
+                    
+                
+                    
+                       <a href='/tag/cryptocurrency'>Cryptocurrency</a>,
+                    
+                
+                    
+                       <a href='/tag/hash'>Hash</a>,
+                    
+                
+                    
+                       <a href='/tag/bài-dịch'>Bài dịch</a>
+                    
+                
+                
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <p>Quá trình đào bitcoin sử dụng thuật toán hashcash để tạo hash <a href="https://en.bitcoin.it/wiki/Proof_of_work">‘proof of work’</a> (bằng chứng về công việc). Thuật toán hashcash yêu cầu những đối số sau: một chuỗi, một số nonce, và một biến đếm. Trong bitcoin chuỗi được mã hóa trong phần đầu cấu trúc dữ liệu của khối, bao gồm phiên bản, hash của khối trước đó, hash gốc của cây Merkle chứa tất cả các giao dịch trong khối, thời gian hiện tại, và độ khó. Bitcoin lưu trữ một số nonce khac trong trường extraNone, là một phần của giao dịch coinbase, nằm ở node lá trái nhất của cây Merkle (giao dịch coinbase là giao dịch đầu trong khối). Biến đếm Nonce khoảng 32 bit nên mỗi lần biến tràn, trường extraNonce phải tăng (hoặc thay đổi) để việc tính toán hash không bị lặp. Những khái niệm quanh thuật toán hashcash khá đơn giản, dễ hiểu và được trình bay chi tiết hơn <a href="https://web.archive.org/web/20170117040618/https://en.bitcoin.it/wiki/Hashcash">ở đây</a>. Khi đào bitcoin, thuật toán hashcash liên tục hash header của khối khi tăng dần biến đếm và trường nonce. Tăng trường extraNonce làm thay đổi nội dung giao dịch coinbase, dẫn đến thay đổi hash của cây merkle. Đôi khi block cũng thay đổi khi đang làm việc với nó (thêm transaction hoặc thay đổi timestamp).</p>
+
+<h3 id="block-header-chứa-những-trường-sau">Block header chứa những trường sau</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><strong>Field</strong></th>
+      <th style="text-align: center"><strong>Purpose</strong></th>
+      <th style="text-align: center"><strong>Updated when…</strong></th>
+      <th style="text-align: center"><strong>Size (Bytes)</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Version</td>
+      <td style="text-align: center">Block version number</td>
+      <td style="text-align: center">You upgrade the software and it specifies a new version</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">hashPrevBlock</td>
+      <td style="text-align: center">256-bit hash of the previous block header</td>
+      <td style="text-align: center">A new block comes in</td>
+      <td style="text-align: center">32</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">hashMerkleRoot</td>
+      <td style="text-align: center">256-bit hash based on all of the transactions in the block</td>
+      <td style="text-align: center">A transaction is accepted</td>
+      <td style="text-align: center">32</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Time</td>
+      <td style="text-align: center">Current timestamp as seconds since 1970-01-01T00:00 UTC</td>
+      <td style="text-align: center">Every few seconds</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Bits</td>
+      <td style="text-align: center">Current target in compact format</td>
+      <td style="text-align: center">The difficulty is adjusted</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Nonce</td>
+      <td style="text-align: center">32-bit number (starts at 0)</td>
+      <td style="text-align: center">A hash is tried (increments)</td>
+      <td style="text-align: center">4</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Phần thân của block chứa các giao dịch. Chúng được hash gián tiếp thông qua cây Merkle. Vì các giao dịch không được hash trực tiếp, việc hash một block với 1 giao dịch và một block chứa 10000 giao dịch tốn chi phí ngang nhau.
+Định dạng gọn gàng trên là một biến thể của số chấm động dùng 3 byte <a href="https://en.wikipedia.org/wiki/Significand">mantissa</a> (5 bytes thấp nhất dùng làm số mũ, cơ số 256). Hầu hết những trường trên giống nhau với tất cả thợ mỏ. Sẽ có vài khác biệt nhỏ về timestamp. Biến nonce luôn luôn khác, nhưng nó tăng dần chặt chẽ theo hàm tuyến tính. “Nonce” bắt đầu là 0 và tăng dần mỗi hash. Khi Nonce tràn (thường sẽ tràn), trường extraNonce của giao dịch tạo tiền tăng lên, và cây Merle thay đổi.</p>
+
+<p>Hơn nữa, hai thợ mỏ không thể có cùng hash merkle, bởi vì transaction đầu tiên trong block là tạo ra tiền trong địa chỉ của thợ mỏ. Vì vậy mà block của mỗi thợ mỏ đều khác nhau. Nên các thợ mỏ sẽ sinh ra được các chuỗi hash khác nhau. Mọi hash mà bạn tính được có cơ hội tương đương với mọi người khác trên mạng bitcoin.</p>
+
+<p>Bitcoin sử dụng hàm hash dạng SHA256(SHA256(Block_Header)), nhưng bạn nên cẩn thận về thứ tự byte.</p>
+
+<p>Ví dụ, đoạn mã python này sẽ tính hash của một block có hash nhỏ nhất vào tháng sáu 2011, <a href="http://blockexplorer.com/block/00000000000000001e8d6829a8a21adc5d38d0a473b144b6765798e61f98bd1d">Block 125552</a>. Header gồm sáu field dưới đây nối lại với nhau:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt;&gt; import hashlib
+&gt;&gt;&gt; header_hex = ("01000000" +
+ "81cd02ab7e569e8bcd9317e2fe99f2de44d49ab2b8851ba4a308000000000000" +
+ "e320b6c2fffc8d750423db8b1eb942ae710e951ed797f7affc8892b0f1fc122b" +
+ "c7f5d74d" +
+ "f2b9441a" +
+ "42a14695")
+&gt;&gt;&gt; header_bin = header_hex.decode('hex')
+&gt;&gt;&gt; hash = hashlib.sha256(hashlib.sha256(header_bin).digest()).digest()
+&gt;&gt;&gt; hash.encode('hex_codec')
+'1dbd981fe6985776b644b173a4d0385ddc1aa2a829688d1e0000000000000000'
+&gt;&gt;&gt; hash[::-1].encode('hex_codec')
+'00000000000000001e8d6829a8a21adc5d38d0a473b144b6765798e61f98bd1d'
+</code></pre>
+</div>
+<h3 id="endianess">Endianess</h3>
+<p>Chú ý rằng hash, là một số 256 bit, các bytes zero ở đầu chuỗi khi lưu trữ hoặc in dạng big-endian, nhưng nếu lưu ở dạng little-endian, những byte đó thành các byte cuối. Ví dụ, nếu chuyển một chuỗi thành hex, nếu các byte thấp nhất (byte bắt đầu) vẫn là bytes thấp nhất, nó là <a href="http://www.goldparser.org/doc/about/images/diagram-little-vs-big-endian.gif">little-endian</a>.</p>
+
+<p>blockexplorer hiển thị hash dạng big-edian thường gặp: thứ tự các byte tính từ trái sang phải.</p>
+
+<p>Trong một ví dụ khác , đây là một <a href="http://pastebin.com/bW3fQA2a">phiên bản viết bằng C</a>, không có tối ưu, đa luồng hay kiểm lỗi.</p>
+
+<p>Dưới đây là một đoạn code tương tự nhưng viết bằng PHP</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;?
+  //This reverses and then swaps every other char
+  function SwapOrder($in){
+      $Split = str_split(strrev($in));
+      $x='';
+      for ($i = 0; $i &lt; count($Split); $i+=2) {
+          $x .= $Split[$i+1].$Split[$i];
+      } 
+      return $x;
+  }
+ 
+  //makes the littleEndian
+  function littleEndian($value){
+      return implode (unpack('H*',pack("V*",$value)));
+  }
+ 
+  $version = littleEndian(1);
+  $prevBlockHash = SwapOrder('00000000000008a3a41b85b8b29ad444def299fee21793cd8b9e567eab02cd81');
+  $rootHash = SwapOrder('2b12fcf1b09288fcaff797d71e950e71ae42b91e8bdb2304758dfcffc2b620e3');
+  $time = littleEndian(1305998791);
+  $bits = littleEndian(440711666); 
+  $nonce = littleEndian(2504433986); 
+ 
+  //concat it all
+  $header_hex = $version . $prevBlockHash . $rootHash . $time . $bits . $nonce;
+ 
+  //convert from hex to binary 
+  $header_bin  = hex2bin($header_hex);
+  //hash it then convert from hex to binary 
+  $pass1 = hex2bin(  hash('sha256', $header_bin )  );
+  //Hash it for the seconded time
+  $pass2 = hash('sha256', $pass1);
+  //fix the order
+  $FinalHash = SwapOrder($pass2);
+ 
+  echo   $FinalHash;
+?&gt;
+</code></pre>
+</div>
+<p>Dịch từ https://en.bitcoin.it/wiki/Block_hashing_algorithm</p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            
+            <figure class="author-image">
+                <a class="img" href="/author/jaken" style="background-image: url(/assets/images/avatars/jaken.jpeg)"><span class="hidden">jaken's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/jaken">Jaken Ty</a></h4>
+
+                
+                    <p> I'm a ghost...
+</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> In the shell</span>
+                    
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=Block hashing algorithm - thuật toán băm khối&amp;url=http://blog.botbie.io/2016/06/18/bitcoin-block-hashing-algorithm"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.botbie.io/2016/06/18/bitcoin-block-hashing-algorithm"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.botbie.io/2016/06/18/bitcoin-block-hashing-algorithm"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+            
+                <div data-width="100%" class="fb-comments" data-href="http://blog.botbie.io/2016/06/18/bitcoin-block-hashing-algorithm"></div>
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+        <a class="read-next-story " style="background-image: url(/assets/images/covers/casper.jpg)" href="/2016/06/18/chia-se-kinh-nghiem-dang-ky-vps">
+            <section class="post">
+                <h2>Chia sẻ kinh nghiệm đăng kí VPS</h2>
+                <p>Mình chia sẻ bài viết này cho các bạn muốn sở hữu một VPS giá...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/images/covers/cover2.jpg)" href="/2016/06/17/phuc-hoi-code-voi-git">
+            <section class="post">
+                <h2>Phục hồi code với git</h2>
+                <p>Trong git có nhiều cách để phục hồi hay quay lại trạng thái của code....</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+        <footer class="site-footer clearfix">
+          <section class="copyright"><a href="/">Botbie Blog</a> &copy; 2019</section>
+          <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/biomadeira/jasper">Jasper</a></section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-51088846-5', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=1555729331387875";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, "script", "facebook-jssdk"));</script>
+
+</body>
+</html>

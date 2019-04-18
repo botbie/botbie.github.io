@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    <title>Trải nghiệm hashcat với GPU cùi mía</title>
+    <meta name="description" content="Với những card đồ họa hiện nay số lượng core đã lên tới cả ngàn thì specs này khá là khiêm tốn tương xứng với một món đồ cũ kỹ và giá rẻ ^^, 16 CUDA core chỉ bằng 8 * 2 = 2 MCU,  con CPU i7 của mình cũng đã = 8MCU rồi. Nhưng cũng không sao cả, với mục đích "trải nghiệm" thì như thế là đủ." />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" >
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css"
+          href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- [[! highlight.js ]] -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+    
+<link rel="canonical" href="/" />
+<meta name="referrer" content="origin" />
+<link rel="next" href="/page/2/" />
+
+<meta property="og:site_name" content="Botbie Blog" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Trải nghiệm hashcat với GPU cùi mía" />
+<meta property="og:description" content="Với những card đồ họa hiện nay số lượng core đã lên tới cả ngàn thì specs này khá là khiêm tốn tương xứng với một món đồ cũ kỹ và giá rẻ ^^, 16 CUDA core chỉ bằng 8 * 2 = 2 MCU,  con CPU i7 của mình cũng đã = 8MCU rồi. Nhưng cũng không sao cả, với mục đích "trải nghiệm" thì như thế là đủ." />
+<meta property="og:url" content="http://blog.botbie.io/2016/07/31/trai-nghiem-hashcat-voi-gpu-cui-mia" />
+<meta property="og:image" content="http://blog.botbie.io/assets/images/covers/cover4.jpg" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Trải nghiệm hashcat với GPU cùi mía" />
+<meta name="twitter:description" content="Với những card đồ họa hiện nay số lượng core đã lên tới cả ngàn thì specs này khá là khiêm tốn tương xứng với một món đồ cũ kỹ và giá rẻ ^^, 16 CUDA core chỉ bằng 8 * 2 = 2 MCU,  con CPU i7 của mình cũng đã = 8MCU rồi. Nhưng cũng không sao cả, với mục đích "trải nghiệm" thì như thế là đủ." />
+<meta name="twitter:url" content="http://blog.botbie.io/2016/07/31/trai-nghiem-hashcat-voi-gpu-cui-mia" />
+<meta name="twitter:image:src" content="http://blog.botbie.io/assets/images/covers/cover4.jpg" />
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Botbie Blog",
+    "url": "http://blog.botbie.io/2016/07/31/trai-nghiem-hashcat-voi-gpu-cui-mia",
+    "image": "http://blog.botbie.io/assets/images/covers/cover4.jpg",
+    "description": "Với những card đồ họa hiện nay số lượng core đã lên tới cả ngàn thì specs này khá là khiêm tốn tương xứng với một món đồ cũ kỹ và giá rẻ ^^, 16 CUDA core chỉ bằng 8 * 2 = 2 MCU,  con CPU i7 của mình cũng đã = 8MCU rồi. Nhưng cũng không sao cả, với mục đích "trải nghiệm" thì như thế là đủ."
+}
+</script>
+
+<meta name="generator" content="Jekyll 3.0.0" />
+<link rel="alternate" type="application/rss+xml" title="Botbie Blog" href="/feed.xml" />
+
+
+</head>
+<body class="home-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-about " role="presentation"><a href="/about">About</a></li>
+        <li class="nav-author " role="presentation"><a href="/author">Contributors</a></li>
+        <li class="nav-links " role="presentation"><a href="/links">Useful links</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/security">Security</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ctf">Ctf</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/mongodb">Mongodb</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/injection">Injection</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bitcoin">Bitcoin</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bài-dịch">Bài dịch</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptocurrency">Cryptocurrency</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/blockchain">Blockchain</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/plugin">Plugin</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/nodebb">Nodebb</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ide">Ide</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/source-control">Source control</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/git">Git</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/devops">Devops</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptography">Cryptography</a></li>
+        
+        
+        
+        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/hash">Hash</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/system">System</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/vps">Vps</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/server">Server</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hosting">Hosting</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/docker">Docker</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/openvpn">Openvpn</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/swift">Swift</a></li>
+        
+        
+        
+        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/ai">Ai</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/agent">Agent</a></li>
+        
+        
+        
+        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/gpu">Gpu</a></li>
+        
+        
+        
+        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/hashcat">Hashcat</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/splunk">Splunk</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/elastic">Elastic</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/kibana">Kibana</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/opinions">Opinions</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/links">Links</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/games">Games</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/startup">Startup</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bookreview">Bookreview</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/triết-học">Triết học</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/nghệ-thuật-sống">Nghệ thuật sống</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/internet">Internet</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/npo">Npo</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/rng">Rng</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/architect">Architect</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/backend">Backend</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/soundcloud">Soundcloud</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/sharing">Sharing</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/investment">Investment</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/loving">Loving</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/psychedelic">Psychedelic</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/science">Science</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/theory">Theory</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ctf">Ctf</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/webassembly">Webassembly</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/side-channel-attack">Side channel attack</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/design-pattern">Design pattern</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/concurrency-programming">Concurrency programming</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/java">Java</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/string">String</a></li>
+        
+    </ul>
+    <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/images/covers/cover4.jpg) ">
+    <nav class="main-nav  overlay  clearfix">
+      <a class="blog-logo" href="/"><img src="/assets/images/botbie.png" alt="Blog Logo" /></a>
+        
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-test tag-content">
+
+        <header class="post-header">
+            <h1 class="post-title">Trải nghiệm hashcat với GPU cùi mía</h1>
+            <section class="post-meta">
+            <time class="post-date" datetime="2016-07-31">31 Jul 2016</time>
+                <!-- [[tags prefix=" on "]] -->
+                
+                on 
+                    
+                       <a href='/tag/gpu'>Gpu</a>,
+                    
+                
+                    
+                       <a href='/tag/hashcat'>Hashcat</a>
+                    
+                
+                
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <p>Số là mình vừa kiếm được một con card đồ họa cũ, GeForce 210:</p>
+
+<blockquote>
+  <p>CUDA Cores: 16
+Graphics Clock (MHz): 589MHz
+Processor Clock (MHz): 1402MHz
+Graphics Performance: low-580</p>
+</blockquote>
+
+<p>Với những card đồ họa hiện nay số lượng core đã lên tới cả ngàn thì specs này khá là khiêm tốn tương xứng với một món đồ cũ kỹ và giá rẻ ^^, 16 CUDA core chỉ bằng 8 * 2 = 2 MCU,  con CPU i7 của mình cũng đã = 8MCU rồi. Nhưng cũng không sao cả, với mục đích “trải nghiệm” thì như thế là đủ.</p>
+
+<p>Nói về hashcat thì đó là một tool để crack password khá nổi tiếng, trước đây nó có 2 phiên bản:</p>
+<ul>
+  <li>Hashcat: phiên bản sử dụng CPU</li>
+  <li>oclHashcat/cudaHashcat: phiên bản sử dụng GPU (OpenCL hoặc CUDA)</li>
+</ul>
+
+<p>Nhưng từ phiên bản 3.0, hashcat đã gộp chung hai phiên bản này làm một dưới cái tên thống nhất là hashcat :cat: . Tải về dùng thử thôi:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ wget http://hashcat.net/files/hashcat-3.00.7z
+$ 7zr x hashcat-3.00.7z
+</code></pre>
+</div>
+<p>Chạy chế độ benchmark:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ cd hashcat-3.00
+$ ./hashcat64.bin -b
+hashcat (v3.00-1-g67a8d97) starting in benchmark-mode...
+
+OpenCL Platform #1: NVIDIA Corporation
+======================================
+- Device #1: WARNING: Device local mem size is too small
+- Device #1: GeForce 210, skipped
+
+OpenCL Platform #2: Intel(R) Corporation
+========================================
+- Device #2: Intel(R) Core(TM) i7-4790 CPU @ 3.60GHz, skipped
+
+
+
+ERROR: No devices found/left
+
+</code></pre>
+</div>
+<p>Mặc định hashcat sẽ sử dụng GPU để chạy, với lỗi này có thể hiểu là con card đồ họa này quá cùi nên hashcat không thèm dùng :cold_sweat: . Search thử thì thấy giang hồ bảo có thể dùng version cũ hơn cho GeForce 210, mình tải thử bản cuda 2.01:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ wget https://hashcat.net/files_legacy/cudaHashcat-2.01.7z
+$ 7zr x cudaHashcat-2.01.7z
+</code></pre>
+</div>
+<p>Chạy thử nào:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ cd cudaHashcat-2.01
+$ ./cudaHashcat64.bin -b
+cudaHashcat v2.01 starting in benchmark-mode...
+
+Device #1: GeForce 210, 1023MB, 1230Mhz, 2MCU
+
+
+
+ERROR: Shader Model 1.0 - 1.3 based GPU detected. Support for CUDA was dropped by NVidia.
+
+
+
+       Remove it from your system or use -d and select only supported cards.
+</code></pre>
+</div>
+<p>Không khá hơn mấy, dùng hàng cũ nó khổ thế đấy :dizzy_face: . Lại tìm kiếm thông tin trên mạng thì giang hồ bảo bản 1.31 có thể chạy tốt, lại thử xem sao:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ wget https://hashcat.net/files_legacy/cudaHashcat-1.31.7z
+$ 7zr x cudaHashcat-1.31.7z
+</code></pre>
+</div>
+<p>Chạy thử lần nữa nào:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ cd cudaHashcat-1.31
+$ ./cudaHashcat64.bin -b
+ERROR: This copy of cudaHashcat is outdated. Get a more recent version.
+</code></pre>
+</div>
+<p>wtf? Lại tìm hiểu tiếp thì được biết bên trong hashcat có một thứ gọi là timebomb, khi chạy nó sẽ kiểm tra time hệ thống, nếu quá hạn sẽ không cho dùng nữa. OK thôi, cài sẵn IDA bữa giờ mà không dùng, cũng nên mang ra thử :angry:</p>
+
+<p>Disassembly cudaHashcat-1.31, dễ dàng tìm thấy đoạn code sau:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>.text:0000000000409A22                 lea     rdi, [rbp+timer] ; timer
+.text:0000000000409A29                 call    _time
+.text:0000000000409A2E                 mov     rax, qword ptr [rbp+timer]
+.text:0000000000409A35                 lea     rdi, [rbp+timer] ; timer
+.text:0000000000409A3C                 mov     cs:timer, rax
+.text:0000000000409A43                 call    _localtime
+.text:0000000000409A48                 cmp     dword ptr [rax+14h], 73h
+.text:0000000000409A4C                 jg      loc_40A929
+</code></pre>
+</div>
+<p>Có thể hiểu đơn giản là chương trình sẽ gọi hàm <code class="highlighter-rouge">localtime</code>, và kiểm tra số năm, nếu lớn hơn  2015 (1900 + 73h) thì sẽ báo lỗi. Patch ngay lệnh <code class="highlighter-rouge">jg</code> là có thể sử dụng chương trình được:</p>
+
+<p><img src="https://i.gyazo.com/39bc479a790662e2a8ec0b3f9e559dd4.png" alt="patch" /></p>
+
+<p>Lúc đó chương trình sẽ như sau:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>.text:0000000000409A22                 lea     rdi, [rbp+timer] ; timer
+.text:0000000000409A29                 call    _time
+.text:0000000000409A2E                 mov     rax, qword ptr [rbp+timer]
+.text:0000000000409A35                 lea     rdi, [rbp+timer] ; timer
+.text:0000000000409A3C                 mov     cs:timer, rax
+.text:0000000000409A43                 call    _localtime
+.text:0000000000409A48                 cmp     dword ptr [rax+14h], 73h
+.text:0000000000409A4C                 nop
+.text:0000000000409A4D                 nop
+.text:0000000000409A4E                 nop
+.text:0000000000409A4F                 nop
+.text:0000000000409A50                 nop
+.text:0000000000409A51                 nop
+.text:0000000000409A52                 xor     esi, esi
+</code></pre>
+</div>
+
+<p>OK, lưu chương trình vừa patch lại và chạy thử:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ ./cudaHashcat64.bin -b
+cudaHashcat v1.31 starting in benchmark-mode...
+
+Device #1: GeForce 210, 1023MB, 1230Mhz, 2MCU
+
+WARNING: sm_12 based GPU detected. Treating them as sm_11
+Hashtype: MD4
+Workload: 1024 loops, 256 accel
+
+Speed.GPU.#1.: 85782.8 kH/s
+....
+</code></pre>
+</div>
+
+<p>Có thể thấy là mặc dù đã sử dụng được hashcat với GPU GeForce 210, nhưng speed của nó vẫn không bằng CPU i7. Đây là benchmark khi chạy hashcat 3.0 chọn option chỉ dùng CPU:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ ./hashcat64.bin -b -D 1
+hashcat (v3.00-1-g67a8d97) starting in benchmark-mode...
+
+OpenCL Platform #1: NVIDIA Corporation
+======================================
+- Device #1: WARNING: Device local mem size is too small
+- Device #1: GeForce 210, skipped
+
+OpenCL Platform #2: Intel(R) Corporation
+========================================
+- Device #2: Intel(R) Core(TM) i7-4790 CPU @ 3.60GHz, 3988/15953 MB allocatable, 8MCU
+
+Hashtype: MD4
+
+Speed.Dev.#2.:  1016.1 MH/s (96.05ms)
+</code></pre>
+</div>
+
+<p>Tất nhiên bài viết này chỉ mang ý nghĩa trải nghiệm, nếu bạn có ý định tận dụng sức mạnh của GPU để crack password, hãy đầu tư một con card đồ họa khủng hơn ^^.</p>
+
+<p>~ Hết ~</p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            
+            <figure class="author-image">
+                <a class="img" href="/author/nguquen" style="background-image: url(/assets/images/avatars/thien.png)"><span class="hidden">nguquen's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/nguquen">Thien Le</a></h4>
+
+                
+                    <p> Ngủ để mà quên...
+</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> Nowhere</span>
+                    
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=Trải nghiệm hashcat với GPU cùi mía&amp;url=http://blog.botbie.io/2016/07/31/trai-nghiem-hashcat-voi-gpu-cui-mia"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.botbie.io/2016/07/31/trai-nghiem-hashcat-voi-gpu-cui-mia"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.botbie.io/2016/07/31/trai-nghiem-hashcat-voi-gpu-cui-mia"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+            
+                <div data-width="100%" class="fb-comments" data-href="http://blog.botbie.io/2016/07/31/trai-nghiem-hashcat-voi-gpu-cui-mia"></div>
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+        <a class="read-next-story " style="background-image: url(/assets/images/covers/casper.jpg)" href="/2016/09/04/splunk-vs-elastic-stack-ban-chon-bo-cong-cu-nao-de-quan-ly-logs">
+            <section class="post">
+                <h2>Splunk vs Elastic Stack - Bạn chọn bộ công cụ nào để quản lý logs?</h2>
+                <p>Không giống như giai đoạn development của một project, giai đoạn production tạo ra rất...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/images/covers/cover4.jpg)" href="/2016/07/16/lap-trinh-socket-tren-swift-voi-bluesocket">
+            <section class="post">
+                <h2>Lập trình socket trên Swift với BlueSocket</h2>
+                <p>Giới thiệu Để lập trình socket trên Swift chúng ta có thể dùng các hàm...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+        <footer class="site-footer clearfix">
+          <section class="copyright"><a href="/">Botbie Blog</a> &copy; 2019</section>
+          <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/biomadeira/jasper">Jasper</a></section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-51088846-5', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=1555729331387875";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, "script", "facebook-jssdk"));</script>
+
+</body>
+</html>

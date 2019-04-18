@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    <title>Chưa hiểu về bitcoin? Sau đây là bài giải thích mà trẻ 5 tuổi cũng hiểu được.</title>
+    <meta name="description" content="Nếu anh vẫn chưa nhận biết bitcoin là gì, bài giải thích đơn giản này sẽ giúp anh." />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" >
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css"
+          href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- [[! highlight.js ]] -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+    
+<link rel="canonical" href="/" />
+<meta name="referrer" content="origin" />
+<link rel="next" href="/page/2/" />
+
+<meta property="og:site_name" content="Botbie Blog" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Chưa hiểu về bitcoin? Sau đây là bài giải thích mà trẻ 5 tuổi cũng hiểu được." />
+<meta property="og:description" content="Nếu anh vẫn chưa nhận biết bitcoin là gì, bài giải thích đơn giản này sẽ giúp anh." />
+<meta property="og:url" content="http://blog.botbie.io/2016/09/30/chua-hieu-ve-bitcoin-sau-day-la-bai-giai-thich-ma-tre-5-tuoi-cung-hieu-duoc" />
+<meta property="og:image" content="http://blog.botbie.io/assets/images/covers/casper.jpg" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Chưa hiểu về bitcoin? Sau đây là bài giải thích mà trẻ 5 tuổi cũng hiểu được." />
+<meta name="twitter:description" content="Nếu anh vẫn chưa nhận biết bitcoin là gì, bài giải thích đơn giản này sẽ giúp anh." />
+<meta name="twitter:url" content="http://blog.botbie.io/2016/09/30/chua-hieu-ve-bitcoin-sau-day-la-bai-giai-thich-ma-tre-5-tuoi-cung-hieu-duoc" />
+<meta name="twitter:image:src" content="http://blog.botbie.io/assets/images/covers/casper.jpg" />
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Botbie Blog",
+    "url": "http://blog.botbie.io/2016/09/30/chua-hieu-ve-bitcoin-sau-day-la-bai-giai-thich-ma-tre-5-tuoi-cung-hieu-duoc",
+    "image": "http://blog.botbie.io/assets/images/covers/casper.jpg",
+    "description": "Nếu anh vẫn chưa nhận biết bitcoin là gì, bài giải thích đơn giản này sẽ giúp anh."
+}
+</script>
+
+<meta name="generator" content="Jekyll 3.0.0" />
+<link rel="alternate" type="application/rss+xml" title="Botbie Blog" href="/feed.xml" />
+
+
+</head>
+<body class="home-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-about " role="presentation"><a href="/about">About</a></li>
+        <li class="nav-author " role="presentation"><a href="/author">Contributors</a></li>
+        <li class="nav-links " role="presentation"><a href="/links">Useful links</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/security">Security</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ctf">Ctf</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/mongodb">Mongodb</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/injection">Injection</a></li>
+        
+        
+        
+        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/bitcoin">Bitcoin</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bài-dịch">Bài dịch</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptocurrency">Cryptocurrency</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/blockchain">Blockchain</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/plugin">Plugin</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/nodebb">Nodebb</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ide">Ide</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/source-control">Source control</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/git">Git</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/devops">Devops</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptography">Cryptography</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hash">Hash</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/system">System</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/vps">Vps</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/server">Server</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hosting">Hosting</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/docker">Docker</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/openvpn">Openvpn</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/swift">Swift</a></li>
+        
+        
+        
+        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/ai">Ai</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/agent">Agent</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/gpu">Gpu</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hashcat">Hashcat</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/splunk">Splunk</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/elastic">Elastic</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/kibana">Kibana</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/opinions">Opinions</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/links">Links</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/games">Games</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/startup">Startup</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bookreview">Bookreview</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/triết-học">Triết học</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/nghệ-thuật-sống">Nghệ thuật sống</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/internet">Internet</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/npo">Npo</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/rng">Rng</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/architect">Architect</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/backend">Backend</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/soundcloud">Soundcloud</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/sharing">Sharing</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/investment">Investment</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/loving">Loving</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/psychedelic">Psychedelic</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/science">Science</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/theory">Theory</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ctf">Ctf</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/webassembly">Webassembly</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/side-channel-attack">Side channel attack</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/design-pattern">Design pattern</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/concurrency-programming">Concurrency programming</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/java">Java</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/string">String</a></li>
+        
+    </ul>
+    <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/images/covers/casper.jpg) ">
+    <nav class="main-nav  overlay  clearfix">
+      <a class="blog-logo" href="/"><img src="/assets/images/botbie.png" alt="Blog Logo" /></a>
+        
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-test tag-content">
+
+        <header class="post-header">
+            <h1 class="post-title">Chưa hiểu về bitcoin? Sau đây là bài giải thích mà trẻ 5 tuổi cũng hiểu được.</h1>
+            <section class="post-meta">
+            <time class="post-date" datetime="2016-09-30">30 Sep 2016</time>
+                <!-- [[tags prefix=" on "]] -->
+                
+                on 
+                    
+                       <a href='/tag/bitcoin'>Bitcoin</a>
+                    
+                
+                
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <p>Lượm lặt trên mạng thấy được bài này nên chia sẻ.!</p>
+
+<p>Nik Custodio (@nik5ter) | Published on January 9, 2014 at 13:00 BST
+Nếu anh vẫn chưa nhận biết bitcoin là gì, bài giải thích đơn giản này sẽ giúp anh.
+<img src="/assets/images/posts/2016-09-30/apple-bitcoin.jpeg" alt="apple" /></p>
+
+<p>Chúng ta đang ngồi trên ghế đá công viên. Trời trong xanh. Tôi có một quả táo và Tôi đưa nó cho anh.</p>
+
+<p>Giờ anh có một quả tảo còn Tôi trắng tay. Đơn giản chứ?</p>
+
+<p>Giờ chúng ta đào sâu hơn về việc gì đã xảy ra nhé!</p>
+
+<p>Quả táo “được tay trao tay” cho anh. Anh biết chuyện gì xảy ra. Tôi ở đó, anh ở đó - anh đã thực sự chạm vào nó.</p>
+
+<p>Chúng ta không cần người thứ ba giúp mình chuyển nó. Chúng ta không cần kéo chú Tommy (thẩm phán nổi tiếng) ngồi cạnh ta trên ghế đá và bảo đảm rằng quả táo đã được chuyển từ tay Tôi sang tay anh</p>
+
+<p>Quả táo đã là của anh! Tôi không thể cho anh một quả táo khác bởi vì Tôi không còn gì cả. Tôi không không thể điều khiển gì nữa. Quả táo đã không còn là của Tôi nữa. anh có toàn quyền dành cho nó từ đây. anh có thể cho bạn anh, rồi bạn anh cho bạn của họ, và cứ thế tiếp tục.</p>
+
+<p>Đấy là cái gọi là trao đổi người với người. Tôi nghĩ cũng giống nhau thôi nếu Tôi cho anh chuối, sách, 1 nửa hay 1 dollar..</p>
+
+<p>Nhưng đó là tôi đang đi hơi xa quá…</p>
+
+<h5 id="trở-lại-với-những-quả-táo">TRỞ LẠI VỚI NHỮNG QUẢ TÁO!</h5>
+<p><img src="/assets/images/posts/2016-09-30/pixelated-apple.jpeg" alt="pixelated apple" /></p>
+
+<p>Bây giờ, chúng ta hãy nói về 1 quá táo số hóa. Tôi sẽ cho anh một quả táo số hóa. À! bây giờ nó có vẻ thú vị hơn rồi!</p>
+
+<p>Làm sao anh biết là quả táo số hóa đó thuộc sở hữu của Tôi, giờ nó thành của anh và chỉ dành cho anh?</p>
+
+<p>Nghĩ thêm chút đi! Nó bắt đầu phức tạp hơn rồi nhỉ ? Làm sao anh biết là Tôi đã không gởi táo này cho chú Tommy qua mail trước đó? hay bạn của anh Joe? Hoặc cả bạn của Tôi- Lisa nữa?</p>
+
+<p>Có lẽ Tôi đã tạo ra nhiều phiên bản copy quả táo số hóa của Tôi trên máy tính. Có lẽ Tôi đã up lên internet và hàng triệu người đã download nó rồi.</p>
+
+<p>Như anh thấy đấy việc trao đổi điện tử gặp không ít vấn đề. Gởi quả táo số hóa hoàn toàn không giống việc trao táo thực thể ngoài đời.</p>
+
+<p>Nhiều nhà kỹ sư máy tính thông minh đã đặt tên cho vấn đề này: Nó gọi là vấn đề gấp đôi chi tiêu. Nhưng đừng lo về vụ này. Tất cả những gì cần biết là nó khiến họ đôi khi bối rối và họ không bao giờ giải quyết chúng. Cho tới nay.</p>
+
+<p>Nhưng chúng ta hãy thử suy nghĩ cách giải quyết vấn đề của mình</p>
+
+<h5 id="quyển-sổ-kế-toán">Quyển sổ kế toán</h5>
+<p><img src="/assets/images/posts/2016-09-30/ledger.jpeg" alt="ledger" /></p>
+
+<p>Có thể những quả táo số hóa này cần được theo dõi trong 1 cuốn sổ cái. Nó cơ bản chỉ là 1 cuốn sách nơi mà anh lưu giữ tất cả các giao dịch - một cuốn sách kế toán.</p>
+
+<p>Quyển sổ cái này, bởi ví nó điện tử hóa, nên cần phải đặt trong thế giối của nó và có ai đó quản lý chúng.</p>
+
+<p>Cũng giống như trong World of Warcraft, có câu, Blizzard, những người tạo ra trò chơi online, có 1 cuốn sổ cái điện tử của tất cả những cây kiếm lửa hiếm tồn tại trong hệ thống của họ. Vì thế, thật tốt, ai đó như họ có thể lưu giữ những quả táo số hóa của chúng ta. Tuyệt cú mèo! chúng ta đã giải quyết được nó</p>
+
+<h5 id="những-vấn-đề">Những vấn đề:</h5>
+<p>Có một vài vấn đề mặc dù:</p>
+
+<p>1/ Nếu có ai đó vượt mặt Blizzard thì sao? Anh ta sẽ tự thêm quả táo vào túi mình bao nhiêu tùy thích.</p>
+
+<p>2/ Nó không giống như khi chúng ta ở ghế đá vào ngày đó. Chỉ có tôi và anh. Thông qua Blizzard cũng như kéo chú Tommy (bên thứ ba) ra khỏi tòa án (Tôi đã nói ổng là thẩm phán nổi tiếng chưa?) vào những giao dịch ở công viên ghế đá của chúng ta. Làm thế nào tôi có thể trao đổi quả táo số hóa cho anh theo cách bình thường như vậy?</p>
+
+<p>Có cách nào có thể tái tạo được giao dịch trên ghế đá của chúng ta một cách kỹ thuật số hóa? Khá là rắc rối đây…</p>
+
+<h5 id="giải-pháp">Giải pháp</h5>
+<p><img src="/assets/images/posts/2016-09-30/network.gif" alt="network" /></p>
+
+<p>Giả như chúng ta đưa sổ cái này cho tất cả mọi người thì sao? Thay vì cuốn sổ này nằm trên máy tính Blizzard, nó sẽ tồn tại trong tất cả các máy tính của mọi người. Tất cả các giao dịch đã từng xảy ra, bất kì thời gian nào, trong những quả táo số hóa, nó đều sẽ được ghi lại.</p>
+
+<p>Anh không thể gian lận. Tôi không thể đưa cho anh quả táo số hóa mà tôi không có, bởi vì việc đó sẽ không thể kết nối với những ai khác trong cùng 1 hệ thống.
+Thêm vào đó, nó không được kiểm soát bởi một người, vì vậy tôi biết không có ai có thể quyết định tự cho mình nhiều táo số hóa hơn có thể. Các quy tắc của hệ thống đã được xác định ngay từ đầu.</p>
+
+<p>Các quy tắc cũng như mã code là nguồn mở - kiểu gần như phần mềm được dùng trên điện thoại android của má anh vậy. Hoặc đơn giản hơn như là Wikipedia. Nó dành cho những người thông minh có thể lưu trữ, bảo mật, cải tiến và kiểm tra.</p>
+
+<p>Anh cũng có thể tham gia vào mạng lưới này luôn - cập nhật sổ cái và chắc chắc là mọi thứ đều được kiểm tra kĩ lưỡng. nếu có vấn đề gì, anh có thể nhận được khoảng 25 quả táo số hóa như một phần thưởng. Thật ra, đó là cách duy nhất để tạo ra nhiều hơn quả táo số hóa trong hệ thống.</p>
+
+<p>Tôi đã đơn giản hóa nó một chút… Nhưng hệ thống mà tôi đang giải thích đây nó thật sự tồn tại. Nó được gọi là giao thức Bitcoin. Và những quả táo số hóa là những bitcoin bên trong hệ thống. Ồ, vậy anh đã hiểu được cái gì đã xảy ra rồi phải không?</p>
+
+<h5 id="cuốn-sổ-cái-công-cộng-này-có-khả-năng-gì">Cuốn sổ cái công cộng này có khả năng gì?</h5>
+
+<p>Nó là nguồn mở, nhớ không? Tổng số lượng quả táo đã được định nghĩa ở cuốn sổ cái công cộng này ngay từ đầu. Tôi biết chính xác số lượng hiện hữu. Trong hệ thống, tôi biết nó có giới hạn (hiếm).</p>
+
+<p>Khi tạo 1 cuộc trao đổi, tôi biết là táo điện tự đó đã không thuộc sở hữu của tôi nữa và bây giờ hoàn toàn thuộc về bạn. Tôi đã từng không dám nói gì về những thứ số hóa. Nó sẽ được cập nhật và xác nhận với cuốn sổ cái công cộng.</p>
+
+<p>Bởi vì nó là một cuốn sổ cái công cộng, tôi không cần chú Tommy (bên thứ ba) để bảo đảm tôi không gian lận, hay tạo nhiều phiên bản cho mình, hoặc gởi gấp hai gấp ba quả táo…</p>
+
+<p>Với hệ thống, trao đổi 1 quả táo số hóa bây giờ cũng như một cuộc trao đổi quả táo vật chất. Nó ngon như là nhìn thấy quả táo vật chất từ tay tôi rớt sang túi anh. Như hôm ở ghế đá công việc, cuộc trao đổi chỉ liên quan đến hai người. Anh và tôi, chả cần chú Tommy ở đó để làm nó có giá trị.</p>
+
+<p>Nói cách khác, nó vận hành như 1 thực thể vật chất.</p>
+
+<p>Nhưng anh biết cái gì hay ho ở đây không? Đó là nó vẫn số hóa.</p>
+
+<p>Bây giờ chúng ta có thể giao dịch với 1000 quả táo, hay một triệu quả táo, thậm chí .0000001 quả táo. Tôi có thể gởi nó chỉ với 1 cái bấm nút, và tôi vẫn có thể thả nó vào túi số của anh nếu tôi ở Nicaragua và anh đang ở đâu đó trên mọi nẻo đường ở New York.</p>
+
+<p>Tôi thậm chí có thể tạo ra những thứ số hóa hoạt động trên những quả táo số hóa này. Tất cả đều là số hóa. Có lẽ tôi có thể đính kèm một số văn bản theo nó - một lưu ý kỹ thuật số. Hoặc có lẽ tôi có thể đính kèm nhiều điều quan trọng; như một hợp đồng, hoặc một chứng chỉ cổ phiếu hoặc thẻ ID …</p>
+
+<p>Thế thật tuyệt vời! Làm thế nào chúng ta nên điều trị hay từ giá trị của những “quả táo số hóa”? Chúng đang khá là hữu ích mà?</p>
+
+<p>Vâng, hiện tại có rất nhiều người đang tranh cãi về nó. Có cả những tranh luận giữa các trường kinh tế, giữa các chính trị gia, giữa các lập trình viên. Nhưng đừng nghe tất cả trong số họ. Một số người thông minh; một số hiểu sai lạc. Một số nói rằng hệ thống này có giá trị; một số nói rằng nó chẳng có giá trị nào. Một số anh chàng thực sự đặt một con số hơi khó cho nó: $ 1,300 mỗi quả táo. Một số người nói đó là vàng số hóa; một số nói rằng nó là một loại tiền tệ. Những người khác nói rằng họ giống như những bông hoa tulip. Một số người nói rằng nó sẽ thay đổi thế giới; một số nói rằng nó chỉ là một mốt nhất thời.</p>
+
+<p>Tôi có ý kiến ​​riêng của tôi về nó, nhưng đó là một câu chuyện khác.</p>
+
+<p>Này nhé, bây giờ anh đã biết thêm về Bitcoin rồi đấy.</p>
+
+<p><a href="https://medium.freecodecamp.org/explain-bitcoin-like-im-five-73b4257ac833">Originally posted on Medium</a></p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            
+            <figure class="author-image">
+                <a class="img" href="/author/phuongcute" style="background-image: url(/assets/images/avatars/phuongcute.png)"><span class="hidden">phuongcute's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/phuongcute">Phương bếu</a></h4>
+
+                
+                    <p> I'm a ghost...
+</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> In the shell</span>
+                    
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=Chưa hiểu về bitcoin? Sau đây là bài giải thích mà trẻ 5 tuổi cũng hiểu được.&amp;url=http://blog.botbie.io/2016/09/30/chua-hieu-ve-bitcoin-sau-day-la-bai-giai-thich-ma-tre-5-tuoi-cung-hieu-duoc"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.botbie.io/2016/09/30/chua-hieu-ve-bitcoin-sau-day-la-bai-giai-thich-ma-tre-5-tuoi-cung-hieu-duoc"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.botbie.io/2016/09/30/chua-hieu-ve-bitcoin-sau-day-la-bai-giai-thich-ma-tre-5-tuoi-cung-hieu-duoc"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+            
+                <div data-width="100%" class="fb-comments" data-href="http://blog.botbie.io/2016/09/30/chua-hieu-ve-bitcoin-sau-day-la-bai-giai-thich-ma-tre-5-tuoi-cung-hieu-duoc"></div>
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+        <a class="read-next-story " style="background-image: url(/assets/media/brexit.jpg)" href="/2016/11/09/donald-trump-thang-va-xu-huong-cuc-doan-dang-gia-tang">
+            <section class="post">
+                <h2>Donald Trump thắng và xu hướng cực đoan đang gia tăng</h2>
+                <p>Một cách thiển cận, khi quan sát các sự kiện gần đây, dường như xu...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/images/covers/casper.jpg)" href="/2016/09/04/splunk-vs-elastic-stack-ban-chon-bo-cong-cu-nao-de-quan-ly-logs">
+            <section class="post">
+                <h2>Splunk vs Elastic Stack - Bạn chọn bộ công cụ nào để quản lý logs?</h2>
+                <p>Không giống như giai đoạn development của một project, giai đoạn production tạo ra rất...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+        <footer class="site-footer clearfix">
+          <section class="copyright"><a href="/">Botbie Blog</a> &copy; 2019</section>
+          <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/biomadeira/jasper">Jasper</a></section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-51088846-5', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=1555729331387875";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, "script", "facebook-jssdk"));</script>
+
+</body>
+</html>

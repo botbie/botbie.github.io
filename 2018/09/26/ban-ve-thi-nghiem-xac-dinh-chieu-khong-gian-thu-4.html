@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    <title>Bàn về thí nghiệm xác định chiều không gian thứ 4?</title>
+    <meta name="description" content="QHE chỉ có thể tồn tại trong các không gian có số chiều chẵn, như 2D, 4D, 6D, 8D (không có từ 10D trở lên). Do đó, nếu thí nghiệm mà ở đó các electron được bố trí để chỉ có thể tương tác 3D, 4D trở lên, mà kết quả lại có hiệu ứng QHE thì có thể khẳng định rằng đã giả lập thành công 4D. Tất nhiên, có thể đó là 6D hoặc 8D, nhưng kết quả như vậy đã là mĩ mãn rồi." />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" >
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css"
+          href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- [[! highlight.js ]] -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+    
+<link rel="canonical" href="/" />
+<meta name="referrer" content="origin" />
+<link rel="next" href="/page/2/" />
+
+<meta property="og:site_name" content="Botbie Blog" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Bàn về thí nghiệm xác định chiều không gian thứ 4?" />
+<meta property="og:description" content="QHE chỉ có thể tồn tại trong các không gian có số chiều chẵn, như 2D, 4D, 6D, 8D (không có từ 10D trở lên). Do đó, nếu thí nghiệm mà ở đó các electron được bố trí để chỉ có thể tương tác 3D, 4D trở lên, mà kết quả lại có hiệu ứng QHE thì có thể khẳng định rằng đã giả lập thành công 4D. Tất nhiên, có thể đó là 6D hoặc 8D, nhưng kết quả như vậy đã là mĩ mãn rồi." />
+<meta property="og:url" content="http://blog.botbie.io/2018/09/26/ban-ve-thi-nghiem-xac-dinh-chieu-khong-gian-thu-4" />
+<meta property="og:image" content="http://blog.botbie.io/assets/media/Torus.png" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Bàn về thí nghiệm xác định chiều không gian thứ 4?" />
+<meta name="twitter:description" content="QHE chỉ có thể tồn tại trong các không gian có số chiều chẵn, như 2D, 4D, 6D, 8D (không có từ 10D trở lên). Do đó, nếu thí nghiệm mà ở đó các electron được bố trí để chỉ có thể tương tác 3D, 4D trở lên, mà kết quả lại có hiệu ứng QHE thì có thể khẳng định rằng đã giả lập thành công 4D. Tất nhiên, có thể đó là 6D hoặc 8D, nhưng kết quả như vậy đã là mĩ mãn rồi." />
+<meta name="twitter:url" content="http://blog.botbie.io/2018/09/26/ban-ve-thi-nghiem-xac-dinh-chieu-khong-gian-thu-4" />
+<meta name="twitter:image:src" content="http://blog.botbie.io/assets/media/Torus.png" />
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Botbie Blog",
+    "url": "http://blog.botbie.io/2018/09/26/ban-ve-thi-nghiem-xac-dinh-chieu-khong-gian-thu-4",
+    "image": "http://blog.botbie.io/assets/media/Torus.png",
+    "description": "QHE chỉ có thể tồn tại trong các không gian có số chiều chẵn, như 2D, 4D, 6D, 8D (không có từ 10D trở lên). Do đó, nếu thí nghiệm mà ở đó các electron được bố trí để chỉ có thể tương tác 3D, 4D trở lên, mà kết quả lại có hiệu ứng QHE thì có thể khẳng định rằng đã giả lập thành công 4D. Tất nhiên, có thể đó là 6D hoặc 8D, nhưng kết quả như vậy đã là mĩ mãn rồi."
+}
+</script>
+
+<meta name="generator" content="Jekyll 3.0.0" />
+<link rel="alternate" type="application/rss+xml" title="Botbie Blog" href="/feed.xml" />
+
+
+</head>
+<body class="home-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-about " role="presentation"><a href="/about">About</a></li>
+        <li class="nav-author " role="presentation"><a href="/author">Contributors</a></li>
+        <li class="nav-links " role="presentation"><a href="/links">Useful links</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/security">Security</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ctf">Ctf</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/mongodb">Mongodb</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/injection">Injection</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bitcoin">Bitcoin</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bài-dịch">Bài dịch</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptocurrency">Cryptocurrency</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/blockchain">Blockchain</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/plugin">Plugin</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/nodebb">Nodebb</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ide">Ide</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/source-control">Source control</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/git">Git</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/devops">Devops</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptography">Cryptography</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hash">Hash</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/system">System</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/vps">Vps</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/server">Server</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hosting">Hosting</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/docker">Docker</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/openvpn">Openvpn</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/swift">Swift</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ai">Ai</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/agent">Agent</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/gpu">Gpu</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hashcat">Hashcat</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/splunk">Splunk</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/elastic">Elastic</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/kibana">Kibana</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/opinions">Opinions</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/links">Links</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/games">Games</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/startup">Startup</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bookreview">Bookreview</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/triết-học">Triết học</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/nghệ-thuật-sống">Nghệ thuật sống</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/internet">Internet</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/npo">Npo</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/rng">Rng</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/architect">Architect</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/backend">Backend</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/soundcloud">Soundcloud</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/sharing">Sharing</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/investment">Investment</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/loving">Loving</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/psychedelic">Psychedelic</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/science">Science</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/theory">Theory</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ctf">Ctf</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/webassembly">Webassembly</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/side-channel-attack">Side channel attack</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/design-pattern">Design pattern</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/concurrency-programming">Concurrency programming</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/java">Java</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/string">String</a></li>
+        
+    </ul>
+    <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/media/Torus.png) ">
+    <nav class="main-nav  overlay  clearfix">
+      <a class="blog-logo" href="/"><img src="/assets/images/botbie.png" alt="Blog Logo" /></a>
+        
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-test tag-content">
+
+        <header class="post-header">
+            <h1 class="post-title">Bàn về thí nghiệm xác định chiều không gian thứ 4?</h1>
+            <section class="post-meta">
+            <time class="post-date" datetime="2018-09-26">26 Sep 2018</time>
+                <!-- [[tags prefix=" on "]] -->
+                
+                on 
+                    
+                       <a href='/tag/science'>Science</a>,
+                    
+                
+                    
+                       <a href='/tag/theory'>Theory</a>
+                    
+                
+                
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <p>Bài viết này phản hồi về nội dung bài viết này: <a href="http://khoahocphattrien.vn/khoa-hoc/phat-hien-chan-dong-2-thi-nghiem-dong-thoi-xac-nhan-chieu-khong-gian-thu-4/20180917092138773p1c160.htm">http://khoahocphattrien.vn/khoa-hoc/phat-hien-chan-dong-2-thi-nghiem-dong-thoi-xac-nhan-chieu-khong-gian-thu-4/20180917092138773p1c160.htm</a>, tiêu đề bài này có vẻ gây sốc, nhưng bài viết gốc tiếng Anh thì không như vậy: <a href="https://physicsworld.com/a/quantum-hall-effect-in-4d-is-created-in-the-lab/">https://physicsworld.com/a/quantum-hall-effect-in-4d-is-created-in-the-lab/</a></p>
+
+<p><em>Toàn bộ nội dung phản hồi được ghi lại từ biện giải của <a href="https://blog.botbie.io/author/nkimkha">Kha</a>, với sự góp ý của <a href="https://blog.botbie.io/author/jaken">Jaken</a>, trong channel <a href="https://botbie.slack.com/messages/CCYFN5D2T/">#research</a> trên Slack của nhóm Botbie. Mọi người có thể tham gia tại đây: <a href="http://slack.botbie.io">http://slack.botbie.io</a>.</em></p>
+
+<p>Nội dung của các thí nghiệm được đề cập ở trên, chung quy lại chỉ là cách giả lập 4D, để có thể sử dụng lại trong các thí nghiệm/nghiên cứu tiếp theo. Phương pháp để kiểm nghiệm cái giả lập 4D đó dựa trên <strong>hiệu ứng Hall lượng tử</strong> (Quantum Hall Effect - QHE).</p>
+
+<p>Nôm na là QHE chỉ có thể tồn tại trong các không gian có số chiều chẵn, như 2D, 4D, 6D, 8D (không có từ 10D trở lên). Do đó, nếu thí nghiệm mà ở đó các electron được bố trí để chỉ có thể tương tác 3D, 4D trở lên, mà kết quả lại có hiệu ứng QHE thì có thể khẳng định rằng đã giả lập thành công 4D. Tất nhiên, có thể đó là 6D hoặc 8D, nhưng kết quả như vậy đã là mĩ mãn rồi.</p>
+
+<p>Đó là toàn bộ nội dung mà bài báo trên muốn truyền đạt.</p>
+
+<p>À, họ không chỉ đề cập đến 1 thí nghiệm mà có đến 2 thí nghiệm cùng đạt kết quả như trên.</p>
+
+<p>Giờ tôi sẽ giải đáp từng vấn đề trong đó. Đầu tiên là <strong>tại sao không có QHE trong không gian 3D, 5D,…?</strong></p>
+
+<p>Muốn giải thích cái này thì phải biết về QHE là gì? QHE thực tế là một hiệu ứng điện trở trong một điều kiện đặc biệt: <em>Một vật ở nhiệt độ gần bằng độ không tuyệt đối và đặt trong một từ trường cực mạnh.</em></p>
+
+<p>Như chúng ta đã biết, dòng điện là dòng di chuyển của electron/ion/… trong vật dẫn, và điện trở là do các phân tử/nguyên tử phân bố trong vật dẫn điện, ngăn cản dòng electron/ion di chuyển theo điện trường. Tùy theo cách bố trí khác nhau của mỗi chất, mà nó sẽ có điện trở suất khác nhau, nhưng có thể hình dung là nếu vật cản càng dày đặc và chuyển động càng hỗn độn thì điện trở càng lớn.</p>
+
+<p>Như vậy, nếu các phân tử/nguyên tử không cản trở dòng electron, thì điện trở sẽ bằng không (gọi là chất siêu dẫn). Nhưng muốn không cản trở, về lý thuyết thì các phân tử trên bắt buộc phải “không chuyển động”, mà muốn ở trạng thái này thì phải ở độ không tuyệt đối. Vì như chúng ta đã được học, <strong>nhiệt</strong> là “trạng thái hỗn độn của các phần tử trong chất”, càng hỗn độn thì nhiệt độ càng cao, càng ít hỗn độn thì càng có nhiệt độ thấp, và như thế nhiệt độ nếu bằng không tuyệt đối thì sẽ không có cái gì di chuyển. Chính điều này khiến cho nhiệt độ không thể giảm dưới mức không tuyệt đối.</p>
+
+<p>Hiện tại, chưa ai khẳng định được đã đạt được độ không tuyệt đối, nhưng người ta cũng rất cố gắng đạt được nó, bởi đặc tính “siêu dẫn điện” kia. Cứ tưởng tượng việc truyền tải toàn bộ công suất điện mà không làm nóng dây dẫn mới tuyệt vời làm sao. Khi đó, bạn không lo cái điện thoại/laptop/… của bạn nóng máy, làm cháy nổ gì cả. Thế nên người ta rất chú tâm tìm nó, và khi gần đạt độ không tuyệt đối thì họ phát hiện ra là có một loại <strong>điện trở khác</strong>. Tuy được hiểu là “điện trở” nhưng người ta lại đặt tên khác hẳn, là hiệu ứng Hall lượng tử (Quantum Hall Effect) mà chúng ta đang nói.</p>
+
+<p>Nghiên cứu thêm về QHE, người ta dường như kết luận là nó thậm chí tồn tại trong môi trường được gọi là “siêu dẫn”, và có thể được tăng điện trở thông qua việc tăng cường độ của từ trường.</p>
+
+<p>Phát hiện này quả thật phi thường. Tạo nguồn cảm hứng cho khá nhiều giải Nobel vật lý, và cả ước mơ về máy tính lượng tử nữa. Bởi vì người ta có thể điều khiển tăng giảm âm thanh bằng việc thay đổi từ trường, hay thậm chí là chế ra transitor (đơn vị hình thành khả năng tính toán của CPU) bằng kích thước của phân tử. Tuy nhiên, đó là vấn đề khác.</p>
+
+<p>Tôi sẽ tiếp tục với việc giải thích <strong>sự hình thành hiệu ứng QHE này như thế nào?</strong></p>
+
+<p>Trước hết, khi gần đạt độ không tuyệt đối, các phân tử sẽ gần như không ảnh hưởng điện trở lên dòng điện, mà nhường việc này cho cái từ trường cùng hiệu ứng Hall kia (như đã nói ở trên). Thứ 2, từ trường được đặt vuông góc với chiều di chuyển của dòng điện. Mà từ trường thì luôn có một điện trường xoay quanh mình.</p>
+
+<p>Lưu ý là từ trường biến thiên sẽ tạo ra dòng điện xung quanh, nhưng từ trường tĩnh thì luôn luôn có điện trường. Chính cái mối quan hệ này mà người ta mới gọi là điện-từ trường.</p>
+
+<p>Cái mô hình xoay như vậy được xem là trên spin 2D, tức là trong không gian 2D. Và người ta xác định nó là 2D vì vector di chuyển của một điểm của spin luôn nằm trên mặt phẳng 2D (bạn có thể hình dung khi cột cục đá vào trong sợi dây và quay tròn, rõ ràng là cục đá quay quanh trên một mặt phẳng 2D).</p>
+
+<p>Spin trên không gian 3D thì phức tạp hơn chút. Cái spin 2D kia quay quanh cái trục đứng vuông góc. Giờ cho cái trục đó cũng nhẹ nhàng quay tròn xuống, vuông góc với mặt phẳng quay của spin 2D. Đó chính là spin 3D. Cần lưu ý là spin 3D cần phải biểu diễn trong không gian 3D, và vector di chuyển sẽ tạo thành mặt cầu chứ không còn hình tròn nữa.</p>
+
+<p>Cái phức tạp hơn là 4D, vốn khó hình dung. Nhưng về lý thuyết, trong không gian 4 chiều sẽ có một “trục” vuông góc với cái mặt cầu 3D. Khi đó spin 4D chỉ đơn giản là xoay cái trục đó mà thôi. Tương tự cho các chiều cao cấp hơn như 5D, 6D…</p>
+
+<p>OK, giờ mới trở lại câu hỏi lúc đầu: <strong>tại sao không có QHE trong không gian 3D, 5D,…?</strong></p>
+
+<p>Có thể thấy với spin 3D thì điện trường liên tục đảo chiều. Chính vì vậy nên khả năng ngăn cản dòng điện của nó là rất lớn. Lớn tới mức chúng ta thấy nó không còn là “điện trở” nữa mà trở thành “chất cách điện”. Và hiệu ứng QHE không tồn tại ở đó. (Việc chứng minh chi tiết thì rất phức tạp, nhưng đó là chuyện của các nhà toán học và vật lý, tôi chỉ đề cập đến kết luận dễ thấy của nó thôi.)</p>
+
+<p>Tóm lại, nếu đã dựng thí nghiệm với không gian nhiều hơn 2D mà vẫn nhận được QHE thì chứng tỏ là đã giả lập thành công 4D.</p>
+
+<p>Cần lưu ý rõ là các nhà khoa học trong bài viết trên <strong>KHÔNG chứng minh sự tồn tại 4D</strong> (như bài báo tiếng Việt “chém”), họ chỉ nói rằng “có thể dùng phương pháp này để thử nghiệm các lý thuyết vì không gian 4D, nếu 4D tồn tại”. Một bước tiến dài trong khoa học, nhưng chưa phải là bước tiến mà người bình thường chờ đợi, thay vào đó họ sẽ tiếp tục chờ đợi.</p>
+
+<p>Tái bút: tôi trình bày theo cách đơn giản và dễ hiểu nhất, nên có nhiều chỗ sẽ không chuẩn xác. Nhưng các nhà khoa học thì chứng minh nó chính xác hơn. Trong phạm vi của bài viết này, tôi xin phép lược bỏ, mà chú tâm vào mục đích hiểu của người chưa rành.</p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            
+            <figure class="author-image">
+                <a class="img" href="/author/nkimkha" style="background-image: url(/assets/images/avatars/nkimkha.jpg)"><span class="hidden">nkimkha's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/nkimkha">Nguyễn Kim Kha</a></h4>
+
+                
+                    <p> ENTP Type.
+</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> HCMC, Vietnam</span>
+                    
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=Bàn về thí nghiệm xác định chiều không gian thứ 4?&amp;url=http://blog.botbie.io/2018/09/26/ban-ve-thi-nghiem-xac-dinh-chieu-khong-gian-thu-4"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.botbie.io/2018/09/26/ban-ve-thi-nghiem-xac-dinh-chieu-khong-gian-thu-4"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.botbie.io/2018/09/26/ban-ve-thi-nghiem-xac-dinh-chieu-khong-gian-thu-4"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+            
+                <div data-width="100%" class="fb-comments" data-href="http://blog.botbie.io/2018/09/26/ban-ve-thi-nghiem-xac-dinh-chieu-khong-gian-thu-4"></div>
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+        <a class="read-next-story " style="background-image: url(/assets/media/flaron18_wasm_02.png)" href="/2018/10/13/flareon2018-chal5-webassembly-writeup-side-channel-attack">
+            <section class="post">
+                <h2>[flareon2018] chal5 WebAssembly writeup: side channel attack</h2>
+                <p>## Đọc đề Bài WebAssembly là một trang web nho nhỏ, một đoạn JavaScript vừa...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/images/covers/cover2.jpg)" href="/2018/09/13/tai-sao-toi-ung-ho-cong-nghe-giao-duc">
+            <section class="post">
+                <h2>Tại sao tôi ủng hộ Công nghệ giáo dục?</h2>
+                <p>Bài viết trước của tôi, tôi đã khẳng định là sẽ ủng hộ bộ sách...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+        <footer class="site-footer clearfix">
+          <section class="copyright"><a href="/">Botbie Blog</a> &copy; 2019</section>
+          <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/biomadeira/jasper">Jasper</a></section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-51088846-5', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=1555729331387875";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, "script", "facebook-jssdk"));</script>
+
+</body>
+</html>

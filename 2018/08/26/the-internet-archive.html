@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    <title>The Internet Archive</title>
+    <meta name="description" content="The Internet Archive là một kho lưu trữ khổng lồ phi lợi nhuận được tạo ra để lưu trữ dữ liệu trên internet: văn bản, hình ảnh, âm thanh, phần mềm. Họ tự đặt ra cho mình sứ mệnh càn quét intenet định kỳ và lưu lại tất cả những dữ liệu thu được. Có lẽ bạn sẽ thấy họ kỳ quặc vì internet không chỉ có vàng, mà còn đầy rác. Nhưng nếu bạn ở tình huống của tôi hôm nay, bạn sẽ thấy nó tuyệt vời và những con người đã tạo ra The Internet Archive mới đáng yêu làm sao." />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" >
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css"
+          href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- [[! highlight.js ]] -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+    
+<link rel="canonical" href="/" />
+<meta name="referrer" content="origin" />
+<link rel="next" href="/page/2/" />
+
+<meta property="og:site_name" content="Botbie Blog" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="The Internet Archive" />
+<meta property="og:description" content="The Internet Archive là một kho lưu trữ khổng lồ phi lợi nhuận được tạo ra để lưu trữ dữ liệu trên internet: văn bản, hình ảnh, âm thanh, phần mềm. Họ tự đặt ra cho mình sứ mệnh càn quét intenet định kỳ và lưu lại tất cả những dữ liệu thu được. Có lẽ bạn sẽ thấy họ kỳ quặc vì internet không chỉ có vàng, mà còn đầy rác. Nhưng nếu bạn ở tình huống của tôi hôm nay, bạn sẽ thấy nó tuyệt vời và những con người đã tạo ra The Internet Archive mới đáng yêu làm sao." />
+<meta property="og:url" content="http://blog.botbie.io/2018/08/26/the-internet-archive" />
+<meta property="og:image" content="http://blog.botbie.io/assets/images/covers/internet-archive.png" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The Internet Archive" />
+<meta name="twitter:description" content="The Internet Archive là một kho lưu trữ khổng lồ phi lợi nhuận được tạo ra để lưu trữ dữ liệu trên internet: văn bản, hình ảnh, âm thanh, phần mềm. Họ tự đặt ra cho mình sứ mệnh càn quét intenet định kỳ và lưu lại tất cả những dữ liệu thu được. Có lẽ bạn sẽ thấy họ kỳ quặc vì internet không chỉ có vàng, mà còn đầy rác. Nhưng nếu bạn ở tình huống của tôi hôm nay, bạn sẽ thấy nó tuyệt vời và những con người đã tạo ra The Internet Archive mới đáng yêu làm sao." />
+<meta name="twitter:url" content="http://blog.botbie.io/2018/08/26/the-internet-archive" />
+<meta name="twitter:image:src" content="http://blog.botbie.io/assets/images/covers/internet-archive.png" />
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Botbie Blog",
+    "url": "http://blog.botbie.io/2018/08/26/the-internet-archive",
+    "image": "http://blog.botbie.io/assets/images/covers/internet-archive.png",
+    "description": "The Internet Archive là một kho lưu trữ khổng lồ phi lợi nhuận được tạo ra để lưu trữ dữ liệu trên internet: văn bản, hình ảnh, âm thanh, phần mềm. Họ tự đặt ra cho mình sứ mệnh càn quét intenet định kỳ và lưu lại tất cả những dữ liệu thu được. Có lẽ bạn sẽ thấy họ kỳ quặc vì internet không chỉ có vàng, mà còn đầy rác. Nhưng nếu bạn ở tình huống của tôi hôm nay, bạn sẽ thấy nó tuyệt vời và những con người đã tạo ra The Internet Archive mới đáng yêu làm sao."
+}
+</script>
+
+<meta name="generator" content="Jekyll 3.0.0" />
+<link rel="alternate" type="application/rss+xml" title="Botbie Blog" href="/feed.xml" />
+
+
+</head>
+<body class="home-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-about " role="presentation"><a href="/about">About</a></li>
+        <li class="nav-author " role="presentation"><a href="/author">Contributors</a></li>
+        <li class="nav-links " role="presentation"><a href="/links">Useful links</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/security">Security</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ctf">Ctf</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/mongodb">Mongodb</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/injection">Injection</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bitcoin">Bitcoin</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bài-dịch">Bài dịch</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptocurrency">Cryptocurrency</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/blockchain">Blockchain</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/plugin">Plugin</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/nodebb">Nodebb</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ide">Ide</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/source-control">Source control</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/git">Git</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/devops">Devops</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/cryptography">Cryptography</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hash">Hash</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/system">System</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/vps">Vps</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/server">Server</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hosting">Hosting</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/docker">Docker</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/openvpn">Openvpn</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/swift">Swift</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ai">Ai</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/agent">Agent</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/gpu">Gpu</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/hashcat">Hashcat</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/splunk">Splunk</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/elastic">Elastic</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/kibana">Kibana</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/opinions">Opinions</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/links">Links</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/games">Games</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/startup">Startup</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/bookreview">Bookreview</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/triết-học">Triết học</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/nghệ-thuật-sống">Nghệ thuật sống</a></li>
+        
+        
+        
+        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/internet">Internet</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/npo">Npo</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/rng">Rng</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/architect">Architect</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/backend">Backend</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/soundcloud">Soundcloud</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/sharing">Sharing</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/investment">Investment</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/loving">Loving</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/psychedelic">Psychedelic</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/science">Science</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/theory">Theory</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/ctf">Ctf</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/webassembly">Webassembly</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/side-channel-attack">Side channel attack</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/design-pattern">Design pattern</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/concurrency-programming">Concurrency programming</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/java">Java</a></li>
+        
+        
+        
+        <li class="nav-speeches " role="presentation"><a href="/tag/string">String</a></li>
+        
+    </ul>
+    <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/images/covers/internet-archive.png) ">
+    <nav class="main-nav  overlay  clearfix">
+      <a class="blog-logo" href="/"><img src="/assets/images/botbie.png" alt="Blog Logo" /></a>
+        
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-test tag-content">
+
+        <header class="post-header">
+            <h1 class="post-title">The Internet Archive</h1>
+            <section class="post-meta">
+            <time class="post-date" datetime="2018-08-26">26 Aug 2018</time>
+                <!-- [[tags prefix=" on "]] -->
+                
+                on 
+                    
+                       <a href='/tag/internet'>Internet</a>,
+                    
+                
+                    
+                       <a href='/tag/npo'>Npo</a>
+                    
+                
+                
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <p><a href="https://archive.org/">The Internet Archive</a> là một kho lưu trữ khổng lồ phi lợi nhuận được tạo ra để lưu trữ dữ liệu trên internet: văn bản, hình ảnh, âm thanh, phần mềm. Họ tự đặt ra cho mình sứ mệnh càn quét intenet định kỳ và lưu lại tất cả những dữ liệu thu được. Có lẽ bạn sẽ thấy họ kỳ quặc vì internet không chỉ có vàng, mà còn đầy rác. Nhưng nếu bạn ở tình huống của tôi hôm nay, bạn sẽ thấy đó là một ý tưởng tuyệt vời và những con người đã tạo ra nó mới đáng yêu làm sao.</p>
+
+<p>Cuối năm 2016, lão <a href="/author/nguquen/">thien</a> thử nghiệm chuyển blog sang opensource blog dùng github, sau khi mirgate thử vài bài từ botbie.io sang blog.botbie.io thì lão ngưng, và đề nghị các thành viên khác move và viết bài tiếp.</p>
+
+<p>Sau hai năm, web botbie.io chết do không ai quan tâm bảo trì, thank github mà blog.botbie.io vẫn còn đó, nhưng cảm giác công sức dịch và viết bài trên blog cũ đã mất thật tệ. Với một người vừa dở Anh vừa dở Văn như tôi thì mỗi bài dịch là nhiều giờ ngồi tra từ điển và gõ phím, nên tôi rất rất muốn có lại những bài viêt đó. Sau khi thử tìm kiếm các bản backup trong máy tính, các văn bản đã từng lưu trữ trong google drive, dropbox và evernote, và không tìm thấy gì cả.</p>
+
+<p>Đó là lúc mà vị cứu tinh Internet Archive bỗng nhiên xuất hiện trong đầu tôi. Thư viện số này thành lập cách đây 22 năm, khi một gã cuồng internet là <a href="https://en.wikipedia.org/wiki/Brewster_Kahle">Brewster Kahle</a> bắt đầu lo lắng về việc các trang web không ai chăm sóc có thể chết đi, và lượng thông tin (rác) mà người dùng đã cất công tạo ra sẽ biến mất mãi mãi. Gã quyết định lập một công ty phi lợi nhuận để cứu vớt những dữ liệu này.</p>
+
+<p>Ban đầu trung tâm dữ liệu của tổ chức được đặt ở ba thành phố San Francisco, Redwood City, và Richmond của bang California. Sau đó để đảm bảo an toàn cho hệ thống khi có thiên tai xảy ra, Kahle bắt đầu mở rộng hệ thống ra nhiều vị trí địa lý khác nhau, hệ thống kho hiện tại có ở cả Ai Cập và Anh Quốc. hệ thống này chỉ scan internet và lưu trữ cho đến 2001, Kahle mở dịch vụ <a href="https://en.wikipedia.org/wiki/Wayback_Machine">Wayback Machine</a> cho phép người dùng truy cập vào cơ sở dữ liệu khổng lồ của công ty.</p>
+
+<p>Cho tới nay, Internet Archive đã lưu trữ 279 tỉ trang web, 11 triệu sách và văn bản, 4 triệu bản ghi âm, 3 triệu video, 1 triệu hình ảnh và hơn 100 ngàn phần mềm. Và không chỉ internet, Kahle bắt đầu lưu trữ sách in bằng cách số hoá sách (hiện công ty scan 1000 đầu sách mới mỗi ngày), lưu trữ lại các kênh truyền hình đang phát. Có thể một ngày nào đó khi trái đất gặp phải thảm hoạ hạt nhân hoặc mạt thế, kho này là sẽ là nguồn tư liệu quý giá cho những ai muốn tái tạo văn minh loài người.</p>
+
+<p>Quay trở lại với botbie blog, tôi đã tìm lại được một số bài viết cũ từ bản lưu trên webarchive của <a href="https://web.archive.org/web/sitemap/botbie.io">botbie.io</a> lẫn <a href="https://web.archive.org/web/sitemap/blog.botbie.com">blog.botbie.com</a> và sẽ cập nhật lên blog.botbie.io sớm, mọi người nếu muốn ủng hộ thì hãy fork <a href="https://github.com/botbie/blog">source github</a> và tham gia viết bài cho botbie nhé. Trong mã nguồn đã có hướng dẫn sử dụng đi kèm.</p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            
+            <figure class="author-image">
+                <a class="img" href="/author/jaken" style="background-image: url(/assets/images/avatars/jaken.jpeg)"><span class="hidden">jaken's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/jaken">Jaken Ty</a></h4>
+
+                
+                    <p> I'm a ghost...
+</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> In the shell</span>
+                    
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=The Internet Archive&amp;url=http://blog.botbie.io/2018/08/26/the-internet-archive"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.botbie.io/2018/08/26/the-internet-archive"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.botbie.io/2018/08/26/the-internet-archive"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+            
+                <div data-width="100%" class="fb-comments" data-href="http://blog.botbie.io/2018/08/26/the-internet-archive"></div>
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+        <a class="read-next-story " style="background-image: url(/assets/images/covers/cover2.jpg)" href="/2018/08/27/bitcoin-basic">
+            <section class="post">
+                <h2>Giới thiệu bitcoin cơ bản</h2>
+                <p>Giới thiệu bitcoin cơ bản * [Bitcoin là gì](/2016/06/26/bitcoin-la-gi) * [Bitcoin block](/2016/06/13/bitcoin-block) * [Bitcoin blockchain](/2016/06/10/bitcoin-blockchain)...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/images/covers/casper.jpg)" href="/2018/08/26/how-to-be-stoic">
+            <section class="post">
+                <h2>Review - How to be Stoic của Massimo Pigliucci</h2>
+                <p>Trong bất kỳ nền văn hoá nào, cách sống và cách đối mặt với những...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+        <footer class="site-footer clearfix">
+          <section class="copyright"><a href="/">Botbie Blog</a> &copy; 2019</section>
+          <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/biomadeira/jasper">Jasper</a></section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-51088846-5', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=1555729331387875";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, "script", "facebook-jssdk"));</script>
+
+</body>
+</html>
