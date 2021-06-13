@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- [[! Page Meta ]] -->
-    <title>Botbie Blog</title>
+    <title>Meetings</title>
     <meta name="description" content="Your mind is for having ideas, not holding them..." />
 
     <meta name="HandheldFriendly" content="True" />
@@ -35,24 +35,24 @@
 
 <meta property="og:site_name" content="Botbie Blog" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Botbie Blog" />
+<meta property="og:title" content="Meetings" />
 <meta property="og:description" content="Your mind is for having ideas, not holding them..." />
-<meta property="og:url" content="http://blog.botbie.io/tag/ctf/" />
-<meta property="og:image" content="http://blog.botbie.io/assets/images/covers/cover4.jpg" />
+<meta property="og:url" content="http://blog.botbie.io/meetings/" />
+<meta property="og:image" content="http://blog.botbie.io/assets/images/covers/cover7.jpg" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Botbie Blog" />
+<meta name="twitter:title" content="Meetings" />
 <meta name="twitter:description" content="Your mind is for having ideas, not holding them..." />
-<meta name="twitter:url" content="http://blog.botbie.io/tag/ctf/" />
-<meta name="twitter:image:src" content="http://blog.botbie.io/assets/images/covers/cover4.jpg" />
+<meta name="twitter:url" content="http://blog.botbie.io/meetings/" />
+<meta name="twitter:image:src" content="http://blog.botbie.io/assets/images/covers/cover7.jpg" />
 
 <script type="application/ld+json">
 {
     "@context": "http://schema.org",
     "@type": "Website",
     "publisher": "Botbie Blog",
-    "url": "http://blog.botbie.io/tag/ctf/",
-    "image": "http://blog.botbie.io/assets/images/covers/cover4.jpg",
+    "url": "http://blog.botbie.io/meetings/",
+    "image": "http://blog.botbie.io/assets/images/covers/cover7.jpg",
     "description": "Your mind is for having ideas, not holding them..."
 }
 </script>
@@ -62,7 +62,7 @@
 
 
 </head>
-<body class="tag-template nav-closed">
+<body class="home-template nav-closed">
 
     <div class="nav">
     <h3 class="nav-title">Menu</h3>
@@ -74,7 +74,7 @@
         <li class="nav-about " role="presentation"><a href="/about">About</a></li>
         <li class="nav-author " role="presentation"><a href="/author">Contributors</a></li>
         <li class="nav-links " role="presentation"><a href="/links">Useful links</a></li>
-        <li class="nav-meetings " role="presentation"><a href="/meetings">Zoom meetings</a></li>
+        <li class="nav-meetings  nav-current" role="presentation"><a href="/meetings">Zoom meetings</a></li>
         
         
         
@@ -82,7 +82,7 @@
         
         
         
-        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/ctf">Ctf</a></li>
+        <li class="nav-speeches " role="presentation"><a href="/tag/ctf">Ctf</a></li>
         
         
         
@@ -274,7 +274,7 @@
         
         
         
-        <li class="nav-speeches  nav-current" role="presentation"><a href="/tag/ctf">Ctf</a></li>
+        <li class="nav-speeches " role="presentation"><a href="/tag/ctf">Ctf</a></li>
         
         
         
@@ -309,96 +309,180 @@
     <div class="site-wrapper">
 
         <!-- [[! Everything else gets inserted here ]] -->
-        <!-- < dynamically overriding backgrounds for tags as well as descriptions -->
+        <!-- < default -->
 
+<!-- This is a page template. A page outputs content just like any other post, and has all the same -->
+    <!-- attributes by default, but you can also customise it to behave differently if you prefer.  -->
 
-<!-- < default}} -->
-<!-- The tag above means - insert everything in this file into the [body] of the default.hbs template -->
+<!-- Everything inside the #post tags pulls data from the page -->
+<!-- #post -->
 
-<!-- If we have a tag cover, display that - else blog cover - else nothing -->
-<header class="main-header tag-head " style="background-image: url(/assets/images/covers/cover4.jpg) ">
+<header class="main-header post-head " style="background-image: url(/assets/images/covers/cover7.jpg)">
     <nav class="main-nav overlay clearfix">
-      <a class="blog-logo" href="/"><img src="/assets/images/botbie.png" alt="Blog Logo" /></a>
+        <a class="blog-logo" href="/"><img src="/assets/images/botbie.png" alt="Blog Logo" /></a>
         
             <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
         
     </nav>
-    <div class="vertical">
-        <div class="main-header-content inner">
-            <h1 class="page-title">Ctf</h1>
-            <h2 class="page-description">
-            
-			    A 1-post collection
-            
-            </h2>
-        </div>
-    </div>
 </header>
 
-<!-- The main content area on the homepage -->
-<main id="content" class="content" role="main">
-
-    <!-- The tag below includes the post loop - partials/loop.hbs -->
-        <!-- Previous/next page links - only displayed on page 2+ -->
-    <div class="extra-pagination inner">
-        
-            <nav class="pagination" role="pagination">
-    
-    <span class="page-number"> Page 1 of 1 </span>
-    
-</nav>
-
-        
-    </div>
-
-    <!-- This is the post loop - each post will be output using this markup -->
-    
-    
+<main class="content" role="main">
     <article class="post">
+        <!-- Everything inside the #post tags pulls data from the post -->
+
         <header class="post-header">
-            <h2 class="post-title"><a href="/2018/10/13/flareon2018-chal5-webassembly-writeup-side-channel-attack">[flareon2018] chal5 WebAssembly writeup: side channel attack</a></h2>
+            <h1 class="post-title">Meetings</h1>
         </header>
-        <section class="post-excerpt">
-            <p>Đọc đề Bài WebAssembly là một trang web nho nhỏ, một đoạn JavaScript vừa đủ gọn để gọi được viết bằng WebAssemly (tất nhiên rồi, đề nó vậy mà). Đoạn JavaScript nhỏ xinh để gọi như sau: fetch("test.wasm").then(response =&gt; response.arrayBuffer() ).then(bytes =&gt; WebAssembly.instantiate(bytes, { env: { /// comment }, __syscall6: function __syscall6(n, a, b, c, d, e, f) { return... <a class="read-more" href="/2018/10/13/flareon2018-chal5-webassembly-writeup-side-channel-attack">&raquo;</a></p>
+
+        <section class="post-content">
+            <article class="post link">
+  <header class="post-header">
+    <h3 class="post-title">General Information</h3>
+  </header>
+  <section class="post-excerpt link">
+    <ul>
+      <li><a href="https://calendar.google.com/calendar/embed?src=q3qu4vn32m8o31ql1bvko2aeu0%40group.calendar.google.com&ctz=Asia%2FHo_Chi_Minh">Full calendar</a></li>
+      <li>Or add this email into Google calendar: <code>q3qu4vn32m8o31ql1bvko2aeu0@group.calendar.google.com</code></li>
+      <li><a href="https://mega.nz/folder/vsBwWRQQ#QuW3d-VkLxmpoyPhWjjmUw">All recordings and chats</a></li>
+      <li><a href="https://zoom.us/j/91790334157?pwd=MkI4bkt3bzVYcU9mWTVhUmFRRDlxdz09">Zoom meeting link</a> (passcode: <code>519922</code>)</li>
+    </ul>
+  </section>
+</article>
+
+
+<article class="post link">
+  <header class="post-header">
+    <h3 class="post-title">Session 12-06-2021</h3>
+  </header>
+  <section class="post-excerpt link">
+    <p><a href="https://mega.nz/file/6tJSXTLT#Mko1Z2XhGEIjk7Ym1AAZ9OM5_eef7j-n_QKSrlzLq88">Recording</a></p>
+    <p><a href="https://mega.nz/file/68QEzDBZ#Ku5oDASeKkic_FvpQhA2e25rcooc1uV_u_uO82R8ASQ">Chat history</a></p>
+    <p>Talks:</p>
+    <ul>
+      
+      <li>
+        
+          MakerDAO and DAI - Sơn
+        
+        
+      </li>
+      
+    </ul>
+  </section>
+</article>
+
+<article class="post link">
+  <header class="post-header">
+    <h3 class="post-title">Session 06-06-2021</h3>
+  </header>
+  <section class="post-excerpt link">
+    <p><a href="https://mega.nz/file/ioJF2Y5C#t-2UvecYLJTdX-F7B5EufO-F5Zqk2admLFf08XViBhU">Recording</a></p>
+    <p><a href="https://mega.nz/file/TtYzAITS#A53Mk0_b9jvbC7N8mLsd-tVLOowT8b8UsQp_L4TRH_8">Chat history</a></p>
+    <p>Talks:</p>
+    <ul>
+      
+      <li>
+        <a href="https://docs.google.com/presentation/d/11P8kj_HaRDxzUBC2HJ8qGNqQwJHSpBQC/edit">
+          Matic network (Polygon) - Tuong
+        </a>
+        
+      </li>
+      
+      <li>
+        <a href="https://drive.google.com/drive/u/0/folders/1ndBwBg36en5Y00TtmfQayMfxhDvY5u8g">
+          Stable coin - Jaken
+        </a>
+        &nbsp;(<a href="https://www.canva.com/design/DAEgVIV-2Ls/PxqZFutIHfG9CJCXOM9fUw/view">Canva Link</a>)
+      </li>
+      
+    </ul>
+  </section>
+</article>
+
+<article class="post link">
+  <header class="post-header">
+    <h3 class="post-title">Session 29-05-2021</h3>
+  </header>
+  <section class="post-excerpt link">
+    <p><a href="https://mega.nz/file/X05X1I4Y#JH-UUxkBrarke3YEiyN1Nd-d626czSkS207kNT1QB3Q">Recording</a></p>
+    <p><a href="https://mega.nz/file/n9ABGQjS#LdjlyNUOQsgedsT6hloWsbEu8XwNAznSq1KI__DJfX4">Chat history</a></p>
+    <p>Talks:</p>
+    <ul>
+      
+      <li>
+        <a href="https://docs.google.com/presentation/d/1S3QcnQi3zCRwY9IIBFELVVnmTgswAQDI4-WwqvN9LD0/edit">
+          ETH 2.0 - Jaken
+        </a>
+        
+      </li>
+      
+      <li>
+        <a href="https://drive.google.com/drive/u/0/folders/1ndBwBg36en5Y00TtmfQayMfxhDvY5u8g">
+          FIRO - Hana
+        </a>
+        
+      </li>
+      
+      <li>
+        <a href="https://www.canva.com/design/DAEft-DCfW4/hTC2QDqQB0doHhW2HGkqww/view">
+          DeFi in the economic - Kha
+        </a>
+        
+      </li>
+      
+    </ul>
+  </section>
+</article>
+
+<article class="post link">
+  <header class="post-header">
+    <h3 class="post-title">Session 22-05-2021</h3>
+  </header>
+  <section class="post-excerpt link">
+    <p><a href="https://mega.nz/file/exAQVbDY#VRcRB9y4p6U8CWShUO1xvV_E3lYmzvU0sH1o8A3A4Ms">Recording</a></p>
+    <p><a href="https://mega.nz/file/7sBHzaga#G6T808pRr94tTI92Cr9Q7cBvEifbUCSdkavT1fybC9M">Chat history</a></p>
+    <p>Talks:</p>
+    <ul>
+      
+      <li>
+        <a href="https://docs.google.com/presentation/d/1O0JKmBxEtsfwHfZQ6203ulAyd6eiMFQkNXvb6KOfqdo/edit">
+          Yield Farming - Jaken
+        </a>
+        
+      </li>
+      
+    </ul>
+  </section>
+</article>
+
+<article class="post link">
+  <header class="post-header">
+    <h3 class="post-title">Session 28-02-2021</h3>
+  </header>
+  <section class="post-excerpt link">
+    <p><a href="https://mega.nz/file/fhQ3WC5I#7i1g30ifjcifzRp7BKVgWzjqFtfUXXauTNl-IQCU5g8">Recording</a></p>
+    <p><a href="https://mega.nz/file/nhISgZxD#E_D_EEz4gqJUlFbHHDUxKUN58AjpHmsb17xOJzO2Vbc">Chat history</a></p>
+    <p>Talks:</p>
+    <ul>
+      
+      <li>
+        <a href="https://docs.google.com/presentation/d/1KNqVPepk5q75_RoYh07tUoq8hIBXhetYKgXnR_8k-Rg/edit">
+          DeFi overview - Jaken
+        </a>
+        
+      </li>
+      
+    </ul>
+  </section>
+</article>
+
+
         </section>
-        <footer class="post-meta">
-            <img class="author-thumb" src="/assets/images/avatars/khoai.jpeg" alt="Author image" nopin="nopin" />
-            <!-- author -->
-            <a href='/author/khoai'>Khoai</a>
-            <!-- [[tags prefix=" on "]] -->
-            
-                on
-                
-                    
-                       <a href='/tag/ctf'>Ctf</a>,
-                    
-                
-                    
-                       <a href='/tag/webassembly'>Webassembly</a>,
-                    
-                
-                    
-                       <a href='/tag/side-channel-attack'>Side channel attack</a>
-                    
-                
-            
-            <time class="post-date" datetime="2018-10-13">13 Oct 2018</time>
-        </footer>
+
     </article>
-    
-
-    <!-- Previous/next page links - displayed on every page -->
-    
-        <nav class="pagination" role="pagination">
-    
-    <span class="page-number"> Page 1 of 1 </span>
-    
-</nav>
-
-    
-
 
 </main>
+<!-- /post -->
 
 
         <footer class="site-footer clearfix">
